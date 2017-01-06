@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /** RESET **/
 * { padding: 0; margin: 0; font-size: 100%; line-height: 1; border: 0; -webkit-box-sizing: inherit; -moz-box-sizing: inherit; box-sizing: inherit; }
 
@@ -12,7 +13,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .bold, #subheader h2, .btn { font-family: 'Ubuntu', sans-serif; font-weight: bold; }
 
-.special, h1, h2, h3 { font-family: 'Permanent Marker', cursive; font-weight: normal; }
+.special, h1, h2, h3, #viewport:after { font-family: 'Permanent Marker', cursive; font-weight: normal; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -107,9 +108,10 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 @media (max-width: 767px) { .btn.btn-main { font-size: 90%; }
   .btn.btn-main:after { background: none; display: none; } }
-#viewport { width: 300px; max-width: 85%; margin: 90px auto 0; height: 500px; position: relative; }
+#viewport { width: 300px; max-width: 85%; margin: 90px auto 0; height: 330px; position: relative; }
+#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; background: #e6e6e6; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 310px; padding: 115px 20px; box-sizing: border-box; border-radius: 5px; }
 
-.cards li { width: 300px; max-width: 100%; min-height: 300px; height: 90%; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; font-size: 100px; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; }
+.cards li { width: 300px; max-width: 100%; height: 320px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; font-size: 100px; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; }
 .cards li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
 .cards li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
 
