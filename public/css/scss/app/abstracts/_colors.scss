@@ -7,7 +7,11 @@
 // The method to create the name is: "Closest standard color" name + "Name that color" name (brown + dark ebony)
 $white: #ffffff;
 $lightGrey: #f6f6f6;
+$mediumGrey: #e6e6e6;
 $black: #212021;
+
+// Color functions
+$lineColor: $mediumGrey;
 
 %exampleGradient {
   @include bbg(top, bottom, $white, $black);

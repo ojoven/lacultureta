@@ -8,11 +8,11 @@ h2, h3, h4 { font-weight: normal; }
 /** ABSTRACTS **/
 .helvetica { font-family: helvetica, "Arial", sans-serif; }
 
-.regular, body, h4, p { font-family: 'Ubuntu', sans-serif; font-weight: 400; }
+.regular, body, h4, p { font-family: 'Roboto', sans-serif; font-weight: 400; }
 
-.bold, .btn { font-family: 'Ubuntu', sans-serif; font-weight: bold; }
+.bold, #subheader h2, .btn { font-family: 'Ubuntu', sans-serif; font-weight: bold; }
 
-.special, h1, h2, h3 { font-family: 'Ubuntu', sans-serif; font-weight: normal; }
+.special, h1, h2, h3 { font-family: 'Permanent Marker', cursive; font-weight: normal; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -47,7 +47,7 @@ h2, h3, h4 { font-weight: normal; }
   75% { -moz-transform: translate3d(0, 5px, 0); -o-transform: translate3d(0, 5px, 0); -ms-transform: translate3d(0, 5px, 0); -webkit-transform: translate3d(0, 5px, 0); transform: translate3d(0, 5px, 0); }
   100% { -moz-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
 /* BASE STYLES */
-html, body { height: 100%; }
+html, body { height: 100%; overflow: hidden; }
 
 body { background: #ffffff; color: #212021; }
 
@@ -72,6 +72,13 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .clear { display: block; clear: both; }
 
 /** LAYOUT **/
+#main-header { position: absolute; top: 0; height: 40px; width: 100%; }
+
+#logo { background: url(../img/logo.png) no-repeat 0 0; background-size: 100%; width: 90px; height: 36px; margin: 10px auto; }
+
+#subheader { position: absolute; top: 55px; width: 100%; }
+#subheader h2 { width: 100%; text-align: center; font-size: 14px; }
+
 /** HELPERS **/
 .srt { clip: rect(1px, 1px, 1px, 1px); position: absolute; margin: 0; padding: 0; }
 
@@ -100,7 +107,11 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 @media (max-width: 767px) { .btn.btn-main { font-size: 90%; }
   .btn.btn-main:after { background: none; display: none; } }
-#viewport { width: 500px; max-width: 95%; margin: 10px auto; height: 500px; background: #f6f6f6; border: 5px solid #dddddd; position: relative; }
+#viewport { width: 300px; max-width: 85%; margin: 90px auto 0; height: 500px; position: relative; }
+
+.cards li { width: 300px; max-width: 100%; min-height: 300px; height: 90%; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; font-size: 100px; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; }
+.cards li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
+.cards li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
 
 /** PRINT **/
 .just-print { display: none !important; }
@@ -112,26 +123,8 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
   .node-type-recipes #recipe-details-full .recipe-description-and-options ul { display: none; }
   .node-type-recipes #collections, .node-type-recipes #featured-in, .node-type-recipes #our-recipes { display: none; } }
 /** SHAME **/
-#viewport .stack { width: 200px; height: 300px; background: #ED5D52; position: absolute; top: 100px; left: 50%; margin-left: -100px; border-radius: 10px; }
-
-#viewport li { width: 200px; height: 300px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2); line-height: 300px; text-align: center; font-size: 100px; border: 10px solid #ECECEC; box-sizing: border-box; cursor: default; }
-
 #viewport li.clubs, #viewport li.spades { color: #373737; }
 
 #viewport li.diamonds, #viewport li.hearts { color: #ED5D52; }
-
-#viewport li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
-
-#viewport li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
-
-#control { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; font-size: 0; }
-
-#control button { background: #FFFFFF; color: #373737; font-weight: bold; border: none; font: normal 18px/24px 'Helvetica Neue', Helvetica, Arial, freesans, sans-serif; margin: 0 5px; padding: 10px 15px; cursor: pointer; box-shadow: 0 2px 0 #63211F; outline: none; position: relative; }
-
-#control button:active { background: #63211F; color: #FFFFFF; bottom: -2px; box-shadow: none; }
-
-#source { width: 500px; margin: 20px auto; }
-
-#source a { color: #C7433E; }
 
 /** MEDIA QUERIES **/

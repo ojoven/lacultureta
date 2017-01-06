@@ -2,6 +2,40 @@
 // LAYOUT
 // ==============================================
 
+// MAIN HEADER
+// Includes the logo, and possible icons (hashtag and profile)
+#main-header {
+	position: absolute;
+	top: 0;
+	height: 40px;
+	width: 100%;
+}
+
+#logo {
+	background: url(../img/logo.png) no-repeat 0 0;
+	background-size: 100%;
+	width: 90px;
+	height: 36px;
+	margin: 10px auto;
+}
+
+// SUBHEADER
+// Includes info and link to options
+#subheader {
+
+	position: absolute;
+	top: 55px;
+	width: 100%;
+
+	h2 {
+		@extend .bold !optional;
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+	}
+
+}
+
 // ==============================================
 // MOBILE
 // ==============================================

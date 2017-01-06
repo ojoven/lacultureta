@@ -7,6 +7,7 @@
 
         <title>Hoy No Hay Nada | Tu Agenda de Eventos de Donostia</title>
 
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
 
     </head>
@@ -14,8 +15,12 @@
 
         <!-- HEADER -->
         <header id="main-header">
-
+            <div id="logo"></div>
         </header>
+
+        <div id="subheader">
+            <h2>¿Qué cosas chulas hay hoy en Donostia?</h2>
+        </div>
 
         <!-- VIEWPORT -->
         <div id="viewport">
