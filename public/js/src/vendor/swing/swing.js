@@ -1904,10 +1904,19 @@
 						} else if (where === Card.THROW_OUT) {
 							springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
 
+							console.log(stack, targetElement, lastThrow.direction);
+
 							eventEmitter.trigger('throwout', {
 								target: targetElement,
 								throwDirection: lastThrow.direction
 							});
+
+							var event = new CustomEvent('out', {
+								target: targetElement,
+								throwDirection: lastThrow.direction
+							});
+							var elem = document.getElementById('viewport');
+							elem.dispatchEvent(event);
 
 							if (lastThrow.direction === Card.DIRECTION_LEFT) {
 								eventEmitter.trigger('throwoutleft', {
@@ -2038,6 +2047,12 @@
 					parentNode.removeChild(element);
 					parentNode.appendChild(element);
 				}
+			};
+
+			Card.insertBelow = function (element) {
+				var parent = element.parentNode;
+				parent.removeChild(element);
+				parent.insertBefore(element,parent.firstChild);
 			};
 
 			/**

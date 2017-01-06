@@ -25,10 +25,46 @@
         <!-- VIEWPORT -->
         <div id="viewport">
             <ul class="cards">
-                <li class="clubs">♣</li>
-                <li class="diamonds">♦</li>
-                <li class="hearts">♥</li>
-                <li class="spades">♠</li>
+
+                <li>
+                    <div class="title">Donostia vive la magia - Los mejores magos del mundo</div>
+                    <div class="image" style="background-image: url(/img/example2.jpg);"></div>
+                    <div class="date">
+                        <span class="day">MAÑANA</span>
+                        <span class="subday">7 de Enero</span>
+                        <span class="hour">A LAS 20.00</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="title">Concierto: Ruper Ordorika</div>
+                    <div class="image" style="background-image: url(/img/example.jpg);"></div>
+                    <div class="date">
+                        <span class="day">HOY</span>
+                        <span class="subday">6 de Enero</span>
+                        <span class="hour">A LAS 20.00</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="title">Donostia vive la magia - Los mejores magos del mundo</div>
+                    <div class="image" style="background-image: url(/img/example2.jpg);"></div>
+                    <div class="date">
+                        <span class="day">MAÑANA</span>
+                        <span class="subday">7 de Enero</span>
+                        <span class="hour">A LAS 20.00</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="title">Concierto: Ruper Ordorika</div>
+                    <div class="image" style="background-image: url(/img/example.jpg);"></div>
+                    <div class="date">
+                        <span class="day">HOY</span>
+                        <span class="subday">6 de Enero</span>
+                        <span class="hour">A LAS 20.00</span>
+                    </div>
+                </li>
             </ul>
         </div>
 

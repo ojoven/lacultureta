@@ -28,7 +28,7 @@
 	width: 100%;
 
 	h2 {
-		@extend .bold !optional;
+		@extend .regular !optional;
 		width: 100%;
 		text-align: center;
 		font-size: 14px;
