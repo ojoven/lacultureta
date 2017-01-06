@@ -68,6 +68,9 @@
             </ul>
         </div>
 
+        <a href="#" id="to-dislike">Dislike</a>
+        <a href="#" id="to-like">Like</a>
+
         <script type="text/javascript" src="/js/app.min.js"></script>
     </body>
 

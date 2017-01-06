@@ -3,7 +3,9 @@
 
 // VARS
 var stack,
-	tresholdThrowCard = 140;
+	cards = [],
+	tresholdThrowCard = 140,
+	currentCard = 0;
 
 // LOGIC
 $(document).ready(function() {
@@ -32,7 +34,9 @@ function generateCards() {
 	stack = gajus.Swing.Stack(config);
 
 	[].forEach.call(document.querySelectorAll('.cards li'), function (targetElement) {
-		stack.createCard(targetElement);
+		var card = stack.createCard(targetElement);
+		cards.push(card);
+		console.log(card);
 
 		targetElement.classList.add('in-deck');
 
@@ -43,9 +47,12 @@ function generateCards() {
 function cardsLikeManagement() {
 
 	$("#viewport").on('out', function (e) {
-		console.log(e.target.innerText || e.target.textContent, 'has been thrown out of the stack to the', e.throwDirection, 'direction.');
+		console.log(e.target);
+		$(e.target).removeClass('in-deck');
+	});
 
-		e.target.classList.remove('in-deck');
+	$("#to-dislike").on('click', function() {
+		cards[3].throwOut(-200, 0);
 	});
 
 }
