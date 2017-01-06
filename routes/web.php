@@ -11,8 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', 'IndexController@index');
 Route::get('/playground', 'IndexController@playground');

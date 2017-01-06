@@ -1,0 +1,37 @@
+// ==============================================
+// FONTS
+// ==============================================
+
+// Mixin for fonts
+@mixin typo($t,$name) {
+	@font-face {
+		font-family: $name;
+		src: url('fonts/#{$t}.eot');
+		src: url('fonts/#{$t}.eot?#iefix') format('embedded-opentype'),
+		url('fonts/#{$t}.woff') format('woff'),
+		url('fonts/#{$t}.ttf') format('truetype'),
+		url('fonts/#{$t}.svg##{$name}') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+// List of fonts
+.helvetica {
+  font-family: helvetica, "Arial", sans-serif;
+}
+
+.regular {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
+
+.bold {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+}
+
+.special {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: normal;
+}

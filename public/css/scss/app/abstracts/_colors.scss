@@ -1,0 +1,22 @@
+// ==============================================
+// COLORS
+// ==============================================
+
+// FIRST WE DEFINE DESCRIPTIVE COLORS
+// Color names provided by http://chir.ag/projects/name-that-color/
+// The method to create the name is: "Closest standard color" name + "Name that color" name (brown + dark ebony)
+$white: #ffffff;
+$lightGrey: #f6f6f6;
+$black: #212021;
+
+%exampleGradient {
+  @include bbg(top, bottom, $white, $black);
+}
+
+
+// NOW WE DEFINE FUNCTIONS
+
+// General functions
+$bodyBg: $white;
+$textColor: $black;
+$linkColor: $black;

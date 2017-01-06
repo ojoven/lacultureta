@@ -1,0 +1,40 @@
+// ==============================================
+// PRINT
+// ==============================================
+// We mainly use this one for the recipe print functionality
+
+.just-print {
+  display: none !important;
+}
+
+@media print {
+
+  #print-recipe-image {
+    max-height: 300px;
+  }
+
+  .just-print {
+    display: block;
+  }
+
+  .top-header-container, #header-top, .scroll, footer {
+    display: none;
+  }
+
+  .expandible {
+    display: block !important;
+  }
+
+  .node-type-recipes {
+
+    #recipe-details-full .recipe-description-and-options ul {
+      display: none;
+    }
+
+    #collections, #featured-in, #our-recipes {
+      display: none;
+    }
+
+  }
+
+}

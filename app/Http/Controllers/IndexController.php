@@ -9,6 +9,11 @@ use App\Http\Requests;
 
 class IndexController extends Controller {
 
+    public function index() {
+
+        return view('index');
+    }
+
     public function playground() {
 
         // Code to play with here

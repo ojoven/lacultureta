@@ -1,0 +1,14 @@
+// ==============================================
+// CARDS
+// ==============================================
+
+// VIEWPORT
+#viewport {
+  width: 500px;
+  max-width: 95%;
+  margin: 10px auto;
+  height: 500px;
+  background: $lightGrey;
+  border: 5px solid darken($lightGrey, 10%);
+  position: relative;
+}

@@ -1,0 +1,84 @@
+// ==============================================
+// BASE STYLES
+// ==============================================
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @extend .regular;
+  background: $bodyBg;
+  color: $textColor;
+}
+
+h1, h2, h3 {
+  @extend .special;
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+h4 {
+  @extend .regular;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+p {
+  @extend .regular;
+  font-size: 18px;
+}
+
+hr {
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 10px auto 20px auto;
+  border: 0;
+}
+
+sup, sub {
+  font-size: 50%;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.70em;
+  left: 0.05em;
+}
+
+sub {
+  top: 0.4em;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+
+// ==============================================
+// IPAD PORTRAIT
+// ==============================================
+@include ipadPortrait {
+
+  html, body {
+    height: auto;
+  }
+
+}
+
+// ==============================================
+// MOBILE
+// ==============================================
+@include mobile {
+
+  h1, h2, h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+}

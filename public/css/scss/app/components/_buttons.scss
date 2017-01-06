@@ -1,0 +1,77 @@
+// ==============================================
+// BUTTONS
+// ==============================================
+
+// Vars
+$btnMainTextColor: $white;
+$btnMainBg: $black;
+$btnMainBorder: $white;
+$btnMainHoverBg: $black;
+$btnMainHoverBorder: $black;
+
+// GENERAL BUTTON
+.btn {
+  @extend .bold;
+  @include effect(all, 0.5s, ease);
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 10px 25px 10px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  @include box-shadow(0px 1px 1px 0px rgba(0,0,0,0.75));
+
+  // MAIN BUTTON
+  &.btn-main {
+    color: $btnMainTextColor;
+    border: 3px solid $btnMainBorder;
+
+    &:hover, &:focus {
+      border-color: $btnMainHoverBorder;
+
+      &:after {
+        left: 12px;
+      }
+    }
+  }
+
+  // ALTERNATE BUTTON
+  &.btn-alternate {
+    // Use if alternate button
+  }
+
+}
+
+// VIEW MORE BUTTON
+// Used below the carousels (videos, recipes, etc.)
+.view-more-button {
+  margin-top: 20px;
+}
+
+#recipe-collections, #our-recipes {
+  .view-more-button {
+    margin-top: 0;
+  }
+}
+
+
+
+// ==============================================
+// MOBILE
+// ==============================================
+@include mobile {
+
+  .btn {
+
+    &.btn-main {
+      font-size: 90%;
+
+      &:after {
+        background: none;
+        display: none;
+      }
+    }
+  }
+
+}
