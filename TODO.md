@@ -11,6 +11,7 @@ v0.9 (First Minimum Lovable Version)
 * Scrape event single information from Donostia.eus
 * Parse correctly events from Donostia.eus
 * Add login with Facebook
+* Dynamic cards to swipe (add / remove)
 
 v1.2 (Future versions)
 * Add new sources (Bukowski, DabaDaba, Doka....)
