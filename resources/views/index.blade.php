@@ -19,52 +19,27 @@
         </header>
 
         <div id="subheader">
-            <h2>¿Qué cosas chulas hay hoy en Donostia?</h2>
+            <h2>No te pierdas los mejores eventos de Donostia</h2>
         </div>
 
         <!-- VIEWPORT -->
         <div id="viewport">
             <ul class="cards">
 
-                <li>
-                    <div class="title">Donostia vive la magia - Los mejores magos del mundo</div>
-                    <div class="image" style="background-image: url(/img/example2.jpg);"></div>
-                    <div class="date">
-                        <span class="day">MAÑANA</span>
-                        <span class="subday">7 de Enero</span>
-                        <span class="hour">A LAS 20.00</span>
-                    </div>
-                </li>
+                <?php foreach ($events as $event) { ?>
 
-                <li>
-                    <div class="title">Concierto: Ruper Ordorika</div>
-                    <div class="image" style="background-image: url(/img/example.jpg);"></div>
-                    <div class="date">
-                        <span class="day">HOY</span>
-                        <span class="subday">6 de Enero</span>
-                        <span class="hour">A LAS 20.00</span>
-                    </div>
-                </li>
+                    <li>
+                        <div class="title"><?php echo $event['title']; ?></div>
+                        <div class="image" style="background-image: url(<?php echo $event['image']; ?>);"></div>
+                        <div class="date">
+                            <span class="day"><?php echo $event['date_render']; ?></span>
+                            <span class="hour"><?php echo $event['hour_render']; ?></span>
+                            <a href="<?php echo $event['url']; ?>" target="_blank">LINK</a>
+                        </div>
+                    </li>
 
-                <li>
-                    <div class="title">Donostia vive la magia - Los mejores magos del mundo</div>
-                    <div class="image" style="background-image: url(/img/example2.jpg);"></div>
-                    <div class="date">
-                        <span class="day">MAÑANA</span>
-                        <span class="subday">7 de Enero</span>
-                        <span class="hour">A LAS 20.00</span>
-                    </div>
-                </li>
+                <?php } ?>
 
-                <li>
-                    <div class="title">Concierto: Ruper Ordorika</div>
-                    <div class="image" style="background-image: url(/img/example.jpg);"></div>
-                    <div class="date">
-                        <span class="day">HOY</span>
-                        <span class="subday">6 de Enero</span>
-                        <span class="hour">A LAS 20.00</span>
-                    </div>
-                </li>
             </ul>
         </div>
 

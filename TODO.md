@@ -8,9 +8,11 @@ v0.9 (First Minimum Lovable Version)
 * Refactor front end (typography / colors / header / footer)
 * Add new state: popup with additional info from event
 * ~~Scrape events base from Donostia.eus~~
-* Scrape events from all pages
+* ~~Scrape events from all pages~~
+* ~~Parse correctly events from Donostia.eus~~
 * Scrape event single information from Donostia.eus
-* Parse correctly events from Donostia.eus
+* Connect backend with front end
+* Create configuration options panel
 * Add login with Facebook
 * Dynamic cards to swipe (add / remove)
 
