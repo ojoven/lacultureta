@@ -11,12 +11,15 @@
 	width: 100%;
 }
 
-#logo {
-	background: url(../img/logo.png) no-repeat 0 0;
-	background-size: 100%;
-	width: 90px;
-	height: 36px;
-	margin: 10px auto;
+#logo-text {
+	@extend .bold !optional;
+	font-size: 22px;
+	text-align: center;
+	padding: 20px 0 0;
+	font-family: 'Neucha', cursive;
+	text-transform: uppercase;
+	color: #fff;
+
 }
 
 // SUBHEADER
@@ -32,6 +35,7 @@
 		width: 100%;
 		text-align: center;
 		font-size: 14px;
+		color: #fff;
 	}
 
 }

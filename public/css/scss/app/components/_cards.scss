@@ -7,7 +7,7 @@
 	width: 400px;
 	max-width: 85%;
 	margin: 90px auto 0;
-	height: 330px;
+	height: 410px;
 	position: relative;
 
 	// No more content
@@ -24,8 +24,8 @@
 		z-index: -1;
 		width: 90%;
 		text-align: center;
-		height: 310px;
-		padding: 115px 20px;
+		height: 390px;
+		padding: 145px 20px;
 		box-sizing: border-box;
 		border-radius: 5px;
 	}
@@ -36,7 +36,7 @@
 .cards li {
 	width: 400px;
 	max-width: 100%;
-	height: 320px;
+	height: 400px;
 	list-style: none;
 	background: #fff;
 	border-radius: 5px;
@@ -48,6 +48,7 @@
 	border: 3px solid $lineColor;
 	box-sizing: border-box;
 	cursor: default;
+	padding: 0 10px;
 
 	// Change slightly position to background cards
 	&.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
@@ -55,18 +56,22 @@
 
 	// Title
 	.title {
-		@extend .special;
+		@extend .bold;
 		font-size: 25px;
 		width: 100%;
-		padding: 0 10px;
+		padding: 0 15px;
 		text-align: center;
 		display: block;
-		margin: 10px 0;
+		margin: 20px 0 15px;
+
+		&.little {
+			font-size: 18px;
+		}
 	}
 
 	.image {
-		width: 100px;
-		height: 100px;
+		width: 150px;
+		height: 150px;
 		border-radius: 50%;
 		margin: 10px auto;
 		background-position: center center;
@@ -81,16 +86,44 @@
 			display: block;
 			font-size: 20px;
 			text-align: center;
+
+			&.little {
+				font-size: 16px;
+			}
 		}
 
-		.subday {
-			@extend .regular;
-			color: $darkGrey;
-			display: block;
-			font-size: 12px;
-			text-align: center;
-			margin: 5px 0;
-		}
+	}
 
+	.price {
+		margin: 10px 0;
+	}
+
+	.place {
+
+	}
+
+	.categories {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+
+		.category {
+			width: 25px;
+			height: 25px;
+			background-position: center center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			display: inline-block;
+
+		}
+	}
+
+	.to-see-more {
+		margin: 10px 0;
+		text-align: center;
+		a {
+			color: $fontColor;
+			text-decoration: underline;
+		}
 	}
 }

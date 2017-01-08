@@ -7,7 +7,7 @@
 
         <title>Hoy No Hay Nada | Tu Agenda de Eventos de Donostia</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Neucha" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
 
     </head>
@@ -15,7 +15,8 @@
 
         <!-- HEADER -->
         <header id="main-header">
-            <div id="logo"></div>
+            <!--<div id="logo"></div>-->
+            <div id="logo-text">hoy no hay nada</div>
         </header>
 
         <div id="subheader">
@@ -26,30 +27,56 @@
         <div id="viewport">
             <ul class="cards">
 
-                <?php foreach ($events as $event) { ?>
+                <?php foreach ($events as $event) {
+                    $classTitle = (strlen($event['title']) > 60) ? ' little' : '';
+                    $classDay = (strlen($event['date_render']) > 30) ? ' little' : '';
+                    $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
+                ?>
 
                     <li>
-                        <div class="title"><?php echo $event['title']; ?></div>
+                        <div class="title<?php echo $classTitle; ?>">
+                            <?php echo $event['title']; ?>
+                        </div>
                         <div class="image" style="background-image: url(<?php echo $event['image']; ?>);"></div>
                         <div class="date">
-                            <span class="day"><?php echo $event['date_render']; ?></span>
-                            <span class="hour"><?php echo $event['hour_render']; ?></span>
-                            <!--<a href="<?php echo $event['url']; ?>" target="_blank">LINK</a>-->
+                            <span class="day<?php echo $classDay; ?>"><?php echo $event['date_render']; ?></span>
+                            <span class="hour<?php echo $classHour; ?>"><?php echo $event['hour_render']; ?></span>
                         </div>
                         <div class="price"><?php echo $event['price_render']; ?></div>
                         <div class="place"><?php echo $event['place']; ?></div>
+                        <div class="to-see-more">
+                            <a href="<?php echo $event['url']; ?>" target="_blank"><?php echo _('ver más'); ?></a>
+                        </div>
+                        <div class="categories">
+                            <?php foreach ($event['categories_render'] as $category) { ?>
+                                <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $category); ?>.png);">
+                                </div>
+                            <?php } ?>
+                        </div>
                     </li>
 
                 <?php } ?>
 
+                <li class="welcome">
+                    <div class="title">Bienvenido a<br>hoy no hay nada</div>
+                    <p>Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia.</p>
+                    <p>Conciertos, exposiciones, películas, teatros...</p>
+                    <div class="swipe swipe-left">
+                        <div class="icon-swipe"></div>
+                        <div class="swipe-message">Desliza a la izquierda si el evento no te gusta</div>
+                    </div>
+
+                    <div class="swipe swipe-right">
+                        <div class="icon-swipe"></div>
+                        <div class="swipe-message">Desliza a la derecha si el evento te gusta</div>
+                    </div>
+
+                    <div class="warning-tmp">(proyecto en construcción)</div>
+
+                </li>
+
             </ul>
         </div>
-
-        <a href="#" id="to-dislike">Dislike</a>
-        <a href="#" id="to-like">Like</a>
-
-        <br><br>
-        <a href="/scraper">Test Scraper</a>
 
         <script type="text/javascript" src="/js/app.min.js"></script>
     </body>

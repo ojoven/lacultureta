@@ -1,0 +1,50 @@
+// ==============================================
+// WELCOME
+// ==============================================
+
+.welcome {
+
+	.title {
+		font-family: 'Neucha', cursive;
+		text-transform: uppercase;
+	}
+
+	p {
+		margin: 10px 0;
+	}
+
+	.swipe {
+		float: left;
+		width: 50%;
+		margin: 10px 0 35px;
+		padding: 0 10px;
+		box-sizing: border-box;
+
+		.icon-swipe {
+			width: 70px;
+			height: 70px;
+			background: url(../img/flick_left.png) center center no-repeat;
+			background-size: contain;
+			margin: 0 auto 10px;
+		}
+
+		.swipe-message {
+			font-size: 14px;
+		}
+
+		&.swipe-right {
+			padding-right: 40px;
+			.icon-swipe { background-image: url(../img/flick_right.png); }
+		}
+
+		&.swipe-left {
+			padding-left: 40px;
+		}
+
+	}
+
+	.warning-tmp {
+		font-size: 12px;
+		color: $darkGrey;
+	}
+}

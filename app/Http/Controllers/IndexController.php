@@ -13,8 +13,6 @@ class IndexController extends Controller {
 
     public function index() {
 
-        setlocale(LC_ALL, 'es_ES');
-
         $eventModel = new Event();
         $events = $eventModel->getInitialEvents();
 

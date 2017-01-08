@@ -10,9 +10,11 @@ $lightGrey: #f6f6f6;
 $mediumGrey: #e6e6e6;
 $darkGrey: #666;
 $black: #212021;
+$blueBg: #0e7d8e;
 
 // Color functions
 $lineColor: $mediumGrey;
+$fontColor: $black;
 
 %exampleGradient {
   @include bbg(top, bottom, $white, $black);

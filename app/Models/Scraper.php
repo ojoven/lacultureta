@@ -99,15 +99,18 @@ class Scraper extends Model {
         $event['external_id'] = $kwid;
 
         // CATEGORIES
-        if (strpos($kwca, 'Teatro')!==false) $event['categories'][] = 'Teatro y Danza';
-        if (strpos($kwca, 'Cine')!==false) $event['categories'][] = 'Cine';
-        if (strpos($kwca, 'Conciertos')!==false) $event['categories'][] = 'Música';
-        if (strpos($kwca, 'eport')!==false) $event['categories'][] = 'Deportes';
-        if (strpos($kwca, 'Exposiciones')!==false) $event['categories'][] = 'Exposiciones';
-        if (strpos($kwca, 'Fiestas')!==false) $event['categories'][] = 'Fiestas y Ferias';
-        if (strpos($kwca, 'Gastronom')!==false) $event['categories'][] = 'Gastronomía';
-        if (strpos($kwca, 'Infantil')!==false) $event['categories'][] = 'Actividades Infantiles';
-        if (strpos($kwca, 'Museos')!==false) $event['categories'][] = 'Museos';
+        if (strpos($kwca, 'Teatro')!==false || strpos(strtolower($event['title']),'exposición')!==false) $event['categories'][] = 'Teatro y Danza';
+        if (strpos($kwca, 'Cine')!==false || strpos(strtolower($event['title']),'cine')!==false) $event['categories'][] = 'Cine';
+        if (strpos($kwca, 'Conciertos')!==false || strpos(strtolower($event['title']),'concierto')!==false) $event['categories'][] = 'Música';
+        if (strpos($kwca, 'eport')!==false || strpos(strtolower($event['title']),'carrera')!==false) $event['categories'][] = 'Deportes';
+        if (strpos($kwca, 'Exposiciones')!==false || strpos(strtolower($event['title']),'exposición')!==false) $event['categories'][] = 'Exposiciones';
+        if (strpos($kwca, 'Fiestas')!==false || strpos(strtolower($event['title']),'feria')!==false) $event['categories'][] = 'Fiestas y Ferias';
+        if (strpos($kwca, 'Gastronom')!==false || strpos(strtolower($event['title']),'gastronom')!==false) $event['categories'][] = 'Gastronomía';
+        if (strpos($kwca, 'Infantil')!==false || strpos(strtolower($event['title']),'infantil')!==false) $event['categories'][] = 'Actividades Infantiles';
+        if (strpos($kwca, 'Museos')!==false || strpos(strtolower($event['title']),'museo')!==false) $event['categories'][] = 'Museos';
+
+        if (strpos(strtolower($event['title']),'conferencia')!==false) $event['categories'][] = 'Conferencias';
+        if (strpos(strtolower($event['title']),'liter')!==false) $event['categories'][] = 'Literatura';
 
         if (empty($event['categories'])) {
             $event['categories'][] = 'Otros';
@@ -125,6 +128,10 @@ class Scraper extends Model {
         $event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
 
         return $event;
+
+    }
+
+    private function _setCategory() {
 
     }
 

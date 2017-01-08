@@ -9,11 +9,11 @@ h2, h3, h4 { font-weight: normal; }
 /** ABSTRACTS **/
 .helvetica { font-family: helvetica, "Arial", sans-serif; }
 
-.regular, body, h4, p, #subheader h2, .cards li .date .subday { font-family: 'Roboto', sans-serif; font-weight: 400; }
+.regular, body, h4, p, #subheader h2 { font-family: 'Raleway', sans-serif; font-weight: 400; }
 
-.bold, .btn, .cards li .date .day, .cards li .date .hour { font-family: 'Ubuntu', sans-serif; font-weight: bold; }
+.bold, #logo-text, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
-.special, h1, h2, h3, #viewport:after, .cards li .title { font-family: 'Permanent Marker', cursive; font-weight: normal; }
+.special, h1, h2, h3, #viewport:after { font-family: 'Raleway', cursive; font-weight: normal; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -50,7 +50,7 @@ h2, h3, h4 { font-weight: normal; }
 /* BASE STYLES */
 html, body { height: 100%; overflow: hidden; }
 
-body { background: #ffffff; color: #212021; }
+body { background: #0e7d8e; color: #212021; }
 
 h1, h2, h3 { font-size: 38px; line-height: 1.2; }
 
@@ -75,10 +75,10 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 /** LAYOUT **/
 #main-header { position: absolute; top: 0; height: 40px; width: 100%; }
 
-#logo { background: url(../img/logo.png) no-repeat 0 0; background-size: 100%; width: 90px; height: 36px; margin: 10px auto; }
+#logo-text { font-size: 22px; text-align: center; padding: 20px 0 0; font-family: 'Neucha', cursive; text-transform: uppercase; color: #fff; }
 
 #subheader { position: absolute; top: 55px; width: 100%; }
-#subheader h2 { width: 100%; text-align: center; font-size: 14px; }
+#subheader h2 { width: 100%; text-align: center; font-size: 14px; color: #fff; }
 
 /** HELPERS **/
 .srt { clip: rect(1px, 1px, 1px, 1px); position: absolute; margin: 0; padding: 0; }
@@ -108,16 +108,32 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 @media (max-width: 767px) { .btn.btn-main { font-size: 90%; }
   .btn.btn-main:after { background: none; display: none; } }
-#viewport { width: 400px; max-width: 85%; margin: 90px auto 0; height: 330px; position: relative; }
-#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; background: #e6e6e6; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 310px; padding: 115px 20px; box-sizing: border-box; border-radius: 5px; }
+#viewport { width: 400px; max-width: 85%; margin: 90px auto 0; height: 410px; position: relative; }
+#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; background: #e6e6e6; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
 
-.cards li { width: 400px; max-width: 100%; height: 320px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; }
+.cards li { width: 400px; max-width: 100%; height: 400px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; padding: 0 10px; }
 .cards li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
 .cards li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
-.cards li .title { font-size: 25px; width: 100%; padding: 0 10px; text-align: center; display: block; margin: 10px 0; }
-.cards li .image { width: 100px; height: 100px; border-radius: 50%; margin: 10px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
+.cards li .title { font-size: 25px; width: 100%; padding: 0 15px; text-align: center; display: block; margin: 20px 0 15px; }
+.cards li .title.little { font-size: 18px; }
+.cards li .image { width: 150px; height: 150px; border-radius: 50%; margin: 10px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
 .cards li .date .day, .cards li .date .hour { display: block; font-size: 20px; text-align: center; }
-.cards li .date .subday { color: #666; display: block; font-size: 12px; text-align: center; margin: 5px 0; }
+.cards li .date .day.little, .cards li .date .hour.little { font-size: 16px; }
+.cards li .price { margin: 10px 0; }
+.cards li .categories { position: absolute; right: 10px; bottom: 10px; }
+.cards li .categories .category { width: 25px; height: 25px; background-position: center center; background-size: contain; background-repeat: no-repeat; display: inline-block; }
+.cards li .to-see-more { margin: 10px 0; text-align: center; }
+.cards li .to-see-more a { color: #212021; text-decoration: underline; }
+
+.welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }
+.welcome p { margin: 10px 0; }
+.welcome .swipe { float: left; width: 50%; margin: 10px 0 35px; padding: 0 10px; box-sizing: border-box; }
+.welcome .swipe .icon-swipe { width: 70px; height: 70px; background: url(../img/flick_left.png) center center no-repeat; background-size: contain; margin: 0 auto 10px; }
+.welcome .swipe .swipe-message { font-size: 14px; }
+.welcome .swipe.swipe-right { padding-right: 40px; }
+.welcome .swipe.swipe-right .icon-swipe { background-image: url(../img/flick_right.png); }
+.welcome .swipe.swipe-left { padding-left: 40px; }
+.welcome .warning-tmp { font-size: 12px; color: #666; }
 
 /** PRINT **/
 .just-print { display: none !important; }

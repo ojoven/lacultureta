@@ -209,6 +209,14 @@ class Functions {
 
 	}
 
+	/** CATEGORIES **/
+	public static function parseCategoriesForRender($categories) {
+
+		$categories = explode(',', $categories);
+		return $categories;
+
+	}
+
 	/** ARRAYS **/
 	public static function getArrayWithIndexValues($array, $index) {
 
