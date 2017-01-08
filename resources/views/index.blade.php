@@ -37,6 +37,7 @@
                             <!--<a href="<?php echo $event['url']; ?>" target="_blank">LINK</a>-->
                         </div>
                         <div class="price"><?php echo $event['price_render']; ?></div>
+                        <div class="place"><?php echo $event['place']; ?></div>
                     </li>
 
                 <?php } ?>

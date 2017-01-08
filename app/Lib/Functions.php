@@ -108,22 +108,6 @@ class Functions {
 
 	}
 
-	public static function parseHourForRender($hour) {
-
-		// Cases
-		// + (different hours)
-		if (strpos($hour, '+')!==false) {
-			$hours = explode('+', $hour);
-			if (count($hours)==2) {
-				return sprintf(_('a las %s y a las %s'), $hours[0], $hours[1]);
-			}
-		}
-
-		$hourRender = sprintf(_('a las %s'), $hour);
-		return $hourRender;
-
-	}
-
 	public static function getMonthName($month) {
 
 		$arrayMonths = array(
@@ -186,6 +170,31 @@ class Functions {
 
 		// DATE END
 		$dateEnd = ($dateEnd) ? $yearEnd . '-' . str_pad($monthEnd, 2, "0", STR_PAD_LEFT) . '-' . str_pad($dayEnd, 2, "0", STR_PAD_LEFT) : null;
+
+	}
+
+	// HOUR
+	public static function parseHourForRender($hour) {
+
+		// Cases
+		// + (different hours)
+		if (strpos($hour, '+')!==false) {
+			$hours = explode('+', $hour);
+			if (count($hours)==2) {
+				return sprintf(_('a las %s y a las %s'), $hours[0], $hours[1]);
+			}
+		}
+
+		// - (range hours)
+		if (strpos($hour, '-')!==false) {
+			$hours = explode('-', $hour);
+			if (count($hours)==2) {
+				return sprintf(_('desde las %s hasta las %s'), $hours[0], $hours[1]);
+			}
+		}
+
+		$hourRender = sprintf(_('a las %s'), $hour);
+		return $hourRender;
 
 	}
 
