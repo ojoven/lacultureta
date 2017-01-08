@@ -7,7 +7,8 @@ v0.9 (First Minimum Lovable Version)
 * Add buttons (not just swipe) Like / Dislike
 * Refactor front end (typography / colors / header / footer)
 * Add new state: popup with additional info from event
-* ~~Scrape events from Donostia.eus~~
+* ~~Scrape events base from Donostia.eus~~
+* Scrape events from all pages
 * Scrape event single information from Donostia.eus
 * Parse correctly events from Donostia.eus
 * Add login with Facebook

@@ -2,14 +2,16 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\SimpleHtmlDom;
+use Illuminate\Support\Facades\DB;
+use App\Lib\Functions;
 
 class Scraper extends Model {
 
     public function extractDataEvents() {
 
         $events = $this->extractDataEventsDonostiaEUS();
-        $this->storeNonDuplicatedEvents($events);
+        $events = $this->filterNotAddedEvents($events);
+        $this->storeEvents($events);
 
     }
 
@@ -30,6 +32,8 @@ class Scraper extends Model {
             $resultsAgenda = $html->find('.resultados-agenda', 0);
             foreach ($resultsAgenda->find('.media') as $eventDom) {
 
+                $event = array();
+
                 // Event title
                 $event['title'] = $eventDom->find('.media-heading', 0)->find('a', 0)->plaintext;
 
@@ -43,8 +47,8 @@ class Scraper extends Model {
                 $event['place'] = $eventDom->find('.media-body', 0)->find('span', 0)->plaintext;
 
                 // Event date
-                $event['date']['begin'] = $eventDom->find('.fechas', 0)->find('p', 0)->plaintext;
-                $event['date']['end'] = ($eventDom->find('.fechas', 0)->find('p', 1)) ? $eventDom->find('.fechas', 0)->find('p', 1)->plaintext : false;
+                $event['date_start'] = $eventDom->find('.fechas', 0)->find('p', 0)->plaintext;
+                $event['date_end'] = ($eventDom->find('.fechas', 0)->find('p', 1)) ? $eventDom->find('.fechas', 0)->find('p', 1)->plaintext : false;
 
                 // Event hour
                 $event['hour'] = $eventDom->find('.media-body', 0)->find('span', 1)->plaintext;
@@ -60,7 +64,11 @@ class Scraper extends Model {
             $page++;
 
             // If no more pages
-            if (1) break;
+
+            $nextPage = $html->find('.pagination', 0)->find('li', -1);
+            if (isset($nextPage->class) && $nextPage->class = "disabled") {
+                break;
+            }
 
         }
 
@@ -71,8 +79,8 @@ class Scraper extends Model {
     private function _parseEventDonostiaEUS($event) {
 
         // PRICE
-        $event['price'] = trim(str_replace('Precio:', '', str_replace('€', '', str_replace(',00', '', str_replace('&#8364;', '', $event['price'])))));
-        if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0';
+        $event['price'] = trim(str_replace('Precio:', '', str_replace(',00', '', str_replace('&#8364;', '€', $event['price']))));
+        if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0 €';
 
         // PLACE
         $event['place'] = trim(str_replace('Lugar:', '', $event['place'])); // TODO: This won't work for basque version
@@ -81,7 +89,7 @@ class Scraper extends Model {
         $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
 
         // DATE
-
+        Functions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end']);
 
         // We extract the parameters from the URL
         $kwid = $kwca = '';
@@ -105,11 +113,45 @@ class Scraper extends Model {
             $event['categories'][] = 'Otros';
         }
 
+        $event['categories'] = implode(',', $event['categories']); // TODO: Categories to another table, better.
+
+        // SOURCE
+        $event['source'] = 'Donostia.eus';
+
+        // URL
+        $event['url'] = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/' . str_replace('&amp;', '&', $event['url']);
+
+        // CREATED / UPDATED DATES
+        $event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
+
         return $event;
 
     }
 
-    public function storeNonDuplicatedEvents($events) {
+    public function filterNotAddedEvents($events) {
+
+        // We get all the events' external IDs
+        $eventExternalIds = Functions::getArrayWithIndexValues($events, 'external_id');
+
+        // Now we retrieve from the DB all the events stored with those external IDs
+        $eventModel = new Event();
+        $previousEvents = $eventModel->whereIn('external_id', $eventExternalIds)->get()->toArray();
+        $previousEventsIds = Functions::getArrayWithIndexValues($previousEvents, 'external_id');
+
+        $notDuplicatedEvents = array();
+        foreach ($events as $event) {
+            if (!in_array($event['external_id'], $previousEventsIds)) {
+                $notDuplicatedEvents[] = $event;
+            }
+        }
+
+        return $notDuplicatedEvents;
+
+    }
+
+    public function storeEvents($events) {
+
+        DB::table('events')->insert($events);
 
     }
 
