@@ -12,4 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
+
+// TMP routes
 Route::get('/playground', 'IndexController@playground');
+Route::get('/scraper', 'IndexController@scraper');

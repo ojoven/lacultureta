@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scraper;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -21,6 +22,14 @@ class IndexController extends Controller {
 
         return view('playground');
 
+    }
+
+    public function scraper() {
+
+        $scraperModel = new Scraper();
+        $scraperModel->extractDataEvents();
+
+        return view('playground');
     }
 
 }

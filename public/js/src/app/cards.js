@@ -36,7 +36,6 @@ function generateCards() {
 	[].forEach.call(document.querySelectorAll('.cards li'), function (targetElement) {
 		var card = stack.createCard(targetElement);
 		cards.push(card);
-		console.log(card);
 
 		targetElement.classList.add('in-deck');
 
@@ -46,8 +45,8 @@ function generateCards() {
 
 function cardsLikeManagement() {
 
-	$("#viewport").on('out', function (e) {
-		console.log(e.target);
+	$("#viewport").on('out', function (e, params) {
+		console.log(e, params);
 		$(e.target).removeClass('in-deck');
 	});
 

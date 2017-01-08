@@ -1904,7 +1904,7 @@
 						} else if (where === Card.THROW_OUT) {
 							springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
 
-							console.log(stack, targetElement, lastThrow.direction);
+							//console.log(stack, targetElement, lastThrow.direction);
 
 							eventEmitter.trigger('throwout', {
 								target: targetElement,
@@ -1913,6 +1913,7 @@
 
 							var event = new CustomEvent('out', {
 								target: targetElement,
+								customTarget: targetElement,
 								throwDirection: lastThrow.direction
 							});
 							var elem = document.getElementById('viewport');

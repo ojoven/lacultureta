@@ -71,6 +71,9 @@
         <a href="#" id="to-dislike">Dislike</a>
         <a href="#" id="to-like">Like</a>
 
+        <br><br>
+        <a href="/scraper">Test Scraper</a>
+
         <script type="text/javascript" src="/js/app.min.js"></script>
     </body>
 
