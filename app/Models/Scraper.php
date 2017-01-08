@@ -66,6 +66,14 @@ class Scraper extends Model {
 
     private function _parseEventDonostiaEUS($event) {
 
+        // We clean hour, price, etc.
+        $event['price'] = trim(str_replace('Precio:', '', str_replace('€', '', str_replace(',00', '', str_replace('&#8364;', '', $event['price'])))));
+        if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0';
+
+        $event['place'] = trim(str_replace('Lugar:', '', $event['place'])); // TODO: This won't work for basque version
+
+        $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
+
         // We extract the parameters from the URL
         $kwid = $kwca = '';
         parse_str(str_replace('contenido?ReadForm&', '', str_replace('&amp;', '&', $event['url'])));
