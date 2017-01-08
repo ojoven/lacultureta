@@ -189,6 +189,18 @@ class Functions {
 
 	}
 
+	/** PRICE **/
+	public static function parsePriceForRender($price) {
+
+		if ($price == '0 €') {
+			return _('gratis');
+		} else {
+			return $price;
+		}
+
+	}
+
+	/** ARRAYS **/
 	public static function getArrayWithIndexValues($array, $index) {
 
 		$arrayIndexes = array();

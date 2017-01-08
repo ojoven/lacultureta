@@ -34,8 +34,9 @@
                         <div class="date">
                             <span class="day"><?php echo $event['date_render']; ?></span>
                             <span class="hour"><?php echo $event['hour_render']; ?></span>
-                            <a href="<?php echo $event['url']; ?>" target="_blank">LINK</a>
+                            <!--<a href="<?php echo $event['url']; ?>" target="_blank">LINK</a>-->
                         </div>
+                        <div class="price"><?php echo $event['price_render']; ?></div>
                     </li>
 
                 <?php } ?>

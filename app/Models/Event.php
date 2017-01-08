@@ -21,6 +21,7 @@ class Event extends Model {
 
 			$event['date_render'] = Functions::parseDateForRender($event['date_start'], $event['date_end']);
 			$event['hour_render'] = Functions::parseHourForRender($event['hour']);
+			$event['price_render'] = Functions::parsePriceForRender($event['price']);
 
 		}
 
