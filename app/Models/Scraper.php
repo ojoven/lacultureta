@@ -42,6 +42,10 @@ class Scraper extends Model {
                 // Event place
                 $event['place'] = $eventDom->find('.media-body', 0)->find('span', 0)->plaintext;
 
+                // Event date
+                $event['date']['begin'] = $eventDom->find('.fechas', 0)->find('p', 0)->plaintext;
+                $event['date']['end'] = ($eventDom->find('.fechas', 0)->find('p', 1)) ? $eventDom->find('.fechas', 0)->find('p', 1)->plaintext : false;
+
                 // Event hour
                 $event['hour'] = $eventDom->find('.media-body', 0)->find('span', 1)->plaintext;
 
@@ -66,22 +70,27 @@ class Scraper extends Model {
 
     private function _parseEventDonostiaEUS($event) {
 
-        // We clean hour, price, etc.
+        // PRICE
         $event['price'] = trim(str_replace('Precio:', '', str_replace('€', '', str_replace(',00', '', str_replace('&#8364;', '', $event['price'])))));
         if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0';
 
+        // PLACE
         $event['place'] = trim(str_replace('Lugar:', '', $event['place'])); // TODO: This won't work for basque version
 
+        // HOUR
         $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
+
+        // DATE
+
 
         // We extract the parameters from the URL
         $kwid = $kwca = '';
         parse_str(str_replace('contenido?ReadForm&', '', str_replace('&amp;', '&', $event['url'])));
 
-        // We need to add the event external ID
+        // EXTERNAL ID
         $event['external_id'] = $kwid;
 
-        // And add the categories
+        // CATEGORIES
         if (strpos($kwca, 'Teatro')!==false) $event['categories'][] = 'Teatro y Danza';
         if (strpos($kwca, 'Cine')!==false) $event['categories'][] = 'Cine';
         if (strpos($kwca, 'Conciertos')!==false) $event['categories'][] = 'Música';
