@@ -13,6 +13,8 @@
 
 Route::get('/', 'IndexController@index');
 
+Route::get('/api/getcards', 'ApiController@getcards');
+
 // TMP routes
 Route::get('/playground', 'IndexController@playground');
 Route::get('/scraper', 'IndexController@scraper');

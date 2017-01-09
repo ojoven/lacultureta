@@ -13,11 +13,7 @@ class IndexController extends Controller {
 
     public function index() {
 
-        $eventModel = new Event();
-        $events = $eventModel->getInitialEvents();
-
-        $data['events'] = $events;
-        return view('index', $data);
+        return view('index');
     }
 
     public function playground() {

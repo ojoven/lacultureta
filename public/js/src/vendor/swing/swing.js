@@ -1709,7 +1709,8 @@
 						}]]
 					});
 
-					Card.appendToParent(targetElement);
+					//Card.appendToParent(targetElement);
+					Card.insertBelow(targetElement);
 
 					eventEmitter.on('panstart', function () {
 						Card.appendToParent(targetElement);
@@ -1911,13 +1912,7 @@
 								throwDirection: lastThrow.direction
 							});
 
-							var event = new CustomEvent('out', {
-								target: targetElement,
-								customTarget: targetElement,
-								throwDirection: lastThrow.direction
-							});
-							var elem = document.getElementById('viewport');
-							elem.dispatchEvent(event);
+							$("#viewport").trigger( "out", [ targetElement, lastThrow.direction ] );
 
 							if (lastThrow.direction === Card.DIRECTION_LEFT) {
 								eventEmitter.trigger('throwoutleft', {
@@ -2055,6 +2050,7 @@
 				parent.removeChild(element);
 				parent.insertBefore(element,parent.firstChild);
 			};
+
 
 			/**
 			 * Returns a value between 0 and 1 indicating the completeness of the throw out condition.

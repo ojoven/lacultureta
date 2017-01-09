@@ -5,14 +5,44 @@
 var stack,
 	cards = [],
 	tresholdThrowCard = 140,
-	currentCard = 0;
+	category = 'Todos',
+	page = 1,
+	allEvents = false;
 
 // LOGIC
 $(document).ready(function() {
 
 	generateCards();
 	cardsLikeManagement();
+	loadInitialCards();
 });
+
+function loadInitialCards() {
+
+	loadCards(category, page);
+}
+
+function loadCards(category, page) {
+
+	var url = '/api/getcards';
+	var data = {};
+
+	data.category = category;
+	data.page = page;
+	$.get(url, data, function(response) {
+
+		if (response == '') {
+			allEvents = true;
+		}
+
+		$(".cards").append(response);
+		$(".cards li:not('in-stack')").each(function() {
+			$(this).addClass('in-stack').addClass('in-deck');
+			stack.createCard($(this).get(0))
+		});
+
+	});
+}
 
 
 // Functions
@@ -37,7 +67,7 @@ function generateCards() {
 		var card = stack.createCard(targetElement);
 		cards.push(card);
 
-		targetElement.classList.add('in-deck');
+		$(targetElement).addClass('in-stack').addClass('in-deck');
 
 	});
 
@@ -45,13 +75,18 @@ function generateCards() {
 
 function cardsLikeManagement() {
 
-	$("#viewport").on('out', function (e, params) {
-		console.log(e, params);
-		$(e.target).removeClass('in-deck');
-	});
+	// Card thrown out
+	$("#viewport").off().on('out', function (e, target, direction) {
+		$(target).removeClass('in-deck');
 
-	$("#to-dislike").on('click', function() {
-		cards[3].throwOut(-200, 0);
+		// If number of in-deck < numEventsPage, we load new page
+		var numCardsInDeck = $('.cards li.in-deck').length;
+
+		// We load new page
+		if (numCardsInDeck < 4 && !allEvents) {
+			page++;
+			loadCards(category, page);
+		}
 	});
 
 }

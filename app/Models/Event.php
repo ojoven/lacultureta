@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model {
 
-	public function getInitialEvents() {
+	protected $numEventsPage = 10;
 
-		$events = self::get()->toArray();
+	public function getEvents($params) {
+
+		$page = $params['page'];
+		$offset = ($page - 1) * $this->numEventsPage;
+
+		$today = date('Y-m-d');
+		$events = self::whereDate('date_start', '>', $today)->orWhereDate('date_end', '>', $today)->skip($offset)->take($this->numEventsPage)->get()->toArray();
 		$events = $this->parseEventsForRender($events);
-		$events = array_slice($events, 0, 2);
 		return $events;
 
 	}
