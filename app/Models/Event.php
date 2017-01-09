@@ -10,7 +10,7 @@ class Event extends Model {
 
 		$events = self::get()->toArray();
 		$events = $this->parseEventsForRender($events);
-		$events = array_slice($events, 0, 20);
+		$events = array_slice($events, 0, 2);
 		return $events;
 
 	}

@@ -11,9 +11,9 @@ h2, h3, h4 { font-weight: normal; }
 
 .regular, body, h4, p, #subheader h2 { font-family: 'Raleway', sans-serif; font-weight: 400; }
 
-.bold, #logo-text, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour { font-family: 'Raleway', sans-serif; font-weight: bold; }
+.bold, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
-.special, h1, h2, h3, #viewport:after { font-family: 'Raleway', cursive; font-weight: normal; }
+.special, h1, h2, h3, #viewport:after { font-family: 'Neucha', cursive; font-weight: bold; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -109,7 +109,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 @media (max-width: 767px) { .btn.btn-main { font-size: 90%; }
   .btn.btn-main:after { background: none; display: none; } }
 #viewport { width: 400px; max-width: 85%; margin: 90px auto 0; height: 410px; position: relative; }
-#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; background: #e6e6e6; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
+#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; text-transform: uppercase; background: #095460; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
 
 .cards li { width: 400px; max-width: 100%; height: 400px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; line-height: 300px; text-align: center; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; padding: 0 10px; }
 .cards li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }

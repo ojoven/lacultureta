@@ -14,7 +14,8 @@
 	&:after {
 		content: 'Hoy (ya) no \A hay nada (más)';
 		@extend .special;
-		background: $mediumGrey;
+		text-transform: uppercase;
+		background: darken($blueBg, 10%);
 		color: $white;
 		position: absolute;
 		left: 50%;
