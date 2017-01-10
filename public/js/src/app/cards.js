@@ -36,7 +36,6 @@ function loadCards(category, page) {
 		}
 
 		$(".cards").append(response);
-		console.log('length',$(".cards li").not('.in-stack').length);
 		$(".cards li").not('.in-stack').each(function() {
 			$(this).addClass('in-stack').addClass('in-deck');
 			stack.createCard($(this).get(0))
@@ -76,14 +75,16 @@ function generateCards() {
 
 function cardsLikeManagement() {
 
+	var $viewport = $("#viewport");
+
 	// Card thrown out
-	$("#viewport").off().on('out', function (e, target, direction) {
+	$viewport.on('out', function (e, target, direction) {
 		$(target).removeClass('in-deck');
+
+		$('.like, .dislike').hide();
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
-
-		console.log(numCardsInDeck, allEvents);
 
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {
@@ -92,4 +93,18 @@ function cardsLikeManagement() {
 		}
 	});
 
+	// Card move
+	$viewport.on('panmove', function (e, params) {
+
+		console.log(params.deltaX);
+		var opacity = Math.abs(params.deltaX) / 200;
+
+		if (params.deltaX > 0) {
+			var selector = $(".like");
+		} else {
+			var selector = $(".dislike");
+		}
+
+		selector.show().css('opacity', opacity);
+	});
 }

@@ -25,6 +25,8 @@
 
         <!-- VIEWPORT -->
         <div id="viewport">
+
+            <!-- CARDS -->
             <ul class="cards">
 
                 <li class="welcome">
@@ -46,6 +48,10 @@
                 </li>
 
             </ul>
+
+            <!-- LIKE / DISLIKE -->
+            <div class="dislike"></div>
+            <div class="like"></div>
         </div>
 
         <script type="text/javascript" src="/js/app.min.js"></script>

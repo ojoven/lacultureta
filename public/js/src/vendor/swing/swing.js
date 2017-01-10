@@ -1792,6 +1792,7 @@
 
 					mc.on('panmove', function (e) {
 						eventEmitter.trigger('panmove', e);
+						$("#viewport" ).trigger('panmove', [e])
 					});
 
 					mc.on('panend', function (e) {

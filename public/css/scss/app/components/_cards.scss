@@ -32,6 +32,28 @@
 	}
 }
 
+// LIKE/DISLIKE
+#viewport {
+
+	.dislike, .like {
+		display: none;
+		background: url(../img/green_check.png) 0 0 no-repeat #fff;
+		width: 256px;
+		height: 256px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include X-Y-50();
+		pointer-events: none;
+		opacity: 0;
+		border-radius: 100%;
+	}
+
+	.dislike {
+		background-image: url(../img/red_cross.png);
+	}
+}
+
 // CARDS
 // Cards container
 .cards li {
