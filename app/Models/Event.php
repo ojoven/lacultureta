@@ -29,7 +29,6 @@ class Event extends Model {
 
 		foreach ($events as $event) {
 
-			// TODO: Add some of the ranged events in between the unique ones
 			if (!$event['date_end']) {
 				array_push($eventsUnique, $event);
 			} else {
