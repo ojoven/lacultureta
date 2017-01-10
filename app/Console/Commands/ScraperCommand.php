@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Scraper;
 use Log;
 use App\Builder\Builder;
 use Illuminate\Console\Command;
@@ -29,8 +30,9 @@ class ScraperCommand extends Command
      */
     public function handle()
     {
-        echo "HEY!" . PHP_EOL;
-        //$builder = new Builder();
-        //$builder->build($this->argument('task'), $this->argument('lang'), $this->argument('additional'));
+        echo "Start scraping..." . PHP_EOL;
+        $scraper = new Scraper();
+        $scraper->extractDataEvents();
+        echo "Finished scraping" . PHP_EOL;
     }
 }
