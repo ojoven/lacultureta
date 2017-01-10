@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Scraper;
 use Log;
-use App\Builder\Builder;
 use Illuminate\Console\Command;
 
 class ScraperCommand extends Command

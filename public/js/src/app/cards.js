@@ -36,7 +36,8 @@ function loadCards(category, page) {
 		}
 
 		$(".cards").append(response);
-		$(".cards li:not('in-stack')").each(function() {
+		console.log('length',$(".cards li").not('.in-stack').length);
+		$(".cards li").not('.in-stack').each(function() {
 			$(this).addClass('in-stack').addClass('in-deck');
 			stack.createCard($(this).get(0))
 		});
@@ -81,6 +82,8 @@ function cardsLikeManagement() {
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
+
+		console.log(numCardsInDeck, allEvents);
 
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {

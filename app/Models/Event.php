@@ -14,10 +14,9 @@ class Event extends Model {
 		$offset = ($page - 1) * $this->numEventsPage;
 
 		$today = date('Y-m-d');
-		$events = self::whereDate('date_start', '>=', $today)->skip($offset)->take($this->numEventsPage)->orderBy('date_start', 'asc')->get()->toArray();
-		//$events = self::whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today)->orderBy('date_start', 'asc')->get()->toArray();
-		//$events = $this->sortEvents($events);
-		//$events = array_slice($events, $offset, $this->numEventsPage);
+		$events = self::whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today)->orderBy('date_start', 'asc')->get()->toArray();
+		$events = $this->sortEvents($events);
+		$events = array_slice($events, $offset, $this->numEventsPage);
 		$events = $this->parseEventsForRender($events);
 		return $events;
 
@@ -25,15 +24,32 @@ class Event extends Model {
 
 	public function sortEvents($events) {
 
-		$sortedEvents = array();
+		$eventsUnique = array();
+		$eventsRange = array();
+
 		foreach ($events as $event) {
 
+			// TODO: Add some of the ranged events in between the unique ones
 			if (!$event['date_end']) {
-				array_unshift($sortedEvents, $event);
+				array_push($eventsUnique, $event);
 			} else {
-				array_push($sortedEvents, $event);
+
+				$dateStartObj = new \DateTime($event['date_start']);
+				$dateEndObj = new \DateTime($event['date_end']);
+				$diff = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
+
+				// The events that have a range of less than 10 days are considered as unique too
+				if ($diff < 10) {
+					array_push($eventsUnique, $event);
+				} else {
+					array_push($eventsRange, $event);
+				}
+
 			}
 		}
+
+		// Now we merge, first unique
+		$sortedEvents = array_merge($eventsUnique, $eventsRange);
 
 		return $sortedEvents;
 
