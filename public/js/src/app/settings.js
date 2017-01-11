@@ -30,7 +30,7 @@ function showSettings() {
 		$popup.removeClass('active');
 		setTimeout(function() {
 			$popup.css('visibility', 'hidden');
-		}, 200);
+		}, 300);
 		return false;
 	});
 }

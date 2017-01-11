@@ -16,10 +16,10 @@
 	z-index: 10;
 	border: 3px solid $lineColor;
 	box-sizing: border-box;
-	-webkit-transition: all 0.2s ease;
+	-webkit-transition: all 0.3s ease;
 
 	&.active {
-		-webkit-transition: all 0.2s ease;
+		-webkit-transition: all 0.3s ease;
 		opacity: 1;
 		width: 100% !important;
 		height: 100% !important;
