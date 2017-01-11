@@ -47,6 +47,8 @@
 		pointer-events: none;
 		opacity: 0;
 		border-radius: 100%;
+		transform-origin: center center;
+		-webkit-transform-origin: center center;
 	}
 
 	.dislike {

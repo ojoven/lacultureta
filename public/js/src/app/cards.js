@@ -96,8 +96,7 @@ function cardsLikeManagement() {
 	// Card move
 	$viewport.on('panmove', function (e, params) {
 
-		console.log(params.deltaX);
-		var opacity = Math.abs(params.deltaX) / 200;
+		var progress = Math.abs(params.deltaX) / 200;
 
 		if (params.deltaX > 0) {
 			var selector = $(".like");
@@ -105,6 +104,10 @@ function cardsLikeManagement() {
 			var selector = $(".dislike");
 		}
 
-		selector.show().css('opacity', opacity);
+		selector.show().css('opacity', progress).css('transform', 'translate(-50%, -50%) scale(' + progress + ')');
+	});
+
+	$viewport.on('panend', function (e, params) {
+		$('.like, .dislike').hide();
 	});
 }

@@ -1797,6 +1797,7 @@
 
 					mc.on('panend', function (e) {
 						eventEmitter.trigger('panend', e);
+						$("#viewport" ).trigger('panend', [e])
 					});
 
 					springThrowIn.addListener({
@@ -1905,8 +1906,6 @@
 							});
 						} else if (where === Card.THROW_OUT) {
 							springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
-
-							//console.log(stack, targetElement, lastThrow.direction);
 
 							eventEmitter.trigger('throwout', {
 								target: targetElement,
