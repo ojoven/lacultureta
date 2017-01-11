@@ -14,11 +14,25 @@
 #logo-text {
 	font-size: 22px;
 	text-align: center;
-	padding: 20px 0 0;
+	padding: 25px 0 0;
 	font-family: 'Neucha', cursive;
 	text-transform: uppercase;
 	color: #fff;
+}
 
+// Menu right
+.menu-right {
+	position: absolute;
+	right: 15px;
+	top: 20px;
+
+	.icon-settings {
+		display: inline-block;
+		background: url(../img/settings.png) no-repeat 0 0;
+		background-size: cover;
+		width: 24px;
+		height: 24px;
+	}
 }
 
 // SUBHEADER

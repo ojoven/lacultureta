@@ -1,5 +1,5 @@
 <?php foreach ($events as $event) {
-$classTitle = (strlen($event['title']) > 60) ? ' little' : '';
+$classTitle = (strlen($event['title']) > 50) ? ' little' : '';
 $classDay = (strlen($event['date_render']) > 30) ? ' little' : '';
 $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
 ?>

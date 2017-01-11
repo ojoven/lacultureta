@@ -99,19 +99,7 @@ class Scraper extends Model {
         $event['external_id'] = $kwid;
 
         // CATEGORIES
-        if (strpos($kwca, 'Teatro')!==false || strpos(strtolower($event['title']),'exposición')!==false) $event['categories'][] = 'Teatro y Danza';
-        if (strpos($kwca, 'Cine')!==false || strpos(strtolower($event['title']),'cine')!==false) $event['categories'][] = 'Cine';
-        if (strpos($kwca, 'Conciertos')!==false || strpos(strtolower($event['title']),'concierto')!==false) $event['categories'][] = 'Música';
-        if (strpos($kwca, 'eport')!==false || strpos(strtolower($event['title']),'carrera')!==false) $event['categories'][] = 'Deportes';
-        if (strpos($kwca, 'Exposiciones')!==false || strpos(strtolower($event['title']),'exposición')!==false) $event['categories'][] = 'Exposiciones';
-        if (strpos($kwca, 'Fiestas')!==false || strpos(strtolower($event['title']),'feria')!==false) $event['categories'][] = 'Fiestas y Ferias';
-        if (strpos($kwca, 'Gastronom')!==false || strpos(strtolower($event['title']),'gastronom')!==false) $event['categories'][] = 'Gastronomía';
-        if (strpos($kwca, 'Infantil')!==false || strpos(strtolower($event['title']),'infantil')!==false) $event['categories'][] = 'Actividades Infantiles';
-        if (strpos($kwca, 'Museos')!==false || strpos(strtolower($event['title']),'museo')!==false) $event['categories'][] = 'Museos';
-
-        if (strpos(strtolower($event['title']),'conferencia')!==false) $event['categories'][] = 'Conferencias';
-        if (strpos(strtolower($event['title']),'liter')!==false) $event['categories'][] = 'Literatura';
-
+        $event['categories'] = $this->_addCategoriesFromUrlAndTitle($kwca, $event['title']);
         if (empty($event['categories'])) {
             $event['categories'][] = 'Otros';
         }
@@ -131,8 +119,40 @@ class Scraper extends Model {
 
     }
 
-    private function _setCategory() {
+    private function _addCategoriesFromUrlAndTitle($urlCat, $title) {
 
+        $categories = array();
+        $title = strtolower($title);
+
+        if (strpos($urlCat, 'Teatro')!==false
+            || strpos($title, 'teatro')!==false
+            || strpos($title, 'danza')!==false
+            || strpos($title, 'ballet')!==false) $categories[] = 'Teatro y Danza';
+        if (strpos($urlCat, 'Cine')!==false
+            || strpos($title, 'cine')!==false
+            || strpos($title, 'película')!==false) $categories[] = 'Cine';
+        if (strpos($urlCat, 'Conciertos')!==false
+            || strpos($title, 'concierto')!==false
+            || strpos($title, 'música')!==false) $categories[] = 'Música';
+        if (strpos($urlCat, 'eport')!==false
+            || strpos($title, 'carrera')!==false
+            || strpos($title, 'deporte')!==false) $categories[] = 'Deportes';
+        if (strpos($urlCat, 'Exposiciones')!==false
+            || strpos($title, 'exposición')!==false) $categories[] = 'Exposiciones';
+        if (strpos($urlCat, 'Fiestas')!==false
+            || strpos($title, 'feria')!==false
+            || strpos($title, 'feria')!==false) $categories[] = 'Fiestas y Ferias';
+        if (strpos($urlCat, 'Gastronom')!==false
+            || strpos($title, 'gastro')!==false) $categories[] = 'Gastronomía';
+        if (strpos($urlCat, 'Infantil')!==false
+            || strpos($title, 'infantil')!==false) $categories[] = 'Actividades Infantiles';
+        if (strpos($urlCat, 'Museos')!==false
+            || strpos($title, 'museo')!==false) $categories[] = 'Museos';
+
+        if (strpos($title, 'conferencia')!==false) $categories[] = 'Conferencias';
+        if (strpos($title, 'liter')!==false) $categories[] = 'Literatura';
+
+        return $categories;
     }
 
     public function filterNotAddedEvents($events) {

@@ -11,12 +11,16 @@
         <link href="/css/style.css" rel="stylesheet">
 
     </head>
-    <body>
+    <body draggable="false">
 
         <!-- HEADER -->
         <header id="main-header">
             <!--<div id="logo"></div>-->
             <div id="logo-text">hoy no hay nada</div>
+
+            <nav class="menu-right">
+                <a href="#" class="icon-header icon-settings to-settings"></a>
+            </nav>
         </header>
 
         <div id="subheader">
@@ -52,6 +56,11 @@
             <!-- LIKE / DISLIKE -->
             <div class="dislike"></div>
             <div class="like"></div>
+
+            <div class="popup">
+                <h2 style="margin: 30px auto; text-align: center;text-transform: uppercase; font-weight: normal;">Podrás añadir filtros aquí</h2>
+                <p style="text-align: center; display: block; width: 100%; margin: 10px auto;">Toca en cualquier lugar<br>para cerrar el popup</p>
+            </div>
         </div>
 
         <script type="text/javascript" src="/js/app.min.js"></script>

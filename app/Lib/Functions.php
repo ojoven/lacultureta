@@ -56,19 +56,19 @@ class Functions {
 
 				// HASTA HOY / MAÑANA
 				if ($diffBetweenEndAndToday == 0) {
-					return sprintf(_('del %s de %s hasta hoy'), $dayStart, $monthStart);
+					return sprintf(_('desde el %s de %s hasta hoy'), $dayStart, $monthStart);
 				}
 
 				if ($diffBetweenEndAndToday == 1) {
-					return sprintf(_('del %s de %s hasta mañana'), $dayStart, $monthStart);
+					return sprintf(_('desde el %s de %s hasta mañana'), $dayStart, $monthStart);
 				}
 
 				if ($monthStart != $monthEnd) {
 					// El 31 de Marzo y el 1 de Abril
-					return sprintf(_('del %s de %s hasta el %s de %s'), $dayStart, $monthStart, $dayEnd, $monthEnd);
+					return sprintf(_('desde el %s de %s hasta el %s de %s'), $dayStart, $monthStart, $dayEnd, $monthEnd);
 				} else {
 					// El 15 y el 16 de Mayo
-					return sprintf(_('del %s hasta el %s de %s'), $dayStart, $dayEnd, $monthStart);
+					return sprintf(_('desde el %s hasta el %s de %s'), $dayStart, $dayEnd, $monthStart);
 				}
 
 
