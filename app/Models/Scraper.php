@@ -11,6 +11,7 @@ class Scraper extends Model {
 
         $events = $this->extractDataEventsDonostiaEUS();
         $events = $this->filterNotAddedEvents($events);
+        $events = $this->addSinglePageInformation($events);
         $this->storeEvents($events);
 
     }
@@ -64,7 +65,6 @@ class Scraper extends Model {
             $page++;
 
             // If no more pages
-
             $nextPage = $html->find('.pagination', 0)->find('li', -1);
             if (isset($nextPage->class) && $nextPage->class = "disabled") {
                 break;
@@ -110,7 +110,7 @@ class Scraper extends Model {
         $event['source'] = 'Donostia.eus';
 
         // URL
-        $event['url'] = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/' . str_replace('&amp;', '&', $event['url']);
+        $event['url'] = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/' . str_replace(' ', '%20', str_replace('&amp;', '&', $event['url']));
 
         // CREATED / UPDATED DATES
         $event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
@@ -173,6 +173,32 @@ class Scraper extends Model {
         }
 
         return $notDuplicatedEvents;
+
+    }
+
+    // RETRIEVE INFO FROM SINGLE PAGE
+    public function addSinglePageInformation($events) {
+
+        foreach ($events as &$event) {
+
+            $htmlContent = file_get_contents($event['url']);
+            $html = SimpleHtmlDom::str_get_html($htmlContent);
+            if (!$html) continue;
+
+            // DESCRIPTION
+            $event['description'] = $html->find('.cabecera-ficha', 0)->find('p', 0)->plaintext;
+
+            // ADDITIONAL INFO
+            $event['info'] = '';
+            foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->find('p') as $paragraph) {
+                $event['info'] .= $paragraph->outertext;
+            }
+
+            $event['info'] = preg_replace('/\s+/', ' ', $event['info']); // Remove extra spaces
+
+        }
+
+        return $events;
 
     }
 

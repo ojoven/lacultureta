@@ -31,14 +31,21 @@ function loadCards(category, page) {
 	data.page = page;
 	$.get(url, data, function(response) {
 
+		// If all events have been loaded, we won't load more
 		if (response == '') {
 			allEvents = true;
 		}
 
+		// Append the cards to the HTML
 		$(".cards").append(response);
 		$(".cards li").not('.in-stack').each(function() {
 			$(this).addClass('in-stack').addClass('in-deck');
 			stack.createCard($(this).get(0))
+
+			// Bind event
+			$(this ).on('click', function() {
+				console.log('lol');
+			});
 		});
 
 	});
@@ -81,8 +88,6 @@ function cardsLikeManagement() {
 	$viewport.on('out', function (e, target, direction) {
 		$(target).removeClass('in-deck');
 
-		$('.like, .dislike').hide();
-
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
 
@@ -93,21 +98,4 @@ function cardsLikeManagement() {
 		}
 	});
 
-	// Card move
-	$viewport.on('panmove', function (e, params) {
-
-		var progress = Math.abs(params.deltaX) / 200;
-
-		if (params.deltaX > 0) {
-			var selector = $(".like");
-		} else {
-			var selector = $(".dislike");
-		}
-
-		selector.show().css('opacity', progress).css('transform', 'translate(-50%, -50%) scale(' + progress + ')');
-	});
-
-	$viewport.on('panend', function (e, params) {
-		$('.like, .dislike').hide();
-	});
 }

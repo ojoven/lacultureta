@@ -35,3 +35,8 @@ class ScraperCommand extends Command
         echo "Finished scraping" . PHP_EOL;
     }
 }
+
+// Playground
+//$events[0]['url'] = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/contenido?ReadForm&kwid=128315&kwca=Eventos%20/%20Gratuitas&idioma=cas';
+//$events = $scraper->addSinglePageInformation($events);
+//print_r($events);

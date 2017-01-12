@@ -2,12 +2,12 @@ TODO
 ====================
 
 v0.9 (First Minimum Lovable Version)
-* Add animation Like / Dislike
-* Add buttons (not just swipe) Like / Dislike
 * Add new state: popup with additional info from event
-* Scrape event single information from Donostia.eus
+* Add buttons (not just swipe) Like / Dislike
 * Create configuration options panel
 * Add login with Facebook
+* ~~Add animation Like / Dislike~~
+* ~~Scrape event single information from Donostia.eus~~
 * ~~Implement Tinder Like plugin~~
 * ~~Refactor front end (typography / colors / header / footer)~~
 * ~~Scrape events base from Donostia.eus~~

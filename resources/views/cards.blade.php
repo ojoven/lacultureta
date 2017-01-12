@@ -24,6 +24,8 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
         </div>
         <?php } ?>
     </div>
+    <div class="description hidden"><?php echo $event['description']; ?></div>
+    <div class="info hidden"><?php echo $event['info']; ?></div>
 </li>
 
 <?php } ?>
