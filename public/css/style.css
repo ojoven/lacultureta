@@ -84,6 +84,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 .popup { visibility: hidden; opacity: 0; width: 400px; max-width: 100%; height: 400px; background: #fff; border-radius: 5px; position: fixed; top: 0; left: 0; z-index: 10; border: 3px solid #e6e6e6; box-sizing: border-box; -webkit-transition: all 0.3s ease; }
 .popup.active { -webkit-transition: all 0.3s ease; opacity: 1; width: 100% !important; height: 100% !important; top: 0 !important; left: 0 !important; }
+.popup .popup-close { display: block; position: absolute; bottom: 25px; left: 50%; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); width: 50px; height: 50px; background: url(../img/close.png) no-repeat 0 0; background-size: cover; }
 
 /** HELPERS **/
 .srt { clip: rect(1px, 1px, 1px, 1px); position: absolute; margin: 0; padding: 0; }

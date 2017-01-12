@@ -40,15 +40,20 @@ function loadCards(category, page) {
 		$(".cards").append(response);
 		$(".cards li").not('.in-stack').each(function() {
 			$(this).addClass('in-stack').addClass('in-deck');
-			stack.createCard($(this).get(0))
+			stack.createCard($(this).get(0));
 
 			// Bind event
-			$(this ).on('click', function() {
+			$(".cards li").off('click').on('click', function() {
 				console.log('lol');
+				showPopup();
 			});
 		});
 
 	});
+}
+
+function prepareSingleEventPopup() {
+
 }
 
 

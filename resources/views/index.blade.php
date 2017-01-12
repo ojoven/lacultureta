@@ -58,8 +58,8 @@
             <div class="like"></div>
 
             <div class="popup">
-                <h2 style="margin: 30px auto; text-align: center;text-transform: uppercase; font-weight: normal;">Podrás añadir filtros aquí</h2>
-                <p style="text-align: center; display: block; width: 100%; margin: 10px auto;">Toca en cualquier lugar<br>para cerrar el popup</p>
+                <div class="popup-container"></div>
+                <a href="#" class="popup-close"></a>
             </div>
         </div>
 
