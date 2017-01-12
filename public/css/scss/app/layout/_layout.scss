@@ -12,7 +12,8 @@
 }
 
 #logo-text {
-	font-size: 22px;
+	font-size: 35px;
+	letter-spacing: -1px;
 	text-align: center;
 	padding: 25px 0 0;
 	font-family: 'Neucha', cursive;
@@ -24,14 +25,14 @@
 .menu-right {
 	position: absolute;
 	right: 15px;
-	top: 20px;
+	top: 24px;
 
 	.icon-settings {
 		display: inline-block;
 		background: url(../img/settings.png) no-repeat 0 0;
 		background-size: cover;
-		width: 24px;
-		height: 24px;
+		width: 30px;
+		height: 30px;
 	}
 }
 
@@ -49,6 +50,7 @@
 		text-align: center;
 		font-size: 14px;
 		color: #fff;
+		margin: 10px 0;
 	}
 
 }

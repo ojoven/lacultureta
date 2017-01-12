@@ -74,13 +74,13 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 /** LAYOUT **/
 #main-header { position: absolute; top: 0; height: 40px; width: 100%; }
 
-#logo-text { font-size: 22px; text-align: center; padding: 25px 0 0; font-family: 'Neucha', cursive; text-transform: uppercase; color: #fff; }
+#logo-text { font-size: 35px; letter-spacing: -1px; text-align: center; padding: 25px 0 0; font-family: 'Neucha', cursive; text-transform: uppercase; color: #fff; }
 
-.menu-right { position: absolute; right: 15px; top: 20px; }
-.menu-right .icon-settings { display: inline-block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
+.menu-right { position: absolute; right: 15px; top: 24px; }
+.menu-right .icon-settings { display: inline-block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 30px; height: 30px; }
 
 #subheader { position: absolute; top: 55px; width: 100%; }
-#subheader h2 { width: 100%; text-align: center; font-size: 14px; color: #fff; }
+#subheader h2 { width: 100%; text-align: center; font-size: 14px; color: #fff; margin: 10px 0; }
 
 .popup { visibility: hidden; opacity: 0; width: 400px; max-width: 100%; height: 400px; background: #fff; border-radius: 5px; position: fixed; top: 0; left: 0; z-index: 10; border: 3px solid #e6e6e6; box-sizing: border-box; -webkit-transition: all 0.3s ease; }
 .popup.active { -webkit-transition: all 0.3s ease; opacity: 1; width: 100% !important; height: 100% !important; top: 0 !important; left: 0 !important; }
