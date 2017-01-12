@@ -15,9 +15,6 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
     </div>
     <div class="price"><?php echo $event['price_render']; ?></div>
     <div class="place"><?php echo $event['place']; ?></div>
-    <div class="to-see-more">
-        <a href="<?php echo $event['url']; ?>" target="_blank"><?php echo _('ver más'); ?></a>
-    </div>
     <div class="categories">
         <?php foreach ($event['categories_render'] as $category) { ?>
         <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $category); ?>.png);">

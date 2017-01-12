@@ -15,7 +15,7 @@
 
 	.swipe {
 		float: left;
-		width: 50%;
+		width: 33%;
 		margin: 10px 0 35px;
 		padding: 0 10px;
 		box-sizing: border-box;
@@ -23,7 +23,7 @@
 		.icon-swipe {
 			width: 70px;
 			height: 70px;
-			background: url(../img/flick_left.png) center center no-repeat;
+			background: url(../img/flick_left_v2.png) center center no-repeat;
 			background-size: contain;
 			margin: 0 auto 10px;
 		}
@@ -33,12 +33,15 @@
 		}
 
 		&.swipe-right {
-			padding-right: 40px;
-			.icon-swipe { background-image: url(../img/flick_right.png); }
+			.icon-swipe { background-image: url(../img/flick_right_v2.png); }
+		}
+
+		&.swipe-center {
+			.icon-swipe { background-image: url(../img/flick_center.png); }
 		}
 
 		&.swipe-left {
-			padding-left: 40px;
+
 		}
 
 	}

@@ -136,12 +136,11 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 .welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }
 .welcome p { margin: 10px 0; }
-.welcome .swipe { float: left; width: 50%; margin: 10px 0 35px; padding: 0 10px; box-sizing: border-box; }
-.welcome .swipe .icon-swipe { width: 70px; height: 70px; background: url(../img/flick_left.png) center center no-repeat; background-size: contain; margin: 0 auto 10px; }
+.welcome .swipe { float: left; width: 33%; margin: 10px 0 35px; padding: 0 10px; box-sizing: border-box; }
+.welcome .swipe .icon-swipe { width: 70px; height: 70px; background: url(../img/flick_left_v2.png) center center no-repeat; background-size: contain; margin: 0 auto 10px; }
 .welcome .swipe .swipe-message { font-size: 14px; }
-.welcome .swipe.swipe-right { padding-right: 40px; }
-.welcome .swipe.swipe-right .icon-swipe { background-image: url(../img/flick_right.png); }
-.welcome .swipe.swipe-left { padding-left: 40px; }
+.welcome .swipe.swipe-right .icon-swipe { background-image: url(../img/flick_right_v2.png); }
+.welcome .swipe.swipe-center .icon-swipe { background-image: url(../img/flick_center.png); }
 .welcome .warning-tmp { font-size: 12px; color: #666; }
 
 /** PRINT **/
