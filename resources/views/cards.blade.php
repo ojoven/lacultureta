@@ -8,7 +8,7 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
     <div class="title<?php echo $classTitle; ?>">
         <?php echo $event['title']; ?>
     </div>
-    <div class="image" style="background-image: url(<?php echo $event['image']; ?>);"></div>
+    <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
     <div class="date">
         <span class="day<?php echo $classDay; ?>"><?php echo $event['date_render']; ?></span>
         <span class="hour<?php echo $classHour; ?>"><?php echo $event['hour_render']; ?></span>

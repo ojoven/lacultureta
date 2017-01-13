@@ -134,9 +134,17 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li .to-see-more { margin: 10px 0; text-align: center; }
 .cards li .to-see-more a { color: #212021; text-decoration: underline; }
 
+.popup .popup-container { height: 89%; overflow-y: scroll; }
+
+.popup .single-event .image { width: 100%; height: 200px; background-repeat: no-repeat; background-position: center center; background-size: cover; margin-bottom: 15px; }
+.popup .single-event .title { font-size: 30px; font-weight: bold; padding: 0 20px; }
+.popup .single-event .description { margin: 15px 0; font-style: italic; padding: 0 20px; font-size: 14px; }
+.popup .single-event .info { padding: 0 20px; }
+.popup .single-event .info p { font-size: 12px; margin: 10px 0; }
+
 .welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }
 .welcome p { margin: 10px 0; }
-.welcome .swipe { float: left; width: 33%; margin: 10px 0 35px; padding: 0 10px; box-sizing: border-box; }
+.welcome .swipe { float: left; width: 33%; margin: 10px 0 15px; padding: 0 10px; box-sizing: border-box; }
 .welcome .swipe .icon-swipe { width: 70px; height: 70px; background: url(../img/flick_left_v2.png) center center no-repeat; background-size: contain; margin: 0 auto 10px; }
 .welcome .swipe .swipe-message { font-size: 14px; }
 .welcome .swipe.swipe-right .icon-swipe { background-image: url(../img/flick_right_v2.png); }

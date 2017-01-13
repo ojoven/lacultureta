@@ -67,6 +67,16 @@
                 <div class="popup-container"></div>
                 <a href="#" class="popup-close"></a>
             </div>
+
+            <!-- SINGLE EVENT HIDDEN -->
+            <div class="single-event hidden">
+
+                <div class="image"></div>
+                <div class="title"></div>
+                <div class="description"></div>
+                <div class="info"></div>
+
+            </div>
         </div>
 
         <script type="text/javascript" src="/js/app.min.js"></script>

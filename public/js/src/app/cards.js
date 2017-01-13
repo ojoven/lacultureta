@@ -44,7 +44,12 @@ function loadCards(category, page) {
 
 			// Bind event
 			$(".cards li").off('click').on('click', function() {
-				console.log('lol');
+
+				var $cardSelector = $(this);
+				if ($($cardSelector).hasClass('welcome')) return false; // Don't do anything for the moment for the welcome card
+
+				// If event card
+				prepareSingleEventPopup($cardSelector);
 				showPopup();
 			});
 		});
@@ -52,7 +57,18 @@ function loadCards(category, page) {
 	});
 }
 
-function prepareSingleEventPopup() {
+function prepareSingleEventPopup($cardSelector) {
+
+	var $popupContainer = $('.popup-container');
+	var $singleEvent = $(".single-event");
+
+	$singleEvent.find('.title').html($cardSelector.find('.title').html()); // Title
+	$singleEvent.find('.image').attr('style', 'background-image:url(' + $cardSelector.find('.image').data('image') + ')'); // Image
+	$singleEvent.find('.description').html($cardSelector.find('.description').html()); // Description
+	$singleEvent.find('.info').html($cardSelector.find('.info').html()); // Description
+
+	$popupContainer.html(''); // empty the popup
+	$singleEvent.clone().removeClass('hidden').appendTo($popupContainer);
 
 }
 
