@@ -4,7 +4,7 @@ $classDay = (strlen($event['date_render']) > 30) ? ' little' : '';
 $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
 ?>
 
-<li>
+<li class="card">
     <div class="title<?php echo $classTitle; ?>">
         <?php echo $event['title']; ?>
     </div>

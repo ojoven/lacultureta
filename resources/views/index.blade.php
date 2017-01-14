@@ -37,7 +37,7 @@
                 <!-- CARDS -->
                 <ul class="cards">
 
-                    <li class="welcome">
+                    <li class="card welcome">
                         <div class="title">Bienvenido a<br>hoy no hay nada</div>
                         <p>Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia.</p>
                         <p>Conciertos, exposiciones, películas, teatros...</p>

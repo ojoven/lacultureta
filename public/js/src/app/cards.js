@@ -13,7 +13,7 @@ var stack,
 $(document).ready(function() {
 
 	generateCards();
-	cardsLikeManagement();
+	cardsAfterThrowManagement();
 	loadInitialCards();
 });
 
@@ -38,12 +38,12 @@ function loadCards(category, page) {
 
 		// Append the cards to the HTML
 		$(".cards").append(response);
-		$(".cards li").not('.in-stack').each(function() {
+		$(".card").not('.in-stack').each(function() {
 			$(this).addClass('in-stack').addClass('in-deck');
 			stack.createCard($(this).get(0));
 
 			// Bind event
-			$(".cards li").off('click').on('click', function() {
+			$(".card").off('click').on('click', function() {
 
 				var $cardSelector = $(this);
 				if ($($cardSelector).hasClass('welcome')) return false; // Don't do anything for the moment for the welcome card
@@ -103,7 +103,7 @@ function generateCards() {
 
 }
 
-function cardsLikeManagement() {
+function cardsAfterThrowManagement() {
 
 	var $viewport = $("#viewport");
 
@@ -113,6 +113,8 @@ function cardsLikeManagement() {
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
+
+		console.log(numCardsInDeck, allEvents);
 
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {
