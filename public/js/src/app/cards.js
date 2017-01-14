@@ -86,7 +86,9 @@ function generateCards() {
 			} else {
 				return 0;
 			}
-		}
+		},
+		minThrowOutDistance: 700,
+		maxThrowOutDistance: 800
 	};
 
 	stack = gajus.Swing.Stack(config);

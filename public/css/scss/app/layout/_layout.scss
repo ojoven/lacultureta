@@ -2,11 +2,23 @@
 // LAYOUT
 // ==============================================
 
+// CONTAINER
+.container {
+	max-width: 980px;
+	margin: 0 auto;
+	position: relative;
+
+	.margin-breaker {
+		height: 1px;
+	}
+}
+
 // MAIN HEADER
 // Includes the logo, and possible icons (hashtag and profile)
 #main-header {
 	position: absolute;
 	top: 0;
+	left: 0;
 	height: 40px;
 	width: 100%;
 }
@@ -42,6 +54,7 @@
 
 	position: absolute;
 	top: 55px;
+	left: 0;
 	width: 100%;
 
 	h2 {
