@@ -22,7 +22,10 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
         <?php } ?>
     </div>
     <div class="description hidden"><?php echo $event['description']; ?></div>
-    <div class="info hidden"><?php echo $event['info']; ?></div>
+    <div class="info hidden">
+        <?php echo $event['info']; ?>
+        <p><a target="_blank" href="<?php echo $event['url']; ?>">Enlace a <?php echo $event['source']; ?></a></p>
+    </div>
 </li>
 
 <?php } ?>

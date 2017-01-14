@@ -190,7 +190,7 @@ class Scraper extends Model {
 
             // ADDITIONAL INFO
             $event['info'] = '';
-            foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->find('p') as $paragraph) {
+            foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->children() as $paragraph) {
                 $event['info'] .= $paragraph->outertext;
             }
 
