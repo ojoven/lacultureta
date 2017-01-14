@@ -68,7 +68,7 @@ function prepareSingleEventPopup($cardSelector) {
 	$singleEvent.find('.info').html($cardSelector.find('.info').html()); // Description
 
 	$popupContainer.html(''); // empty the popup
-	$singleEvent.clone().removeClass('hidden').appendTo($popupContainer);
+	$singleEvent.removeClass('hidden').addClass('cloned').appendTo($popupContainer);
 
 }
 
