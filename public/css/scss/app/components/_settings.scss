@@ -1,0 +1,114 @@
+// ==============================================
+// SETTINGS
+// ==============================================
+
+.settings {
+
+	// Popup title
+	.title {
+		@extend .bold;
+		font-size: 20px;
+		text-align: center;
+		margin-top: 20px;
+		text-transform: uppercase;
+	}
+
+	// Filter sections
+	.section {
+		padding: 5px 20px;
+
+		> .section-title {
+			background: $blueBg;
+			color: $white;
+			@extend .bold;
+			font-size: 14px;
+			margin: 10px 0;
+			padding: 6px 12px;
+		}
+	}
+
+	// Options
+	ul li {
+		list-style: none;
+		display: inline-block;
+		width: 48%;
+		margin-right: 2%;
+		float: left;
+		margin-bottom: 10px;
+		font-size: 12px;
+
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	// Filters
+	.filter {
+		color: $fontColor;
+		text-decoration: none;
+		opacity: 0.5;
+
+		&.active {
+			opacity: 1;
+
+			&:before {
+				content: ' ';
+				display: inline-block;
+				background: url(../img/check.png) no-repeat 0 0;
+				background-size: cover;
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
+
+	// Categories
+	.category-image {
+		width: 16px;
+		height: 16px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 100%;
+		display: inline-block;
+	}
+
+	.category-title, .place-name {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-right: 10px;
+		display: inline-block;
+		max-width: 100%;
+	}
+
+	// SELECT / DESELECT
+	.select-deselect > li {
+		margin-bottom: 15px;
+		padding-left: 12px;
+	}
+
+	.select-all, .deselect-all {
+		text-decoration: none;
+		color: $fontColor;
+		@extend .bold;
+	}
+
+}
+
+#settings-popup {
+
+	// SAVE SETTINGS
+	.save-settings {
+		text-transform: uppercase;
+		background: $blueBg;
+		color: $white;
+		@extend .bold;
+		padding: 10px 35px;
+		text-decoration: none;
+		position: absolute;
+		bottom: 30px;
+		left: 50%;
+		font-size: 18px;
+		@include X-50();
+	}
+}

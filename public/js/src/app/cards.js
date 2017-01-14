@@ -50,7 +50,7 @@ function loadCards(category, page) {
 
 				// If event card
 				prepareSingleEventPopup($cardSelector);
-				showPopup();
+				showPopup($('#single-event-popup'));
 			});
 		});
 
@@ -59,16 +59,12 @@ function loadCards(category, page) {
 
 function prepareSingleEventPopup($cardSelector) {
 
-	var $popupContainer = $('.popup-container');
 	var $singleEvent = $(".single-event");
 
 	$singleEvent.find('.title').html($cardSelector.find('.title').html()); // Title
 	$singleEvent.find('.image').attr('style', 'background-image:url(' + $cardSelector.find('.image').data('image') + ')'); // Image
 	$singleEvent.find('.description').html($cardSelector.find('.description').html()); // Description
 	$singleEvent.find('.info').html($cardSelector.find('.info').html()); // Description
-
-	$popupContainer.html(''); // empty the popup
-	$singleEvent.removeClass('hidden').addClass('cloned').appendTo($popupContainer);
 
 }
 
@@ -113,8 +109,6 @@ function cardsAfterThrowManagement() {
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
-
-		console.log(numCardsInDeck, allEvents);
 
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {

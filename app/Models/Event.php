@@ -8,6 +8,14 @@ class Event extends Model {
 
 	protected $numEventsPage = 10;
 
+	// All Events
+	public function getAllEvents() {
+
+		$events = self::get()->toArray();
+		return $events;
+	}
+
+	// Get Events by Filter
 	public function getEvents($params) {
 
 		$page = $params['page'];
