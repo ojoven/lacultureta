@@ -7,6 +7,7 @@ module.exports = function(grunt) {
                 src: [
                     'js/src/vendor/jquery.min.js',
                     'js/src/vendor/swing/swing.js',
+                    'js/src/vendor/js.cookie.js',
                     'js/src/app/**/*.js',
                 ],
                 dest: 'js/app.min.js'

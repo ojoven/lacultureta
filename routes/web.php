@@ -14,6 +14,7 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/api/getcards', 'ApiController@getcards');
+Route::post('/api/createuser', 'ApiController@createuser');
 
 // TMP routes
 Route::get('/playground', 'IndexController@playground');

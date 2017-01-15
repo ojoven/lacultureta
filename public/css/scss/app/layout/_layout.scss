@@ -48,6 +48,21 @@
 	}
 }
 
+// Menu left
+.menu-left {
+	position: absolute;
+	left: 15px;
+	top: 24px;
+
+	.icon-user {
+		display: inline-block;
+		background: url(../img/user.png) no-repeat 0 0;
+		background-size: cover;
+		width: 30px;
+		height: 30px;
+	}
+}
+
 // SUBHEADER
 // Includes info and link to options
 #subheader {
