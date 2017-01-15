@@ -117,10 +117,12 @@ function cardsAfterThrowManagement() {
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
 
+		console.log(category, place, date, page);
+
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {
 			page++;
-			loadCards(category, page);
+			loadCards(category, place, date, page);
 		}
 	});
 
