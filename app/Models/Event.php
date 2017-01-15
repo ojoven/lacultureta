@@ -32,11 +32,18 @@ class Event extends Model {
 
 	}
 
+	// FILTERS
 	public function filterEvents($events, $params) {
 
 		$events = $this->filterEventsByDate($events, $params['date']);
+		$events = $this->filterEventsByCategory($events, $params['category']);
+		$events = $this->filterEventsByPlace($events, $params['place']);
+
+		$events = $this->filterEventsRemoveDuplicated($events);
+
 		return $events;
 	}
+
 
 	public function filterEventsByDate($events, $date) {
 
@@ -115,10 +122,67 @@ class Event extends Model {
 				}
 			}
 
-
 		}
 
 		return $eventsByDate;
+
+	}
+
+	// Filter Category
+	public function filterEventsByCategory($events, $categories) {
+
+		// Special case, all dates
+		if (in_array('all', $categories)) return $events;
+
+		$eventsInCategories = array();
+		foreach ($events as $event) {
+
+			$categoriesEvent = explode(',', $event['categories']);
+			foreach ($categoriesEvent as $categoryEvent) {
+				if (in_array($categoryEvent, $categories)) {
+					array_push($eventsInCategories, $event);
+					continue 2;
+				}
+			}
+
+		}
+
+		return $eventsInCategories;
+	}
+
+	// Filter Place
+	public function filterEventsByPlace($events, $places) {
+
+		// Special case, all dates
+		if (in_array('all', $places)) return $events;
+
+		$eventsInPlaces = array();
+		foreach ($events as $event) {
+
+			if (in_array($event['place'], $places)) {
+				array_push($eventsInPlaces, $event);
+			}
+
+		}
+
+		return $eventsInPlaces;
+	}
+
+	// Filter Remove Duplicated
+	public function filterEventsRemoveDuplicated($events) {
+
+		$eventIds = array();
+		$nonDuplicatedEvents = array();
+		foreach ($events as $event) {
+
+			if (!in_array($event['id'], $eventIds)) {
+				array_push($nonDuplicatedEvents, $event);
+				array_push($eventIds, $event['id']);
+			}
+
+		}
+
+		return $nonDuplicatedEvents;
 
 	}
 

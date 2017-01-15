@@ -92,6 +92,7 @@ function settingsManagement() {
 			date.push($(this).data('value'));
 		});
 
+		var page = 1;
 		loadCards(category, place, date, page);
 		closePopup();
 	});
