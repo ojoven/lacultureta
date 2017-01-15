@@ -3,14 +3,12 @@
 
 // VARS
 var $toSettings = $('.to-settings'),
-	$popup = $('.popup'),
-	$viewport = $('#viewport');
+	$popup = $('.popup');
 
 // LOGIC
 $(document).ready(function() {
 
 	toShowSettings();
-	//showPopup($("#settings-popup"));
 	settingsManagement();
 });
 
@@ -27,6 +25,10 @@ function toShowSettings() {
 
 function settingsManagement() {
 
+	var $dataCategory = $('.data-category'),
+		$dataPlace = $('.data-place'),
+		$dataDate = $('.data-date');
+
 	// Settings
 	var $setting = $('.settings .filter');
 	$setting.on('click', function() {
@@ -42,22 +44,16 @@ function settingsManagement() {
 	var $deselectAll = $('.settings .deselect-all');
 
 	$selectAll.on('click', function() {
-		console.log('deselect');
 		$(this).closest('.section').find('.filter').addClass('active');
 	});
 
 	$deselectAll.on('click', function() {
-		console.log('select');
 		$(this).closest('.section').find('.active').removeClass('active');
 	});
 
 	// Save settings
 	var $saveSettings = $('.save-settings');
 	$saveSettings.on('click', function() {
-
-		var $dataCategory = $('.data-category'),
-			$dataPlace = $('.data-place'),
-			$dataDate = $('.data-date');
 
 		// Make a new search with the parameters
 

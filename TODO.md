@@ -3,8 +3,8 @@ TODO
 
 v0.9 (First Minimum Lovable Version)
 * Add buttons (not just swipe) Like / Dislike
-* Create configuration options panel
 * Add login with Facebook
+* ~~Create configuration options panel~~
 * ~~Add new state: popup with additional info from event~~
 * ~~Add animation Like / Dislike~~
 * ~~Scrape event single information from Donostia.eus~~

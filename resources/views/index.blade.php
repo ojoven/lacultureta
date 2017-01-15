@@ -63,9 +63,11 @@
 
                 </ul>
 
-                <!-- LIKE / DISLIKE -->
-                <div class="dislike"></div>
-                <div class="like"></div>
+                <div class="no-cards">
+                    <span class="title">Ooops, ¡ya no hay más!</span>
+                    <span class="message">Sigue enterándote de los mejores eventos utilizando los filtros</span>
+                    <a href="#" class="icon-settings to-settings"></a>
+                </div>
 
             </div>
 
@@ -101,7 +103,7 @@
                             <div class="section-title">Por fecha</div>
                             <ul class="data-date">
                                 <li>
-                                    <a href="#" class="active filter" data-filter="date" data-value="all">
+                                    <a href="#" class="active filter" data-filter="date" data-value="all" data-exclusive="true">
                                         Todas las fechas
                                     </a>
                                 </li>
@@ -116,7 +118,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="filter" data-filter="date" data-value="week">
+                                    <a href="#" class="filter" data-filter="date" data-value="week" data-exclusive="true">
                                         Próximos 7 días
                                     </a>
                                 </li>

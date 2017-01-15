@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /** RESET **/
 * { padding: 0; margin: 0; font-size: 100%; line-height: 1; border: 0; -webkit-box-sizing: inherit; -moz-box-sizing: inherit; box-sizing: inherit; }
 
@@ -13,7 +12,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, #settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
-.special, #viewport:after { font-family: 'Neucha', cursive; font-weight: bold; }
+.special, .no-cards { font-family: 'Neucha', cursive; font-weight: bold; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -118,12 +117,15 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 @media (max-width: 767px) { .btn.btn-main { font-size: 90%; }
   .btn.btn-main:after { background: none; display: none; } }
 #viewport { width: 400px; max-width: 85%; margin: 90px auto 0; height: 410px; position: relative; }
-#viewport:after { content: 'Hoy (ya) no \A hay nada (más)'; text-transform: uppercase; background: #095460; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); font-size: 30px; z-index: -1; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
+
+.no-cards { background: #095460; color: #ffffff; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 0; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
+.no-cards .title { text-transform: uppercase; font-size: 30px; margin-bottom: 10px; display: block; }
+.no-cards .icon-settings { display: block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 30px; height: 30px; margin: 10px auto; }
 
 #viewport .dislike, #viewport .like { display: none; background: url(../img/green_check.png) 0 0 no-repeat #fff; width: 256px; height: 256px; position: absolute; top: 50%; left: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); pointer-events: none; opacity: 0; border-radius: 100%; transform-origin: center center; -webkit-transform-origin: center center; }
 #viewport .dislike { background-image: url(../img/red_cross.png); }
 
-.cards li { opacity: 0; width: 400px; max-width: 100%; height: 400px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; text-align: center; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; padding: 0 10px; -webkit-transition: opacity 0.3s linear; -moz-transition: opacity 0.3s linear; -o-transition: opacity 0.3s linear; transition: opacity 0.3s linear; }
+.cards li { opacity: 0; width: 400px; max-width: 100%; height: 400px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; text-align: center; border: 3px solid #e6e6e6; box-sizing: border-box; cursor: default; padding: 0 10px; -webkit-transition: opacity 0.3s linear; -moz-transition: opacity 0.3s linear; -o-transition: opacity 0.3s linear; transition: opacity 0.3s linear; z-index: 1; }
 .cards li.in-deck { visibility: visible; opacity: 1; }
 .cards li.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
 .cards li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }

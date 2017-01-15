@@ -9,26 +9,39 @@
 	margin: 90px auto 0;
 	height: 410px;
 	position: relative;
+}
 
-	// No more content
-	&:after {
-		content: 'Hoy (ya) no \A hay nada (más)';
-		@extend .special;
+// No more content
+.no-cards {
+	@extend .special;
+	background: darken($blueBg, 10%);
+	color: $white;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include X-Y-50();
+	z-index: 0;
+	width: 90%;
+	text-align: center;
+	height: 390px;
+	padding: 145px 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+
+	.title {
 		text-transform: uppercase;
-		background: darken($blueBg, 10%);
-		color: $white;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		@include X-Y-50();
 		font-size: 30px;
-		z-index: -1;
-		width: 90%;
-		text-align: center;
-		height: 390px;
-		padding: 145px 20px;
-		box-sizing: border-box;
-		border-radius: 5px;
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	.icon-settings {
+		display: block;
+		background: url(../img/settings.png) no-repeat 0 0;
+		background-size: cover;
+		width: 30px;
+		height: 30px;
+		margin: 10px auto;
 	}
 }
 
@@ -75,6 +88,7 @@
 	cursor: default;
 	padding: 0 10px;
 	@include effect(opacity, 0.3s, linear);
+	z-index: 1;
 
 	&.in-deck {
 		visibility: visible;
