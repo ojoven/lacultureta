@@ -180,6 +180,12 @@ class Functions {
 	public static function parseHourForRender($hour) {
 
 		// Cases
+
+		// Empty hour (no defined hours)
+		if (trim($hour) == "") {
+			return "";
+		}
+
 		// + (different hours)
 		if (strpos($hour, '+')!==false) {
 			$hours = explode('+', $hour);

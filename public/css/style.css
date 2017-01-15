@@ -146,8 +146,10 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .popup .single-event .description { margin: 15px 0; font-style: italic; padding: 0 20px; font-size: 14px; }
 .popup .single-event .info { padding: 0 20px; }
 .popup .single-event .info p { font-size: 12px; margin: 10px 0; }
+.popup .single-event .info iframe { max-width: 100%; max-height: 230px; }
 .popup .single-event .info ul { padding-left: 15px; }
 .popup .single-event .info li { font-size: 12px; }
+.popup .single-event .info a { text-decoration: none; font-weight: bold; color: #0e7d8e; }
 
 .settings .title { font-size: 20px; text-align: center; margin-top: 20px; text-transform: uppercase; }
 .settings .section { padding: 5px 20px; }

@@ -20,13 +20,62 @@ class Event extends Model {
 
 		$page = $params['page'];
 		$offset = ($page - 1) * $this->numEventsPage;
-
 		$today = date('Y-m-d');
+
 		$events = self::whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today)->orderBy('date_start', 'asc')->get()->toArray();
+
+		$events = $this->filterEvents($events, $params);
 		$events = $this->sortEvents($events);
 		$events = array_slice($events, $offset, $this->numEventsPage);
 		$events = $this->parseEventsForRender($events);
 		return $events;
+
+	}
+
+	public function filterEvents($events, $params) {
+
+		$events = $this->filterEventsByDate($events, $params['date']);
+		return $events;
+	}
+
+	public function filterEventsByDate($events, $date) {
+
+		// Special case, all dates
+		if (in_array('all', $date)) return $events;
+
+		$currentDate = date('Y-m-d');
+		$currentDateObj = new \DateTime($currentDate);
+
+		$eventsByDate = array();
+		foreach ($events as $event) {
+
+			$dateStartObj = new \DateTime($event['date_start']);
+
+			// Today
+			if (in_array('today', $date)) {
+
+				// If single date, today
+				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
+				if ($diff == 0) {
+					array_push($eventsByDate, $event);
+				}
+
+				// If range of dates
+				if ($diff <= -1) {
+
+					$dateEndObj = new \DateTime($event['date_end']);
+					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
+					if ($diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
+						array_push($eventsByDate, $event);
+					}
+
+				}
+
+			}
+
+		}
+
+		return $eventsByDate;
 
 	}
 
