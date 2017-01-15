@@ -99,7 +99,7 @@
                         <!-- BY DATE -->
                         <div class="section">
                             <div class="section-title">Por fecha</div>
-                            <ul>
+                            <ul class="data-date">
                                 <li>
                                     <a href="#" class="active filter" data-filter="date" data-value="all">
                                         Todas las fechas
@@ -139,7 +139,7 @@
                             </ul>
                             <div class="clear"></div>
 
-                            <ul>
+                            <ul class="data-category">
                                 <?php foreach ($categories as $category) { ?>
                                 <li>
                                     <a href="#" class="filter active" data-filter="category" data-value="<?php echo $category['name']; ?>">
@@ -167,7 +167,7 @@
                             </ul>
                             <div class="clear"></div>
 
-                            <ul>
+                            <ul class="data-place">
                                 <?php foreach ($places as $place) { ?>
                                 <li>
                                     <a href="#" class="filter active" data-filter="place" data-value="<?php echo $place['name']; ?>">

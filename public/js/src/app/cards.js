@@ -5,7 +5,9 @@
 var stack,
 	cards = [],
 	tresholdThrowCard = 140,
-	category = 'Todos',
+	category = ['all'],
+	place = ['all'],
+	date = ['all'],
 	page = 1,
 	allEvents = false;
 
@@ -19,16 +21,21 @@ $(document).ready(function() {
 
 function loadInitialCards() {
 
-	loadCards(category, page);
+	loadCards(category, place, date, page);
 }
 
-function loadCards(category, page) {
+function loadCards(category, place, date, page) {
 
 	var url = '/api/getcards';
 	var data = {};
 
 	data.category = category;
+	data.place = place;
+	data.date = date;
 	data.page = page;
+
+	console.log(data);
+
 	$.get(url, data, function(response) {
 
 		// If all events have been loaded, we won't load more

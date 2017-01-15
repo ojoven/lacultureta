@@ -54,6 +54,45 @@ function settingsManagement() {
 	// Save settings
 	var $saveSettings = $('.save-settings');
 	$saveSettings.on('click', function() {
+
+		var $dataCategory = $('.data-category'),
+			$dataPlace = $('.data-place'),
+			$dataDate = $('.data-date');
+
+		// Make a new search with the parameters
+
+		// Remove all current cards
+		$(".cards").html('');
+
+		// Category
+		var category = [];
+		// If all categories are selected we'll just use 'all'
+		if ($dataCategory.find('.active').length == $dataCategory.find('.filter').length) {
+			category.push('all');
+		} else {
+			$dataCategory.find('.active').each(function() {
+				category.push($(this).data('value'));
+			});
+		}
+
+		// Place
+		var place = [];
+		// If all categories are selected we'll just use 'all'
+		if ($dataPlace.find('.active').length == $dataPlace.find('.filter').length) {
+			place.push('all');
+		} else {
+			$dataPlace.find('.active').each(function() {
+				place.push($(this).data('value'));
+			});
+		}
+
+		// Date
+		var date = [];
+		$dataDate.find('.active').each(function() {
+			date.push($(this).data('value'));
+		});
+
+		loadCards(category, place, date, page);
 		closePopup();
 	});
 
