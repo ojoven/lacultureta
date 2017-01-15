@@ -111,4 +111,14 @@
 		font-size: 18px;
 		@include X-50();
 	}
+
+	.settings-error {
+		color: $red;
+		text-align: center;
+		font-size: 14px;
+		font-weight: bold;
+		margin: 27px auto;
+		max-width: 250px;
+		display: none;
+	}
 }

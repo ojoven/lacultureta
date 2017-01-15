@@ -166,6 +166,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .settings .select-all, .settings .deselect-all { text-decoration: none; color: #212021; }
 
 #settings-popup .save-settings { text-transform: uppercase; background: #0e7d8e; color: #ffffff; padding: 10px 35px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
+#settings-popup .settings-error { color: #BE2625; text-align: center; font-size: 14px; font-weight: bold; margin: 27px auto; max-width: 250px; display: none; }
 
 .welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }
 .welcome p { margin: 10px 0; }

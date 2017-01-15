@@ -186,6 +186,7 @@
                 </div>
 
                 <a href="#" class="save-settings">Guarda</a>
+                <div class="settings-error">Debes seleccionar al menos una fecha, una categoría y un lugar.</div>
 
             </div>
 
