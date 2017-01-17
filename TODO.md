@@ -3,7 +3,8 @@ TODO
 
 v0.9 (First Minimum Lovable Version)
 * Add buttons (not just swipe) Like / Dislike
-* Add login with Facebook
+* Add login with Facebook???
+* Create Twitter bot that sends tweets daily
 * ~~Create configuration options panel~~
 * ~~Add new state: popup with additional info from event~~
 * ~~Add animation Like / Dislike~~
