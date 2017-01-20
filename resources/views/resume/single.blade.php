@@ -13,7 +13,7 @@
 
 <body draggable="false">
 
-    <div class="container">
+    <div class="container resume-single">
 
         <div id="viewport">
 
@@ -26,7 +26,7 @@
                 $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
                 ?>
 
-                <li class="card">
+                <li class="card" id="resume">
                     <div class="title<?php echo $classTitle; ?>">
                         <?php echo $event['title']; ?>
                     </div>

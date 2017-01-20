@@ -40,17 +40,46 @@ class Twitter extends Model {
 			array(14, 7, 7, '21.30', 'resume', 'week', false),
 		);
 
+		// We convert the schedule to an associative array (for readability)
+		$schedule = $this->parseScheduleTemplates($schedule);
 
+		// We decide, is it time to send a tweet?
 		if ($template = $this->isTimeToSendATweet($schedule)) {
 
+			// If yes, we prepare the tweet
 			$tweet = $this->prepareTweet($template);
-			$this->sendTweet($tweet['message'], $tweet['mediaId']);
+			if ($tweet) {
 
+				// If everything alright, we send it
+				$this->sendTweet($tweet['message'], $tweet['image']);
+			}
 		}
-
 
 	}
 
+	// PARSE SCHEDULE
+	public function parseScheduleTemplates($schedule) {
+
+		$parsedSchedule = array();
+		foreach ($schedule as $template) {
+
+			$parsedTemplate['id'] = $template[0];
+			$parsedTemplate['day_start'] = $template[1];
+			$parsedTemplate['day_end'] = $template[2];
+			$parsedTemplate['hour'] = $template[3];
+			$parsedTemplate['template'] = $template[4];
+			$parsedTemplate['date_target'] = $template[5];
+			$parsedTemplate['reply'] = $template[6];
+
+			$parsedSchedule[] = $parsedTemplate;
+
+		}
+
+		return $parsedSchedule;
+
+	}
+
+	// Is time to send a tweet?
 	public function isTimeToSendATweet($schedule) {
 
 		// First we check the hour, if it's equal to one of the schedules, we check the day
@@ -59,7 +88,7 @@ class Twitter extends Model {
 
 		foreach ($schedule as $template) {
 
-			if ($currentHour == $template[3] && ($currentDay >= $template[1] && $currentDay >= $template[1])) {
+			if ($currentHour == $template['hour'] && ($currentDay >= $template['day_start'] && $currentDay >= $template['day_end'])) {
 				return $template;
 			}
 
@@ -68,29 +97,28 @@ class Twitter extends Model {
 		return false;
 	}
 
+	// Prepare the tweet
 	public function prepareTweet($template) {
-
-		// array(1, 1, 4, '09.00', 'first', 'today', false),
 
 		// We get the image for the tweet
 		// We'll use PhantomJS with a dynamically generated HTML view
-		$this->getImageTweet($template);
-		// Now we filter by date
+		$image = $this->getImageTweet($template);
+		if ($image) {
 
+			$tweet['image'] = $image;
+			$tweet['message'] = $this->prepareMessage($template);
 
+			return $tweet;
+		}
 
-
-		$tweet = $template;
-		return $tweet;
+		return false;
 
 	}
 
+	// Get image tweet (generate screenshot)
 	public function getImageTweet($template) {
 
-		// $template[4]; // first, second, resume
-		// $template[5]; // today, tomorrow, weekend, week
-
-		switch ($template[4]) {
+		switch ($template['template']) {
 			case 'first':
 			case 'second':
 				$view = 'single';
@@ -103,34 +131,77 @@ class Twitter extends Model {
 		$params = array(
 			'place' => 'all',
 			'category' => 'all',
-			'date' => $template[5],
-			'template' => $template[4]
+			'date' => $template['date_target'],
+			'template' => $template['template']
 		);
 
 		$url = url('/') . '/resume/' . $view . '?';
 		$url .= http_build_query($params);
 
-	}
+		$pathToPhantomJs = app_path() . '/Lib/' . "phantom/resume.js";
+		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
-	public function buildFrontendTemplate($events, $templateEvent) {
+		$command = "phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png 2>&1";
+		$return = shell_exec($command);
+		$response = ($return == 'success' . PHP_EOL) ? true : false;
 
-		// First
-		$data['event'] = $events[0];
-		$view = 'single';
+		if ($response) {
+			$image = file_get_contents($pathToScreenshot);
+		} else {
+			$image = false;
+		}
 
-		// Second
-		$data['event'] = $events[1];
-		$view = 'single';
-
-		// Resume
-		$data['events'] = $events;
-		$view = 'resume';
-
-
+		return $image;
 
 	}
 
-	public function sendTweet($message, $mediaId = false) {
+	public function prepareMessage($template) {
+
+		$arrayMessages = array();
+
+		switch ($template['date_target']) {
+
+			case 'today':
+				$dateString = 'hoy';
+				break;
+			case 'tomorrow':
+				$dateString = 'mañana';
+				break;
+			case 'weekend':
+				$dateString = 'este finde';
+				break;
+			case 'week':
+			default:
+				$dateString = 'la próxima semana';
+				break;
+
+		}
+
+		if ($template['template'] == 'first'
+			|| $template['template'] == 'second') {
+
+			$arrayMessages = array(
+				'Evento destacado ' .$dateString,
+				ucfirst($dateString) . ' tienes un buen plan',
+			);
+
+		} else if ($template['template'] == 'resume') {
+
+			$arrayMessages = array(
+				'Eventos en Donostia para' . $dateString,
+				'Mira qué planes chulos para ' . $dateString,
+			);
+
+		}
+
+		// We take one at random
+		$message = $arrayMessages[array_rand($arrayMessages)];
+
+		return $message;
+
+	}
+
+	public function sendTweet($message, $imagePath) {
 
 		// First we initialize Codebird
 		$this->initialize();
@@ -138,9 +209,13 @@ class Twitter extends Model {
 		// We build the params array
 		$params = array('status' => $message);
 
+		return false;
+
 		// Any photos to upload?
-		if ($mediaId) {
-			$params['media_ids'] = $mediaId;
+		if ($imagePath && file_exists($imagePath)) {
+
+			$media = $this->cb->media_upload(array('media' => $imagePath));
+			$params['media_ids'] = $media->media_id_string;
 		}
 
 		// And we send the tweet
