@@ -32,6 +32,8 @@ class IndexController extends Controller {
         // Code to play with here
         $twitterModel = new Twitter();
         //$twitterModel->sendTweet('Esto es una prueba, don pepito');
+        $template = array(1, 1, 4, '09.00', 'first', 'today', false);
+        $twitterModel->getImageTweet($template);
 
         return view('playground');
 

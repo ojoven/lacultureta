@@ -16,6 +16,9 @@ Route::get('/', 'IndexController@index');
 Route::get('/api/getcards', 'ApiController@getcards');
 Route::post('/api/createuser', 'ApiController@createuser');
 
+Route::get('/resume/single', 'ResumeController@single');
+Route::get('/resume/resume', 'ResumeController@resume');
+
 // TMP routes
 Route::get('/playground', 'IndexController@playground');
 Route::get('/scraper', 'IndexController@scraper');
