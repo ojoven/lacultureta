@@ -18,7 +18,8 @@ class ResumeController extends Controller {
 
         $eventModel = new Event();
         $events = $eventModel->getAllEvents();
-        $params = $this->_paramsToArray($params);
+        $events = $eventModel->sortEvents($events);
+        $params = $this->_paramsToArray($params); // little ñapa
         $events = $eventModel->filterEvents($events, $params);
         $events = $eventModel->parseEventsForRender($events);
 
@@ -32,7 +33,12 @@ class ResumeController extends Controller {
         $params = $_GET;
 
         $eventModel = new Event();
-        $events = $eventModel->getEvents($params);
+        $events = $eventModel->getAllEvents();
+        $events = $eventModel->sortEvents($events);
+        $params = $this->_paramsToArray($params); // little ñapa
+        $events = $eventModel->filterEvents($events, $params);
+        $events = $eventModel->parseEventsForRender($events);
+        $events = $eventModel->sortEventsByDate($events, $params['date'][0]);
 
         return view('resume/resume', array('events' => $events));
     }

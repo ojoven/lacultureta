@@ -209,8 +209,6 @@ class Twitter extends Model {
 		// We build the params array
 		$params = array('status' => $message);
 
-		return false;
-
 		// Any photos to upload?
 		if ($imagePath && file_exists($imagePath)) {
 

@@ -233,4 +233,15 @@ class Event extends Model {
 
 	}
 
+
+	// SORT EVENTS BY DATE (FOR TWITTER BOT)
+	public function sortEventsByDate($events, $dateTarget) {
+
+		if ($dateTarget == 'today') {
+			
+		}
+
+
+	}
+
 }
