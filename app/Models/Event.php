@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Lib\Functions;
+use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model {
@@ -68,7 +68,7 @@ class Event extends Model {
 				}
 
 				// If range of dates
-				if ($diff <= -1) {
+				if ($event['date_end'] && $diff <= -1) {
 
 					$dateEndObj = new \DateTime($event['date_end']);
 					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
@@ -222,10 +222,10 @@ class Event extends Model {
 
 		foreach ($events as &$event) {
 
-			$event['date_render'] = Functions::parseDateForRender($event['date_start'], $event['date_end']);
-			$event['hour_render'] = Functions::parseHourForRender($event['hour']);
-			$event['price_render'] = Functions::parsePriceForRender($event['price']);
-			$event['categories_render'] = Functions::parseCategoriesForRender($event['categories']);
+			$event['date_render'] = RenderFunctions::parseDateForRender($event['date_start'], $event['date_end']);
+			$event['hour_render'] = RenderFunctions::parseHourForRender($event['hour']);
+			$event['price_render'] = RenderFunctions::parsePriceForRender($event['price']);
+			$event['categories_render'] = RenderFunctions::parseCategoriesForRender($event['categories']);
 
 		}
 
@@ -238,7 +238,19 @@ class Event extends Model {
 	public function sortEventsByDate($events, $dateTarget) {
 
 		if ($dateTarget == 'today') {
-			
+
+			$eventsByDate[0]['date'] = 'hoy';
+			$eventsByDate[0]['events'] = $events;
+
+			return $eventsByDate;
+
+		} elseif ($dateTarget == 'tomorrow') {
+
+			$eventsByDate[0]['date'] = 'hoy';
+			$eventsByDate[0]['events'] = $events;
+
+			return $eventsByDate;
+
 		}
 
 

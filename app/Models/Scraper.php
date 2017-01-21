@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Lib\DateFunctions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Lib\Functions;
@@ -89,7 +90,7 @@ class Scraper extends Model {
         $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
 
         // DATE
-        Functions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end']);
+        DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end']);
 
         // We extract the parameters from the URL
         $kwid = $kwca = '';
