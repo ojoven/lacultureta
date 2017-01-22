@@ -33,7 +33,7 @@ class IndexController extends Controller {
         // Code to play with here
         $twitterModel = new Twitter();
         //$twitterModel->sendTweet('Esto es una prueba, don pepito');
-        $schedule = array(array(1, 1, 4, '09.00', 'first', 'tomorrow', false));
+        $schedule = array(array(1, 1, 4, '09.00', 'resume', 'today', false));
         $schedule = $twitterModel->parseScheduleTemplates($schedule);
         $twitterModel->prepareTweet($schedule[0]);
 

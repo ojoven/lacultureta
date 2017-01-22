@@ -13,7 +13,7 @@
 
 <body draggable="false" class="resume-resume">
 
-    <div id="resume">
+    <div id="resume" class="<?php if (count($events['single']) > 3) { echo "week"; } else { echo "not-week"; } ?>">
 
         <!-- BY DATES -->
         <ul class="dates">
@@ -28,7 +28,11 @@
                         foreach ($date['events'] as $event) { ?>
                             <li class="event">
                                 <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
+                                <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
                                 <span class="event-title"><?php echo $event['title']; ?></span>
+                                <?php if ($event['hour']) { ?>
+                                <div class="hour">(<?php echo $event['hour']; ?>)</div>
+                                <?php } ?>
                             </li>
                         <?php }
                     } else { ?>

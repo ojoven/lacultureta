@@ -141,11 +141,12 @@ class Twitter extends Model {
 		$pathToPhantomJs = app_path() . '/Lib/' . "phantom/resume.js";
 		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
-		$command = "phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png 2>&1";
+		$command = "/usr/local/bin/phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
 		$return = shell_exec($command);
 		$response = ($return == 'success' . PHP_EOL) ? true : false;
 
 		if ($response) {
+			chmod($pathToScreenshot, 0777);
 			$image = file_get_contents($pathToScreenshot);
 		} else {
 			$image = false;
@@ -188,7 +189,7 @@ class Twitter extends Model {
 		} else if ($template['template'] == 'resume') {
 
 			$arrayMessages = array(
-				'Eventos en Donostia para' . $dateString,
+				'Eventos en Donostia para ' . $dateString,
 				'Mira qué planes chulos para ' . $dateString,
 			);
 
