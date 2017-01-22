@@ -12,7 +12,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, #settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
-.special, .no-cards { font-family: 'Neucha', cursive; font-weight: bold; }
+.special, .no-cards, .resume-resume .dates > li > .title { font-family: 'Neucha', cursive; font-weight: bold; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -157,6 +157,14 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .popup .single-event .info a { text-decoration: none; font-weight: bold; color: #0e7d8e; }
 
 .resume-single .cards li { opacity: 1; }
+
+.resume-resume { background: #ffffff; overflow: visible; }
+.resume-resume #resume { background: #ffffff; border: 4px solid #e6e6e6; max-width: 800px; margin: 30px; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; }
+.resume-resume .dates > li { padding: 10px 20px; display: inline-block; }
+.resume-resume .dates > li > .title { text-transform: uppercase; color: #0e7d8e; }
+.resume-resume .events > li { list-style: none; margin-top: 5px; font-size: 14px; }
+.resume-resume .events > li .category { width: 12px; height: 12px; background-position: center; background-size: 100%; background-repeat: no-repeat; margin-right: 5px; display: inline-block; }
+.resume-resume .events > li .event-title { display: inline; }
 
 .settings .title { font-size: 20px; text-align: center; margin-top: 20px; text-transform: uppercase; }
 .settings .section { padding: 5px 20px; }

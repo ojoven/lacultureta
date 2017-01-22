@@ -2,11 +2,62 @@
 // RESUME
 // ==============================================
 // Used for Twitter bot
-
+// Single (we'll use the same style as a card)
 .resume-single {
 
 	.cards li {
 		opacity: 1;
+	}
+
+}
+
+// Resume (we'll use a list)
+.resume-resume {
+
+	background: $white;
+	overflow: visible;
+
+	#resume {
+		background: $white;
+		border: 4px solid $mediumGrey;
+		max-width: 800px;
+		margin: 30px;
+
+		-webkit-column-count: 2; /* Chrome, Safari, Opera */
+		-moz-column-count: 2; /* Firefox */
+		column-count: 2;
+	}
+
+	.dates > li {
+		padding: 10px 20px;
+		display: inline-block;
+
+		> .title {
+			@extend .special;
+			text-transform: uppercase;
+			color: $blueBg;
+		}
+	}
+
+	.events > li {
+		list-style: none;
+		margin-top: 5px;
+		font-size: 14px;
+
+		.category {
+			width: 12px;
+			height: 12px;
+			background-position: center;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			margin-right: 5px;
+			display: inline-block;
+		}
+
+		.event-title {
+			display: inline;
+		}
+
 	}
 
 }

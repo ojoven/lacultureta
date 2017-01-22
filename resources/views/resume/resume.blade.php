@@ -11,30 +11,28 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 
-<body draggable="false">
+<body draggable="false" class="resume-resume">
 
     <div id="resume">
 
+        <!-- BY DATES -->
         <ul class="dates">
 
-            <?php foreach ($events as $date) { ?>
+            <?php foreach ($events['single'] as $date) { ?>
 
             <li>
-                <span class="title"><?php echo $date['date']; ?></span>
+                <span class="title"><?php echo \App\Lib\RenderFunctions::renderDateWeekdayNameDayAndMonth($date['date']); ?></span>
                 <ul class="events">
 
                     <?php if ($date['events']) {
-
                         foreach ($date['events'] as $event) { ?>
-
                             <li class="event">
-                                <?php echo $event['title']; ?>
+                                <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
+                                <span class="event-title"><?php echo $event['title']; ?></span>
                             </li>
-
                         <?php }
-
                     } else { ?>
-
+                        <span class="no-events">No hay eventos</span>
                     <?php } ?>
 
                 </ul>

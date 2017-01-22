@@ -111,6 +111,18 @@ class RenderFunctions {
 
 	}
 
+	public static function renderDateWeekdayNameDayAndMonth($date) {
+
+		$strtotime = strtotime($date);
+		$render = '';
+		$dayWeek = ucfirst(self::getWeekDayName((int)date('N', $strtotime))); // Lunes
+		$dayMonth = date('d', $strtotime); // 05
+		$month = self::getMonthName((int)date('n', $strtotime));
+		$render .= $dayWeek . ' ' . $dayMonth . ' de ' . $month;
+
+		return $render;
+	}
+
 	// MONTH NAME
 	public static function getMonthName($month) {
 

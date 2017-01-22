@@ -243,28 +243,49 @@ class Event extends Model {
 		$after7days = date('Y-m-d', strtotime('+7 day'));
 
 		if ($dateTarget == 'today') {
-
-			$dates['title'] = 'hoy';
-			$dates['dates'] = array($today);
-
+			$dates = array($today);
 		} elseif ($dateTarget == 'tomorrow') {
-
-			$dates['title'] = 'mañana';
-			$dates['dates'] = array($tomorrow);
-
+			$dates = array($tomorrow);
 		} elseif ($dateTarget == 'week') {
+			$dates = DateFunctions::dateRange($today, $after7days);
+		}
 
-			$dates['title'] = 'esta semana';
-			$dates['dates'] = DateFunctions::dateRange($today, $after7days);
+		foreach ($dates as $index => $date) {
+			$eventsByDate[$index]['date'] = $date;
+			foreach ($events as $event) {
+				if (DateFunctions::doesEventHappenInDate($event, $date)) {
+					$eventsByDate[$index]['events'][] = $event;
+				}
+			}
+		}
+
+		$eventsByDate = $this->externalizeEventsRangeBiggerThan2Days($eventsByDate);
+		return $eventsByDate;
+	}
+
+	public function externalizeEventsRangeBiggerThan2Days($eventsByDate) {
+
+		$parsedEventsByDate['single'] = array();
+		$parsedEventsByDate['range'] = array();
+
+		foreach ($eventsByDate as $index => $date) {
+
+			$parsedEventsByDate['single'][$index]['date'] = $date['date'];
+
+			foreach ($date['events'] as $event) {
+
+				if (!$event['date_end'] // Single Events
+				|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
+					$parsedEventsByDate['single'][$index]['events'][] = $event;
+				} else {
+					$parsedEventsByDate['range'][] = $event;
+				}
+
+			}
 
 		}
 
-		$eventsByDate = array();
-		foreach ($dates['dates'] as $date) {
-
-		}
-
-
+		return $parsedEventsByDate;
 	}
 
 }
