@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lib\DateFunctions;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Place;
@@ -33,8 +34,12 @@ class IndexController extends Controller {
         $twitterModel = new Twitter();
         //$twitterModel->sendTweet('Esto es una prueba, don pepito');
         $schedule = array(array(1, 1, 4, '09.00', 'first', 'tomorrow', false));
-        $schedule = $twitterModel->parseScheduleTemplates($schedule);
-        $twitterModel->prepareTweet($schedule[0]);
+        //$schedule = $twitterModel->parseScheduleTemplates($schedule);
+        //$twitterModel->prepareTweet($schedule[0]);
+
+        $today = date('Y-m-d');
+        $after7days = date('Y-m-d', strtotime('+7 day'));
+        print_r(DateFunctions::dateRange($today, $after7days));
 
         return view('playground');
 

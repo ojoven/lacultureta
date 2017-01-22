@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Lib\DateFunctions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 
@@ -237,19 +238,29 @@ class Event extends Model {
 	// SORT EVENTS BY DATE (FOR TWITTER BOT)
 	public function sortEventsByDate($events, $dateTarget) {
 
+		$today = date('Y-m-d');
+		$tomorrow = date("Y-m-d", strtotime('tomorrow'));
+		$after7days = date('Y-m-d', strtotime('+7 day'));
+
 		if ($dateTarget == 'today') {
 
-			$eventsByDate[0]['date'] = 'hoy';
-			$eventsByDate[0]['events'] = $events;
-
-			return $eventsByDate;
+			$dates['title'] = 'hoy';
+			$dates['dates'] = array($today);
 
 		} elseif ($dateTarget == 'tomorrow') {
 
-			$eventsByDate[0]['date'] = 'hoy';
-			$eventsByDate[0]['events'] = $events;
+			$dates['title'] = 'mañana';
+			$dates['dates'] = array($tomorrow);
 
-			return $eventsByDate;
+		} elseif ($dateTarget == 'week') {
+
+			$dates['title'] = 'esta semana';
+			$dates['dates'] = DateFunctions::dateRange($today, $after7days);
+
+		}
+
+		$eventsByDate = array();
+		foreach ($dates['dates'] as $date) {
 
 		}
 
