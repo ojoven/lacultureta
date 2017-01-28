@@ -12,7 +12,7 @@
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-        <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/style.css?v=1" rel="stylesheet">
 
     </head>
 

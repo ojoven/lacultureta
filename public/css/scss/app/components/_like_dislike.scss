@@ -1,5 +1,5 @@
 // ==============================================
-// LIKE / DISLIKE
+// LIKE / DISLIKE (and home)
 // ==============================================
 
 .like-dislike {
@@ -7,7 +7,7 @@
 	position: relative;
 	top: 10px;
 
-	.dislike, .like {
+	.dislike, .like, .home {
 		text-decoration: none;
 		color: $black;
 	}
@@ -21,6 +21,13 @@
 	.like {
 		float: right;
 		margin-right: -10px;
+	}
+
+	.home {
+		position: absolute;
+		left: 50%;
+		@include X-50();
+		margin-left: 10px;
 	}
 
 	// ICONS
@@ -38,6 +45,12 @@
 	.dislike .icon {
 		background-image: url(../img/trash_white.png);
 		background-color: $mediumDarkGrey;
+	}
+
+	// HOME ICON
+	.home .icon {
+		background-image: url(../img/home_white.png);
+		background-color: $mediumGrey;
 	}
 
 	// LIKE ICON
