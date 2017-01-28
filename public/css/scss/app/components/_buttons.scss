@@ -42,36 +42,3 @@ $btnMainHoverBorder: $black;
   }
 
 }
-
-// VIEW MORE BUTTON
-// Used below the carousels (videos, recipes, etc.)
-.view-more-button {
-  margin-top: 20px;
-}
-
-#recipe-collections, #our-recipes {
-  .view-more-button {
-    margin-top: 0;
-  }
-}
-
-
-
-// ==============================================
-// MOBILE
-// ==============================================
-@include mobile {
-
-  .btn {
-
-    &.btn-main {
-      font-size: 90%;
-
-      &:after {
-        background: none;
-        display: none;
-      }
-    }
-  }
-
-}

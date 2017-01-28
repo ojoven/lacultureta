@@ -18,8 +18,9 @@
 		padding: 5px 20px;
 
 		> .section-title {
-			background: $blueBg;
-			color: $white;
+			background: $black;
+			color: $yellow;
+			border-bottom: 2px solid $yellow;
 			@extend .bold;
 			font-size: 14px;
 			margin: 10px 0;
@@ -100,8 +101,9 @@
 	// SAVE SETTINGS
 	.save-settings {
 		text-transform: uppercase;
-		background: $blueBg;
-		color: $white;
+		background: $yellow;
+		color: $black;
+		border: 2px solid $black;
 		@extend .bold;
 		padding: 10px 35px;
 		text-decoration: none;

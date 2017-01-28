@@ -21,15 +21,15 @@
 	left: 0;
 	height: 40px;
 	width: 100%;
+	background: $black;
 }
 
 #logo-text {
+	@extend .special;
 	font-size: 35px;
 	letter-spacing: -1px;
 	text-align: center;
-	padding: 25px 0 0;
-	font-family: 'Neucha', cursive;
-	text-transform: uppercase;
+	padding: 2px 0 0;
 	color: #fff;
 }
 
@@ -37,14 +37,14 @@
 .menu-right {
 	position: absolute;
 	right: 15px;
-	top: 24px;
+	top: 8px;
 
 	.icon-settings {
 		display: inline-block;
 		background: url(../img/settings.png) no-repeat 0 0;
 		background-size: cover;
-		width: 30px;
-		height: 30px;
+		width: 24px;
+		height: 24px;
 	}
 }
 
@@ -52,32 +52,31 @@
 .menu-left {
 	position: absolute;
 	left: 15px;
-	top: 24px;
+	top: 8px;
 
 	.icon-user {
 		display: inline-block;
 		background: url(../img/user.png) no-repeat 0 0;
 		background-size: cover;
-		width: 30px;
-		height: 30px;
+		width: 24px;
+		height: 24px;
 	}
 }
 
 // SUBHEADER
 // Includes info and link to options
 #subheader {
-
 	position: absolute;
-	top: 55px;
+	top: 50px;
 	left: 0;
 	width: 100%;
 
 	h2 {
-		@extend .regular !optional;
+		@extend .special !optional;
 		width: 100%;
 		text-align: center;
-		font-size: 14px;
-		color: #fff;
+		font-size: 24px;
+		color: $textColor;
 		margin: 10px 0;
 	}
 

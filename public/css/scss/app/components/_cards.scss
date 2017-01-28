@@ -14,8 +14,8 @@
 // No more content
 .no-cards {
 	@extend .special;
-	background: darken($blueBg, 10%);
-	color: $white;
+	background: #fac832;
+	color: $black;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -45,30 +45,6 @@
 	}
 }
 
-// LIKE/DISLIKE
-#viewport {
-
-	.dislike, .like {
-		display: none;
-		background: url(../img/green_check.png) 0 0 no-repeat #fff;
-		width: 256px;
-		height: 256px;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include X-Y-50();
-		pointer-events: none;
-		opacity: 0;
-		border-radius: 100%;
-		transform-origin: center center;
-		-webkit-transform-origin: center center;
-	}
-
-	.dislike {
-		background-image: url(../img/red_cross.png);
-	}
-}
-
 // CARDS
 // Cards container
 .cards li {
@@ -83,7 +59,7 @@
 	top: 0;
 	left: 0;
 	text-align: center;
-	border: 3px solid $lineColor;
+	border: 3px solid $yellow;
 	box-sizing: border-box;
 	cursor: default;
 	padding: 0 10px;

@@ -11,7 +11,7 @@
         <title>La Cultureta | Tu Agenda de Eventos de Donostia</title>
 
         <!-- LE STYLES -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway|Neucha" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
 
     </head>
@@ -23,7 +23,7 @@
             <div class="margin-breaker"></div>
 
             <!-- HEADER -->
-            @include('partials/header');
+            @include('partials/header')
 
             <!-- VIEWPORT -->
             <div id="viewport">
@@ -32,20 +32,23 @@
                 <ul class="cards">
 
                     <!-- WELCOME CARD -->
-                    @include('partials/welcome');
+                    @include('partials/welcome')
 
                 </ul>
 
                 <!-- NO CARDS -->
-                @include('partials/no-cards');
+                @include('partials/no-cards')
 
             </div>
 
             <!-- SINGLE EVENT POPUP -->
-            @include('partials/single-event');
+            @include('partials/single-event')
 
             <!-- SETTINGS -->
-            @include('partials/settings');
+            @include('partials/settings')
+
+            <!-- LIKE DISLIKE -->
+            @include('partials/like-dislike')
 
             <script type="text/javascript" src="/js/app.min.js"></script>
 

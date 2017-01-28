@@ -1,0 +1,31 @@
+// ==============================================
+// LIKE / DISLIKE
+// ==============================================
+
+.like-dislike {
+
+	// DISLIKE
+	.dislike {
+		float: left;
+	}
+
+	// LIKE
+	.like {
+		float: right;
+	}
+
+	// NUM
+	.num {
+		border-radius: 50%;
+		background: $red;
+		color: $white;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		font-style: normal;
+		font-size: 12px;
+		text-align: center;
+		line-height: 1.4;
+	}
+
+}
