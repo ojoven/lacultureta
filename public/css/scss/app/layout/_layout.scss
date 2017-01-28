@@ -2,15 +2,12 @@
 // LAYOUT
 // ==============================================
 
-// CONTAINER
+// Container
 .container {
-	max-width: 980px;
+	max-width: 85%;
+	width: 400px;
 	margin: 0 auto;
 	position: relative;
-
-	.margin-breaker {
-		height: 1px;
-	}
 }
 
 // MAIN HEADER
@@ -36,7 +33,7 @@
 // Menu right
 .menu-right {
 	position: absolute;
-	right: 15px;
+	right: 0;
 	top: 8px;
 
 	.icon-settings {
@@ -51,7 +48,7 @@
 // Menu left
 .menu-left {
 	position: absolute;
-	left: 15px;
+	left: 0;
 	top: 8px;
 
 	.icon-user {

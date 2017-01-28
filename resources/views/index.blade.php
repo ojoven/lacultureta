@@ -18,41 +18,35 @@
 
     <body draggable="false">
 
-        <div class="container">
+        <!-- HEADER -->
+        @include('partials/header')
 
-            <div class="margin-breaker"></div>
+        <!-- VIEWPORT -->
+        <div id="viewport">
 
-            <!-- HEADER -->
-            @include('partials/header')
+            <!-- CARDS -->
+            <ul class="cards">
 
-            <!-- VIEWPORT -->
-            <div id="viewport">
+                <!-- WELCOME CARD -->
+                @include('partials/welcome')
 
-                <!-- CARDS -->
-                <ul class="cards">
+            </ul>
 
-                    <!-- WELCOME CARD -->
-                    @include('partials/welcome')
-
-                </ul>
-
-                <!-- NO CARDS -->
-                @include('partials/no-cards')
-
-            </div>
-
-            <!-- SINGLE EVENT POPUP -->
-            @include('partials/single-event')
-
-            <!-- SETTINGS -->
-            @include('partials/settings')
-
-            <!-- LIKE DISLIKE -->
-            @include('partials/like-dislike')
-
-            <script type="text/javascript" src="/js/app.min.js"></script>
+            <!-- NO CARDS -->
+            @include('partials/no-cards')
 
         </div>
+
+        <!-- SINGLE EVENT POPUP -->
+        @include('partials/single-event')
+
+        <!-- SETTINGS -->
+        @include('partials/settings')
+
+        <!-- LIKE DISLIKE -->
+        @include('partials/like-dislike')
+
+        <script type="text/javascript" src="/js/app.min.js"></script>
 
     </body>
 

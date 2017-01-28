@@ -4,6 +4,11 @@
 
 .like-dislike {
 
+	position: relative;
+	top: 10px;
+
+	.dislike, .like { text-decoration: none; }
+
 	// DISLIKE
 	.dislike {
 		float: left;
@@ -12,19 +17,46 @@
 	// LIKE
 	.like {
 		float: right;
+		margin-right: -10px;
+	}
+
+	// ICONS
+	.icon {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 18px;
+		border-radius: 50%;
+		width: 32px;
+		height: 32px;
+		display: inline-block;
+	}
+
+	// DISLIKE ICON
+	.dislike .icon {
+		background-image: url(../img/trash_white.png);
+		background-color: $darkGrey;
+	}
+
+	// LIKE ICON
+	.like .icon {
+		background-image: url(../img/heart_white.png);
+		background-color: $red;
 	}
 
 	// NUM
 	.num {
+		background: $yellow;
 		border-radius: 50%;
-		background: $red;
-		color: $white;
+		font-size: 12px;
 		width: 18px;
 		height: 18px;
+		position: relative;
+		top: -25px;
+		right: 12px;
 		display: inline-block;
-		font-style: normal;
-		font-size: 12px;
 		text-align: center;
+		font-style: normal;
+		font-weight: bold;
 		line-height: 1.4;
 	}
 
