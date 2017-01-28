@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hoy No Hay Nada | Tu Agenda de Eventos de Donostia</title>
+        <title>La Cultureta | Tu Agenda de Eventos de Donostia</title>
 
         <link href="https://fonts.googleapis.com/css?family=Raleway|Neucha" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
@@ -20,7 +20,7 @@
             <!-- HEADER -->
             <header id="main-header">
                 <!--<div id="logo"></div>-->
-                <div id="logo-text">hoy no hay nada</div>
+                <div id="logo-text">La Cultureta</div>
 
                 <nav class="menu-right">
                     <a href="#" class="icon-header icon-settings to-settings"></a>
@@ -43,7 +43,7 @@
                 <ul class="cards">
 
                     <li class="card welcome">
-                        <div class="title">Bienvenido a<br>hoy no hay nada</div>
+                        <div class="title">Bienvenido a<br>La Cultureta</div>
                         <p>Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia.</p>
                         <p>Conciertos, exposiciones, películas, teatros...</p>
 
