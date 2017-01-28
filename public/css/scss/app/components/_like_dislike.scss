@@ -7,7 +7,10 @@
 	position: relative;
 	top: 10px;
 
-	.dislike, .like { text-decoration: none; }
+	.dislike, .like {
+		text-decoration: none;
+		color: $black;
+	}
 
 	// DISLIKE
 	.dislike {
@@ -34,7 +37,7 @@
 	// DISLIKE ICON
 	.dislike .icon {
 		background-image: url(../img/trash_white.png);
-		background-color: $darkGrey;
+		background-color: $mediumDarkGrey;
 	}
 
 	// LIKE ICON

@@ -25,8 +25,6 @@ function userInitialManagement() {
 			if (response.success) {
 				userId = response.userId;
 				Cookies.set('userId', userId);
-			} else {
-				alert('There was an error creating the user');
 			}
 
 		});

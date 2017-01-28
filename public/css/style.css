@@ -147,11 +147,11 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .popup .single-event .info a { text-decoration: none; font-weight: bold; color: #0e7d8e; }
 
 .like-dislike { position: relative; top: 10px; }
-.like-dislike .dislike, .like-dislike .like { text-decoration: none; }
+.like-dislike .dislike, .like-dislike .like { text-decoration: none; color: #212021; }
 .like-dislike .dislike { float: left; }
 .like-dislike .like { float: right; margin-right: -10px; }
 .like-dislike .icon { background-repeat: no-repeat; background-position: center; background-size: 18px; border-radius: 50%; width: 32px; height: 32px; display: inline-block; }
-.like-dislike .dislike .icon { background-image: url(../img/trash_white.png); background-color: #666; }
+.like-dislike .dislike .icon { background-image: url(../img/trash_white.png); background-color: #999; }
 .like-dislike .like .icon { background-image: url(../img/heart_white.png); background-color: #BE2625; }
 .like-dislike .num { background: #fac831; border-radius: 50%; font-size: 12px; width: 18px; height: 18px; position: relative; top: -25px; right: 12px; display: inline-block; text-align: center; font-style: normal; font-weight: bold; line-height: 1.4; }
 

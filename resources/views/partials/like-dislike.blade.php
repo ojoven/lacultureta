@@ -10,7 +10,7 @@
         <!-- LIKE -->
         <a class="like" href="#">
             <i class="icon"></i>
-            <i class="num">10</i>
+            <i class="num">0</i>
         </a>
     </div>
 </div>
