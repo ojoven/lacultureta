@@ -188,6 +188,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .settings .select-all, .settings .deselect-all { text-decoration: none; color: #212021; }
 
 #settings-popup .save-settings { text-transform: uppercase; background: #B4CDCD; color: #212021; border: 2px solid #212021; padding: 10px 35px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
+#settings-popup .close-settings { text-transform: uppercase; background: url(../img/close.png) center center no-repeat #f6f6f6; color: #212021; border: 2px solid #212021; padding: 10px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); height: 42px; background-size: 16px; width: 45px; margin-left: 100px; }
 #settings-popup .settings-error { color: #BE2625; text-align: center; font-size: 14px; font-weight: bold; margin: 27px auto; max-width: 250px; display: none; }
 
 .welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }

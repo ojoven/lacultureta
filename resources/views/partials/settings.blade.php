@@ -94,6 +94,7 @@
     </div>
 
     <a href="#" class="save-settings">Guarda</a>
+    <a href="#" class="close-settings"></a>
     <div class="settings-error">Debes seleccionar al menos una fecha, una categoría y un lugar.</div>
 
 </div>

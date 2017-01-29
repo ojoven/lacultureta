@@ -9,6 +9,7 @@ var $toSettings = $('.to-settings'),
 $(document).ready(function() {
 
 	toShowSettings();
+	toCloseSettings();
 	settingsManagement();
 });
 
@@ -108,4 +109,12 @@ function settingsManagement() {
 		closePopup();
 	});
 
+}
+
+function toCloseSettings() {
+
+	var $closeSettings = $('.close-settings');
+	$closeSettings.on('click', function() {
+		closePopup();
+	});
 }

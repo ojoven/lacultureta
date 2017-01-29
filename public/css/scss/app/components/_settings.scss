@@ -114,6 +114,25 @@
 		@include X-50();
 	}
 
+	.close-settings {
+
+		text-transform: uppercase;
+		background: url(../img/close.png) center center no-repeat $lightGrey;
+		color: $black;
+		border: 2px solid $black;
+		padding: 10px;
+		text-decoration: none;
+		position: absolute;
+		bottom: 30px;
+		left: 50%;
+		font-size: 18px;
+		@include X-50();
+		height: 42px;
+		background-size: 16px;
+		width: 45px;
+		margin-left: 100px;
+	}
+
 	.settings-error {
 		color: $red;
 		text-align: center;
