@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Rating;
 use App\Models\User;
-use App\Models\UserEvent;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -35,11 +35,11 @@ class ApiController extends Controller {
     }
 
     /** RATE: LIKE / DISLIKE EVENT **/
-    public function like() {
+    public function rate() {
 
         $params = $_POST;
-        $userEventModel = new UserEvent();
-        $userEventModel->like($params);
+        $userEventModel = new Rating();
+        $userEventModel->rate($params);
         $data['success'] = true;
 
         return response()->json($data);
@@ -49,7 +49,7 @@ class ApiController extends Controller {
     public function getratings() {
 
         $params = $_GET;
-        $userEventModel = new UserEvent();
+        $userEventModel = new Rating();
         $ratings = $userEventModel->getRatings($params);
         $data['success'] = true;
         $data['ratings'] = $ratings;
