@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="like-dislike">
+    <div class="footer">
 
         <!-- DISLIKE -->
         <a class="dislike" href="#">

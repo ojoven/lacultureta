@@ -34,11 +34,5 @@ function userInitialManagement() {
 
 function toShowUser() {
 
-	// Show settings popup
-	$toSettings.on('click', function() {
-
-		showPopup($("#settings-popup"));
-		return false;
-	});
 
 }

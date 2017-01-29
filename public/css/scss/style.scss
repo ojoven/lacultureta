@@ -16,6 +16,7 @@
 
 /** LAYOUT **/
 @import "app/layout/layout";
+@import "app/layout/footer";
 @import "app/layout/popup";
 
 /** HELPERS **/
@@ -27,7 +28,6 @@
 @import "app/components/buttons";
 @import "app/components/cards";
 @import "app/components/icons";
-@import "app/components/like_dislike";
 @import "app/components/links";
 @import "app/components/other_components";
 @import "app/components/resume";

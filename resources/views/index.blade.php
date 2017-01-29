@@ -43,8 +43,8 @@
         <!-- SETTINGS -->
         @include('partials/settings')
 
-        <!-- LIKE DISLIKE -->
-        @include('partials/like-dislike')
+        <!-- FOOTER -->
+        @include('partials/footer')
 
         <script type="text/javascript" src="/js/app.min.js"></script>
 

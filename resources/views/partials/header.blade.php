@@ -8,10 +8,6 @@
             <a href="#" class="icon-header icon-settings to-settings"></a>
         </nav>
 
-        <nav class="menu-left">
-            <a href="#" class="icon-header icon-user to-user"></a>
-        </nav>
-
     </div>
 
 </header>
