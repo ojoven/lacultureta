@@ -14,24 +14,24 @@ class Rating extends Model {
 		// If already rated
 		if ($previousRating = $this->hasTheUserRatedPreviouslyTheEvent($params['userId'], $params['eventId'])) {
 
-			// We update the rate parameter and save
+			// We update the previous rating
 			$previousRating->rating = $params['rating'];
 			$previousRating->save();
 		} else {
 
-			// If not previous, we create a new row and save
 			$rating = new self();
 			$rating->user_id = $params['userId'];
 			$rating->event_id = $params['eventId'];
 			$rating->rating = $params['rating'];
 			$rating->save();
+
 		}
 
 	}
 
 	public function hasTheUserRatedPreviouslyTheEvent($userId, $eventId) {
 
-		return self::where('user_id', '=', $userId)->where('event_id', '=', $eventId)->get()->toArray();
+		return self::where('user_id', '=', $userId)->where('event_id', '=', $eventId)->first();
 	}
 
 	/** GET RATINGS **/

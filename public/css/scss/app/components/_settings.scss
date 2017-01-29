@@ -19,8 +19,8 @@
 
 		> .section-title {
 			background: $black;
-			color: $yellow;
-			border-bottom: 2px solid $yellow;
+			color: $auxiliarColor;
+			border-bottom: 2px solid $auxiliarColor;
 			@extend .bold;
 			font-size: 14px;
 			margin: 10px 0;
@@ -101,7 +101,7 @@
 	// SAVE SETTINGS
 	.save-settings {
 		text-transform: uppercase;
-		background: $yellow;
+		background: $auxiliarColor;
 		color: $black;
 		border: 2px solid $black;
 		@extend .bold;

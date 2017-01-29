@@ -41,17 +41,15 @@ function userInitialManagement() {
 		data.user_id = userId;
 		$.get(url, data, function(response) {
 
-			console.log('ratings', response);
-
 			if (response.success) {
 				Cookies.set('userRatings', response.ratings);
-
-				var test = Cookies.get('userRatings');
-				console.log(JSON.parse(test));
+				updateNumberLikesDislikes();
 			}
 
 		});
 
+	} else {
+		updateNumberLikesDislikes();
 	}
 
 }
@@ -86,8 +84,7 @@ function userRatingsManagement() {
 
 function addRatingToCookies(eventId, rating) {
 
-	var userRatingsJson = Cookies.get('userRatings');
-	var userRatings = JSON.parse(userRatingsJson);
+	var userRatings = getUserRatingsFromCookies();
 	var alreadyRated = false;
 
 	// We loop over the user ratings
@@ -108,5 +105,35 @@ function addRatingToCookies(eventId, rating) {
 
 	// We set back the user ratings
 	Cookies.set('userRatings', userRatings);
+	updateNumberLikesDislikes();
 
+}
+
+function updateNumberLikesDislikes() {
+
+	var userRatings = getUserRatingsFromCookies();
+	var likes = 0;
+	var dislikes = 0;
+	userRatings.forEach(function(ratingObject) {
+		if (ratingObject.rating == 1) {
+			likes++;
+		} else {
+			dislikes++;
+		}
+	});
+
+	// Now we update the numbers of the HTML
+	var $dislikesNum = $('.dislike .num');
+	var $likesNum = $('.like .num');
+
+	$dislikesNum.html(dislikes);
+	$likesNum.html(likes);
+
+}
+
+function getUserRatingsFromCookies() {
+
+	var userRatingsJson = Cookies.get('userRatings');
+	var userRatings = JSON.parse(userRatingsJson);
+	return userRatings;
 }
