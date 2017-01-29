@@ -8,7 +8,7 @@ var userId;
 $(document).ready(function() {
 
 	userInitialManagement();
-	userLikeDislikeManagement();
+	userRatingsManagement();
 });
 
 // Initial Management (User ID)
@@ -24,24 +24,36 @@ function userInitialManagement() {
 
 			if (response.success) {
 				userId = response.userId;
-				Cookies.set('userId', userId);
+				var inTenYears = 365 * 10;
+				Cookies.set('userId', userId, { expires: inTenYears });
 			}
 
 		});
 	}
 
-	// USER LIKES
-	userLikes = Cookies.get('userLikes');
-	if (!userLikes) {
+	// USER RATINGS
+	var userRatingsJson = Cookies.get('userRatings');
+	console.log(userId);
+	if (!userRatingsJson) {
+
+		var url = '/api/getratings';
+		var data = {};
+		data.user_id = userId;
+		$.get(url, data, function(response) {
+
+			if (response.success) {
+				var userRatingsJson = JSON.stringify(response.ratings);
+				Cookies.set('userRatings', userRatingsJson);
+			}
+
+		});
 
 	}
 
-
-	// USER DISLIKES
 }
 
-// USER LIKE / DISLIKE
-function userLikeDislikeManagement() {
+// USER RATINGS: LIKE / DISLIKE
+function userRatingsManagement() {
 
 	var $viewport = jQuery('#viewport');
 	$viewport.on('out', function (e, target, direction) {

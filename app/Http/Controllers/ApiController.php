@@ -34,13 +34,25 @@ class ApiController extends Controller {
         return response()->json($data);
     }
 
-    /** LIKE / DISLIKE EVENT **/
+    /** RATE: LIKE / DISLIKE EVENT **/
     public function like() {
 
         $params = $_POST;
         $userEventModel = new UserEvent();
         $userEventModel->like($params);
         $data['success'] = true;
+
+        return response()->json($data);
+    }
+
+    /** GET RATINGS **/
+    public function getratings() {
+
+        $params = $_GET;
+        $userEventModel = new UserEvent();
+        $ratings = $userEventModel->getRatings($params);
+        $data['success'] = true;
+        $data['ratings'] = $ratings;
 
         return response()->json($data);
     }

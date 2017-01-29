@@ -5,13 +5,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
 
-	protected $fillable = ['userId'];
+	protected $fillable = ['user_id'];
 
 	public function createUser() {
 
 		$userId = $this->_generateUniqueUserId();
 		$user = new self();
-		$user->userId = $userId;
+		$user->user_id = $userId;
 		$user->save();
 
 		return $userId;

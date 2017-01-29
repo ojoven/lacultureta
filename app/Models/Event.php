@@ -21,16 +21,22 @@ class Event extends Model {
 
 		$page = $params['page'];
 		$offset = ($page - 1) * $this->numEventsPage;
-		$today = date('Y-m-d');
 
-		$events = self::whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today)->orderBy('date_start', 'asc')->get()->toArray();
-
+		$events = $this->getAllFutureEvents();
 		$events = $this->filterEvents($events, $params);
 		$events = $this->sortEvents($events);
 		$events = array_slice($events, $offset, $this->numEventsPage);
 		$events = $this->parseEventsForRender($events);
 		return $events;
 
+	}
+
+	// Get all future events
+	public function getAllFutureEvents() {
+
+		$today = date('Y-m-d');
+		$events = self::whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today)->orderBy('date_start', 'asc')->get()->toArray();
+		return $events;
 	}
 
 	// FILTERS
