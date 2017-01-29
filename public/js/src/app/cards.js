@@ -34,8 +34,6 @@ function loadCards(category, place, date, page) {
 	data.date = date;
 	data.page = page;
 
-	console.log(data);
-
 	$.get(url, data, function(response) {
 
 		// If all events have been loaded, we won't load more
@@ -116,8 +114,6 @@ function cardsAfterThrowManagement() {
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
-
-		console.log(category, place, date, page);
 
 		// We load new page
 		if (numCardsInDeck < 4 && !allEvents) {

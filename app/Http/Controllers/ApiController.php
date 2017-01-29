@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Models\UserEvent;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -11,7 +12,7 @@ use App\Http\Requests;
 
 class ApiController extends Controller {
 
-    // GET CARDS
+    /** GET CARDS **/
     public function getcards() {
 
         $params = $_GET;
@@ -22,12 +23,24 @@ class ApiController extends Controller {
         return view('cards', array('events' => $events));
     }
 
+    /** CREATE USER **/
     public function createuser() {
 
         $userModel = new User();
         $userId = $userModel->createUser();
         $data['success'] = true;
         $data['userId'] = $userId;
+
+        return response()->json($data);
+    }
+
+    /** LIKE / DISLIKE EVENT **/
+    public function like() {
+
+        $params = $_POST;
+        $userEventModel = new UserEvent();
+        $userEventModel->like($params);
+        $data['success'] = true;
 
         return response()->json($data);
     }

@@ -10,7 +10,6 @@
         <!-- HOME -->
         <a class="home" href="#">
             <i class="icon"></i>
-            <i class="num">10</i>
         </a>
 
         <!-- LIKE -->

@@ -2,17 +2,16 @@
 // Functions related to the user
 
 // VARS
-var $toUser = $('.to-user');
-
 var userId;
 
 // LOGIC
 $(document).ready(function() {
 
 	userInitialManagement();
-	toShowUser();
+	userLikeDislikeManagement();
 });
 
+// Initial Management (User ID)
 function userInitialManagement() {
 
 	userId = Cookies.get('userId');
@@ -29,10 +28,28 @@ function userInitialManagement() {
 
 		});
 	}
-
 }
 
-function toShowUser() {
+// USER LIKE / DISLIKE
+function userLikeDislikeManagement() {
 
+	var $viewport = jQuery('#viewport');
+	$viewport.on('out', function (e, target, direction) {
+
+		var data = {};
+		data.like = direction;
+		data.userId = userId;
+		data.eventId = jQuery(target).data('event');
+
+		// If the card is an event
+		if (data.eventId) {
+
+			var url = '/api/like';
+			$.post(url, data, function(response) {
+				console.log(response);
+			});
+		}
+
+	});
 
 }

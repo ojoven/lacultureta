@@ -54,6 +54,34 @@ INSERT INTO `events` VALUES (1,'128133','Donostia.eus','Concierto: Kalakan','htt
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_events`
+--
+
+DROP TABLE IF EXISTS `user_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(13) COLLATE utf8_bin NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `like` tinyint(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_events`
+--
+
+LOCK TABLES `user_events` WRITE;
+/*!40000 ALTER TABLE `user_events` DISABLE KEYS */;
+INSERT INTO `user_events` VALUES (1,'588dbf2577dc5',39,1,'2017-01-29 10:16:17','2017-01-29 10:16:17');
+/*!40000 ALTER TABLE `user_events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -66,7 +94,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,35 +103,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'587bd1e3e969a','2017-01-15 19:47:49','2017-01-15 19:47:49'),(2,'587bd20ba3126','2017-01-15 19:48:27','2017-01-15 19:48:27'),(3,'587e92212cbdc','2017-01-17 21:52:33','2017-01-17 21:52:33'),(4,'58838e9644c75','2017-01-21 16:38:46','2017-01-21 16:38:46'),(5,'588495f8a2e1c','2017-01-22 11:22:32','2017-01-22 11:22:32'),(6,'5884e3d3e4345','2017-01-22 16:54:43','2017-01-22 16:54:43'),(7,'588cd70bf063d','2017-01-28 17:38:19','2017-01-28 17:38:19');
+INSERT INTO `users` VALUES (1,'587bd1e3e969a','2017-01-15 19:47:49','2017-01-15 19:47:49'),(2,'587bd20ba3126','2017-01-15 19:48:27','2017-01-15 19:48:27'),(3,'587e92212cbdc','2017-01-17 21:52:33','2017-01-17 21:52:33'),(4,'58838e9644c75','2017-01-21 16:38:46','2017-01-21 16:38:46'),(5,'588495f8a2e1c','2017-01-22 11:22:32','2017-01-22 11:22:32'),(6,'5884e3d3e4345','2017-01-22 16:54:43','2017-01-22 16:54:43'),(7,'588cd70bf063d','2017-01-28 17:38:19','2017-01-28 17:38:19'),(8,'588db8fc978d4','2017-01-29 09:42:20','2017-01-29 09:42:20'),(9,'588dbf2577dc5','2017-01-29 10:08:37','2017-01-29 10:08:37');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users_events`
---
-
-DROP TABLE IF EXISTS `users_events`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_events` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `like` tinyint(1) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users_events`
---
-
-LOCK TABLES `users_events` WRITE;
-/*!40000 ALTER TABLE `users_events` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -115,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-28 18:40:58
+-- Dump completed on 2017-01-29 11:16:45

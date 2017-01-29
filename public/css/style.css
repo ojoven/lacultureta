@@ -90,7 +90,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .footer .dislike, .footer .like, .footer .home { text-decoration: none; color: #212021; }
 .footer .dislike { float: left; }
 .footer .like { float: right; margin-right: -10px; }
-.footer .home { position: absolute; left: 50%; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); margin-left: 10px; }
+.footer .home { position: absolute; left: 50%; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
 .footer .icon { background-repeat: no-repeat; background-position: center; background-size: 18px; border-radius: 50%; width: 32px; height: 32px; display: inline-block; }
 .footer .dislike .icon { background-image: url(../img/trash_white.png); background-color: #999; }
 .footer .home .icon { background-image: url(../img/home_white.png); background-color: #e6e6e6; }
