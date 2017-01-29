@@ -14,6 +14,7 @@ $(document).ready(function() {
 // Initial Management (User ID)
 function userInitialManagement() {
 
+	// USER ID
 	userId = Cookies.get('userId');
 	if (!userId) {
 		// We generate the user ID in the backend and save it to a cookie
@@ -28,6 +29,15 @@ function userInitialManagement() {
 
 		});
 	}
+
+	// USER LIKES
+	userLikes = Cookies.get('userLikes');
+	if (!userLikes) {
+
+	}
+
+
+	// USER DISLIKES
 }
 
 // USER LIKE / DISLIKE
@@ -44,10 +54,14 @@ function userLikeDislikeManagement() {
 		// If the card is an event
 		if (data.eventId) {
 
+			// We save the like / dislike in DB
 			var url = '/api/like';
 			$.post(url, data, function(response) {
 				console.log(response);
 			});
+
+			// We save the like / dislike in cookies
+
 		}
 
 	});
