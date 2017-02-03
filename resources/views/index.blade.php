@@ -18,6 +18,9 @@
 
     <body draggable="false">
 
+        <!-- GOOGLE ANALYTICS -->
+        @include('partials/ga')
+
         <!-- HEADER -->
         @include('partials/header')
 
