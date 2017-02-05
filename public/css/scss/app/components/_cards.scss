@@ -10,8 +10,9 @@
 	height: 410px;
 	position: relative;
 
+	// Arrow
 	&:after {
-		top: 98%;
+		top: 97%;
 		left: 50%;
 		border: solid transparent;
 		content: " ";
@@ -23,6 +24,11 @@
 		border-width: 14px;
 		margin-left: -14px;
 	}
+
+	// The arrow will be placed depending on the viewport class
+	&.home:after { left: 50%; }
+	&.like:after { left: 92.5%; }
+	&.dislike:after { left: 5%; }
 }
 
 // No more content
@@ -35,7 +41,7 @@
 	top: 50%;
 	@include X-Y-50();
 	z-index: 0;
-	width: 90%;
+	width: 100%;
 	text-align: center;
 	height: 390px;
 	padding: 145px 20px;

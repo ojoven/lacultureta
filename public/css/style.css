@@ -124,9 +124,12 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .btn.btn-main:hover:after, .btn.btn-main:focus:after { left: 12px; }
 
 #viewport { width: 400px; max-width: 85%; margin: 90px auto 0; height: 410px; position: relative; }
-#viewport:after { top: 98%; left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-top-color: #B4CDCD; border-width: 14px; margin-left: -14px; }
+#viewport:after { top: 97%; left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-top-color: #B4CDCD; border-width: 14px; margin-left: -14px; }
+#viewport.home:after { left: 50%; }
+#viewport.like:after { left: 92.5%; }
+#viewport.dislike:after { left: 5%; }
 
-.no-cards { background: #B4CDCD; color: #212021; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 0; width: 90%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
+.no-cards { background: #B4CDCD; color: #212021; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 0; width: 100%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
 .no-cards .title { text-transform: uppercase; font-size: 36px; margin-bottom: 10px; display: block; }
 .no-cards .message { font-size: 22px; }
 .no-cards .icon-settings { display: block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 30px; height: 30px; margin: 10px auto; }
@@ -210,8 +213,4 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
   .node-type-recipes #recipe-details-full .recipe-description-and-options ul { display: none; }
   .node-type-recipes #collections, .node-type-recipes #featured-in, .node-type-recipes #our-recipes { display: none; } }
 /** SHAME **/
-#viewport li.clubs, #viewport li.spades { color: #373737; }
-
-#viewport li.diamonds, #viewport li.hearts { color: #ED5D52; }
-
 /** MEDIA QUERIES **/

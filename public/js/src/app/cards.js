@@ -140,9 +140,11 @@ function toChangeView() {
 	$toChangeView.on('click', function() {
 
 		var $cards = $('.cards');
+		var $viewport = $('#viewport');
 
 		var view = $(this).data('view'); // What view are we going to?
 		currentView = $(this).data('view'); // This variable will be used for loading paginated cards (if we're in home)
+		$viewport.removeClass().addClass(view); // We add the class to viewport, too
 		$cards.html(''); // We clean the card list
 
 		// If we return back to home, we load the previous set of cards from home
