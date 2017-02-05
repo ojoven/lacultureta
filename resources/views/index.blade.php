@@ -35,6 +35,9 @@
 
             </ul>
 
+            <!-- LOADING -->
+            @include('partials/loading')
+
             <!-- NO CARDS -->
             @include('partials/no-cards')
 

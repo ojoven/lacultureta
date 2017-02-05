@@ -57,6 +57,8 @@ function settingsManagement() {
 	var $settingsError = $('.settings-error');
 	$saveSettings.on('click', function() {
 
+		activateLoading();
+
 		// Make a new search with the parameters
 
 		// Remove all current cards

@@ -31,6 +31,25 @@
 	&.dislike:after { left: 5%; }
 }
 
+// Loading
+.loading {
+	display: none;
+	@extend .special;
+	background: url(../img/ajax-loader.gif) no-repeat center center $auxiliarColor;
+	color: $black;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include X-Y-50();
+	width: 100%;
+	text-align: center;
+	height: 390px;
+	padding: 145px 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	z-index: 0;
+}
+
 // No more content
 .no-cards {
 	@extend .special;

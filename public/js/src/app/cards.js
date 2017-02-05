@@ -69,6 +69,8 @@ function activateCards() {
 		});
 	});
 
+	deactivateLoading();
+
 }
 
 function prepareSingleEventPopup($cardSelector) {
@@ -171,6 +173,8 @@ function toChangeView() {
 
 function loadCardsByEventIds(eventIds) {
 
+	activateLoading();
+
 	var url = '/api/getcardsbyids';
 	var data = {};
 	data.eventIds = eventIds;
@@ -186,6 +190,8 @@ function loadCardsByEventIds(eventIds) {
 }
 
 function loadCardsLikeDislike(likeDislike) {
+
+	activateLoading();
 
 	var url = '/api/getcardsuser';
 	var data = {};
@@ -214,4 +220,23 @@ function getHomeCardEventIds() {
 	});
 
 	return eventIds;
+}
+
+function activateLoading() {
+
+	var $loading = $('.loading');
+	var $noCards = $('.no-cards');
+
+	$loading.show();
+	$noCards.hide(); // We hide this for some issues with z-index
+
+}
+
+function deactivateLoading() {
+
+	var $loading = $('.loading');
+	var $noCards = $('.no-cards');
+
+	$loading.hide();
+	$noCards.show(); // We hide this for some issues with z-index
 }

@@ -12,7 +12,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, #settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
-.special, #logo-text, #subheader h2, .no-cards, .resume-resume .dates > li > .title { font-family: 'Amatic SC', cursive; font-weight: normal; }
+.special, #logo-text, #subheader h2, .loading, .no-cards, .resume-resume .dates > li > .title { font-family: 'Amatic SC', cursive; font-weight: normal; }
 
 @-moz-keyframes scale { 0% { -moz-transform: scale(0, 0); -o-transform: scale(0, 0); -ms-transform: scale(0, 0); -webkit-transform: scale(0, 0); transform: scale(0, 0); }
   70% { -moz-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transform: scale(1.1, 1.1); }
@@ -129,6 +129,8 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 #viewport.home:after { left: 50%; }
 #viewport.like:after { left: 92.5%; }
 #viewport.dislike:after { left: 5%; }
+
+.loading { display: none; background: url(../img/ajax-loader.gif) no-repeat center center #B4CDCD; color: #212021; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 100%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; z-index: 0; }
 
 .no-cards { background: #B4CDCD; color: #212021; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 0; width: 100%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
 .no-cards .title { text-transform: uppercase; font-size: 36px; margin-bottom: 10px; display: block; }
