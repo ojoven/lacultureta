@@ -18,6 +18,4 @@
         <div class="swipe-message">Desliza a la derecha si te interesa el evento y quieres guardarlo</div>
     </div>
 
-    <div class="warning-tmp">(proyecto en construcción)</div>
-
 </li>

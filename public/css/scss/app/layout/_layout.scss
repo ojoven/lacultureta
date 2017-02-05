@@ -28,6 +28,20 @@
 	text-align: center;
 	padding: 2px 0 0;
 	color: #fff;
+	position: relative;
+
+	/**
+	&:before {
+		content: ' ';
+		position: absolute;
+		left: -40px;
+		display: inline-block;
+		background: url(../img/logo_woman.png) no-repeat 0 0;
+		width: 40px;
+		height: 40px;
+		background-size: contain;
+	}
+	**/
 }
 
 // Menu right

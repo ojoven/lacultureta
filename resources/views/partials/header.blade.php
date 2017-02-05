@@ -13,5 +13,5 @@
 </header>
 
 <div id="subheader">
-    <h2>No te pierdas los mejores eventos de Donostia</h2>
+    <h2>La agenda de eventos culturales de Donostia</h2>
 </div>

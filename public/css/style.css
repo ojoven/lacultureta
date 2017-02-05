@@ -75,7 +75,18 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 #main-header { position: absolute; top: 0; left: 0; height: 40px; width: 100%; background: #212021; }
 
-#logo-text { font-size: 35px; letter-spacing: -1px; text-align: center; padding: 2px 0 0; color: #fff; }
+#logo-text { font-size: 35px; letter-spacing: -1px; text-align: center; padding: 2px 0 0; color: #fff; position: relative; /**
+&:before {
+	content: ' ';
+	position: absolute;
+	left: -40px;
+	display: inline-block;
+	background: url(../img/logo_woman.png) no-repeat 0 0;
+	width: 40px;
+	height: 40px;
+	background-size: contain;
+}
+**/ }
 
 .menu-right { position: absolute; right: 0; top: 8px; }
 .menu-right .icon-settings { display: inline-block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
