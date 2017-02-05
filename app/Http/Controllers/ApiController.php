@@ -34,6 +34,17 @@ class ApiController extends Controller {
         return view('cards', array('events' => $events));
     }
 
+    /** GET CARDS BY IDS **/
+    public function getcardsbyids() {
+
+        $params = $_GET;
+
+        $eventModel = new Event();
+        $events = $eventModel->getEventsByIds($params['eventIds']);
+
+        return view('cards', array('events' => $events));
+    }
+
     /** CREATE USER **/
     public function createuser() {
 

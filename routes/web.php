@@ -15,6 +15,7 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/api/getcards', 'ApiController@getcards');
 Route::get('/api/getcardsuser', 'ApiController@getcardsuser');
+Route::get('/api/getcardsbyids', 'ApiController@getcardsbyids');
 Route::post('/api/createuser', 'ApiController@createuser');
 Route::post('/api/rate', 'ApiController@rate');
 Route::get('/api/getratings', 'ApiController@getratings');

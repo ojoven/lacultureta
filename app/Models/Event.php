@@ -315,4 +315,13 @@ class Event extends Model {
 		return $events;
 	}
 
+	/** EVENTS BY IDs **/
+	public function getEventsByIds($eventIds) {
+
+		$events = self::whereIn('id', $eventIds)->get()->toArray();
+		$events = $this->sortEvents($events);
+		$events = $this->parseEventsForRender($events);
+		return $events;
+	}
+
 }
