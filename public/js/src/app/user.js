@@ -14,6 +14,24 @@ $(document).ready(function() {
 // Initial Management (User ID)
 function userInitialManagement() {
 
+	// When the user is set, we get the ratings
+	$(document).on('userSet', function() {
+
+		// USER RATINGS
+		var url = '/api/getratings';
+		var data = {};
+		data.user_id = Cookies.get('userId');
+		console.log(data);
+		$.get(url, data, function(response) {
+
+			if (response.success) {
+				Cookies.set('userRatings', response.ratings);
+				updateNumberLikesDislikes();
+			}
+
+		});
+	});
+
 	// USER ID
 	userId = Cookies.get('userId');
 	if (!userId) {
@@ -26,30 +44,14 @@ function userInitialManagement() {
 				userId = response.userId;
 				var inTenYears = 365 * 10;
 				Cookies.set('userId', userId, { expires: inTenYears });
+
+				// We throw an event so the system knows that the user is already set
+				$(document).trigger('userSet');
 			}
 
 		});
-	}
-
-	// USER RATINGS
-	var userRatingsJson = Cookies.get('userRatings');
-	//if (!userRatingsJson) {
-	if (1) {
-
-		var url = '/api/getratings';
-		var data = {};
-		data.user_id = userId;
-		$.get(url, data, function(response) {
-
-			if (response.success) {
-				Cookies.set('userRatings', response.ratings);
-				updateNumberLikesDislikes();
-			}
-
-		});
-
 	} else {
-		updateNumberLikesDislikes();
+		$(document).trigger('userSet');
 	}
 
 }
