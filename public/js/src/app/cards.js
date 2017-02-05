@@ -113,6 +113,7 @@ function generateCards() {
 
 }
 
+// THROW CARDS
 function cardsAfterThrowManagement() {
 
 	var $viewport = $("#viewport");

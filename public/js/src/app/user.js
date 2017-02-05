@@ -109,6 +109,12 @@ function addRatingToCookies(eventId, rating) {
 	Cookies.set('userRatings', userRatings);
 	updateNumberLikesDislikes();
 
+	// We add animation
+	var $toBeAnimated = (rating == 1) ? $('.like') : $('.dislike');
+	$toBeAnimated.addClass('animate');
+	setTimeout(function() {
+		$toBeAnimated.removeClass('animate'); // We remove the animate class, so the effect works the next time
+	}, 1100);
 }
 
 function updateNumberLikesDislikes() {

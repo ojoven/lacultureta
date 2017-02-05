@@ -2,6 +2,7 @@
 $classTitle = (strlen($event['title']) > 50) ? ' little' : '';
 $classDay = (strlen($event['date_render']) > 30) ? ' little' : '';
 $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
+$numLikes = count($event['likes']);
 ?>
 
 <li class="card" data-event="<?php echo $event['id']; ?>">
@@ -21,10 +22,13 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
         </div>
         <?php } ?>
     </div>
-    <?php if ($event['likes']) { ?>
-        <div class="likes">A <?php echo count($event['likes']); ?> donostiarras les gusta esto</div>
+    <?php if ($numLikes > 0) { ?>
+        <?php if ($numLikes > 1) { ?>
+            <div class="likes">A <?php echo count($event['likes']); ?> donostiarras les gusta</div>
+        <?php } else { ?>
+            <div class="likes">A <?php echo count($event['likes']); ?> donostiarra le gusta</div>
+        <?php } ?>
     <?php } ?>
-    <div class="likes"></div>
     <div class="description hidden"><?php echo $event['description']; ?></div>
     <div class="info hidden">
         <?php echo $event['info']; ?>

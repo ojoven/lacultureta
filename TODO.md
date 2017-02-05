@@ -3,9 +3,10 @@ TODO
 
 v0.9 (First Minimum Lovable Version)
 * Create Twitter bot that sends tweets daily
-* Fix JS issue with recently created users
-* Add little animation on like / dislike low icons
 * Add young woman face silhouette to logo
+* Add loading
+* ~~Fix JS issue with recently created users~~
+* ~~Add little animation on like / dislike low icons~~
 * ~~Create like and dislike screens~~
 * ~~Create profile and like / dislike functionality~~
 * ~~Add buttons (not just swipe) Like / Dislike~~

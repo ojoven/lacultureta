@@ -75,4 +75,13 @@
 		line-height: 1.4;
 	}
 
+	// ANIMATIONS
+	.dislike, .like {
+		&.animate {
+			.num {
+				@include animation(0, 1s, bounce);
+			}
+		}
+	}
+
 }
