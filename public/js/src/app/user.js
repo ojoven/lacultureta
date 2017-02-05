@@ -73,7 +73,7 @@ function userRatingsManagement() {
 			// We save the like / dislike in DB
 			var url = '/api/rate';
 			$.post(url, data, function(response) {
-				console.log(response);
+				//console.log(response);
 			});
 
 			// We save the like / dislike in cookies

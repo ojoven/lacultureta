@@ -228,13 +228,15 @@ class Event extends Model {
 
 	public function parseEventsForRender($events) {
 
+		$ratingModel = new Rating();
+
 		foreach ($events as &$event) {
 
 			$event['date_render'] = RenderFunctions::parseDateForRender($event['date_start'], $event['date_end']);
 			$event['hour_render'] = RenderFunctions::parseHourForRender($event['hour']);
 			$event['price_render'] = RenderFunctions::parsePriceForRender($event['price']);
 			$event['categories_render'] = RenderFunctions::parseCategoriesForRender($event['categories']);
-
+			$event['likes'] = $ratingModel->getLikesEvent($event['id']);
 		}
 
 		return $events;

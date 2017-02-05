@@ -144,6 +144,8 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li .date .day, .cards li .date .hour { display: block; font-size: 20px; text-align: center; }
 .cards li .date .day.little, .cards li .date .hour.little { font-size: 16px; }
 .cards li .price { margin: 10px 0; }
+.cards li .likes { position: absolute; left: 10px; bottom: 10px; font-size: 12px; }
+.cards li .likes:before { content: ' '; display: inline-block; width: 14px; height: 14px; background: url(../img/heart_red.png) no-repeat 0 0; background-size: cover; position: relative; top: 4px; margin-right: 5px; }
 .cards li .categories { position: absolute; right: 10px; bottom: 10px; }
 .cards li .categories .category { width: 25px; height: 25px; background-position: center center; background-size: contain; background-repeat: no-repeat; display: inline-block; }
 .cards li .to-see-more { margin: 10px 0; text-align: center; }

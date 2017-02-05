@@ -21,6 +21,10 @@ $classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
         </div>
         <?php } ?>
     </div>
+    <?php if ($event['likes']) { ?>
+        <div class="likes">A <?php echo count($event['likes']); ?> donostiarras les gusta esto</div>
+    <?php } ?>
+    <div class="likes"></div>
     <div class="description hidden"><?php echo $event['description']; ?></div>
     <div class="info hidden">
         <?php echo $event['info']; ?>

@@ -82,4 +82,11 @@ class Rating extends Model {
 		return $parsedRatings;
 	}
 
+	// GET LIKES
+	public function getLikesEvent($eventId) {
+
+		return self::where('rating', '=', '1')->where('event_id', '=', $eventId)->get()->toArray();
+
+	}
+
 }

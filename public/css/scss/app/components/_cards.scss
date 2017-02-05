@@ -143,8 +143,23 @@
 		margin: 10px 0;
 	}
 
-	.place {
+	.likes {
+		position: absolute;
+		left: 10px;
+		bottom: 10px;
+		font-size: 12px;
 
+		&:before {
+			content: ' ';
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background: url(../img/heart_red.png) no-repeat 0 0;
+			background-size: cover;
+			position: relative;
+			top: 4px;
+			margin-right: 5px;
+		}
 	}
 
 	.categories {
