@@ -35,7 +35,7 @@ class Rating extends Model {
 	}
 
 	/** GET RATINGS **/
-	public function getRatings($params) {
+	public function getRatings($params, $rating = false) {
 
 		// We only will serve ratings of events that are currently available (no past events)
 		$eventModel = new Event();
@@ -43,7 +43,12 @@ class Rating extends Model {
 		$eventIds = Functions::getArrayWithIndexValues($events, 'id');
 
 		// Get events rated by user
-		$ratings = self::where('user_id', '=', $params['user_id'])->get()->toArray();
+		// If rating, we will filter by rating, too
+		if ($rating) {
+			$ratings = self::where('user_id', '=', $params['user_id'])->where('rating', '=', $rating)->get()->toArray();
+		} else {
+			$ratings = self::where('user_id', '=', $params['user_id'])->get()->toArray();
+		}
 
 		// Now we filter the events with the currently available
 		$finalRatings = array();

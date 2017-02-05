@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Lib\DateFunctions;
+use App\Lib\Functions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 
@@ -292,6 +293,26 @@ class Event extends Model {
 		}
 
 		return $parsedEventsByDate;
+	}
+
+	/** GET EVENTS USER **/
+	public function getEventsUser($params) {
+
+		$ratingModel = new Rating();
+		$ratings = $ratingModel->getRatings($params, $params['like_dislike']);
+		$events = $this->getEventsFromRatings($ratings);
+		$events = $this->sortEvents($events);
+		$events = $this->parseEventsForRender($events);
+		return $events;
+
+	}
+
+	// EVENTS FROM RATINGS
+	public function getEventsFromRatings($ratings) {
+
+		$eventIds = Functions::getArrayWithIndexValues($ratings, 'eventId');
+		$events = self::whereIn('id', $eventIds)->get()->toArray();
+		return $events;
 	}
 
 }
