@@ -13,6 +13,7 @@ $viewportHeightIphone4:350px;
   #viewport { margin-top: 80px; height: $viewportHeightIphone4; }
   .cards li { height: $viewportHeightIphone4 - 10; }
   .no-cards { height: $viewportHeightIphone4 - 20; }
+  .loading { height: $viewportHeightIphone4 - 20; }
   .cards li .title { font-size: 20px; margin: 15px 0 10px; }
   .cards li .image { width: 110px; height: 110px; }
   .popup .single-event .image { height: 150px; }

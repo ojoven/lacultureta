@@ -235,6 +235,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
   #viewport { margin-top: 80px; height: 350px; }
   .cards li { height: 340px; }
   .no-cards { height: 330px; }
+  .loading { height: 330px; }
   .cards li .title { font-size: 20px; margin: 15px 0 10px; }
   .cards li .image { width: 110px; height: 110px; }
   .popup .single-event .image { height: 150px; } }
