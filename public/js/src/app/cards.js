@@ -4,6 +4,7 @@
 // VARS
 var stack,
 	cards = [],
+	cardList = [],
 	tresholdThrowCard = 140,
 	category = ['all'],
 	place = ['all'],
@@ -40,12 +41,15 @@ function loadCards(category, place, date, page) {
 	$.get(url, data, function(response) {
 
 		// If all events have been loaded, we won't load more
-		if (response == '') {
+		if (response.html == '') {
 			allEvents = true;
 		}
 
+		// Save the cards to JS
+		cardList = cardList.concat(response.cards);
+
 		// Append the cards to the HTML
-		$(".cards").append(response);
+		$(".cards").append(response.html);
 		activateCards();
 
 	});
@@ -76,11 +80,23 @@ function activateCards() {
 function prepareSingleEventPopup($cardSelector) {
 
 	var $singleEvent = $(".single-event");
+	var eventId = $cardSelector.data('event');
 
-	$singleEvent.find('.title').html($cardSelector.find('.title').html()); // Title
-	$singleEvent.find('.image').attr('style', 'background-image:url(' + $cardSelector.find('.image').data('image') + ')'); // Image
-	$singleEvent.find('.description').html($cardSelector.find('.description').html()); // Description
-	$singleEvent.find('.info').html($cardSelector.find('.info').html()); // Description
+	// Get the event from the JS
+	var cardToShow = false;
+	for (var i = 0; i < cardList.length; i++) {
+		if (cardList[i].id == eventId) {
+			cardToShow = cardList[i];
+			break;
+		}
+	}
+
+	$singleEvent.find('.title').html(cardToShow.title); // Title
+	$singleEvent.find('.image').attr('style', 'background-image:url(' + cardToShow.image + ')'); // Image
+	$singleEvent.find('.description').html(cardToShow.description); // Description
+
+	var sourceHtml = '<p><a target="_blank" href="' + cardToShow.url + '">Enlace a ' + cardToShow.source + '</a></p>';
+	$singleEvent.find('.info').html(cardToShow.info + sourceHtml); // Info
 
 }
 
@@ -181,8 +197,12 @@ function loadCardsByEventIds(eventIds) {
 
 	$.get(url, data, function(response) {
 
+		// Save the cards to JS
+		cardList = cardList.concat(response.cards);
+		console.log(cardList);
+
 		// Append the cards to the HTML
-		$(".cards").append(response);
+		$(".cards").append(response.html);
 		activateCards();
 
 	});
@@ -202,7 +222,7 @@ function loadCardsLikeDislike(likeDislike) {
 	$.get(url, data, function(response) {
 
 		// Append the cards to the HTML
-		$(".cards").append(response);
+		$(".cards").append(response.html);
 		activateCards();
 
 	});

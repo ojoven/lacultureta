@@ -20,7 +20,9 @@ class ApiController extends Controller {
         $eventModel = new Event();
         $events = $eventModel->getEvents($params);
 
-        return view('cards', array('events' => $events));
+        $data['html'] = (string) view('cards', array('events' => $events));
+        $data['cards'] = $events;
+        return response()->json($data);
     }
 
     /** GET CARDS **/

@@ -21,6 +21,7 @@ function preparePopupOnLoad() {
 function showPopup($popup) {
 
 	$popup.css('visibility', 'visible').addClass('active');
+	$popup.find('.popup-container').scrollTop(0);
 	return false;
 }
 
