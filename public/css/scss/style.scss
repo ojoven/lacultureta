@@ -48,3 +48,5 @@
 // No media queries files!
 // All media queries should be included at the end of their belonging .scss component file
 // If you don't know where to place them, use shame.scss (but use it with caution and please
+// Ok, this is an exception :)
+@import "app/helpers/media";

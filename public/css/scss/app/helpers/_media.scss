@@ -1,0 +1,23 @@
+// ==============================================
+// MEDIA
+// ==============================================
+// Custom media styles
+
+$viewportHeightIphone4:350px;
+
+// IPHONE 4
+@media (max-height: 480px) {
+
+  #subheader { top: 35px; }
+  .welcome .swipe .swipe-message { font-size: 12px; }
+  #viewport { margin-top: 80px; height: $viewportHeightIphone4; }
+  .cards li { height: $viewportHeightIphone4 - 10; }
+  .no-cards { height: $viewportHeightIphone4 - 20; }
+  .cards li .title { font-size: 20px; margin: 15px 0 10px; }
+
+}
+
+// IPHONE 5
+@media (max-height: 568px) {
+  p { font-size: 14px; }
+}

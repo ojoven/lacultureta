@@ -230,3 +230,10 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
   .node-type-recipes #collections, .node-type-recipes #featured-in, .node-type-recipes #our-recipes { display: none; } }
 /** SHAME **/
 /** MEDIA QUERIES **/
+@media (max-height: 480px) { #subheader { top: 35px; }
+  .welcome .swipe .swipe-message { font-size: 12px; }
+  #viewport { margin-top: 80px; height: 350px; }
+  .cards li { height: 340px; }
+  .no-cards { height: 330px; }
+  .cards li .title { font-size: 20px; margin: 15px 0 10px; } }
+@media (max-height: 568px) { p { font-size: 14px; } }
