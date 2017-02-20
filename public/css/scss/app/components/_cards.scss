@@ -108,6 +108,7 @@
 	padding: 0 10px;
 	@include effect(opacity, 0.3s, linear);
 	z-index: 1;
+	touch-action: none !important;
 
 	&.in-deck {
 		visibility: visible;

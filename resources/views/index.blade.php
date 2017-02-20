@@ -12,7 +12,7 @@
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-        <link href="/css/style.css?v=1" rel="stylesheet">
+        <link href="/css/style.css?v=2" rel="stylesheet">
 
     </head>
 
@@ -52,7 +52,7 @@
         <!-- FOOTER -->
         @include('partials/footer')
 
-        <script type="text/javascript" src="/js/app.min.js"></script>
+        <script type="text/javascript" src="/js/app.min.js?v=3"></script>
 
     </body>
 
