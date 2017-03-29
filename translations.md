@@ -155,3 +155,5 @@ ES: Selecciona tu idioma
 
 EU:
 
+
+* Nota: estas traducciones son solo uno de los pasos a dar para traducir lacultureta.com. La tarea más difícil será modificar el bot que recoge la información para que acepte idiomas más allá del castellano. 
