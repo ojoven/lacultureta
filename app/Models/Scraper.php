@@ -10,15 +10,22 @@ class Scraper extends Model {
 
     public function extractDataEvents() {
 
-        $events = $this->extractDataEventsDonostiaEUS();
-        $events = $this->filterNotAddedEvents($events);
-        $events = $this->addSinglePageInformation($events);
-        $this->storeEvents($events);
+        //$languages = array('es', 'eu');
+        $languages = array('eu');
+
+        foreach ($languages as $language) {
+
+            // We get the events
+            $events = $this->extractDataEventsDonostiaEUS($language);
+            $events = $this->filterNotAddedEvents($events, $language);
+            $events = $this->addAdditionalInformation($events, $language);
+            $this->storeEvents($events);
+        }
 
     }
 
     // Donostia.eus
-    public function extractDataEventsDonostiaEUS() {
+    public function extractDataEventsDonostiaEUS($language) {
 
         $events = array();
 
@@ -28,7 +35,8 @@ class Scraper extends Model {
         // We extract all the events from all pages
         while (true) {
 
-            $url = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/consultaNoCache?ReadForm=&kpag=' . $page . '&kque=0&kqueNombre=&kzon=0&kzonNombre=&kcua=8&kcuaNombre=De+hoy+en+adelante&kdesde=&kdon=6&idioma=cas';
+            $suffixLang = ($language == 'es') ? 'cas' : 'eus';
+            $url = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/consultaNoCache?ReadForm=&kpag=' . $page . '&kque=0&kqueNombre=&kzon=0&kzonNombre=&kcua=8&kcuaNombre=De+hoy+en+adelante&kdesde=&kdon=6&idioma=' . $suffixLang;
             $html = SimpleHtmlDom::file_get_html($url);
 
             $resultsAgenda = $html->find('.resultados-agenda', 0);
@@ -70,6 +78,8 @@ class Scraper extends Model {
             if (isset($nextPage->class) && $nextPage->class = "disabled") {
                 break;
             }
+
+            break; // Development, we avoid next pages
 
         }
 
@@ -156,7 +166,7 @@ class Scraper extends Model {
         return $categories;
     }
 
-    public function filterNotAddedEvents($events) {
+    public function filterNotAddedEvents($events, $language) {
 
         // We get all the events' external IDs
         $eventExternalIds = Functions::getArrayWithIndexValues($events, 'external_id');
@@ -178,7 +188,7 @@ class Scraper extends Model {
     }
 
     // RETRIEVE INFO FROM SINGLE PAGE
-    public function addSinglePageInformation($events) {
+    public function addAdditionalInformation($events, $language) {
 
         foreach ($events as &$event) {
 
@@ -196,6 +206,9 @@ class Scraper extends Model {
             }
 
             $event['info'] = preg_replace('/\s+/', ' ', $event['info']); // Remove extra spaces
+
+            // We add the language too
+            $event['language'] = $language;
 
         }
 
