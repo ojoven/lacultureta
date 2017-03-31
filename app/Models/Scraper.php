@@ -88,14 +88,14 @@ class Scraper extends Model {
     private function _parseEventDonostiaEUS($event, $language) {
 
         // PRICE
-        $event['price'] = trim(str_replace('Precio:', '', str_replace(',00', '', str_replace('&#8364;', '€', $event['price']))));
+        $event['price'] = trim(str_replace('Prezioa:', '', str_replace('Precio:', '', str_replace(',00', '', str_replace('&#8364;', '€', $event['price'])))));
         if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0 €';
 
         // PLACE
-        $event['place'] = trim(str_replace('Lugar:', '', $event['place'])); // TODO: This won't work for basque version
+        $event['place'] = trim(str_replace('Lekua:', '', str_replace('Lugar:', '', $event['place']))); // TODO: This won't work for basque version
 
         // HOUR
-        $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
+        $event['hour'] = trim(str_replace('Ordua:', '', str_replace('Hora:', '', $event['hour'])));
 
         // DATE
         DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end'], $language);

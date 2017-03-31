@@ -2,7 +2,7 @@
 
     <div class="container">
 
-        <div id="logo-text">La Cultureta</div>
+        <div id="logo-text"><?php echo e(__('La Cultureta')); ?></div>
 
         <nav class="menu-right">
             <a href="#" class="icon-header icon-settings to-settings"></a>
@@ -13,5 +13,5 @@
 </header>
 
 <div id="subheader">
-    <h2>La agenda de eventos culturales de Donostia</h2>
+    <h2><?php echo e(__('La agenda de eventos culturales de Donostia')); ?></h2>
 </div>

@@ -4,30 +4,34 @@
 
         <div class="settings">
 
-            <div class="title">Filtra los eventos</div>
+            <div class="title"><?php echo e(__('Filtra los eventos')); ?></div>
 
             <!-- BY DATE -->
             <div class="section">
-                <div class="section-title">Por fecha</div>
+                <div class="section-title"><?php echo e(__('Por fecha')); ?></div>
                 <ul class="data-date">
                     <li>
                         <a href="#" class="active filter" data-filter="date" data-value="all" data-exclusive="true">
-                            Todas las fechas
+                            <?php echo e(__('Todas las fechas')); ?>
+
                         </a>
                     </li>
                     <li>
                         <a href="#" class="filter" data-filter="date" data-value="today">
-                            Hoy
+                            <?php echo e(__('Hoy')); ?>
+
                         </a>
                     </li>
                     <li>
                         <a href="#" class="filter" data-filter="date" data-value="tomorrow">
-                            Mañana
+                            <?php echo e(__('Mañana')); ?>
+
                         </a>
                     </li>
                     <li>
                         <a href="#" class="filter" data-filter="date" data-value="week" data-exclusive="true">
-                            Próximos 7 días
+                            <?php echo e(__('Próximos 7 días')); ?>
+
                         </a>
                     </li>
                 </ul>
@@ -36,15 +40,15 @@
 
             <!-- BY CATEGORY -->
             <div class="section">
-                <div class="section-title">Por categoría</div>
+                <div class="section-title"><?php echo e(__('Por categoría')); ?></div>
 
                 <ul class="select-deselect">
                     <li>
-                        <a href="#" class="select-all">Seleccionar todas</a>
+                        <a href="#" class="select-all"><?php echo e(__('Seleccionar todas')); ?></a>
                     </li>
 
                     <li>
-                        <a href="#" class="deselect-all">No seleccionar ninguna</a>
+                        <a href="#" class="deselect-all"><?php echo e(__('No seleccionar ninguna')); ?></a>
                     </li>
                 </ul>
                 <div class="clear"></div>
@@ -64,15 +68,15 @@
 
             <!-- BY PLACE -->
             <div class="section">
-                <div class="section-title">Por lugar</div>
+                <div class="section-title"><?php echo e(__('Por lugar')); ?></div>
 
                 <ul class="select-deselect">
                     <li>
-                        <a href="#" class="select-all">Seleccionar todos</a>
+                        <a href="#" class="select-all"><?php echo e(__('Seleccionar todos')); ?></a>
                     </li>
 
                     <li>
-                        <a href="#" class="deselect-all">No seleccionar ninguno</a>
+                        <a href="#" class="deselect-all"><?php echo e(__('No seleccionar ninguno')); ?></a>
                     </li>
                 </ul>
                 <div class="clear"></div>
@@ -93,8 +97,8 @@
 
     </div>
 
-    <a href="#" class="save-settings">Guarda</a>
+    <a href="#" class="save-settings"><?php echo e(__('Guarda')); ?></a>
     <a href="#" class="close-settings"></a>
-    <div class="settings-error">Debes seleccionar al menos una fecha, una categoría y un lugar.</div>
+    <div class="settings-error"><?php echo e(__('Debes seleccionar al menos una fecha, una categoría y un lugar.')); ?></div>
 
 </div>

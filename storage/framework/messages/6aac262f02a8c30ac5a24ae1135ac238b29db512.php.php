@@ -24,9 +24,9 @@ $numLikes = count($event['likes']);
     </div>
     <?php if ($numLikes > 0) { ?>
         <?php if ($numLikes > 1) { ?>
-            <div class="likes">A <?php echo count($event['likes']); ?> donostiarras les gusta</div>
+            <div class="likes"><?php echo e(__('A %s donostiarras les gusta', count($event['likes']))); ?></div>
         <?php } else { ?>
-            <div class="likes">A <?php echo count($event['likes']); ?> donostiarra le gusta</div>
+            <div class="likes"><?php echo e(__('A 1 donostiarra les gusta')); ?></div>
         <?php } ?>
     <?php } ?>
 </li>

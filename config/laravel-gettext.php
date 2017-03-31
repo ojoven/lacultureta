@@ -88,6 +88,7 @@ return [
     'source-paths' => [
         'Http',
         '../resources/views',
+        'Lib/',
         'Console',
     ],
 

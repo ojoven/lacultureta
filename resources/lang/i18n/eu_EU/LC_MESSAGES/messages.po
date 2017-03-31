@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-03-31 12:56+0100\n"
-"PO-Revision-Date: 2017-03-31 12:57+0100\n"
+"POT-Creation-Date: 2017-03-31 13:27+0100\n"
+"PO-Revision-Date: 2017-03-31 13:32+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -18,6 +18,295 @@ msgstr ""
 "X-Poedit-SearchPath-2: Console\n"
 "X-Poedit-SearchPath-3: ../storage/framework/messages\n"
 
-#: ../storage/framework/messages//d8f4937cf37df14df03a5e8cdb74b5679c9942bd.php.php:11
+#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:2
+msgid "Ooops, ¡ya no hay más!"
+msgstr "Ooops, ez dago gehiago!"
+
+#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:3
+msgid "Sigue enterándote de los mejores eventos utilizando los filtros"
+msgstr "Filtroak erabili egitarau gehiago aurkitzeko"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:36
+msgid "ayer y hoy"
+msgstr "atzo eta gaur"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:39
+msgid "hoy y mañana"
+msgstr "gaur eta bihar"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:42
+msgid "mañana y pasado"
+msgstr "bihar eta etzi"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:47
+#, php-format
+msgid "el %s de %s y el %s de %s"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:50
+#, php-format
+msgid "el %s y el %s de %s"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:59
+#, php-format
+msgid "desde el %s de %s hasta hoy"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:63
+#, php-format
+msgid "desde el %s de %s hasta mañana"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:68
+#, php-format
+msgid "desde el %s de %s hasta el %s de %s"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:71
+#, php-format
+msgid "desde el %s hasta el %s de %s"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:81
+msgid "hoy"
+msgstr "gaur"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:84
+msgid "mañana"
+msgstr "bihar"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:87
+msgid "pasado mañana"
+msgstr "etzi"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:90
+#, php-format
+msgid "este %s"
+msgstr "%s hontan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:94
+msgid "este viernes"
+msgstr "ostiral hontan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:96
+msgid "el viernes que viene"
+msgstr "hurrengo ostiralean"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:99
+msgid "este sábado"
+msgstr "larunbat hontan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:101
+msgid "el sábado que viene"
+msgstr "hurrengo larunbatan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:104
+msgid "este domingo"
+msgstr "igande hontan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:106
+msgid "el domingo que viene"
+msgstr "hurrengo igandean"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:109
+#, php-format
+msgid "el %s de %s"
+msgstr ""
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+msgid "Enero"
+msgstr "Urtarrila"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+msgid "Febrero"
+msgstr "Otsaila"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+msgid "Marzo"
+msgstr "Martxoa"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+msgid "Abril"
+msgstr "Apirila"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+msgid "Mayo"
+msgstr "Maiatza"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+msgid "Junio"
+msgstr "Ekaina"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+msgid "Julio"
+msgstr "Uztaila"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+msgid "Agosto"
+msgstr "Abuztua"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+msgid "Septiembre"
+msgstr "Iraila"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+msgid "Octubre"
+msgstr "Urria"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+msgid "Noviembre"
+msgstr "Azaroa"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+msgid "Diciembre"
+msgstr "Abendua"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+msgid "lunes"
+msgstr "astelehena"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+msgid "martes"
+msgstr "asteartea"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+msgid "miércoles"
+msgstr "asteazkena"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+msgid "jueves"
+msgstr "osteguna"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+msgid "viernes"
+msgstr "ostirala"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+msgid "sábado"
+msgstr "larunbata"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
+msgid "domingo"
+msgstr "igandea"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:165
+#, php-format
+msgid "a las %s y a las %s"
+msgstr "%setan eta %setan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:173
+#, php-format
+msgid "desde las %s hasta las %s"
+msgstr "%stik %sra"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:177
+#, php-format
+msgid "a las %s"
+msgstr "%setan"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:186
+msgid "gratis"
+msgstr "dohan"
+
+#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:5
+msgid "La Cultureta"
+msgstr "La Cultureta"
+
+#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:16
+msgid "La agenda de eventos culturales de Donostia"
+msgstr "Donostiako egitarau kulturalen agenda"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:7
+msgid "Filtra los eventos"
+msgstr "Egiatarauak filtratu"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:11
+msgid "Por fecha"
+msgstr "Dataz"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:15
+msgid "Todas las fechas"
+msgstr "Data guztiak"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:21
+msgid "Hoy"
+msgstr "Gaur"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:27
+msgid "Mañana"
+msgstr "Bihar"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:33
+msgid "Próximos 7 días"
+msgstr "Hurrengo 7 egun"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:43
+msgid "Por categoría"
+msgstr "Kategoriaz"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:47
+msgid "Seleccionar todas"
+msgstr "Denak hautatu"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:51
+msgid "No seleccionar ninguna"
+msgstr "Ezein hautatu"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:71
+msgid "Por lugar"
+msgstr "Lekuz"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:75
+msgid "Seleccionar todos"
+msgstr "Denak hautatu"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:79
+msgid "No seleccionar ninguno"
+msgstr "Ezein hautatu"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
+msgid "Guarda"
+msgstr "Gorde"
+
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:102
+msgid "Debes seleccionar al menos una fecha, una categoría y un lugar."
+msgstr "Data, kategoria edo toki bat gutxienez hautatu behar duzu"
+
+#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:27
+#, php-format
+msgid "A %s donostiarras les gusta"
+msgstr "%s donostiarrei gustatzen zaio"
+
+#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:29
+msgid "A 1 donostiarra les gusta"
+msgstr "Donostiar bati gustatzen zaio"
+
+#: ../storage/framework/messages/d8f4937cf37df14df03a5e8cdb74b5679c9942bd.php.php:11
 msgid "La Cultureta | Tu Agenda de Eventos de Donostia"
 msgstr "La Cultureta | Zure Donostiako egitarau kulturalen agenda"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:2
+msgid "Bienvenido a<br>La Cultureta"
+msgstr "Ongi etorri<br>La Cultureta'ra"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:3
+msgid "Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia."
+msgstr "Hemen aurkituko dituzu (azkenik!) Donostiako egitarau kultural guztiak"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:4
+msgid "Conciertos, exposiciones, películas, teatros..."
+msgstr "Kontzertuak, exposizioak, filmak, antzerkiak..."
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
+msgid "Desliza a la izquierda si no te interesa el evento"
+msgstr "Ezkerreruntz swipe egin egiataraua ez badezu gustoko"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
+msgid "Presiona en la carta para ver más info del evento"
+msgstr "Karta sakatu informazio gehiagorako"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
+msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
+msgstr ""
+"Eskubiruntz swipe egin egiataraua gustatzen bazaizu, gorde ahal izateko"

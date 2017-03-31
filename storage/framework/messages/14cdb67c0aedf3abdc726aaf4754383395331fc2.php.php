@@ -10,12 +10,15 @@ use App\Models\Scraper;
 use App\Models\Twitter;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Xinax\LaravelGettext\Facades\LaravelGettext;
 
 // Models
 
 class IndexController extends Controller {
 
     public function index() {
+
+        LaravelGettext::setLocale('eu_EU');
 
         // GET CATEGORIES
         $categoryModel = new Category();
