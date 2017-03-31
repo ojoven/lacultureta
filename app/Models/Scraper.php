@@ -92,7 +92,7 @@ class Scraper extends Model {
         if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0 €';
 
         // PLACE
-        $event['place'] = trim(str_replace('Lekua:', '', str_replace('Lugar:', '', $event['place']))); // TODO: This won't work for basque version
+        $event['place'] = trim(str_replace('Lekua:', '', str_replace('Lugar:', '', $event['place'])));
 
         // HOUR
         $event['hour'] = trim(str_replace('Ordua:', '', str_replace('Hora:', '', $event['hour'])));
