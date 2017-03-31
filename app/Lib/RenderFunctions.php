@@ -22,6 +22,7 @@ class RenderFunctions {
 
 		// WITH DATE END
 		if ($dateEnd) {
+
 			$dateEndObj = new \DateTime($dateEnd);
 			$dayEnd = date('j', strtotime($dateEnd));
 			$monthEnd = self::getMonthName((int)date('n', strtotime($dateEnd)));
@@ -44,10 +45,10 @@ class RenderFunctions {
 				// OTROS
 				if ($monthStart != $monthEnd) {
 					// El 31 de Marzo y el 1 de Abril
-					return sprintf(_('el %s de %s y el %s de %s'), $dayStart, $monthStart, $dayEnd, $monthEnd);
+					return __('el %1$s de %2$s y el %3$s de %$4s', [$dayStart, $monthStart, $dayEnd, $monthEnd]);
 				} else {
 					// El 15 y el 16 de Mayo
-					return sprintf(_('el %s y el %s de %s'), $dayStart, $dayEnd, $monthStart);
+					return __('el %1$s y el %2$s de %3$s', [$dayStart, $dayEnd, $monthStart]);
 				}
 
 			} else {
@@ -56,19 +57,19 @@ class RenderFunctions {
 
 				// HASTA HOY / MAÑANA
 				if ($diffBetweenEndAndToday == 0) {
-					return sprintf(_('desde el %s de %s hasta hoy'), $dayStart, $monthStart);
+					return __('desde el %1$s de %2$s hasta hoy', [$dayStart, $monthStart]);
 				}
 
 				if ($diffBetweenEndAndToday == 1) {
-					return sprintf(_('desde el %s de %s hasta mañana'), $dayStart, $monthStart);
+					return __('desde el %1$s de %2$s hasta mañana', [$dayStart, $monthStart]);
 				}
 
 				if ($monthStart != $monthEnd) {
 					// El 31 de Marzo y el 1 de Abril
-					return sprintf(_('desde el %s de %s hasta el %s de %s'), $dayStart, $monthStart, $dayEnd, $monthEnd);
+					return __('desde el %1$s de %2$s hasta el %3$s de %4$s', [$dayStart, $monthStart, $dayEnd, $monthEnd]);
 				} else {
 					// El 15 y el 16 de Mayo
-					return sprintf(_('desde el %s hasta el %s de %s'), $dayStart, $dayEnd, $monthStart);
+					return __('desde el %1$s hasta el %2$s de %3$s', [$dayStart, $dayEnd, $monthStart]);
 				}
 
 
@@ -87,7 +88,7 @@ class RenderFunctions {
 			if ($diff == 2) { return __('pasado mañana'); }
 
 			if ($diff < 5) {
-				return sprintf(_('este %s'), self::getWeekDayName($dayStartOfTheWeek));
+				return __('este %s', self::getWeekDayName($dayStartOfTheWeek));
 			}
 
 			// ESTE VIERNES / VIERNES QUE VIENE
@@ -106,7 +107,7 @@ class RenderFunctions {
 			|| $dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el domingo que viene'); }
 
 			// OTROS
-			return sprintf(_('el %s de %s'), $dayStart, $monthStart);
+			return __('el %1$s de %2$s', [$dayStart, $monthStart]);
 		}
 
 	}

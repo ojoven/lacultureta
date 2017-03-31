@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-03-31 13:27+0100\n"
-"PO-Revision-Date: 2017-03-31 13:32+0100\n"
+"POT-Creation-Date: 2017-03-31 15:01+0100\n"
+"PO-Revision-Date: 2017-03-31 15:09+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -20,192 +20,191 @@ msgstr ""
 
 #: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:2
 msgid "Ooops, ¡ya no hay más!"
-msgstr "Ooops, ez dago gehiago!"
+msgstr "Ooops, bukatu ein duzu La Cultureta?"
 
 #: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:3
 msgid "Sigue enterándote de los mejores eventos utilizando los filtros"
 msgstr "Filtroak erabili egitarau gehiago aurkitzeko"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:36
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:37
 msgid "ayer y hoy"
 msgstr "atzo eta gaur"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:39
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:40
 msgid "hoy y mañana"
 msgstr "gaur eta bihar"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:42
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:43
 msgid "mañana y pasado"
 msgstr "bihar eta etzi"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:47
-#, php-format
-msgid "el %s de %s y el %s de %s"
-msgstr ""
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:48
+msgid "el %1$s de %2$s y el %3$s de %$4s"
+msgstr "%2$sk %1$san eta %4$sk %3$san"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:50
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:51
 #, php-format
-msgid "el %s y el %s de %s"
-msgstr ""
+msgid "el %1$s y el %2$s de %3$s"
+msgstr "%3$sk %1$san eta %2$san"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:59
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:60
 #, php-format
-msgid "desde el %s de %s hasta hoy"
-msgstr ""
+msgid "desde el %1$s de %2$s hasta hoy"
+msgstr "%2$sk %1$stik gaur arte"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:63
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:64
 #, php-format
-msgid "desde el %s de %s hasta mañana"
-msgstr ""
+msgid "desde el %1$s de %2$s hasta mañana"
+msgstr "%2$sk %1$stik bihar arte"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:68
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:69
 #, php-format
-msgid "desde el %s de %s hasta el %s de %s"
-msgstr ""
+msgid "desde el %1$s de %2$s hasta el %3$s de %4$s"
+msgstr "%2$sk %1$stik %4$sk %3$sra"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:71
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:72
 #, php-format
-msgid "desde el %s hasta el %s de %s"
-msgstr ""
+msgid "desde el %1$s hasta el %2$s de %3$s"
+msgstr "%3$s %1$stik %2$sra"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:81
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:82
 msgid "hoy"
 msgstr "gaur"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:84
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:85
 msgid "mañana"
 msgstr "bihar"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:87
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:88
 msgid "pasado mañana"
 msgstr "etzi"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:90
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:91
 #, php-format
 msgid "este %s"
 msgstr "%s hontan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:94
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:95
 msgid "este viernes"
 msgstr "ostiral hontan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:96
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:97
 msgid "el viernes que viene"
 msgstr "hurrengo ostiralean"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:99
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:100
 msgid "este sábado"
 msgstr "larunbat hontan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:101
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:102
 msgid "el sábado que viene"
 msgstr "hurrengo larunbatan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:104
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:105
 msgid "este domingo"
 msgstr "igande hontan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:106
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:107
 msgid "el domingo que viene"
 msgstr "hurrengo igandean"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:109
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:110
 #, php-format
-msgid "el %s de %s"
-msgstr ""
+msgid "el %1$s de %2$s"
+msgstr "%2$sk %1$san"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Enero"
 msgstr "Urtarrila"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Febrero"
 msgstr "Otsaila"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:130
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Marzo"
 msgstr "Martxoa"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Abril"
 msgstr "Apirila"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Mayo"
 msgstr "Maiatza"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Junio"
 msgstr "Ekaina"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Julio"
 msgstr "Uztaila"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Agosto"
 msgstr "Abuztua"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Septiembre"
 msgstr "Iraila"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Octubre"
 msgstr "Urria"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Noviembre"
 msgstr "Azaroa"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Diciembre"
 msgstr "Abendua"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "lunes"
 msgstr "astelehena"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "martes"
 msgstr "asteartea"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:143
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "miércoles"
 msgstr "asteazkena"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "jueves"
 msgstr "osteguna"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "viernes"
 msgstr "ostirala"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "sábado"
 msgstr "larunbata"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:146
 msgid "domingo"
 msgstr "igandea"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:165
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:166
 #, php-format
 msgid "a las %s y a las %s"
 msgstr "%setan eta %setan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:173
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:174
 #, php-format
 msgid "desde las %s hasta las %s"
 msgstr "%stik %sra"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:177
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:178
 #, php-format
 msgid "a las %s"
 msgstr "%setan"
 
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:186
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:187
 msgid "gratis"
 msgstr "dohan"
 
@@ -300,13 +299,16 @@ msgstr "Kontzertuak, exposizioak, filmak, antzerkiak..."
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
 msgid "Desliza a la izquierda si no te interesa el evento"
-msgstr "Ezkerreruntz swipe egin egiataraua ez badezu gustoko"
+msgstr "Txartela ezkerrera bota egiataraua ez baduzu gustuko"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
 msgid "Presiona en la carta para ver más info del evento"
-msgstr "Karta sakatu informazio gehiagorako"
+msgstr "Txartela sakatu informazio gehiagorako"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
 msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
 msgstr ""
-"Eskubiruntz swipe egin egiataraua gustatzen bazaizu, gorde ahal izateko"
+"Txartela eskubira bota egiataraua gustatzen bazaizu, gorde ahal izateko"
+
+#~ msgid "el %1s de %2s y el %3s de %4s"
+#~ msgstr "%2sko %1sa eta %4sko %3sa"
