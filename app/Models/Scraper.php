@@ -66,7 +66,7 @@ class Scraper extends Model {
                 // Event price
                 $event['price'] = $eventDom->find('.media-body', 0)->find('span', 2)->plaintext;
 
-                $event = $this->_parseEventDonostiaEUS($event);
+                $event = $this->_parseEventDonostiaEUS($event, $language);
                 $events[] = $event;
             }
 
@@ -79,15 +79,13 @@ class Scraper extends Model {
                 break;
             }
 
-            break; // Development, we avoid next pages
-
         }
 
         return $events;
 
     }
 
-    private function _parseEventDonostiaEUS($event) {
+    private function _parseEventDonostiaEUS($event, $language) {
 
         // PRICE
         $event['price'] = trim(str_replace('Precio:', '', str_replace(',00', '', str_replace('&#8364;', '€', $event['price']))));
@@ -100,7 +98,7 @@ class Scraper extends Model {
         $event['hour'] = trim(str_replace('Hora:', '', $event['hour']));
 
         // DATE
-        DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end']);
+        DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end'], $language);
 
         // We extract the parameters from the URL
         $kwid = $kwca = '';
@@ -128,6 +126,10 @@ class Scraper extends Model {
 
         return $event;
 
+    }
+
+    public function valid_date($date) {
+        return (preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/", $date));
     }
 
     private function _addCategoriesFromUrlAndTitle($urlCat, $title) {

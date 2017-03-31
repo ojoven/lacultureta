@@ -43,15 +43,24 @@ class DateFunctions {
 	}
 
 	/** SCRAPING **/
-	public static function parseDatesMonth3DigitToMySQLDate(&$dateStart, &$dateEnd) {
+	public static function parseDatesMonth3DigitToMySQLDate(&$dateStart, &$dateEnd, $language) {
 
-		$arrayConversion = array(
-			'Ene' => 1, 'Feb' => 2, 'Mar' => 3, 'Abr' => 4, 'May' => 5, 'Jun' => 6,
-			'Jul' => 7, 'Ago' => 8, 'Sep' => 9, 'Oct' => 10, 'Nov' => 11, 'Dic' => 12,
-		);
+		if ($language == 'es') {
+			$arrayConversion = array(
+				'Ene' => 1, 'Feb' => 2, 'Mar' => 3, 'Abr' => 4, 'May' => 5, 'Jun' => 6,
+				'Jul' => 7, 'Ago' => 8, 'Sep' => 9, 'Oct' => 10, 'Nov' => 11, 'Dic' => 12,
+			);
+		} else { // language = eu
+			$arrayConversion = array(
+				'Urt' => 1, 'Ots' => 2, 'Mar' => 3, 'Api' => 4, 'Mai' => 5, 'Eka' => 6,
+				'Uzt' => 7, 'Abu' => 8, 'Ira' => 9, 'Urr' => 10, 'Aza' => 11, 'Abe' => 12,
+			);
+		}
+
 
 		// DATE START
 		$dateStartArray = explode(' ', $dateStart);
+		if ($language == 'eu') $dateStartArray = array_reverse($dateStartArray); // In basque, the array is in inverse order
 		$yearStart = date('Y');
 		$monthStart = isset($arrayConversion[trim($dateStartArray[1])]) ? $arrayConversion[trim($dateStartArray[1])] : 1;
 		$dayStart = trim($dateStartArray[0]);
@@ -59,6 +68,7 @@ class DateFunctions {
 		// DATE END
 		if ($dateEnd) {
 			$dateEndArray = explode(' ', $dateEnd);
+			if ($language == 'eu') $dateEndArray = array_reverse($dateEndArray); // In basque, the array is in inverse order
 			$yearEnd = date('Y');
 			$monthEnd = isset($arrayConversion[trim($dateEndArray[1])]) ? $arrayConversion[trim($dateEndArray[1])] : 1;
 			$dayEnd = trim($dateEndArray[0]);
