@@ -1,4 +1,4 @@
-<div id="settings-popup" class="popup">
+<div id="settings-popup" class="popup settings-popup">
 
     <div class="popup-container">
 

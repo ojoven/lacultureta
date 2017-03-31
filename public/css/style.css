@@ -10,7 +10,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .regular, body, h4, p { font-family: 'Raleway', sans-serif; font-weight: 400; }
 
-.bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, #settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
+.bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, .settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
 .special, #logo-text, #subheader h2, .loading, .no-cards, .resume-resume .dates > li > .title { font-family: 'Amatic SC', cursive; font-weight: normal; }
 
@@ -92,7 +92,8 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .menu-right .icon-settings { display: inline-block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
 
 .menu-left { position: absolute; left: 0; top: 8px; }
-.menu-left .icon-user { display: inline-block; background: url(../img/user.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
+.menu-left .icon-user { display: inline-block; background: url(../img/user.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; position: relative; }
+.menu-left .icon-user .user-language { font-size: 9px; font-weight: 700; font-style: normal; background: url(../img/chat.png) no-repeat center; background-size: cover; width: 20px; height: 20px; position: absolute; right: -14px; top: -2px; padding: 5px; }
 
 #subheader { position: absolute; top: 50px; left: 0; width: 100%; }
 #subheader h2 { width: 100%; text-align: center; font-size: 24px; color: #212021; margin: 10px 0; }
@@ -205,10 +206,14 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .settings .category-title, .settings .place-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; display: inline-block; max-width: 100%; }
 .settings .select-deselect > li { margin-bottom: 15px; padding-left: 12px; }
 .settings .select-all, .settings .deselect-all { text-decoration: none; color: #212021; }
+.settings .option-50 { float: left; width: 50%; text-align: center; margin-top: 20px; }
+.settings .select-language { font-size: 20px; color: #ccc; position: relative; text-decoration: none; text-transform: uppercase; }
+.settings .select-language.active { color: #444; }
+.settings .select-language.active:after { content: ' '; background: url(../img/green_check.png) no-repeat center center; background-size: cover; width: 30px; height: 30px; position: absolute; left: 50%; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); bottom: -35px; }
 
-#settings-popup .save-settings { text-transform: uppercase; background: #B4CDCD; color: #212021; border: 2px solid #212021; padding: 10px 35px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
-#settings-popup .close-settings { text-transform: uppercase; background: url(../img/close.png) center center no-repeat #f6f6f6; color: #212021; border: 2px solid #212021; padding: 10px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); height: 42px; background-size: 16px; width: 45px; margin-left: 100px; }
-#settings-popup .settings-error { color: #BE2625; text-align: center; font-size: 14px; font-weight: bold; margin: 27px auto; max-width: 250px; display: none; }
+.settings-popup .save-settings { text-transform: uppercase; background: #B4CDCD; color: #212021; border: 2px solid #212021; padding: 10px 35px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
+.settings-popup .close-settings { text-transform: uppercase; background: url(../img/close.png) center center no-repeat #f6f6f6; color: #212021; border: 2px solid #212021; padding: 10px; text-decoration: none; position: absolute; bottom: 30px; left: 50%; font-size: 18px; -moz-transform: translate3d(-50%, 0, 0); -o-transform: translate3d(-50%, 0, 0); -ms-transform: translate3d(-50%, 0, 0); -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); height: 42px; background-size: 16px; width: 45px; margin-left: 100px; }
+.settings-popup .settings-error { color: #BE2625; text-align: center; font-size: 14px; font-weight: bold; margin: 27px auto; max-width: 250px; display: none; }
 
 .welcome .title { font-family: 'Neucha', cursive; text-transform: uppercase; }
 .welcome p { margin: 10px 0; }

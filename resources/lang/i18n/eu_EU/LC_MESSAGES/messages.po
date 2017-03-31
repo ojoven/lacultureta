@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2017-03-31 15:01+0100\n"
-"PO-Revision-Date: 2017-03-31 15:09+0100\n"
+"PO-Revision-Date: 2017-03-31 15:42+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -307,8 +307,7 @@ msgstr "Txartela sakatu informazio gehiagorako"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
 msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
-msgstr ""
-"Txartela eskubira bota egiataraua gustatzen bazaizu, gorde ahal izateko"
+msgstr "Txartela eskubira bota egiataraua gustatzen bazaizu, gordetzeko"
 
 #~ msgid "el %1s de %2s y el %3s de %4s"
 #~ msgstr "%2sko %1sa eta %4sko %3sa"

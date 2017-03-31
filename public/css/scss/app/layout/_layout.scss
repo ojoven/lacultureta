@@ -71,6 +71,21 @@
 		background-size: cover;
 		width: 24px;
 		height: 24px;
+		position: relative;
+
+		.user-language {
+			font-size: 9px;
+			font-weight: 700;
+			font-style: normal;
+			background: url(../img/chat.png) no-repeat center;
+			background-size: cover;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			right: -14px;
+			top: -2px;
+			padding: 5px;
+		}
 	}
 }
 

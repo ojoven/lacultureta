@@ -48,6 +48,7 @@
 
         <!-- SETTINGS -->
         @include('partials/settings')
+        @include('partials/user-settings')
 
         <!-- FOOTER -->
         @include('partials/footer')

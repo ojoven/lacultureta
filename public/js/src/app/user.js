@@ -4,11 +4,19 @@
 // VARS
 var userId;
 
+var $toUserSettings = $('.to-user-settings');
+
 // LOGIC
 $(document).ready(function() {
 
+	// User ID and ratings
 	userInitialManagement();
 	userRatingsManagement();
+
+	// User settings
+	toShowUserSettings();
+	toCloseUserSettings();
+	settingsUserManagement();
 });
 
 // Initial Management (User ID)
@@ -144,4 +152,49 @@ function getUserRatingsFromCookies() {
 	var userRatingsJson = Cookies.get('userRatings');
 	var userRatings = JSON.parse(userRatingsJson);
 	return userRatings;
+}
+
+/** USER SETTINGS **/
+function toShowUserSettings() {
+
+	// Show settings popup
+	$toUserSettings.on('click', function() {
+
+		showPopup($("#user-settings-popup"));
+		return false;
+	});
+
+}
+
+function settingsUserManagement() {
+
+	// Change language
+	var $selectLanguage = $('.select-language');
+	$selectLanguage.on('click', function() {
+		$selectLanguage.removeClass('active');
+		$(this).addClass('active');
+	});
+
+	// Save settings
+	var $saveSettings = $('#user-settings-popup .save-settings');
+	$saveSettings.on('click', function() {
+
+		// Save language
+		var $selectLanguageActive = $('.select-language.active');
+		var languageSelected = $selectLanguageActive.attr('data-language');
+
+		// We set the cookie and reload the page
+		Cookies.set('language', languageSelected);
+		window.location.reload(true);
+
+	});
+
+}
+
+function toCloseUserSettings() {
+
+	var $closeSettings = $('.close-settings');
+	$closeSettings.on('click', function() {
+		closePopup();
+	});
 }

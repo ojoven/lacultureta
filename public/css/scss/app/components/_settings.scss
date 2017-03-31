@@ -94,9 +94,42 @@
 		@extend .bold;
 	}
 
+	// BIG OPTIONS
+	.option-50 {
+
+		float: left;
+		width: 50%;
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	// Language selector
+	.select-language {
+		font-size: 20px;
+		color: #ccc;
+		position: relative;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		&.active {
+			color: #444;
+			&:after {
+				content: ' ';
+				background: url(../img/green_check.png) no-repeat center center;
+				background-size: cover;
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				left: 50%;
+				@include translateX(-50%);
+				bottom: -35px;
+			}
+		}
+	}
+
 }
 
-#settings-popup {
+.settings-popup {
 
 	// SAVE SETTINGS
 	.save-settings {

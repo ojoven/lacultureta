@@ -53,8 +53,8 @@ function settingsManagement() {
 	});
 
 	// Save settings
-	var $saveSettings = $('.save-settings');
-	var $settingsError = $('.settings-error');
+	var $saveSettings = $('#settings-popup .save-settings');
+	var $settingsError = $('#settings-popup .settings-error');
 	$saveSettings.on('click', function() {
 
 		activateLoading();

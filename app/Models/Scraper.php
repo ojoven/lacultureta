@@ -10,8 +10,7 @@ class Scraper extends Model {
 
     public function extractDataEvents() {
 
-        //$languages = array('es', 'eu');
-        $languages = array('eu');
+        $languages = array('es', 'eu');
 
         foreach ($languages as $language) {
 
