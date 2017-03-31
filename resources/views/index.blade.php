@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- LE TITLE -->
-        <title>La Cultureta | Tu Agenda de Eventos de Donostia</title>
+        <title> {{ __('La Cultureta | Tu Agenda de Eventos de Donostia') }}</title>
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
@@ -51,6 +51,10 @@
 
         <!-- FOOTER -->
         @include('partials/footer')
+
+        <script>
+            var browserLang = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
+        </script>
 
         <script type="text/javascript" src="/js/app.min.js?v=3"></script>
 
