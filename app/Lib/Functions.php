@@ -18,9 +18,9 @@ class Functions {
 	}
 
 	/** LANGUAGE **/
-	public static function setLocale() {
+	public static function setLocale($languageFromBrowserUrl) {
 
-		$language = self::getUserLanguage();
+		$language = self::getUserLanguage($languageFromBrowserUrl);
 
 		if ($language == 'eu') {
 			LaravelGettext::setLocale('eu_EU');
@@ -31,11 +31,10 @@ class Functions {
 		return $language;
 	}
 
-	public static function getUserLanguage() {
+	public static function getUserLanguage($languageFromBrowserUrl = 'es') {
 
 		$arrayValidLanguages = array('es', 'eu');
-		$defaultLanguage = 'es'; // Ohhh zergatiiiiikk?!?!
-		$language = $defaultLanguage;
+		$language = $languageFromBrowserUrl;
 
 		// If the user has set the language
 		if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $arrayValidLanguages)) {

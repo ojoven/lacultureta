@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Lib\DateFunctions;
+use App\Lib\Functions;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Place;
@@ -10,15 +11,14 @@ use App\Models\Scraper;
 use App\Models\Twitter;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Xinax\LaravelGettext\Facades\LaravelGettext;
 
 // Models
 
 class IndexController extends Controller {
 
-    public function index() {
+    public function index($language = 'es') {
 
-        LaravelGettext::setLocale('eu_EU');
+        Functions::setLocale($language);
 
         // GET CATEGORIES
         $categoryModel = new Category();
@@ -28,6 +28,8 @@ class IndexController extends Controller {
         $placeModel = new Place();
         $data['places'] = $placeModel->getPlaces();
 
+        // LANGUAGE
+        $data['language'] = Functions::getUserLanguage($language);
         return view('index', $data);
     }
 

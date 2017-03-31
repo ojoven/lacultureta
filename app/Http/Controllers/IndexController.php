@@ -16,9 +16,9 @@ use App\Http\Requests;
 
 class IndexController extends Controller {
 
-    public function index() {
+    public function index($language = 'es') {
 
-        Functions::setLocale();
+        Functions::setLocale($language);
 
         // GET CATEGORIES
         $categoryModel = new Category();
@@ -29,7 +29,7 @@ class IndexController extends Controller {
         $data['places'] = $placeModel->getPlaces();
 
         // LANGUAGE
-        $data['language'] = Functions::getUserLanguage();
+        $data['language'] = Functions::getUserLanguage($language);
         return view('index', $data);
     }
 

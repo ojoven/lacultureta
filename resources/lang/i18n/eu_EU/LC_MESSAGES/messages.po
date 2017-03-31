@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-03-31 15:01+0100\n"
-"PO-Revision-Date: 2017-03-31 15:42+0100\n"
+"POT-Creation-Date: 2017-03-31 18:58+0100\n"
+"PO-Revision-Date: 2017-03-31 18:59+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -212,9 +212,30 @@ msgstr "dohan"
 msgid "La Cultureta"
 msgstr "La Cultureta"
 
-#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:16
+#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:20
 msgid "La agenda de eventos culturales de Donostia"
 msgstr "Donostiako egitarau kulturalen agenda"
+
+#: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:7
+msgid "Tu perfil"
+msgstr "Zure profila"
+
+#: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:11
+msgid "¿En qué idioma quieres ver La Cultureta?"
+msgstr "Ze hizkuntzan ikusi nahi duzu La Cultureta?"
+
+#: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:14
+msgid "Euskera"
+msgstr "Eukeraz"
+
+#: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:18
+msgid "Castellano"
+msgstr "Erderaz"
+
+#: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:28
+#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
+msgid "Guarda"
+msgstr "Gorde"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:7
 msgid "Filtra los eventos"
@@ -263,10 +284,6 @@ msgstr "Denak hautatu"
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:79
 msgid "No seleccionar ninguno"
 msgstr "Ezein hautatu"
-
-#: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
-msgid "Guarda"
-msgstr "Gorde"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:102
 msgid "Debes seleccionar al menos una fecha, una categoría y un lugar."

@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/{language?}', 'IndexController@index')->where(['language' => '[a-z][a-z]']);
 
 Route::get('/api/getcards', 'ApiController@getcards');
 Route::get('/api/getcardsuser', 'ApiController@getcardsuser');
