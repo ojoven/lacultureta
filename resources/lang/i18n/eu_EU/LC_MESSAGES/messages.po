@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2017-04-02 00:28+0100\n"
-"PO-Revision-Date: 2017-04-02 00:30+0100\n"
+"PO-Revision-Date: 2017-04-02 00:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -215,15 +215,15 @@ msgstr "Ongi etorri<br>La Cultureta'ra"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:3
 msgid "Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia."
-msgstr "Hemen aurkituko dituzu (azkenik!) Donostiako egitarau kultural guztiak"
+msgstr "Hemen aurkituko dituzu azkenik! Donostiako egitarau kultural guztiak"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:4
 msgid "Conciertos, exposiciones, películas, teatros..."
-msgstr "Kontzertuak, exposizioak, filmak, antzerkiak..."
+msgstr "Kontzertuak, erakusketak, filmak, antzerkiak..."
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
 msgid "Desliza a la izquierda si no te interesa el evento"
-msgstr "Txartela ezkerrera bota egiataraua ez baduzu gustuko"
+msgstr "Ezkerrerantz hatza pasatu egiataraua ez baduzu gustuko"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
 msgid "Presiona en la carta para ver más info del evento"
@@ -231,7 +231,7 @@ msgstr "Txartela sakatu informazio gehiagorako"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
 msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
-msgstr "Txartela eskubira bota egiataraua gustatzen bazaizu, gordetzeko"
+msgstr "Eskubirantz hatza pasatu egiataraua gustatzen bazaizu, gordetzeko"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:7
 msgid "Tu perfil"
