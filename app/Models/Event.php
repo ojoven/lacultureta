@@ -23,10 +23,7 @@ class Event extends Model {
 		$page = $params['page'];
 		$offset = ($page - 1) * $this->numEventsPage;
 
-		// Language
-		$params['language'] = Functions::getUserLanguage();
-
-		$events = $this->getAllFutureEvents($params);
+		$events = $this->getAllFutureEvents();
 		$events = $this->filterEvents($events, $params);
 		$events = $this->sortEvents($events);
 		$events = array_slice($events, $offset, $this->numEventsPage);
@@ -36,13 +33,15 @@ class Event extends Model {
 	}
 
 	// Get all future events
-	public function getAllFutureEvents($params) {
+	public function getAllFutureEvents() {
+
+		$language = Functions::getUserLanguage();
 
 		$today = date('Y-m-d');
 		$events = self::where(function($query) use ($today) {
 			$query->whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today);
-		})->where(function($query) use ($params) {
-			$query->where('language', '=', $params['language']);
+		})->where(function($query) use ($language) {
+			$query->where('language', '=', $language);
 		})->get()->toArray();
 		return $events;
 	}
