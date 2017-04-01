@@ -93,7 +93,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 
 .menu-left { position: absolute; left: 0; top: 8px; }
 .menu-left .icon-user { display: inline-block; background: url(../img/user.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; position: relative; }
-.menu-left .icon-user .user-language { font-size: 9px; font-weight: 700; font-style: normal; background: url(../img/chat.png) no-repeat center; background-size: cover; width: 20px; height: 20px; position: absolute; right: -14px; top: -2px; padding: 5px; }
+.menu-left .icon-user .user-language { font-size: 9px; font-weight: 700; font-style: normal; background: url(../img/chat.png) no-repeat center; background-size: cover; width: 20px; height: 20px; position: absolute; right: -14px; top: -2px; padding: 5px; color: #212021; }
 
 #subheader { position: absolute; top: 50px; left: 0; width: 100%; }
 #subheader h2 { width: 100%; text-align: center; font-size: 24px; color: #212021; margin: 10px 0; }

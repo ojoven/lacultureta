@@ -12,7 +12,7 @@
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-        <link href="/css/style.css?v=2" rel="stylesheet">
+        <link href="/css/style.css?v=3" rel="stylesheet">
 
     </head>
 
@@ -57,7 +57,7 @@
             var browserLang = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
         </script>
 
-        <script type="text/javascript" src="/js/app.min.js?v=3"></script>
+        <script type="text/javascript" src="/js/app.min.js?v=4"></script>
 
     </body>
 
