@@ -17,6 +17,20 @@ class Functions {
 		return $arrayIndexes;
 	}
 
+	public static function strpos_array($haystack, $needles, $offset = 0) {
+		if (is_array($needles)) {
+			foreach ($needles as $needle) {
+				$pos = self::strpos_array($haystack, $needle);
+				if ($pos !== false) {
+					return $pos;
+				}
+			}
+			return false;
+		} else {
+			return strpos($haystack, $needles, $offset);
+		}
+	}
+
 	/** LANGUAGE **/
 	public static function setLocale($languageFromBrowserUrl) {
 

@@ -89,6 +89,7 @@ return [
         'Http',
         '../resources/views',
         'Lib/',
+        'Models/',
         'Console',
     ],
 

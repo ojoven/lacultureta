@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hoy No Hay Nada - Playground</title>
+        <title>La Cultureta | Scraper</title>
 
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            Playground
+            Scraper successfully run!
         </div>
     </body>
 </html>

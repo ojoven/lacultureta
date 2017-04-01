@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-03-31 18:58+0100\n"
-"PO-Revision-Date: 2017-03-31 18:59+0100\n"
-"Last-Translator: Mikel <michel@majesticmedia.ca>\n"
+"POT-Creation-Date: 2017-04-02 00:28+0100\n"
+"PO-Revision-Date: 2017-04-02 00:30+0100\n"
+"Last-Translator: \n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,14 @@ msgstr ""
 "X-Poedit-SearchPath-2: Console\n"
 "X-Poedit-SearchPath-3: ../storage/framework/messages\n"
 
-#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:2
-msgid "Ooops, ¡ya no hay más!"
-msgstr "Ooops, bukatu ein duzu La Cultureta?"
+#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:27
+#, php-format
+msgid "A %s donostiarras les gusta"
+msgstr "%s donostiarrei gustatzen zaio"
 
-#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:3
-msgid "Sigue enterándote de los mejores eventos utilizando los filtros"
-msgstr "Filtroak erabili egitarau gehiago aurkitzeko"
+#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:29
+msgid "A 1 donostiarra les gusta"
+msgstr "Donostiar bati gustatzen zaio"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:37
 msgid "ayer y hoy"
@@ -208,13 +209,29 @@ msgstr "%setan"
 msgid "gratis"
 msgstr "dohan"
 
-#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:5
-msgid "La Cultureta"
-msgstr "La Cultureta"
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:2
+msgid "Bienvenido a<br>La Cultureta"
+msgstr "Ongi etorri<br>La Cultureta'ra"
 
-#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:20
-msgid "La agenda de eventos culturales de Donostia"
-msgstr "Donostiako egitarau kulturalen agenda"
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:3
+msgid "Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia."
+msgstr "Hemen aurkituko dituzu (azkenik!) Donostiako egitarau kultural guztiak"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:4
+msgid "Conciertos, exposiciones, películas, teatros..."
+msgstr "Kontzertuak, exposizioak, filmak, antzerkiak..."
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
+msgid "Desliza a la izquierda si no te interesa el evento"
+msgstr "Txartela ezkerrera bota egiataraua ez baduzu gustuko"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
+msgid "Presiona en la carta para ver más info del evento"
+msgstr "Txartela sakatu informazio gehiagorako"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
+msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
+msgstr "Txartela eskubira bota egiataraua gustatzen bazaizu, gordetzeko"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:7
 msgid "Tu perfil"
@@ -236,6 +253,70 @@ msgstr "Erderaz"
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
 msgid "Guarda"
 msgstr "Gorde"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:12
+msgid "Actividades Infantiles"
+msgstr "Haurrak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:13
+msgid "Cine"
+msgstr "Zinema"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:14
+msgid "Conferencias"
+msgstr "Hitzaldiak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:15
+msgid "Deportes"
+msgstr "Kirolak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:16
+msgid "Exposiciones"
+msgstr "Erakusketak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:17
+msgid "Fiestas y Ferias"
+msgstr "Festak eta azokak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:18
+msgid "Gastronomía"
+msgstr "Gastronomia"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:19
+msgid "Literatura"
+msgstr "Literatura"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:20
+msgid "Museos"
+msgstr "Museoak"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:21
+msgid "Música"
+msgstr "Musika"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:22
+msgid "Teatro y Danza"
+msgstr "Antzerkia eta dantza"
+
+#: ../storage/framework/messages/f4b837c0d16f411dbf22977ca95cbd881b104936.php.php:23
+msgid "Otros"
+msgstr "Beste ekitaldiak"
+
+#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:2
+msgid "Ooops, ¡ya no hay más!"
+msgstr "Ooops, bukatu ein duzu La Cultureta?"
+
+#: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:3
+msgid "Sigue enterándote de los mejores eventos utilizando los filtros"
+msgstr "Filtroak erabili egitarau gehiago aurkitzeko"
+
+#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:5
+msgid "La Cultureta"
+msgstr "La Cultureta"
+
+#: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:20
+msgid "La agenda de eventos culturales de Donostia"
+msgstr "Donostiako egitarau kulturalen agenda"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:7
 msgid "Filtra los eventos"
@@ -289,42 +370,9 @@ msgstr "Ezein hautatu"
 msgid "Debes seleccionar al menos una fecha, una categoría y un lugar."
 msgstr "Data, kategoria edo toki bat gutxienez hautatu behar duzu"
 
-#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:27
-#, php-format
-msgid "A %s donostiarras les gusta"
-msgstr "%s donostiarrei gustatzen zaio"
-
-#: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:29
-msgid "A 1 donostiarra les gusta"
-msgstr "Donostiar bati gustatzen zaio"
-
 #: ../storage/framework/messages/d8f4937cf37df14df03a5e8cdb74b5679c9942bd.php.php:11
 msgid "La Cultureta | Tu Agenda de Eventos de Donostia"
 msgstr "La Cultureta | Zure Donostiako egitarau kulturalen agenda"
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:2
-msgid "Bienvenido a<br>La Cultureta"
-msgstr "Ongi etorri<br>La Cultureta'ra"
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:3
-msgid "Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia."
-msgstr "Hemen aurkituko dituzu (azkenik!) Donostiako egitarau kultural guztiak"
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:4
-msgid "Conciertos, exposiciones, películas, teatros..."
-msgstr "Kontzertuak, exposizioak, filmak, antzerkiak..."
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
-msgid "Desliza a la izquierda si no te interesa el evento"
-msgstr "Txartela ezkerrera bota egiataraua ez baduzu gustuko"
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
-msgid "Presiona en la carta para ver más info del evento"
-msgstr "Txartela sakatu informazio gehiagorako"
-
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
-msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
-msgstr "Txartela eskubira bota egiataraua gustatzen bazaizu, gordetzeko"
 
 #~ msgid "el %1s de %2s y el %3s de %4s"
 #~ msgstr "%2sko %1sa eta %4sko %3sa"
