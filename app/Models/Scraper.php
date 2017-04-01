@@ -172,9 +172,9 @@ class Scraper extends Model {
         // We get all the events' external IDs
         $eventExternalIds = Functions::getArrayWithIndexValues($events, 'external_id');
 
-        // Now we retrieve from the DB all the events stored with those external IDs
+        // Now we retrieve from the DB all the events stored with those external IDs (for that language)
         $eventModel = new Event();
-        $previousEvents = $eventModel->whereIn('external_id', $eventExternalIds)->get()->toArray();
+        $previousEvents = $eventModel->whereIn('external_id', $eventExternalIds)->where('language', '=', $language)->get()->toArray();
         $previousEventsIds = Functions::getArrayWithIndexValues($previousEvents, 'external_id');
 
         $notDuplicatedEvents = array();
