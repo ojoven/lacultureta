@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2017-04-02 00:28+0100\n"
-"PO-Revision-Date: 2017-04-02 00:40+0100\n"
+"PO-Revision-Date: 2017-04-02 18:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:27
 #, php-format
 msgid "A %s donostiarras les gusta"
-msgstr "%s donostiarrei gustatzen zaio"
+msgstr "%s donostiarrei gustatzen zaie"
 
 #: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:29
 msgid "A 1 donostiarra les gusta"
@@ -41,32 +41,32 @@ msgstr "bihar eta etzi"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:48
 msgid "el %1$s de %2$s y el %3$s de %$4s"
-msgstr "%2$sk %1$san eta %4$sk %3$san"
+msgstr "%2$sren %1$sean eta %4$sk %3$sean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:51
 #, php-format
 msgid "el %1$s y el %2$s de %3$s"
-msgstr "%3$sk %1$san eta %2$san"
+msgstr "%3$sren %1$sean eta %2$sean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:60
 #, php-format
 msgid "desde el %1$s de %2$s hasta hoy"
-msgstr "%2$sk %1$stik gaur arte"
+msgstr "%2$sren %1$stik gaur arte"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:64
 #, php-format
 msgid "desde el %1$s de %2$s hasta mañana"
-msgstr "%2$sk %1$stik bihar arte"
+msgstr "%2$sren %1$stik bihar arte"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:69
 #, php-format
 msgid "desde el %1$s de %2$s hasta el %3$s de %4$s"
-msgstr "%2$sk %1$stik %4$sk %3$sra"
+msgstr "%2$sren %1$stik %4$sren %3$sra"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:72
 #, php-format
 msgid "desde el %1$s hasta el %2$s de %3$s"
-msgstr "%3$s %1$stik %2$sra"
+msgstr "%3$sren %1$stik %2$sra"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:82
 msgid "hoy"
@@ -83,11 +83,11 @@ msgstr "etzi"
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:91
 #, php-format
 msgid "este %s"
-msgstr "%s hontan"
+msgstr "%s honetan"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:95
 msgid "este viernes"
-msgstr "ostiral hontan"
+msgstr "ostiral honetan"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:97
 msgid "el viernes que viene"
@@ -95,15 +95,15 @@ msgstr "hurrengo ostiralean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:100
 msgid "este sábado"
-msgstr "larunbat hontan"
+msgstr "larunbat honetan"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:102
 msgid "el sábado que viene"
-msgstr "hurrengo larunbatan"
+msgstr "hurrengo larunbatean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:105
 msgid "este domingo"
-msgstr "igande hontan"
+msgstr "igande honetan"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:107
 msgid "el domingo que viene"
@@ -112,7 +112,7 @@ msgstr "hurrengo igandean"
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:110
 #, php-format
 msgid "el %1$s de %2$s"
-msgstr "%2$sk %1$san"
+msgstr "%2$sren %1$sean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Enero"
@@ -198,7 +198,7 @@ msgstr "%setan eta %setan"
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:174
 #, php-format
 msgid "desde las %s hasta las %s"
-msgstr "%stik %sra"
+msgstr "%setatik %sretara"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:178
 #, php-format
@@ -211,11 +211,11 @@ msgstr "dohan"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:2
 msgid "Bienvenido a<br>La Cultureta"
-msgstr "Ongi etorri<br>La Cultureta'ra"
+msgstr "Ongi etorri<br>La Culturetara"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:3
 msgid "Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia."
-msgstr "Hemen aurkituko dituzu azkenik! Donostiako egitarau kultural guztiak"
+msgstr "Hemen Donostiako egitarau kultural guztiak aurkituko dituzu"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:4
 msgid "Conciertos, exposiciones, películas, teatros..."
@@ -223,7 +223,7 @@ msgstr "Kontzertuak, erakusketak, filmak, antzerkiak..."
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
 msgid "Desliza a la izquierda si no te interesa el evento"
-msgstr "Ezkerrerantz hatza pasatu egiataraua ez baduzu gustuko"
+msgstr "Ezkerrerantz hatza pasatu egitaraua ez baduzu gustoko"
 
 #: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
 msgid "Presiona en la carta para ver más info del evento"
@@ -239,7 +239,7 @@ msgstr "Zure profila"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:11
 msgid "¿En qué idioma quieres ver La Cultureta?"
-msgstr "Ze hizkuntzan ikusi nahi duzu La Cultureta?"
+msgstr "Zein hizkuntzatan irakurri nahi duzu La Cultureta?"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:14
 msgid "Euskera"
@@ -247,7 +247,7 @@ msgstr "Eukeraz"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:18
 msgid "Castellano"
-msgstr "Erderaz"
+msgstr "Erdaraz"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:28
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
@@ -304,11 +304,11 @@ msgstr "Beste ekitaldiak"
 
 #: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:2
 msgid "Ooops, ¡ya no hay más!"
-msgstr "Ooops, bukatu ein duzu La Cultureta?"
+msgstr "Ooops, oraingoz ez daude ekitaldi gehiado!"
 
 #: ../storage/framework/messages/f5f7d1c56022b4505a4eda4fed49ff8b52521b46.php.php:3
 msgid "Sigue enterándote de los mejores eventos utilizando los filtros"
-msgstr "Filtroak erabili egitarau gehiago aurkitzeko"
+msgstr "Filtroak erabil itzazu ekitaldi gehiago aurkitu ahal izateko"
 
 #: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:5
 msgid "La Cultureta"
@@ -316,15 +316,15 @@ msgstr "La Cultureta"
 
 #: ../storage/framework/messages/6ddfaef85fafd56141159b1a7732f8504db008ca.php.php:20
 msgid "La agenda de eventos culturales de Donostia"
-msgstr "Donostiako egitarau kulturalen agenda"
+msgstr "Donostiako kultur ekitaldien agenda"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:7
 msgid "Filtra los eventos"
-msgstr "Egiatarauak filtratu"
+msgstr "Ekitaldiak filtratu"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:11
 msgid "Por fecha"
-msgstr "Dataz"
+msgstr "Dataren arabera"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:15
 msgid "Todas las fechas"
@@ -340,11 +340,11 @@ msgstr "Bihar"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:33
 msgid "Próximos 7 días"
-msgstr "Hurrengo 7 egun"
+msgstr "Hurrengo 7 egunetan"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:43
 msgid "Por categoría"
-msgstr "Kategoriaz"
+msgstr "Kategoriaren arabera"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:47
 msgid "Seleccionar todas"
@@ -356,7 +356,7 @@ msgstr "Ezein hautatu"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:71
 msgid "Por lugar"
-msgstr "Lekuz"
+msgstr "Lekuaren arabera"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:75
 msgid "Seleccionar todos"
@@ -368,11 +368,11 @@ msgstr "Ezein hautatu"
 
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:102
 msgid "Debes seleccionar al menos una fecha, una categoría y un lugar."
-msgstr "Data, kategoria edo toki bat gutxienez hautatu behar duzu"
+msgstr "Data, kategoria edo toki bat hautatu behar duzu gutxienez"
 
 #: ../storage/framework/messages/d8f4937cf37df14df03a5e8cdb74b5679c9942bd.php.php:11
 msgid "La Cultureta | Tu Agenda de Eventos de Donostia"
-msgstr "La Cultureta | Zure Donostiako egitarau kulturalen agenda"
+msgstr "La Cultureta | Zure Donostiako kultur ekitaldien agenda"
 
 #~ msgid "el %1s de %2s y el %3s de %4s"
 #~ msgstr "%2sko %1sa eta %4sko %3sa"
