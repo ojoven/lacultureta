@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2017-04-02 00:28+0100\n"
-"PO-Revision-Date: 2017-04-17 18:45+0100\n"
+"PO-Revision-Date: 2017-04-17 19:30+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -243,11 +243,11 @@ msgstr "Zein hizkuntzatan irakurri nahi duzu La Cultureta?"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:14
 msgid "Euskera"
-msgstr "Euskeraz"
+msgstr "Euskaraz"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:18
 msgid "Castellano"
-msgstr "Erderaz"
+msgstr "Gaztelaniaz"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:28
 #: ../storage/framework/messages/7e26c9ff9fff0c90e6972f9614e3bedab31bd9ca.php.php:100
