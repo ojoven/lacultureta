@@ -109,6 +109,7 @@
 	@include effect(opacity, 0.3s, linear);
 	z-index: 1;
 	touch-action: none !important;
+	overflow: hidden;
 
 	&.in-deck {
 		visibility: visible;

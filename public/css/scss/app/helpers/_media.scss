@@ -3,10 +3,31 @@
 // ==============================================
 // Custom media styles
 
+$viewportHeightIphone4WithHeader:220px;
 $viewportHeightIphone4:350px;
 
+// IPHONE 4 with header
+@media (max-height: 380px) {
+
+  #subheader { top: 35px; }
+  .welcome .swipe .swipe-message { font-size: 10px; }
+  .welcome .swipe .icon-swipe { height: 40px; width: 40px; }
+  .welcome p { font-size: 10px; margin: 0; }
+  #viewport { margin-top: 80px; height: $viewportHeightIphone4WithHeader; }
+  .cards li { height: $viewportHeightIphone4WithHeader - 10; }
+  .no-cards { height: $viewportHeightIphone4WithHeader - 20; padding: 50px 20px; }
+  .loading { height: $viewportHeightIphone4WithHeader - 20; }
+  .cards li .title { font-size: 16px; margin: 10px 0 5px; }
+  .cards li .image { width: 60px; height: 60px; }
+  .cards li .date .day, .cards li .date .hour { font-size: 16px; }
+  .cards li .place, .cards li .categories .category { display: none; }
+  .popup .single-event .image { height: 120px; }
+
+
+}
+
 // IPHONE 4
-@media (max-height: 480px) {
+@media (min-height: 380px) and (max-height: 480px) {
 
   #subheader { top: 35px; }
   .welcome .swipe .swipe-message { font-size: 12px; }
