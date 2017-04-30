@@ -179,6 +179,15 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .popup .single-event .info li { font-size: 12px; }
 .popup .single-event .info a { text-decoration: none; font-weight: bold; color: #0e7d8e; }
 
+.instructions-desktop { display: none; }
+
+@media (min-width: 620px) { .instructions-desktop { display: block; }
+  .instructions-mobile { display: none; }
+  .favtrashbuttons { position: absolute; top: 50%; -moz-transform: translate3d(0px, -50%, 0); -o-transform: translate3d(0px, -50%, 0); -ms-transform: translate3d(0px, -50%, 0); -webkit-transform: translate3d(0px, -50%, 0); transform: translate3d(0px, -50%, 0); width: 100%; }
+  .favtrashbuttons > a { background-repeat: no-repeat; background-position: center; background-size: 50px; border-radius: 50%; width: 90px; height: 90px; display: inline-block; opacity: 0.8; -webkit-transition: opacity 200ms ease-in-out; -moz-transition: opacity 200ms ease-in-out; -o-transition: opacity 200ms ease-in-out; transition: opacity 200ms ease-in-out; }
+  .favtrashbuttons > a:hover, .favtrashbuttons > a:focus { opacity: 1; }
+  .favtrashbuttons .trash { background-image: url(../img/trash_white.png); background-color: #999; float: left; margin-left: -120px; }
+  .favtrashbuttons .fav { background-image: url(../img/heart_white.png); background-color: #BE2625; float: right; margin-right: -120px; } }
 .resume-single .cards li { opacity: 1; }
 
 .resume-resume { background: #ffffff; overflow: visible; }
@@ -221,7 +230,9 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .welcome .swipe .icon-swipe { width: 70px; height: 70px; background: url(../img/flick_left_v2.png) center center no-repeat; background-size: contain; margin: 0 auto 10px; }
 .welcome .swipe .swipe-message { font-size: 14px; }
 .welcome .swipe.swipe-right .icon-swipe { background-image: url(../img/flick_right_v2.png); }
+.welcome .swipe.swipe-right.swipe-desktop .icon-swipe { background-image: url(../img/flick_right_desktop.png); }
 .welcome .swipe.swipe-center .icon-swipe { background-image: url(../img/flick_center.png); }
+.welcome .swipe.swipe-left.swipe-desktop .icon-swipe { background-image: url(../img/flick_left_desktop.png); }
 .welcome .warning-tmp { font-size: 12px; color: #666; }
 
 /** PRINT **/

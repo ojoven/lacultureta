@@ -18,6 +18,7 @@ var stack,
 $(document).ready(function() {
 
 	generateCards();
+	throwCardsWithButtonsManagement();
 	cardsAfterThrowManagement();
 	loadInitialCards();
 	toChangeView();
@@ -59,7 +60,8 @@ function activateCards() {
 
 	$(".card").not('.in-stack').each(function() {
 		$(this).addClass('in-stack').addClass('in-deck');
-		stack.createCard($(this).get(0));
+		var card = stack.createCard($(this).get(0));
+		cards.push(card);
 
 		// Bind event
 		$(".card").off('click').on('click', function() {
@@ -132,6 +134,23 @@ function generateCards() {
 }
 
 // THROW CARDS
+function throwCardsWithButtonsManagement() {
+
+	// FAV / LIKE
+	var $fav = $(".favtrashbuttons .fav");
+	$fav.on('click', function() {
+		var randomPosition = randomIntFromInterval(-100, 100);
+		cards[0].throwOut(1, randomPosition);
+	});
+
+	// TRASH / DISLIKE
+	var $trash = $(".favtrashbuttons .trash");
+	$trash.on('click', function() {
+		var randomPosition = randomIntFromInterval(-100, 100);
+		cards[0].throwOut(-1, randomPosition);
+	});
+}
+
 function cardsAfterThrowManagement() {
 
 	var $viewport = $("#viewport");
@@ -139,6 +158,9 @@ function cardsAfterThrowManagement() {
 	// Card thrown out
 	$viewport.on('out', function (e, target, direction) {
 		$(target).removeClass('in-deck');
+
+		// We remove the card from the cards list
+		cards.shift();
 
 		// If number of in-deck < numEventsPage, we load new page
 		var numCardsInDeck = $('.cards li.in-deck').length;
@@ -258,5 +280,9 @@ function deactivateLoading() {
 	var $noCards = $('.no-cards');
 
 	$loading.hide();
-	$noCards.show(); // We hide this for some issues with z-index
+	$noCards.show();
+}
+
+function randomIntFromInterval(min, max) {
+	return Math.floor(Math.random()*(max-min+1)+min);
 }

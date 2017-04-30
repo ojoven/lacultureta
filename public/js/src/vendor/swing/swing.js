@@ -1688,7 +1688,7 @@
 					eventEmitter = (0, _sister2['default'])();
 					springSystem = stack.getSpringSystem();
 					springThrowIn = springSystem.createSpring(250, 10);
-					springThrowOut = springSystem.createSpring(500, 20);
+					springThrowOut = springSystem.createSpring(1000, 300);
 					lastThrow = {};
 					lastTranslate = {
 						x: 0,

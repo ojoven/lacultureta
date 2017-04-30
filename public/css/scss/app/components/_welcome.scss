@@ -34,6 +34,8 @@
 
 		&.swipe-right {
 			.icon-swipe { background-image: url(../img/flick_right_v2.png); }
+
+			&.swipe-desktop .icon-swipe { background-image: url(../img/flick_right_desktop.png); }
 		}
 
 		&.swipe-center {
@@ -41,7 +43,7 @@
 		}
 
 		&.swipe-left {
-
+			&.swipe-desktop .icon-swipe { background-image: url(../img/flick_left_desktop.png); }
 		}
 
 	}

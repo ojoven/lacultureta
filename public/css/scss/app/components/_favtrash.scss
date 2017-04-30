@@ -1,0 +1,52 @@
+// ==============================================
+// DESKTOP FAV/TRASH BUTTONS
+// ==============================================
+
+.instructions-desktop { display: none; }
+
+@include mediaForFavTrashDesktopButtons {
+
+  $moveButtonsFromCard: 120px;
+
+  .instructions-desktop { display: block; }
+  .instructions-mobile { display: none; }
+
+  .favtrashbuttons {
+    position: absolute;
+    top: 50%;
+    @include Y-50();
+    width: 100%;
+
+    > a {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50px;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: inline-block;
+      opacity: 0.8;
+      @include effect(opacity, 200ms, ease-in-out);
+
+      &:hover, &:focus {
+        opacity: 1;
+      }
+    }
+
+    .trash {
+      background-image: url(../img/trash_white.png);
+      background-color: #999;
+      float: left;
+      margin-left: -$moveButtonsFromCard;
+    }
+
+    .fav {
+      background-image: url(../img/heart_white.png);
+      background-color: #BE2625;
+      float: right;
+      margin-right: -$moveButtonsFromCard;
+    }
+  }
+
+
+}

@@ -6,6 +6,7 @@ $mobile-min-width: 320px;
 $mobile-width: 768px;
 $tablet-width: 980px;
 $desktop-width: 1024px;
+$minitablet-width: 620px;
 
 // TABLET LANDSCAPE
 @mixin littleDesktop {
@@ -38,6 +39,14 @@ $desktop-width: 1024px;
 // TINY MOBILE
 @mixin mobileTiny {
   @media (max-width: #{$mobile-min-width}) {
+    @content;
+  }
+}
+
+// FAV TRASH BUTTONS
+// We're using this media for adding fav/trash buttons (instead of swiping cards)
+@mixin mediaForFavTrashDesktopButtons {
+  @media (min-width: #{$minitablet-width}) {
     @content;
   }
 }

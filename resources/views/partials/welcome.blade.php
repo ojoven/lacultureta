@@ -3,19 +3,45 @@
     <p>{{ __('Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia.') }}</p>
     <p>{{ __('Conciertos, exposiciones, películas, teatros...') }}</p>
 
-    <div class="swipe swipe-left">
-        <div class="icon-swipe"></div>
-        <div class="swipe-message">{{ __('Desliza a la izquierda si no te interesa el evento') }}</div>
+    <!-- INSTRUCTIONS MOBILE -->
+    <div class="instructions-mobile">
+
+        <div class="swipe swipe-left">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Desliza a la izquierda si no te interesa el evento') }}</div>
+        </div>
+
+        <div class="swipe swipe-center">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Presiona en la carta para ver más info del evento') }}</div>
+        </div>
+
+        <div class="swipe swipe-right">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Desliza a la derecha si te interesa el evento y quieres guardarlo') }}</div>
+        </div>
+
     </div>
 
-    <div class="swipe swipe-center">
-        <div class="icon-swipe"></div>
-        <div class="swipe-message">{{ __('Presiona en la carta para ver más info del evento') }}</div>
+    <!-- INSTRUCTIONS DESKTOP -->
+    <div class="instructions-desktop">
+
+        <div class="swipe swipe-left swipe-desktop">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Haz click en el botón de papelera de la izquierda si no te interesa el evento') }}</div>
+        </div>
+
+        <div class="swipe swipe-center swipe-desktop">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Presiona en la carta para ver más info del evento') }}</div>
+        </div>
+
+        <div class="swipe swipe-right swipe-desktop">
+            <div class="icon-swipe"></div>
+            <div class="swipe-message">{{ __('Haz click en el botón de corazón de la derecha si te interesa el evento y quieres guardarlo') }}</div>
+        </div>
+
     </div>
 
-    <div class="swipe swipe-right">
-        <div class="icon-swipe"></div>
-        <div class="swipe-message">{{ __('Desliza a la derecha si te interesa el evento y quieres guardarlo') }}</div>
-    </div>
 
 </li>

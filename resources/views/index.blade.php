@@ -12,7 +12,7 @@
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-        <link href="/css/style.css?v=3" rel="stylesheet">
+        <link href="/css/style.css?v=4" rel="stylesheet">
 
     </head>
 
@@ -40,6 +40,9 @@
 
             <!-- NO CARDS -->
             @include('partials/no-cards')
+
+            <!-- FAV/TRASH BUTTONS (DESKTOP) -->
+            @include('partials/favtrashbuttons')
 
         </div>
 
