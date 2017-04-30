@@ -4,7 +4,7 @@
 // Custom media styles
 
 $viewportHeightIphone4WithHeader:220px;
-$viewportHeightIphone4:350px;
+$viewportHeightIphone4:315px;
 
 // IPHONE 4 with header
 @media (max-height: 380px) {
@@ -31,12 +31,17 @@ $viewportHeightIphone4:350px;
 
   #subheader { top: 35px; }
   .welcome .swipe .swipe-message { font-size: 12px; }
+  .welcome .swipe .icon-swipe { height: 55px; width: 55px; }
+  .welcome p { font-size: 12px; margin: 5px 0; }
   #viewport { margin-top: 80px; height: $viewportHeightIphone4; }
   .cards li { height: $viewportHeightIphone4 - 10; }
   .no-cards { height: $viewportHeightIphone4 - 20; }
   .loading { height: $viewportHeightIphone4 - 20; }
-  .cards li .title { font-size: 20px; margin: 15px 0 10px; }
-  .cards li .image { width: 110px; height: 110px; }
+  .cards li .title { font-size: 18px; margin: 15px 0 10px; }
+  .cards li .image { width: 90px; height: 90px; }
+  .cards li .date .day, .cards li .date .hour { font-size: 14px; }
+  .cards li .place { font-size: 12px; }
+  .cards li .categories .category { width: 20px; height: 20px; }
   .popup .single-event .image { height: 150px; }
 
 }
