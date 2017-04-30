@@ -5,6 +5,7 @@ use App\Lib\DateFunctions;
 use App\Lib\Functions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Event extends Model {
 
@@ -319,7 +320,9 @@ class Event extends Model {
 	public function getEventsFromRatings($ratings) {
 
 		$eventIds = Functions::getArrayWithIndexValues($ratings, 'eventId');
-		$events = self::whereIn('id', $eventIds)->get()->toArray();
+		if (!$eventIds) return array();
+		$ids_ordered = implode(',', $eventIds);
+		$events = self::whereIn('id', $eventIds)->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))->get()->toArray();
 		return $events;
 	}
 
