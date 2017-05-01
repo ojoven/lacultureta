@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-04-02 00:28+0100\n"
-"PO-Revision-Date: 2017-04-17 19:30+0100\n"
-"Last-Translator: Mikel <michel@majesticmedia.ca>\n"
+"POT-Creation-Date: 2017-05-01 20:02+0100\n"
+"PO-Revision-Date: 2017-05-01 20:07+0100\n"
+"Last-Translator: \n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 "X-Poedit-SearchPath-2: Console\n"
 "X-Poedit-SearchPath-3: ../storage/framework/messages\n"
 
+#: ../resources/views/resume/resume.blade.php:48
+#: ../storage/framework/messages/ae0c060adee87d502ad16757f540485863f36e5f.php.php:48
+msgid "Y también:"
+msgstr "Eta gainera:"
+
 #: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:27
 #, php-format
 msgid "A %s donostiarras les gusta"
@@ -26,6 +31,45 @@ msgstr "%s donostiarrei gustatzen zaie"
 #: ../storage/framework/messages/6aac262f02a8c30ac5a24ae1135ac238b29db512.php.php:29
 msgid "A 1 donostiarra les gusta"
 msgstr "Donostiar bati gustatzen zaio"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:242
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:82
+msgid "hoy"
+msgstr "gaur"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:245
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:85
+msgid "mañana"
+msgstr "bihar"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:248
+msgid "este finde"
+msgstr "asteburu honetan"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:252
+msgid "la próxima semana"
+msgstr "hurrengo astean"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:261
+#, php-format
+msgid "Evento interesante %s, más info en http://lacultureta.com"
+msgstr "Ekitaldi interesgarria %s, info gehiago -> http://lacultureta.com/eu"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:262
+#, php-format
+msgid ""
+"%s tienes un buen plan, recuerda que hay mucho más en http://lacultureta.com"
+msgstr "%s plan polita daukazu; gehiago http://lacultureta.com/eu'n"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:268
+#, php-format
+msgid "Eventos en Donostia para %s http://lacultureta.com"
+msgstr "Donostiako zenbait ekitaldi %s http://lacultureta.com/eu"
+
+#: ../storage/framework/messages/88e88d4632613be790fefc534f1a10d4790b22d0.php.php:269
+#, php-format
+msgid "Mira qué planes chulos para %s, más en http://lacultureta.com"
+msgstr "Begira zenbat ekitaldi interesgarriak %s http://lacultureta.com/eu"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:37
 msgid "ayer y hoy"
@@ -40,7 +84,8 @@ msgid "mañana y pasado"
 msgstr "bihar eta etzi"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:48
-msgid "el %1$s de %2$s y el %3$s de %$4s"
+#, php-format
+msgid "el %1$s de %2$s y el %3$s de %4$s"
 msgstr "%2$sren %1$sean eta %4$sk %3$sean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:51
@@ -67,14 +112,6 @@ msgstr "%2$sren %1$stik %4$sren %3$sra"
 #, php-format
 msgid "desde el %1$s hasta el %2$s de %3$s"
 msgstr "%3$sren %1$stik %2$sra"
-
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:82
-msgid "hoy"
-msgstr "gaur"
-
-#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:85
-msgid "mañana"
-msgstr "bihar"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:88
 msgid "pasado mañana"
@@ -113,6 +150,11 @@ msgstr "hurrengo igandean"
 #, php-format
 msgid "el %1$s de %2$s"
 msgstr "%2$sren %1$sean"
+
+#: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:122
+#, php-format
+msgid "%1$s %2$s de %3$s"
+msgstr "%3$sren %1$sean eta %2$sean"
 
 #: ../storage/framework/messages/7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Enero"
@@ -221,17 +263,30 @@ msgstr "Hemen Donostiako kultur ekitaldi guztiak aurkituko dituzu"
 msgid "Conciertos, exposiciones, películas, teatros..."
 msgstr "Kontzertuak, erakusketak, filmak, antzerkiak..."
 
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:8
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:11
 msgid "Desliza a la izquierda si no te interesa el evento"
 msgstr "Ezkerrerantz hatza pasatu ekitaldia ez baduzu gustoko"
 
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:13
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:16
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:36
 msgid "Presiona en la carta para ver más info del evento"
 msgstr "Txartela sakatu informazio gehiagorako"
 
-#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:18
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:21
 msgid "Desliza a la derecha si te interesa el evento y quieres guardarlo"
 msgstr "Eskubirantz hatza pasatu egiataraua gustatzen bazaizu, gordetzeko"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:31
+msgid ""
+"Haz click en el botón de papelera de la izquierda si no te interesa el evento"
+msgstr "Klikatu ezkerreko paperontzi botoian ekitaldia ez baduzu gustoko"
+
+#: ../storage/framework/messages/7c9dba8c20922626356d3297045ad6f4fc94b5c6.php.php:41
+msgid ""
+"Haz click en el botón de corazón de la derecha si te interesa el evento y "
+"quieres guardarlo"
+msgstr ""
+"Klikatu eskubiko bihotz botoian egiataraua gustatzen bazaizu, gordetzeko"
 
 #: ../storage/framework/messages/8bf302f022efefd86ae4cda3e6f6631b5e50eeb1.php.php:7
 msgid "Tu perfil"

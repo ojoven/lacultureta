@@ -56,7 +56,7 @@
                 <ul class="data-category">
                     <?php foreach ($categories as $category) { ?>
                     <li>
-                        <a href="#" class="filter active" data-filter="category" data-value="<?php echo $category['name']; ?>">
+                        <a href="#" class="filter active" data-filter="category" data-value="<?php echo $category['id']; ?>">
                             <div class="category-image" style="background-image:url(<?php echo $category['image']; ?>)"></div>
                             <span class="category-title"><?php echo $category['name']; ?></span>
                         </a>

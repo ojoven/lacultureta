@@ -22,57 +22,82 @@ class Twitter extends Model {
 	// We'll call this function every 5 minutes or so with a cron job
 	public function twitterScheduler() {
 
-		// id, days of week (first, last), hour, template, date target, response to previous tweet
+		// id, days of week (first, last), hour, template, date target, category, place, response to previous tweet
 		$schedule = array(
-			array(1, 1, 4, '09.00', 'first', 'today', false),
-			array(2, 1, 4, '09.05', 'second', 'today', true),
-			array(3, 1, 4, '09.10', 'resume', 'today', true),
-			array(4, 1, 4, '14.10', 'resume', 'today', false),
-			array(5, 1, 3, '21.10', 'resume', 'tomorrow', false),
-			array(6, 4, 4, '21.00', 'first', 'weekend', false), // weekend: friday, saturday and sunday
-			array(7, 4, 4, '21.05', 'second', 'weekend', true),
-			array(8, 4, 4, '21.10', 'resume', 'weekend', true),
-			array(9, 5, 5, '09.00', 'resume', 'weekend', false),
-			array(10, 5, 5, '14.00', 'resume', 'weekend', false),
-			array(11, 6, 6, '10.00', 'first', 'today', false),
-			array(12, 6, 6, '10.05', 'resume', 'today', true),
-			array(13, 6, 6, '10.10', 'resume', 'tomorrow', true),
-			array(14, 7, 7, '09.30', 'resume', 'today', false),
-			array(14, 7, 7, '21.30', 'resume', 'week', false),
-
-			// Testing
-			array(15, 1, 1, '14.00', 'first', 'today', false),
-			array(15, 1, 1, '12.24', 'resume', 'weekend', false),
-			array(15, 1, 1, '14.10', 'resume', 'week', false),
-			array(15, 1, 1, '14.15', 'first', 'tomorrow', false),
-			array(15, 1, 1, '14.20', 'second', 'tomorrow', false),
-			array(15, 1, 1, '14.25', 'resume', 'tomorrow', false),
-			array(15, 1, 1, '14.30', 'resume', 'week', false),
+			array(1, 1, 4, '09.00', 'first', 'today', 'all', 'all', false),
+			array(2, 1, 4, '09.05', 'second', 'today', 'all', 'all', true),
+			array(3, 1, 4, '09.10', 'resume', 'today', 'all', 'all', true),
+			array(4, 1, 4, '14.10', 'resume', 'today', 'all', 'all', false),
+			array(5, 1, 3, '21.10', 'resume', 'tomorrow', 'all', 'all', false),
+			array(6, 4, 4, '21.00', 'first', 'weekend', 'all', 'all', false), // weekend: friday, saturday and sunday
+			array(7, 4, 4, '21.05', 'second', 'weekend', 'all', 'all', true),
+			array(8, 4, 4, '21.10', 'resume', 'weekend', 'all', 'all', true),
+			array(9, 5, 5, '09.00', 'resume', 'weekend', 'all', 'all', false),
+			array(10, 5, 5, '14.00', 'resume', 'weekend', 'all', 'all', false),
+			array(11, 6, 6, '10.00', 'first', 'today', 'all', 'all', false),
+			array(12, 6, 6, '10.05', 'resume', 'today', 'all', 'all', true),
+			array(13, 6, 6, '10.10', 'resume', 'tomorrow', 'all', 'all', true),
+			array(14, 7, 7, '09.30', 'resume', 'today', 'all', 'all', false),
+			array(14, 7, 7, '21.30', 'resume', 'week', 'all', 'all', false),
 		);
 
 		// We convert the schedule to an associative array (for readability)
 		$schedule = $this->parseScheduleTemplates($schedule);
 
-		// We decide, is it time to send a tweet?
-		if ($template = $this->isTimeToSendATweet($schedule)) {
+		// We get the template from the schedule, based on the current day and hour
+		$template = $this->getTemplateFromSchedule($schedule);
 
-			Functions::log('Is time to send a tweet');
-
-			// Language
-			$languages = array('es', 'eu');
-			$template['language'] = $languages[array_rand($languages)];
-			Functions::setLocaleFromLanguage($template['language']);
-
-			// We prepare the tweet
-			$tweet = $this->prepareTweet($template);
-			if ($tweet) {
-
-				Functions::log($tweet);
-
-				// If everything alright, we send it
-				$this->sendTweet($tweet['message'], $tweet['image']);
-			}
+		// Is time to send a tweet? We just check if there's a template
+		if (!$this->isTimeToSendATweet($template)) {
+			Functions::log("It's not time to send a tweet");
+			return false;
 		}
+
+		// We add the language to the template; random (to be optimized?)
+		$languages = array('es', 'eu');
+		$template['language'] = $languages[array_rand($languages)];
+		Functions::setLocaleFromLanguage($template['language']);
+
+		if (!$this->areThereEventsForTemplate($template)) {
+			Functions::log("There are no events for this template");
+			return false;
+		}
+
+		// We prepare the tweet
+		$tweet = $this->prepareTweet($template);
+		if ($tweet) {
+
+			Functions::log($tweet);
+
+			// If everything alright, we send it
+			$this->sendTweet($tweet['message'], $tweet['image']);
+		}
+	}
+
+	public function getTemplateFromSchedule($schedule) {
+
+		// First we check the hour, if it's equal to one of the schedules, we check the day
+		$currentHour = date('H.i');
+		$currentDay = date('N');
+
+		foreach ($schedule as $template) {
+
+			if ($currentHour == $template['hour'] && ($currentDay >= $template['day_start'] && $currentDay >= $template['day_end'])) {
+				return $template;
+			}
+
+		}
+
+		return false;
+	}
+
+	public function areThereEventsForTemplate($template) {
+
+		$params = $this->getEventFilterParamsFromTemplate($template);
+		Functions::log($params);
+		$eventModel = new Event();
+		$events = $eventModel->getEventsForResume($params);
+		return ($events) ? true : false;
 
 	}
 
@@ -88,7 +113,9 @@ class Twitter extends Model {
 			$parsedTemplate['hour'] = $template[3];
 			$parsedTemplate['template'] = $template[4];
 			$parsedTemplate['date_target'] = $template[5];
-			$parsedTemplate['reply'] = $template[6];
+			$parsedTemplate['category'] = $template[6];
+			$parsedTemplate['place'] = $template[7];
+			$parsedTemplate['reply'] = $template[8];
 
 			$parsedSchedule[] = $parsedTemplate;
 
@@ -99,21 +126,10 @@ class Twitter extends Model {
 	}
 
 	// Is time to send a tweet?
-	public function isTimeToSendATweet($schedule) {
+	public function isTimeToSendATweet($template) {
 
-		// First we check the hour, if it's equal to one of the schedules, we check the day
-		$currentHour = date('H.i');
-		$currentDay = date('N');
+		return $template ? true : false;
 
-		foreach ($schedule as $template) {
-
-			if ($currentHour == $template['hour'] && ($currentDay >= $template['day_start'] && $currentDay >= $template['day_end'])) {
-				return $template;
-			}
-
-		}
-
-		return false;
 	}
 
 	// Prepare the tweet
@@ -134,8 +150,26 @@ class Twitter extends Model {
 
 	}
 
-	// Get image tweet (generate screenshot)
+	// Get image Tweet
 	public function getImageTweet($template) {
+
+		$url = $this->getResumeUrlFromTemplate($template);
+		$image = $this->createImageFromUrl($url);
+
+		return $image;
+
+	}
+
+	public function getResumeUrlFromTemplate($template) {
+
+		$view = $this->getViewFromTemplate($template);
+		$params = $this->getEventFilterParamsFromTemplate($template);
+		$url = $this->getResumeUrlFromViewAndParameters($view, $params);
+
+		return $url;
+	}
+
+	public function getViewFromTemplate($template) {
 
 		switch ($template['template']) {
 			case 'first':
@@ -147,37 +181,54 @@ class Twitter extends Model {
 				$view = 'resume';
 		}
 
+		return $view;
+	}
+
+	public function getEventFilterParamsFromTemplate($template) {
+
+		Functions::log($template);
+
 		$params = array(
-			'place' => 'all',
-			'category' => 'all',
+			'category' => $template['category'],
+			'place' => $template['place'],
 			'date' => $template['date_target'],
 			'template' => $template['template'],
 			'language' => $template['language']
 		);
 
+		return $params;
+	}
+
+	public function getResumeUrlFromViewAndParameters($view, $params) {
+
 		$url = url('/') . '/resume/' . $view . '?';
 		$url .= http_build_query($params);
 
+		return $url;
+	}
+
+	public function createImageFromUrl($url) {
+
+		// We define the paths for Phantom script and to be generated image
 		$pathToPhantomJs = app_path() . '/Lib/' . "phantom/resume.js";
 		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
+		// We execute the phantom script via command line
 		$command = "/usr/local/bin/phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
-		Functions::log($command);
 		$return = shell_exec($command);
-		Functions::log($return);
-		$response = ($return == 'success' . PHP_EOL) ? true : false;
 
-		if ($response) {
-			chmod($pathToScreenshot, 0777);
-			$image = $pathToScreenshot;
-		} else {
-			$image = false;
-		}
+		// Some logs
+		Functions::log($command);
+		Functions::log($return);
+
+		// Return image if success or false if error
+		$image = ($return == 'success' . PHP_EOL) ? $pathToScreenshot : false;
 
 		return $image;
 
 	}
 
+	// Prepare message
 	public function prepareMessage($template) {
 
 		$arrayMessages = array();
@@ -204,15 +255,15 @@ class Twitter extends Model {
 			|| $template['template'] == 'second') {
 
 			$arrayMessages = array(
-				__('Evento destacado %s', $dateString),
-				__('%s tienes un buen plan', ucfirst($dateString))
+				__('Evento interesante %s, más info en http://lacultureta.com', $dateString),
+				__('%s tienes un buen plan, recuerda que hay mucho más en http://lacultureta.com', ucfirst($dateString))
 			);
 
 		} else if ($template['template'] == 'resume') {
 
 			$arrayMessages = array(
-				__('Eventos en Donostia para %s', $dateString),
-				__('Mira qué planes chulos para %s', $dateString)
+				__('Eventos en Donostia para %s http://lacultureta.com', $dateString),
+				__('Mira qué planes chulos para %s, más en http://lacultureta.com', $dateString)
 			);
 
 		}

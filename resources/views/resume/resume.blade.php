@@ -40,7 +40,30 @@
                     </li>
 
             <?php }
-                } ?>
+                }
+
+                if ($events['range']) { ?>
+
+                <li>
+                    <span class="title"><?php echo __("Y también:"); ?></span>
+                    <ul class="events">
+
+                        <?php foreach ($events['range'] as $event) { ?>
+                        <li class="event">
+                            <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
+                            <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
+                            <span class="event-title"><?php echo $event['title']; ?></span>
+                            <?php if ($event['hour']) { ?>
+                            <div class="hour">(<?php echo $event['hour']; ?>)</div>
+                            <?php } ?>
+                        </li>
+                        <?php } ?>
+
+                    </ul>
+                </li>
+
+                <?php }
+                ?>
 
         </ul>
 

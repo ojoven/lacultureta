@@ -3,24 +3,25 @@
 namespace App\Console\Commands;
 
 use App\Models\Scraper;
+use App\Models\Twitter;
 use Log;
 use Illuminate\Console\Command;
 
-class ScraperCommand extends Command
+class TwitterBotCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'scraper';
+    protected $signature = 'twitterbot';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Extract the info for the agenda';
+    protected $description = 'Post event resumes on Twitter';
 
     /**
      * Execute the console command.
@@ -29,9 +30,9 @@ class ScraperCommand extends Command
      */
     public function handle()
     {
-        echo "Start scraping..." . PHP_EOL;
-        $scraper = new Scraper();
-        $scraper->extractDataEvents();
-        echo "Finished scraping" . PHP_EOL;
+        $currentHour = date('H.i');
+        echo $currentHour . PHP_EOL;
+        $twitterModel = new Twitter();
+        $twitterModel->twitterScheduler();
     }
 }

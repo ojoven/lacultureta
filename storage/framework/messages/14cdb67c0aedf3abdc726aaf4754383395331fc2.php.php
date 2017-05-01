@@ -37,14 +37,13 @@ class IndexController extends Controller {
 
         // Code to play with here
         $twitterModel = new Twitter();
-        //$twitterModel->sendTweet('Esto es una prueba, don pepito');
-        $schedule = array(array(1, 1, 4, '09.00', 'resume', 'today', false));
+        $schedule = array(array(1, 1, 4, '09.00', 'resume', 'weekend', false));
         $schedule = $twitterModel->parseScheduleTemplates($schedule);
-        $twitterModel->prepareTweet($schedule[0]);
-
-        //$today = date('Y-m-d');
-        //$after7days = date('Y-m-d', strtotime('+7 day'));
-        //print_r(DateFunctions::dateRange($today, $after7days));
+        $tweet = $twitterModel->prepareTweet($schedule[0]);
+        if ($tweet) {
+            // If everything alright, we send it
+            $response = $twitterModel->sendTweet($tweet['message'], $tweet['image']);
+        }
 
         return view('playground');
 

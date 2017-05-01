@@ -37,7 +37,7 @@ class ResumeController extends Controller {
         $eventModel = new Event();
         $events = $eventModel->getEventsForResume($params);
         $events = $eventModel->parseEventsForRender($events);
-        $events = $eventModel->sortEventsByDate($events, $params['date'][0]);
+        $events = $eventModel->sortEventsByDate($events, $params['date']);
 
         return view('resume/resume', array('events' => $events));
     }

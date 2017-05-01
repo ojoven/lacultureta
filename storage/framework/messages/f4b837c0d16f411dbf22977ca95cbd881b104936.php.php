@@ -9,26 +9,27 @@ class Category extends Model {
 
 		// TODO: Add this to DB
 		$arrayCategories = array(
-			__('Actividades Infantiles'),
-			__('Cine'),
-			__('Conferencias'),
-			__('Deportes'),
-			__('Exposiciones'),
-			__('Fiestas y Ferias'),
-			__('Gastronomía'),
-			__('Literatura'),
-			__('Museos'),
-			__('Música'),
-			__('Teatro y Danza'),
-			__('Otros')
+			'Actividades Infantiles' => __('Actividades Infantiles'),
+			'Cine' => __('Cine'),
+			'Conferencias' => __('Conferencias'),
+			'Deportes' => __('Deportes'),
+			'Exposiciones' => __('Exposiciones'),
+			'Fiestas y Ferias' => __('Fiestas y Ferias'),
+			'Gastronomía' => __('Gastronomía'),
+			'Literatura' => __('Literatura'),
+			'Museos' => __('Museos'),
+			'Música' => __('Música'),
+			'Teatro y Danza' => __('Teatro y Danza'),
+			'Otros' => __('Otros')
 		);
 
 		$categories = [];
 
-		foreach ($arrayCategories as $category) {
+		foreach ($arrayCategories as $categoryId => $categoryName) {
 
-			$categoryObj['name'] = $category;
-			$categoryObj['image'] = url('/') . '/img/categories/' . str_replace(' ', '', $category) . '.png';
+			$categoryObj['id'] = $categoryId;
+			$categoryObj['name'] = $categoryName;
+			$categoryObj['image'] = url('/') . '/img/categories/' . str_replace(' ', '', $categoryId) . '.png';
 			$categories[] = $categoryObj;
 		}
 

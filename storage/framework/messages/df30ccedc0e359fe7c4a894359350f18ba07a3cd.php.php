@@ -5,6 +5,7 @@ use App\Lib\DateFunctions;
 use App\Lib\Functions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Event extends Model {
 
@@ -46,12 +47,24 @@ class Event extends Model {
 		return $events;
 	}
 
+	// GET RESUME EVENTS
+	public function getEventsForResume($params) {
+
+		$events = $this->getAllEvents();
+		$events = $this->sortEvents($events);
+		$params = Functions::parseStringParamsToArray($params); // little ñapa
+		$events = $this->filterEvents($events, $params);
+
+		return $events;
+	}
+
 	// FILTERS
 	public function filterEvents($events, $params) {
 
 		$events = $this->filterEventsByDate($events, $params['date']);
 		$events = $this->filterEventsByCategory($events, $params['category']);
 		$events = $this->filterEventsByPlace($events, $params['place']);
+		$events = (isset($params['language'])) ? $this->filterEventsByLanguage($events, $params['language']) : $events;
 
 		$events = $this->filterEventsRemoveDuplicated($events);
 
@@ -119,7 +132,7 @@ class Event extends Model {
 
 				// If single date, tomorrow
 				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
-				if (!$event['date_end'] && $diff <= 7) {
+				if (!$event['date_end'] && $diff <= 7 && $diff >= 0) {
 					array_push($eventsByDate, $event);
 				}
 
@@ -133,6 +146,19 @@ class Event extends Model {
 					if ($diff < 0 && $diffWithEndDate <= 7 && $diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
 						array_push($eventsByDate, $event);
 					}
+				}
+			}
+
+			// This weekend
+			if (in_array('weekend', $date)) {
+
+				$thisFriday = DateFunctions::getThisWeekDayDate('friday');
+				$fridayDateObj = new \DateTime($thisFriday);
+
+				// If single date
+				$diff = (int) $fridayDateObj->diff($dateStartObj)->format("%r%a");
+				if (!$event['date_end'] && $diff <= 2 && $diff >= 0) {
+					array_push($eventsByDate, $event);
 				}
 			}
 
@@ -180,6 +206,22 @@ class Event extends Model {
 		}
 
 		return $eventsInPlaces;
+	}
+
+	// Filter language
+	public function filterEventsByLanguage($events, $language) {
+
+		$eventsLanguage = array();
+		foreach ($events as $event) {
+
+			if (in_array($event['language'],$language)) {
+				array_push($eventsLanguage, $event);
+			}
+
+		}
+
+		return $eventsLanguage;
+
 	}
 
 	// Filter Remove Duplicated
@@ -263,6 +305,12 @@ class Event extends Model {
 			$dates = array($tomorrow);
 		} elseif ($dateTarget == 'week') {
 			$dates = DateFunctions::dateRange($today, $after7days);
+		} elseif ($dateTarget == 'weekend') {
+
+			$thisFriday = DateFunctions::getThisWeekDayDate('friday');
+			$thisSunday = DateFunctions::getThisWeekDayDate('sunday');
+
+			$dates = DateFunctions::dateRange($thisFriday, $thisSunday);
 		}
 
 		foreach ($dates as $index => $date) {
@@ -286,16 +334,20 @@ class Event extends Model {
 		foreach ($eventsByDate as $index => $date) {
 
 			$parsedEventsByDate['single'][$index]['date'] = $date['date'];
+			$parsedEventsByDate['single'][$index]['events'] = array();
 
-			foreach ($date['events'] as $event) {
+			if (isset($date['events'])) {
 
-				if (!$event['date_end'] // Single Events
-				|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
-					$parsedEventsByDate['single'][$index]['events'][] = $event;
-				} else {
-					$parsedEventsByDate['range'][] = $event;
+				foreach ($date['events'] as $event) {
+
+					if (!$event['date_end'] // Single Events
+						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
+						$parsedEventsByDate['single'][$index]['events'][] = $event;
+					} else {
+						$parsedEventsByDate['range'][] = $event;
+					}
+
 				}
-
 			}
 
 		}
@@ -319,7 +371,9 @@ class Event extends Model {
 	public function getEventsFromRatings($ratings) {
 
 		$eventIds = Functions::getArrayWithIndexValues($ratings, 'eventId');
-		$events = self::whereIn('id', $eventIds)->get()->toArray();
+		if (!$eventIds) return array();
+		$ids_ordered = implode(',', $eventIds);
+		$events = self::whereIn('id', $eventIds)->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))->get()->toArray();
 		return $events;
 	}
 

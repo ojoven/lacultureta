@@ -31,6 +31,16 @@ class Functions {
 		}
 	}
 
+	public static function parseStringParamsToArray($params) {
+
+		$newParams = array();
+		foreach ($params as $index => $paramString) {
+			$newParams[$index] = array($paramString);
+		}
+
+		return $newParams;
+	}
+
 	/** LANGUAGE **/
 	public static function setLocale($languageFromBrowserUrl) {
 
@@ -58,5 +68,27 @@ class Functions {
 		return $language;
 	}
 
+	public static function setLocaleFromLanguage($language) {
+
+		if ($language == 'eu') {
+			LaravelGettext::setLocale('eu_EU');
+		} else {
+			LaravelGettext::setLocale('es_ES');
+		}
+
+		return $language;
+	}
+
+	/** LOG **/
+	public static function log($message) {
+
+		if (is_string($message)) {
+			echo $message;
+		} else {
+			print_r($message);
+		}
+
+		echo PHP_EOL;
+	}
 }
 

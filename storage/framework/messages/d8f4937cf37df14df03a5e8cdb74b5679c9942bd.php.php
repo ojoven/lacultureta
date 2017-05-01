@@ -12,7 +12,7 @@
 
         <!-- LE STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-        <link href="/css/style.css?v=2" rel="stylesheet">
+        <link href="/css/style.css?v=4" rel="stylesheet">
 
     </head>
 
@@ -41,6 +41,9 @@
             <!-- NO CARDS -->
             <?php echo $__env->make('partials/no-cards', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
+            <!-- FAV/TRASH BUTTONS (DESKTOP) -->
+            <?php echo $__env->make('partials/favtrashbuttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
         </div>
 
         <!-- SINGLE EVENT POPUP -->
@@ -57,7 +60,7 @@
             var browserLang = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
         </script>
 
-        <script type="text/javascript" src="/js/app.min.js?v=3"></script>
+        <script type="text/javascript" src="/js/app.min.js?v=4"></script>
 
     </body>
 
