@@ -139,7 +139,6 @@ function throwCardsWithButtonsManagement() {
 	// FAV / LIKE
 	var $fav = $(".favtrashbuttons .fav");
 	$fav.on('click', function() {
-		console.log(cards.length, cards);
 		var randomPosition = randomIntFromInterval(-100, 100);
 		cards[0].throwOut(1, randomPosition);
 	});
@@ -198,7 +197,6 @@ function toChangeView() {
 		if (view == 'home') {
 			$iconSettings.fadeIn();
 			loadCardsByEventIds(homeEventIds);
-			activateCards();
 			homeEventIds = [];
 		} else {
 			$iconSettings.fadeOut();
@@ -222,7 +220,6 @@ function loadCardsByEventIds(eventIds) {
 
 		// Save the cards to JS
 		cardList = cardList.concat(response.cards);
-		console.log(cardList);
 
 		// Append the cards to the HTML
 		$(".cards").append(response.html);
