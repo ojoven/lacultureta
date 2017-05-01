@@ -47,6 +47,17 @@ class Event extends Model {
 		return $events;
 	}
 
+	// GET RESUME EVENTS
+	public function getEventsForResume($params) {
+
+		$events = $this->getAllEvents();
+		$events = $this->sortEvents($events);
+		$params = Functions::parseStringParamsToArray($params); // little ñapa
+		$events = $this->filterEvents($events, $params);
+
+		return $events;
+	}
+
 	// FILTERS
 	public function filterEvents($events, $params) {
 

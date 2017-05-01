@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\ScraperCommand::class,
         Commands\EventsCommand::class,
+        Commands\TwitterBotCommand::class,
     ];
 
     /**

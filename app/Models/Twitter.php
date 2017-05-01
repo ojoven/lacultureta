@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Lib\Functions;
 use Illuminate\Database\Eloquent\Model;
 require_once app_path() . '/Lib/Vendor/codebird/src/Codebird.php';
 
@@ -26,7 +27,7 @@ class Twitter extends Model {
 			array(1, 1, 4, '09.00', 'first', 'today', false),
 			array(2, 1, 4, '09.05', 'second', 'today', true),
 			array(3, 1, 4, '09.10', 'resume', 'today', true),
-			array(4, 1, 4, '14.10', 'resume', 'afternoon', false),
+			array(4, 1, 4, '14.10', 'resume', 'today', false),
 			array(5, 1, 3, '21.10', 'resume', 'tomorrow', false),
 			array(6, 4, 4, '21.00', 'first', 'weekend', false), // weekend: friday, saturday and sunday
 			array(7, 4, 4, '21.05', 'second', 'weekend', true),
@@ -38,6 +39,15 @@ class Twitter extends Model {
 			array(13, 6, 6, '10.10', 'resume', 'tomorrow', true),
 			array(14, 7, 7, '09.30', 'resume', 'today', false),
 			array(14, 7, 7, '21.30', 'resume', 'week', false),
+
+			// Testing
+			array(15, 1, 1, '14.00', 'first', 'today', false),
+			array(15, 1, 1, '12.24', 'resume', 'weekend', false),
+			array(15, 1, 1, '14.10', 'resume', 'week', false),
+			array(15, 1, 1, '14.15', 'first', 'tomorrow', false),
+			array(15, 1, 1, '14.20', 'second', 'tomorrow', false),
+			array(15, 1, 1, '14.25', 'resume', 'tomorrow', false),
+			array(15, 1, 1, '14.30', 'resume', 'week', false),
 		);
 
 		// We convert the schedule to an associative array (for readability)
@@ -46,9 +56,18 @@ class Twitter extends Model {
 		// We decide, is it time to send a tweet?
 		if ($template = $this->isTimeToSendATweet($schedule)) {
 
-			// If yes, we prepare the tweet
+			Functions::log('Is time to send a tweet');
+
+			// Language
+			$languages = array('es', 'eu');
+			$template['language'] = $languages[array_rand($languages)];
+			Functions::setLocaleFromLanguage($template['language']);
+
+			// We prepare the tweet
 			$tweet = $this->prepareTweet($template);
 			if ($tweet) {
+
+				Functions::log($tweet);
 
 				// If everything alright, we send it
 				$this->sendTweet($tweet['message'], $tweet['image']);
@@ -132,7 +151,8 @@ class Twitter extends Model {
 			'place' => 'all',
 			'category' => 'all',
 			'date' => $template['date_target'],
-			'template' => $template['template']
+			'template' => $template['template'],
+			'language' => $template['language']
 		);
 
 		$url = url('/') . '/resume/' . $view . '?';
@@ -142,12 +162,14 @@ class Twitter extends Model {
 		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
 		$command = "/usr/local/bin/phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
+		Functions::log($command);
 		$return = shell_exec($command);
+		Functions::log($return);
 		$response = ($return == 'success' . PHP_EOL) ? true : false;
 
 		if ($response) {
 			chmod($pathToScreenshot, 0777);
-			$image = file_get_contents($pathToScreenshot);
+			$image = $pathToScreenshot;
 		} else {
 			$image = false;
 		}
@@ -163,17 +185,17 @@ class Twitter extends Model {
 		switch ($template['date_target']) {
 
 			case 'today':
-				$dateString = 'hoy';
+				$dateString = __('hoy');
 				break;
 			case 'tomorrow':
-				$dateString = 'mañana';
+				$dateString = __('mañana');
 				break;
 			case 'weekend':
-				$dateString = 'este finde';
+				$dateString = __('este finde');
 				break;
 			case 'week':
 			default:
-				$dateString = 'la próxima semana';
+				$dateString = __('la próxima semana');
 				break;
 
 		}
@@ -182,15 +204,15 @@ class Twitter extends Model {
 			|| $template['template'] == 'second') {
 
 			$arrayMessages = array(
-				'Evento destacado ' .$dateString,
-				ucfirst($dateString) . ' tienes un buen plan',
+				__('Evento destacado %s', $dateString),
+				__('%s tienes un buen plan', ucfirst($dateString))
 			);
 
 		} else if ($template['template'] == 'resume') {
 
 			$arrayMessages = array(
-				'Eventos en Donostia para ' . $dateString,
-				'Mira qué planes chulos para ' . $dateString,
+				__('Eventos en Donostia para %s', $dateString),
+				__('Mira qué planes chulos para %s', $dateString)
 			);
 
 		}
@@ -218,7 +240,9 @@ class Twitter extends Model {
 		}
 
 		// And we send the tweet
-		$tweet = $this->cb->statuses_update($params);
+		$response = $this->cb->statuses_update($params);
+
+		return $response;
 	}
 
 }
