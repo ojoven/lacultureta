@@ -53,6 +53,7 @@ class Event extends Model {
 		$events = $this->filterEventsByDate($events, $params['date']);
 		$events = $this->filterEventsByCategory($events, $params['category']);
 		$events = $this->filterEventsByPlace($events, $params['place']);
+		$events = (isset($params['language'])) ? $this->filterEventsByLanguage($events, $params['language']) : $events;
 
 		$events = $this->filterEventsRemoveDuplicated($events);
 
@@ -120,7 +121,7 @@ class Event extends Model {
 
 				// If single date, tomorrow
 				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
-				if (!$event['date_end'] && $diff <= 7) {
+				if (!$event['date_end'] && $diff <= 7 && $diff >= 0) {
 					array_push($eventsByDate, $event);
 				}
 
@@ -181,6 +182,22 @@ class Event extends Model {
 		}
 
 		return $eventsInPlaces;
+	}
+
+	// Filter language
+	public function filterEventsByLanguage($events, $language) {
+
+		$eventsLanguage = array();
+		foreach ($events as $event) {
+
+			if (in_array($event['language'],$language)) {
+				array_push($eventsLanguage, $event);
+			}
+
+		}
+
+		return $eventsLanguage;
+
 	}
 
 	// Filter Remove Duplicated
@@ -287,16 +304,20 @@ class Event extends Model {
 		foreach ($eventsByDate as $index => $date) {
 
 			$parsedEventsByDate['single'][$index]['date'] = $date['date'];
+			$parsedEventsByDate['single'][$index]['events'] = array();
 
-			foreach ($date['events'] as $event) {
+			if (isset($date['events'])) {
 
-				if (!$event['date_end'] // Single Events
-				|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
-					$parsedEventsByDate['single'][$index]['events'][] = $event;
-				} else {
-					$parsedEventsByDate['range'][] = $event;
+				foreach ($date['events'] as $event) {
+
+					if (!$event['date_end'] // Single Events
+						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
+						$parsedEventsByDate['single'][$index]['events'][] = $event;
+					} else {
+						$parsedEventsByDate['range'][] = $event;
+					}
+
 				}
-
 			}
 
 		}

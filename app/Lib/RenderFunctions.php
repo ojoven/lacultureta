@@ -45,7 +45,7 @@ class RenderFunctions {
 				// OTROS
 				if ($monthStart != $monthEnd) {
 					// El 31 de Marzo y el 1 de Abril
-					return __('el %1$s de %2$s y el %3$s de %$4s', [$dayStart, $monthStart, $dayEnd, $monthEnd]);
+					return __('el %1$s de %2$s y el %3$s de %4$s', [$dayStart, $monthStart, $dayEnd, $monthEnd]);
 				} else {
 					// El 15 y el 16 de Mayo
 					return __('el %1$s y el %2$s de %3$s', [$dayStart, $dayEnd, $monthStart]);
@@ -118,8 +118,8 @@ class RenderFunctions {
 		$render = '';
 		$dayWeek = ucfirst(self::getWeekDayName((int)date('N', $strtotime))); // Lunes
 		$dayMonth = date('d', $strtotime); // 05
-		$month = self::getMonthName((int)date('n', $strtotime));
-		$render .= $dayWeek . ' ' . $dayMonth . ' de ' . $month;
+		$month = self::getMonthName((int)date('n', $strtotime)); // Mayo
+		$render .= __('%1$s %2$s de %3$s', [$dayWeek, $dayMonth, $month]);
 
 		return $render;
 	}

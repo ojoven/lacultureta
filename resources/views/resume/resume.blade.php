@@ -18,31 +18,29 @@
         <!-- BY DATES -->
         <ul class="dates">
 
-            <?php foreach ($events['single'] as $date) { ?>
+            <?php foreach ($events['single'] as $date) {
+                if ($date['events']) {  ?>
+                    <li>
+                        <span class="title"><?php echo \App\Lib\RenderFunctions::renderDateWeekdayNameDayAndMonth($date['date']); ?></span>
+                        <ul class="events">
 
-            <li>
-                <span class="title"><?php echo \App\Lib\RenderFunctions::renderDateWeekdayNameDayAndMonth($date['date']); ?></span>
-                <ul class="events">
 
-                    <?php if ($date['events']) {
-                        foreach ($date['events'] as $event) { ?>
-                            <li class="event">
-                                <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
-                                <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
-                                <span class="event-title"><?php echo $event['title']; ?></span>
-                                <?php if ($event['hour']) { ?>
-                                <div class="hour">(<?php echo $event['hour']; ?>)</div>
+                                <?php foreach ($date['events'] as $event) { ?>
+                                    <li class="event">
+                                        <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
+                                        <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
+                                        <span class="event-title"><?php echo $event['title']; ?></span>
+                                        <?php if ($event['hour']) { ?>
+                                        <div class="hour">(<?php echo $event['hour']; ?>)</div>
+                                        <?php } ?>
+                                    </li>
                                 <?php } ?>
-                            </li>
-                        <?php }
-                    } else { ?>
-                        <span class="no-events">No hay eventos</span>
-                    <?php } ?>
 
-                </ul>
-            </li>
+                        </ul>
+                    </li>
 
-            <?php } ?>
+            <?php }
+                } ?>
 
         </ul>
 
