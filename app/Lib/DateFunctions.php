@@ -95,5 +95,13 @@ class DateFunctions {
 
 	}
 
+	/** WEEKDAY **/
+	public static function getThisWeekDayDate($day) {
+
+		if (date("w")==1) { $start_monday = date("Y-m-d"); } else { $start_monday = date("Y-m-d", strtotime('last monday')); }
+		$thisWeekDay = date("Y-m-d", strtotime($start_monday.' this ' . $day)); // this friday, for example
+		return $thisWeekDay;
+	}
+
 }
 

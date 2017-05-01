@@ -138,6 +138,19 @@ class Event extends Model {
 				}
 			}
 
+			// This weekend
+			if (in_array('weekend', $date)) {
+
+				$thisFriday = DateFunctions::getThisWeekDayDate('friday');
+				$fridayDateObj = new \DateTime($thisFriday);
+
+				// If single date
+				$diff = (int) $fridayDateObj->diff($dateStartObj)->format("%r%a");
+				if (!$event['date_end'] && $diff <= 2 && $diff >= 0) {
+					array_push($eventsByDate, $event);
+				}
+			}
+
 		}
 
 		return $eventsByDate;
@@ -281,6 +294,12 @@ class Event extends Model {
 			$dates = array($tomorrow);
 		} elseif ($dateTarget == 'week') {
 			$dates = DateFunctions::dateRange($today, $after7days);
+		} elseif ($dateTarget == 'weekend') {
+
+			$thisFriday = DateFunctions::getThisWeekDayDate('friday');
+			$thisSunday = DateFunctions::getThisWeekDayDate('sunday');
+
+			$dates = DateFunctions::dateRange($thisFriday, $thisSunday);
 		}
 
 		foreach ($dates as $index => $date) {
