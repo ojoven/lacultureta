@@ -139,6 +139,7 @@ function throwCardsWithButtonsManagement() {
 	// FAV / LIKE
 	var $fav = $(".favtrashbuttons .fav");
 	$fav.on('click', function() {
+		console.log(cards.length, cards);
 		var randomPosition = randomIntFromInterval(-100, 100);
 		cards[0].throwOut(1, randomPosition);
 	});
@@ -245,6 +246,7 @@ function loadCardsLikeDislike(likeDislike) {
 
 		// Append the cards to the HTML
 		$(".cards").append(response.html);
+		cards = [];
 		activateCards();
 
 	});
