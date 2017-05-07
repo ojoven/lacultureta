@@ -3,9 +3,11 @@
 namespace App\Models;
 use App\Lib\DateFunctions;
 use App\Lib\Functions;
+use App\Lib\CacheFunctions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class Event extends Model {
 
@@ -21,15 +23,18 @@ class Event extends Model {
 	// Get Events by Filter
 	public function getEvents($params) {
 
-		$page = $params['page'];
-		$offset = ($page - 1) * $this->numEventsPage;
+		return Cache::remember(CacheFunctions::getCacheKeyParams($params), 60, function() use ($params) {
 
-		$events = $this->getAllFutureEvents();
-		$events = $this->filterEvents($events, $params);
-		$events = $this->sortEvents($events);
-		$events = array_slice($events, $offset, $this->numEventsPage);
-		$events = $this->parseEventsForRender($events);
-		return $events;
+			$page = $params['page'];
+			$offset = ($page - 1) * $this->numEventsPage;
+
+			$events = $this->getAllFutureEvents();
+			$events = $this->filterEvents($events, $params);
+			$events = $this->sortEvents($events);
+			$events = array_slice($events, $offset, $this->numEventsPage);
+			$events = $this->parseEventsForRender($events);
+			return $events;
+		});
 
 	}
 
