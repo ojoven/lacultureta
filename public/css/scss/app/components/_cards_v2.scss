@@ -1,0 +1,21 @@
+// ==============================================
+// CARDS V2 - Jon Díaz edition
+// ==============================================
+
+// func conversor of em unit
+$browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+// Title
+	.title {
+		@extend .bold;
+		font-size: em(20);
+		text-align: left;
+
+		&.little {
+			font-size: em(18);
+		}
+	}

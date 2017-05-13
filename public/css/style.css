@@ -10,7 +10,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .regular, body, h4, p { font-family: 'Raleway', sans-serif; font-weight: 400; }
 
-.bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, .settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
+.bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, .settings-popup .save-settings, .title { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
 .special, #logo-text, #subheader h2, .loading, .no-cards, .resume-resume .dates > li > .title { font-family: 'Amatic SC', cursive; font-weight: normal; }
 
@@ -234,6 +234,9 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .welcome .swipe.swipe-center .icon-swipe { background-image: url(../img/flick_center.png); }
 .welcome .swipe.swipe-left.swipe-desktop .icon-swipe { background-image: url(../img/flick_left_desktop.png); }
 .welcome .warning-tmp { font-size: 12px; color: #666; }
+
+.title { font-size: 1.25em; text-align: left; }
+.title.little { font-size: 1.125em; }
 
 /** PRINT **/
 .just-print { display: none !important; }
