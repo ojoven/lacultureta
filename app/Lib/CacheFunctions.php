@@ -4,6 +4,7 @@ namespace App\Lib;
 
 class CacheFunctions {
 
+	/** GET CACHE KEY FOR EVENT BASED ON PARAMS **/
 	public static function getCacheKeyParams($params) {
 
 		$separator = '_';
@@ -14,6 +15,13 @@ class CacheFunctions {
 			$cacheKey .= $index . $separator . $paramString . $separator;
 		}
 
+		return $cacheKey;
+	}
+
+	/** GET CACHE KEY FOR EVENT LIKE RATINGS **/
+	public static function getCacheLikeRatings($eventId) {
+
+		$cacheKey = 'likes_' . $eventId;
 		return $cacheKey;
 	}
 

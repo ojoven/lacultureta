@@ -2,7 +2,9 @@
 
 namespace App\Models;
 use App\Lib\Functions;
+use App\Lib\CacheFunctions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Rating extends Model {
 
@@ -85,7 +87,9 @@ class Rating extends Model {
 	// GET LIKES
 	public function getLikesEvent($eventId) {
 
-		return self::where('rating', '=', '1')->where('event_id', '=', $eventId)->get()->toArray();
+		return Cache::remember(CacheFunctions::getCacheLikeRatings($eventId), 60, function() use ($eventId) {
+			return self::where('rating', '=', '1')->where('event_id', '=', $eventId)->get()->toArray();
+		});
 
 	}
 
