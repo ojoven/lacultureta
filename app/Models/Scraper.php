@@ -7,23 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Scraper extends Model {
 
-    public function loadSourceModel($source) {
-
-        $pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
-        if (file_exists($pathToSource)) {
-            require_once($pathToSource);
-
-            $sourceModel = new $source();
-            return $sourceModel;
-        }
-
-        return false;
-    }
-
     public function extractDataEvents() {
 
         // We define the sources from where the system will read
-        $sources = array('DonostiaEus');
+        //$sources = array('DonostiaEus');
+        $sources = array('Tabakalera');
 
         foreach ($sources as $source) {
 
@@ -37,6 +25,19 @@ class Scraper extends Model {
 
         return false;
 
+    }
+
+    public function loadSourceModel($source) {
+
+        $pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
+        if (file_exists($pathToSource)) {
+            require_once($pathToSource);
+
+            $sourceModel = new $source();
+            return $sourceModel;
+        }
+
+        return false;
     }
 
     public function storeEvents($events) {
