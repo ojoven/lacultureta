@@ -9,6 +9,7 @@ class DonostiaEus {
 
 	public function __construct() {
 		Functions::log('DonostiaEus scraper initialized');
+		Functions::log('===============================');
 	}
 
 	public function getDataEvents() {
@@ -42,6 +43,7 @@ class DonostiaEus {
 
 			$suffixLang = ($language == 'es') ? 'cas' : 'eus';
 			$url = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/consultaNoCache?ReadForm=&kpag=' . $page . '&kque=0&kqueNombre=&kzon=0&kzonNombre=&kcua=8&kcuaNombre=De+hoy+en+adelante&kdesde=&kdon=6&idioma=' . $suffixLang;
+			Functions::log('Get events from page ' . $page . ' for language: ' . $language);
 			$html = SimpleHtmlDom::file_get_html($url);
 
 			$resultsAgenda = $html->find('.resultados-agenda', 0);
@@ -191,6 +193,8 @@ class DonostiaEus {
 
 	public function filterNotAddedEvents($events, $language) {
 
+		Functions::log('Filter events');
+
 		// We get all the events' external IDs
 		$eventExternalIds = Functions::getArrayWithIndexValues($events, 'external_id');
 
@@ -214,6 +218,8 @@ class DonostiaEus {
 	public function addAdditionalInformation($events, $language) {
 
 		foreach ($events as &$event) {
+
+			Functions::log('Get additional information for ' . $event['title']);
 
 			$htmlContent = file_get_contents($event['url']);
 			$html = SimpleHtmlDom::str_get_html($htmlContent);

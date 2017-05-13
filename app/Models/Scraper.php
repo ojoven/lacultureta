@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Lib\Functions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,6 +41,7 @@ class Scraper extends Model {
 
     public function storeEvents($events) {
 
+        Functions::log('Store events');
         DB::table('events')->insert($events);
 
     }
