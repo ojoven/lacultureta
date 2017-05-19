@@ -109,7 +109,8 @@ class Tabakalera {
 		DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end'], $language);
 
 		// CATEGORIES
-		$event['categories'] = $this->parseCategoryEventTabakalera($event['categories']);
+		$event['categories'] = $this->_addCategoriesFromUrlAndTitle($kwca, $event['title']);
+		$event['categories'] = implode(',', $event['categories']); // TODO: Categories to another table, better.
 
 		// SOURCE
 		$event['source'] = 'Tabakalera.eu';
@@ -121,22 +122,6 @@ class Tabakalera {
 		$event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
 
 		return $event;
-
-	}
-
-	public function parseCategoryEventTabakalera($category) {
-
-		$arrayParses = array(
-			'Exposición' => 'Exposiciones',
-			'Conferencia' => 'Conferencias',
-			'Presentación' => 'Conferencias',
-			'Seminario' => 'Conferencias',
-			'Encuentro' => 'Talleres y Encuentros',
-			'Taller' => 'Talleres y Encuentros',
-			'Coloquio' => 'Talleres y Encuentros',
-			'Concierto' => 'Música',
-			'Cine' => 'Cine',
-		);
 
 	}
 

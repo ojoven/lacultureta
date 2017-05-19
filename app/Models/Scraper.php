@@ -10,8 +10,8 @@ class Scraper extends Model {
     public function extractDataEvents() {
 
         // We define the sources from where the system will read
-        //$sources = array('DonostiaEus');
-        $sources = array('Tabakalera');
+        $sources = array('DonostiaEus');
+        //$sources = array('Tabakalera');
 
         foreach ($sources as $source) {
 

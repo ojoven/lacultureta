@@ -551,7 +551,11 @@ class simple_html_dom_node
 		// return nth-element or array
 		if (is_null($idx)) return $found;
 		else if ($idx<0) $idx = count($found) + $idx;
-		return (isset($found[$idx])) ? $found[$idx] : null;
+		if (isset($found[$idx])) {
+			return $found[$idx];
+		} else {
+			return $this;
+		}
 	}
 
 	// seek for given conditions
