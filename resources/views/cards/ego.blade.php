@@ -4,7 +4,7 @@
  ===================================================== **/
 ?>
 
-<li class="card ego-card">
+<li class="card ego-card uses-ribbon">
     <div class="title">
         <?php echo __("¡Hey, hola!"); ?>
     </div>
@@ -14,4 +14,5 @@
         <p><?php echo __("¿tienes alguna duda o sugerencia sobre La Cultureta o quieres enterarte de otros proyectos que tengo en marcha?"); ?></p>
     </div>
     <a target="_blank" href="https://twitter.com/ojoven" class="btn btn-twitter"><?php echo __("Contáctame en Twitter"); ?></a>
+    <span class="ribbon"><span><?php echo __("autobombo"); ?></span></span>
 </li>

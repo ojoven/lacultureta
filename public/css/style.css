@@ -205,6 +205,13 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .resume-resume #resume.not-week .events > li .image { display: inline-block; width: 40px; height: 40px; border-radius: 50%; background-size: cover; background-repeat: no-repeat; background-position: center; vertical-align: middle; margin-right: 5px; }
 .resume-resume #resume.not-week .events > li .event-title { font-size: 16px; }
 
+.cards li.uses-ribbon { overflow: visible; }
+
+.ribbon { position: absolute; left: -5px; top: -5px; z-index: 1; overflow: hidden; width: 75px; height: 75px; text-align: right; }
+.ribbon span { font-size: 10px; font-weight: bold; color: #FFF; text-transform: uppercase; text-align: center; line-height: 20px; transform: rotate(-45deg); -webkit-transform: rotate(-45deg); width: 100px; display: block; background: #79A70A; box-shadow: 0 3px 10px -5px black; position: absolute; top: 19px; left: -21px; }
+.ribbon span:before { content: ""; position: absolute; left: 0; top: 100%; z-index: -1; border-left: 3px solid #334704; border-right: 3px solid transparent; border-bottom: 3px solid transparent; border-top: 3px solid #334704; }
+.ribbon span:after { content: ""; position: absolute; right: 0; top: 100%; z-index: -1; border-left: 3px solid transparent; border-right: 3px solid #334704; border-bottom: 3px solid transparent; border-top: 3px solid #334704; }
+
 .settings .title { font-size: 20px; text-align: center; margin-top: 20px; text-transform: uppercase; }
 .settings .section { padding: 5px 20px; }
 .settings .section > .section-title { background: #212021; color: #B4CDCD; border-bottom: 2px solid #B4CDCD; font-size: 14px; margin: 10px 0; padding: 6px 12px; }
@@ -241,6 +248,10 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li.ego-card .description { padding: 0 20px; }
 .cards li.ego-card .description .highlight { font-weight: bold; display: block; margin: 15px 0; }
 .cards li.ego-card .description p { display: block; font-size: 14px; margin-bottom: 15px; }
+
+.cards li.friend-card .image { width: 100%; border-radius: 0; }
+.cards li.friend-card .description { font-size: 14px; padding: 0 20px; margin: 20px 0; }
+.cards li.friend-card a.link { font-size: 20px; font-weight: bold; color: #212021; }
 
 /** PRINT **/
 .just-print { display: none !important; }
