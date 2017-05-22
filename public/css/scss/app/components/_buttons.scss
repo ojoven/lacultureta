@@ -20,7 +20,6 @@ $btnMainHoverBorder: $black;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
-  @include box-shadow(0px 1px 1px 0px rgba(0,0,0,0.75));
 
   // MAIN BUTTON
   &.btn-main {
@@ -34,6 +33,12 @@ $btnMainHoverBorder: $black;
         left: 12px;
       }
     }
+  }
+
+  &.btn-twitter {
+    background: $twitter;
+    color: $white;
+
   }
 
   // ALTERNATE BUTTON
