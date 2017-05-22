@@ -75,10 +75,11 @@ function activateCards() {
 		});
 
 		// Bind not event card
-		$(".card").not('.show-popup').off('click').on('click', function() {
+		$(".card").not('.show-popup').off('click').on('click', function(e) {
 
 			var $cardSelector = $(this);
-			if (!$cardSelector.hasClass('clicked')) {
+			var $elementWhoTriggered = $( e.target );
+			if (!$cardSelector.hasClass('clicked') && !$elementWhoTriggered.is('a') ) {
 				$cardSelector.addClass('clicked');
 				setTimeout(function() { $cardSelector.removeClass('clicked'); }, 1000);
 			}
