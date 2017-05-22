@@ -162,11 +162,17 @@ function cardsAfterThrowManagement() {
 		cards.shift();
 
 		// If number of in-deck < numEventsPage, we load new page
-		$cardsInDeck = $('.cards li.in-deck');
+		var $cardsInDeck = $('.cards li.in-deck');
 		var numCardsInDeck = $cardsInDeck.length;
 
 		// We add the active class to the card that is in front
+		var $activeCard = $cardsInDeck.last();
 		$cardsInDeck.removeClass('active').last().addClass('active');
+
+		// We create a Google Analytics "see" event
+		var category = getCategoryCard($activeCard);
+		var title = $activeCard.find('.title').text();
+		ga('send', 'event', category, 'See Card', title);
 
 		// We load new page if in home, and not all events have been rendered
 		if (numCardsInDeck < 4 && !allEvents && currentView == 'home') {
@@ -175,6 +181,20 @@ function cardsAfterThrowManagement() {
 		}
 	});
 
+}
+
+function getCategoryCard($card) {
+
+	var classesCard = $card.attr('class');
+
+	// Get the card category from its body class (event-card, ego-card...)
+	var classCardAux = classesCard.split('-card');
+	classCardAux = classCardAux[0].split(' ');
+	classCardAux = classCardAux[classCardAux.length - 1];
+
+	classCardAux = capitalizeFirstLetter(classCardAux);
+
+	return classCardAux;
 }
 
 // LIKE / DISLIKE / BACK HOME
