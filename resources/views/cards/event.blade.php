@@ -2,7 +2,13 @@
 /** ==================================================
  * STANDARD EVENT CARD
  ===================================================== **/
-?>
+
+// Get some extra params (classes and counts)
+$classTitle = (strlen($event['title']) > 50) ? ' little' : '';
+$classDay = (strlen($event['date_render']) > 30) ? ' little' : '';
+$classHour = (strlen($event['hour_render']) > 30) ? ' little' : '';
+$numLikes = count($event['likes']); ?>
+
 <li class="card" data-event="<?php echo $event['id']; ?>">
     <div class="title<?php echo $classTitle; ?>">
         <?php echo $event['title']; ?>

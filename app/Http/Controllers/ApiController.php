@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\Event;
 use App\Models\Rating;
 use App\Models\User;
@@ -17,11 +18,11 @@ class ApiController extends Controller {
 
         $params = $_GET;
 
-        $eventModel = new Event();
-        $events = $eventModel->getEvents($params);
+        $cardModel = new Card();
+        $cards = $cardModel->getCards($params);
 
-        $data['html'] = (string) view('cards', array('events' => $events));
-        $data['cards'] = $events;
+        $data['html'] = (string) view('cards', array('cards' => $cards));
+        $data['cards'] = $cards;
         return response()->json($data);
     }
 
