@@ -63,7 +63,7 @@ function activateCards() {
 		var card = stack.createCard($(this).get(0));
 		cards.push(card);
 
-		// Bind event
+		// Bind event card
 		$(".card.show-popup").off('click').on('click', function() {
 
 			var $cardSelector = $(this);
@@ -71,6 +71,19 @@ function activateCards() {
 			// If event card
 			prepareSingleEventPopup($cardSelector);
 			showPopup($('#single-event-popup'));
+			gaCreateEvent(gaGetParamsCard($cardSelector, 'See Detail'));
+		});
+
+		// Bind not event card
+		$(".card").not('.show-popup').off('click').on('click', function() {
+
+			var $cardSelector = $(this);
+			var $link = $cardSelector.find('a');
+			if ($link) {
+				var url = $link.attr('href');
+				window.open(url,'_blank');
+				gaCreateEvent(gaGetParamsCard($cardSelector, 'Open Link'));
+			}
 		});
 	});
 
@@ -172,7 +185,7 @@ function cardsAfterThrowManagement() {
 		// We create a Google Analytics "see" event
 		var category = getCategoryCard($activeCard);
 		var title = $activeCard.find('.title').text();
-		ga('send', 'event', category, 'See Card', title);
+		gaCreateEvent(gaGetParamsCard($activeCard, 'See Card'));
 
 		// We load new page if in home, and not all events have been rendered
 		if (numCardsInDeck < 4 && !allEvents && currentView == 'home') {
