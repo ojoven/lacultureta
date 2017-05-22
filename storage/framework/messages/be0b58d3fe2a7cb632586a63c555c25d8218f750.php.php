@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Lib;
+use App\Lib\Functions;
 
 class CacheFunctions {
 
 	/** GET CACHE KEY FOR EVENT BASED ON PARAMS **/
 	public static function getCacheKeyParams($params) {
 
+		$params['language'] = Functions::getUserLanguage();
 		$separator = '_';
 		$cacheKey = '';
 
