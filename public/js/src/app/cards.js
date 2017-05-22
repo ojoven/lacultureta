@@ -186,8 +186,6 @@ function cardsAfterThrowManagement() {
 		$cardsInDeck.removeClass('active').last().addClass('active');
 
 		// We create a Google Analytics "see" event
-		var category = getCategoryCard($activeCard);
-		var title = $activeCard.find('.title').text();
 		gaCreateEvent(gaGetParamsCard($activeCard, 'See Card'));
 
 		// We load new page if in home, and not all events have been rendered
