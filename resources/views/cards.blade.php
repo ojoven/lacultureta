@@ -1,5 +1,5 @@
 <?php foreach ($cards as $card) { ?>
 
-    @include('cards/event', ['event' => $card])
+    @include('cards/' . $card['type'], [$card['type'] => $card])
 
 <?php }

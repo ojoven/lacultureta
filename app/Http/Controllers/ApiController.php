@@ -34,7 +34,7 @@ class ApiController extends Controller {
         $eventModel = new Event();
         $events = $eventModel->getEventsUser($params);
 
-        $data['html'] = (string) view('cards', array('events' => $events));
+        $data['html'] = (string) view('cards', array('cards' => $events));
         $data['cards'] = $events;
         return response()->json($data);
     }
@@ -47,7 +47,7 @@ class ApiController extends Controller {
         $eventModel = new Event();
         $events = $eventModel->getEventsByIds($params['eventIds']);
 
-        $data['html'] = (string) view('cards', array('events' => $events));
+        $data['html'] = (string) view('cards', array('cards' => $events));
         $data['cards'] = $events;
         return response()->json($data);
     }

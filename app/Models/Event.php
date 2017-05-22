@@ -285,6 +285,7 @@ class Event extends Model {
 
 		foreach ($events as &$event) {
 
+			$event['type'] = 'event';
 			$event['date_render'] = RenderFunctions::parseDateForRender($event['date_start'], $event['date_end']);
 			$event['hour_render'] = RenderFunctions::parseHourForRender($event['hour']);
 			$event['price_render'] = RenderFunctions::parsePriceForRender($event['price']);

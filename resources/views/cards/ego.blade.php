@@ -8,9 +8,10 @@
     <div class="title">
         <?php echo __("¡Hey, hola!"); ?>
     </div>
-    <!--<div class="image" style="background-image: url(<?php echo ''; ?>);"></div>-->
+    <div class="image" style="background-image: url(/img/ego.png);"></div>
     <div class="description">
-        <?php echo __("Mi nombre es Mikel Torres y soy el promotor de La Cultureta<br><br>¿tienes alguna duda o sugerencia sobre La Cultureta o quieres enterarte de otros proyectos que tengo en marcha?"); ?>
+        <span class="highlight"><?php echo __("Mi nombre es Mikel <br>y soy el desarrollador de La Cultureta"); ?></span>
+        <p><?php echo __("¿tienes alguna duda o sugerencia sobre La Cultureta o quieres enterarte de otros proyectos que tengo en marcha?"); ?></p>
     </div>
-    <div class="btn"><?php echo __("Sígueme en Twitter"); ?></div>
+    <a target="_blank" href="https://twitter.com/ojoven" class="btn btn-twitter"><?php echo __("Contáctame en Twitter"); ?></a>
 </li>
