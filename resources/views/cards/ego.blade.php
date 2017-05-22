@@ -4,7 +4,7 @@
  ===================================================== **/
 ?>
 
-<li class="card ego-card uses-ribbon">
+<li class="card ego-card uses-ribbon no-popup">
     <div class="title">
         <?php echo __("¡Hey, hola!"); ?>
     </div>

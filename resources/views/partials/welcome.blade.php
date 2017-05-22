@@ -1,4 +1,4 @@
-<li class="card welcome">
+<li class="card welcome welcome-card no-popup">
     <div class="title">{!! __('Bienvenido a<br>La Cultureta') !!}</div>
     <p>{{ __('Aquí encontrarás ¡al fin! todos los eventos culturales de Donostia.') }}</p>
     <p>{{ __('Conciertos, exposiciones, películas, teatros...') }}</p>

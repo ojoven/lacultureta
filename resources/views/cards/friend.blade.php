@@ -7,7 +7,7 @@
 $classTitle = (strlen($friend['title']) > 50) ? ' little' : '';
 ?>
 
-<li class="card friend-card uses-ribbon">
+<li class="card friend-card uses-ribbon no-popup">
     <div class="title<?php echo $classTitle; ?>">
         <?php echo $friend['title']; ?>
     </div>
