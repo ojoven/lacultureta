@@ -162,7 +162,11 @@ function cardsAfterThrowManagement() {
 		cards.shift();
 
 		// If number of in-deck < numEventsPage, we load new page
-		var numCardsInDeck = $('.cards li.in-deck').length;
+		$cardsInDeck = $('.cards li.in-deck');
+		var numCardsInDeck = $cardsInDeck.length;
+
+		// We add the active class to the card that is in front
+		$cardsInDeck.removeClass('active').last().addClass('active');
 
 		// We load new page if in home, and not all events have been rendered
 		if (numCardsInDeck < 4 && !allEvents && currentView == 'home') {
