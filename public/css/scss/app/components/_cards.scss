@@ -211,8 +211,7 @@
 	// Animation when no popup and click
 	&.no-popup {
 		&.clicked {
-
-			@include animation (0, 1s, 'wiggle', 1);
+			@include animation (0, 0.5s, 'wiggle', 1);
 		}
 	}
 }

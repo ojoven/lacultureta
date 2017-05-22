@@ -49,50 +49,30 @@ h2, h3, h4 { font-weight: normal; }
 /*********
 * wiggle *
 **********/
-@-moz-keyframes wiggle { 0% { -webkit-transform: skewX(9deg); }
-  10% { -webkit-transform: skewX(-8deg); }
-  20% { -webkit-transform: skewX(7deg); }
-  30% { -webkit-transform: skewX(-6deg); }
-  40% { -webkit-transform: skewX(5deg); }
-  50% { -webkit-transform: skewX(-4deg); }
-  60% { -webkit-transform: skewX(3deg); }
-  70% { -webkit-transform: skewX(-2deg); }
-  80% { -webkit-transform: skewX(1deg); }
-  90% { -webkit-transform: skewX(0deg); }
-  100% { -webkit-transform: skewX(0deg); } }
-@-webkit-keyframes wiggle { 0% { -webkit-transform: skewX(9deg); }
-  10% { -webkit-transform: skewX(-8deg); }
-  20% { -webkit-transform: skewX(7deg); }
-  30% { -webkit-transform: skewX(-6deg); }
-  40% { -webkit-transform: skewX(5deg); }
-  50% { -webkit-transform: skewX(-4deg); }
-  60% { -webkit-transform: skewX(3deg); }
-  70% { -webkit-transform: skewX(-2deg); }
-  80% { -webkit-transform: skewX(1deg); }
-  90% { -webkit-transform: skewX(0deg); }
-  100% { -webkit-transform: skewX(0deg); } }
-@-o-keyframes wiggle { 0% { -webkit-transform: skewX(9deg); }
-  10% { -webkit-transform: skewX(-8deg); }
-  20% { -webkit-transform: skewX(7deg); }
-  30% { -webkit-transform: skewX(-6deg); }
-  40% { -webkit-transform: skewX(5deg); }
-  50% { -webkit-transform: skewX(-4deg); }
-  60% { -webkit-transform: skewX(3deg); }
-  70% { -webkit-transform: skewX(-2deg); }
-  80% { -webkit-transform: skewX(1deg); }
-  90% { -webkit-transform: skewX(0deg); }
-  100% { -webkit-transform: skewX(0deg); } }
-@keyframes wiggle { 0% { -webkit-transform: skewX(9deg); }
-  10% { -webkit-transform: skewX(-8deg); }
-  20% { -webkit-transform: skewX(7deg); }
-  30% { -webkit-transform: skewX(-6deg); }
-  40% { -webkit-transform: skewX(5deg); }
-  50% { -webkit-transform: skewX(-4deg); }
-  60% { -webkit-transform: skewX(3deg); }
-  70% { -webkit-transform: skewX(-2deg); }
-  80% { -webkit-transform: skewX(1deg); }
-  90% { -webkit-transform: skewX(0deg); }
-  100% { -webkit-transform: skewX(0deg); } }
+@-moz-keyframes wiggle { 0% { -webkit-transform: skewX(5deg) skewY(5deg); }
+  20% { -webkit-transform: skewX(-4deg) skewY(-4deg); }
+  40% { -webkit-transform: skewX(3deg) skewY(3deg); }
+  60% { -webkit-transform: skewX(-2deg) skewY(-2deg); }
+  80% { -webkit-transform: skewX(1deg) skewY(1deg); }
+  100% { -webkit-transform: skewX(0deg) skewY(0deg); } }
+@-webkit-keyframes wiggle { 0% { -webkit-transform: skewX(5deg) skewY(5deg); }
+  20% { -webkit-transform: skewX(-4deg) skewY(-4deg); }
+  40% { -webkit-transform: skewX(3deg) skewY(3deg); }
+  60% { -webkit-transform: skewX(-2deg) skewY(-2deg); }
+  80% { -webkit-transform: skewX(1deg) skewY(1deg); }
+  100% { -webkit-transform: skewX(0deg) skewY(0deg); } }
+@-o-keyframes wiggle { 0% { -webkit-transform: skewX(5deg) skewY(5deg); }
+  20% { -webkit-transform: skewX(-4deg) skewY(-4deg); }
+  40% { -webkit-transform: skewX(3deg) skewY(3deg); }
+  60% { -webkit-transform: skewX(-2deg) skewY(-2deg); }
+  80% { -webkit-transform: skewX(1deg) skewY(1deg); }
+  100% { -webkit-transform: skewX(0deg) skewY(0deg); } }
+@keyframes wiggle { 0% { -webkit-transform: skewX(5deg) skewY(5deg); }
+  20% { -webkit-transform: skewX(-4deg) skewY(-4deg); }
+  40% { -webkit-transform: skewX(3deg) skewY(3deg); }
+  60% { -webkit-transform: skewX(-2deg) skewY(-2deg); }
+  80% { -webkit-transform: skewX(1deg) skewY(1deg); }
+  100% { -webkit-transform: skewX(0deg) skewY(0deg); } }
 /* BASE STYLES */
 html, body { height: 100%; overflow: hidden; }
 
@@ -213,7 +193,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li .categories .category { width: 25px; height: 25px; background-position: center center; background-size: contain; background-repeat: no-repeat; display: inline-block; }
 .cards li .to-see-more { margin: 10px 0; text-align: center; }
 .cards li .to-see-more a { color: #212021; text-decoration: underline; }
-.cards li.no-popup.clicked { -webkit-animation-delay: 0; -webkit-animation-duration: 1s; -webkit-animation-name: "wiggle"; -webkit-animation-fill-mode: forwards; -webkit-animation-iteration-count: 1; -moz-animation-delay: 0; -moz-animation-duration: 1s; -moz-animation-name: "wiggle"; -moz-animation-fill-mode: forwards; -moz-animation-iteration-count: 1; -o-animation-delay: 0; -o-animation-duration: 1s; -o-animation-name: "wiggle"; -o-animation-fill-mode: forwards; -o-animation-iteration-count: 1; animation-delay: 0; animation-duration: 1s; animation-name: "wiggle"; animation-fill-mode: forwards; animation-iteration-count: 1; }
+.cards li.no-popup.clicked { -webkit-animation-delay: 0; -webkit-animation-duration: 0.5s; -webkit-animation-name: "wiggle"; -webkit-animation-fill-mode: forwards; -webkit-animation-iteration-count: 1; -moz-animation-delay: 0; -moz-animation-duration: 0.5s; -moz-animation-name: "wiggle"; -moz-animation-fill-mode: forwards; -moz-animation-iteration-count: 1; -o-animation-delay: 0; -o-animation-duration: 0.5s; -o-animation-name: "wiggle"; -o-animation-fill-mode: forwards; -o-animation-iteration-count: 1; animation-delay: 0; animation-duration: 0.5s; animation-name: "wiggle"; animation-fill-mode: forwards; animation-iteration-count: 1; }
 
 .popup .popup-container { height: 83%; overflow-y: scroll; }
 
