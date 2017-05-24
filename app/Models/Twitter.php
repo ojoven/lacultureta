@@ -214,7 +214,9 @@ class Twitter extends Model {
 		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
 		// We execute the phantom script via command line
-		$command = "/usr/local/bin/phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
+		//$pathToPhantomBin = "/usr/local/bin/phantomjs";
+		$pathToPhantomBin = "/usr/bin/phantomjs";
+		$command = $pathToPhantomBin . " '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
 		$return = shell_exec($command);
 
 		// Some logs

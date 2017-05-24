@@ -37,12 +37,15 @@ class IndexController extends Controller {
 
         // Code to play with here
         $twitterModel = new Twitter();
-        $schedule = array(array(1, 1, 4, '09.00', 'resume', 'weekend', false));
+        $schedule = array(array(1, 1, 4, '09.00', 'first', 'today', 'all', 'all', false));
         $schedule = $twitterModel->parseScheduleTemplates($schedule);
-        $tweet = $twitterModel->prepareTweet($schedule[0]);
+        $template = $schedule[0];
+        $template['language'] = 'es';
+
+        $tweet = $twitterModel->prepareTweet($template);
         if ($tweet) {
             // If everything alright, we send it
-            $response = $twitterModel->sendTweet($tweet['message'], $tweet['image']);
+            //$response = $twitterModel->sendTweet($tweet['message'], $tweet['image']);
         }
 
         return view('playground');
