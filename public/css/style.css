@@ -228,7 +228,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .resume-resume .events > li .category { width: 12px; height: 12px; background-position: center; background-size: 100%; background-repeat: no-repeat; margin-right: 5px; display: inline-block; }
 .resume-resume .events > li .image { display: none; }
 .resume-resume .events > li .event-title { display: inline; }
-.resume-resume .events > li .hour { display: inline-block; color: #666; font-style: italic; }
+.resume-resume .events > li .hour { display: inline-block; color: #666; }
 
 .resume-resume #resume.not-week .events > li .image { display: inline-block; width: 40px; height: 40px; border-radius: 50%; background-size: cover; background-repeat: no-repeat; background-position: center; vertical-align: middle; margin-right: 5px; }
 .resume-resume #resume.not-week .events > li .event-title { font-size: 16px; }

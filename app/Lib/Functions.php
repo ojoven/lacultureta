@@ -79,6 +79,14 @@ class Functions {
 		return $language;
 	}
 
+	/** STRINGS **/
+	public static function fullTrim($string) {
+
+		$string = str_replace('&nbsp;', ' ', $string);
+		return trim($string);
+
+	}
+
 	/** LOG **/
 	public static function log($message) {
 

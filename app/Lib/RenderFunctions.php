@@ -155,7 +155,7 @@ class RenderFunctions {
 		// Cases
 
 		// Empty hour (no defined hours)
-		if (trim($hour) == "" || $hour == ' ') {
+		if (trim($hour) == "" || $hour == ' ' || $hour = '&nbsp;') {
 			return "";
 		}
 

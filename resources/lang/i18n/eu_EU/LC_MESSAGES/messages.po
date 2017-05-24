@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
 "POT-Creation-Date: 2017-05-24 13:44+0100\n"
-"PO-Revision-Date: 2017-05-24 13:44+0100\n"
+"PO-Revision-Date: 2017-05-24 16:50+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -179,7 +179,7 @@ msgstr "%2$sren %1$sean"
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:122
 #, php-format
 msgid "%1$s %2$s de %3$s"
-msgstr "%3$sren %1$sean eta %2$sean"
+msgstr "%3$sk %2$sean, %1$s"
 
 #: Lib//RenderFunctions.php:131
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
