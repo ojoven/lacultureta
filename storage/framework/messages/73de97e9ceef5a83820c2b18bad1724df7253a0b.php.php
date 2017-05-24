@@ -14,5 +14,6 @@ $classTitle = (strlen($friend['title']) > 50) ? ' little' : '';
     <div class="image" style="background-image: url(/img/lasmejorespeliculasde.jpg);"></div>
     <div class="description"><?php echo $friend['description']; ?></div>
     <a target="_blank" href="<?php echo $friend['url']; ?>" class="link"><?php echo $friend['url']; ?></a>
-    <span class="ribbon"><span><?php echo __("autobombo"); ?></span></span>
+    <span class="ribbon"><span><?php echo __("#amigas"); ?></span></span>
+    <span class="friends-hashtag"><?php echo __("#amigasdelacultureta"); ?></span>
 </li>

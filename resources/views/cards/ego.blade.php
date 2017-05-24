@@ -14,5 +14,5 @@
         <p><?php echo __("¿tienes alguna duda o sugerencia sobre La Cultureta o quieres enterarte de otros proyectos que tengo en marcha?"); ?></p>
     </div>
     <a target="_blank" href="https://twitter.com/ojoven" class="btn btn-twitter"><?php echo __("Contáctame en Twitter"); ?></a>
-    <span class="ribbon"><span><?php echo __("contáctame"); ?></span></span>
+    <span class="ribbon"><span><?php echo __("contacta"); ?></span></span>
 </li>

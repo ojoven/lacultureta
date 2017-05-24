@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-05-24 13:26+0100\n"
-"PO-Revision-Date: 2017-05-24 13:26+0100\n"
+"POT-Creation-Date: 2017-05-24 13:44+0100\n"
+"PO-Revision-Date: 2017-05-24 13:44+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -46,14 +46,19 @@ msgid "Contáctame en Twitter"
 msgstr "Twitterren kontaktatu"
 
 #: ../resources/views/cards/ego.blade.php:17
-msgid "contáctame"
+#: ../storage/framework/messages//e27a4346770652b03c6ccfd0797baf2848861e90.php.php:17
+msgid "contacta"
 msgstr "kontaktatu"
 
 #: ../resources/views/cards/friend.blade.php:17
-#: ../storage/framework/messages//e27a4346770652b03c6ccfd0797baf2848861e90.php.php:17
 #: ../storage/framework/messages//73de97e9ceef5a83820c2b18bad1724df7253a0b.php.php:17
-msgid "autobombo"
-msgstr "autobonboa"
+msgid "#amigas"
+msgstr "#lagunak"
+
+#: ../resources/views/cards/friend.blade.php:18
+#: ../storage/framework/messages//73de97e9ceef5a83820c2b18bad1724df7253a0b.php.php:18
+msgid "#amigasdelacultureta"
+msgstr "#laculturetarenlagunak"
 
 #: ../resources/views/resume/resume.blade.php:48
 #: ../storage/framework/messages//ae0c060adee87d502ad16757f540485863f36e5f.php.php:48
@@ -576,6 +581,9 @@ msgid ""
 "quieres guardarlo"
 msgstr ""
 "Klikatu eskubiko bihotz botoian egiataraua gustatzen bazaizu, gordetzeko"
+
+#~ msgid "autobombo"
+#~ msgstr "autobonboa"
 
 #~ msgid "el %1s de %2s y el %3s de %4s"
 #~ msgstr "%2sko %1sa eta %4sko %3sa"

@@ -280,6 +280,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li.friend-card .image { width: 100%; border-radius: 0; }
 .cards li.friend-card .description { font-size: 14px; padding: 0 20px; margin: 20px 0; }
 .cards li.friend-card a.link { font-size: 20px; font-weight: bold; color: #212021; }
+.cards li.friend-card .friends-hashtag { position: absolute; bottom: 15px; right: 15px; color: #B4CDCD; font-size: 14px; font-weight: bold; }
 
 /** PRINT **/
 .just-print { display: none !important; }

@@ -22,4 +22,12 @@
     color: $black;
   }
 
+  .friends-hashtag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: $lightBlue;
+    font-size: 14px;
+    font-weight: bold;
+  }
 }
