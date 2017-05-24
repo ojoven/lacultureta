@@ -290,7 +290,7 @@ class Event extends Model {
 			$event['hour_render'] = RenderFunctions::parseHourForRender($event['hour']);
 			$event['price_render'] = RenderFunctions::parsePriceForRender($event['price']);
 			$event['categories_render'] = RenderFunctions::parseCategoriesForRender($event['categories']);
-			$event['likes'] = $ratingModel->getLikesEvent($event['id']);
+			$event['likes'] = $ratingModel->getLikesEvent($event);
 		}
 
 		return $events;
@@ -390,6 +390,15 @@ class Event extends Model {
 		$events = $this->sortEvents($events);
 		$events = $this->parseEventsForRender($events);
 		return $events;
+	}
+
+	/** GET TRANSLATED EVENT **/
+	// Given an event, it returns the same event in the translated language (es -> eu, eu -> es)
+	public function getTranslatedEvent($event) {
+
+		$toLanguage = ($event['language'] === 'es') ? 'eu' : 'es';
+		return self::where('external_id', '=', $event['external_id'])->where('language', '=', $toLanguage)->first();
+
 	}
 
 }
