@@ -48,7 +48,7 @@ class Twitter extends Model {
 		$template = $this->getTemplateFromSchedule($schedule);
 
 		// Is time to send a tweet? We just check if there's a template
-		if (!$this->isTimeToSendATweet($template)) {
+		if (!$this->isTimeToSendTweet($template)) {
 			Functions::log("It's not time to send a tweet");
 			return false;
 		}
@@ -126,7 +126,7 @@ class Twitter extends Model {
 	}
 
 	// Is time to send a tweet?
-	public function isTimeToSendATweet($template) {
+	public function isTimeToSendTweet($template) {
 
 		return $template ? true : false;
 

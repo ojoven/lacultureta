@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ruleset name="Majestic">
+    <description>A first approach to Majestic's coding standard (first promoted by @ojoven).</description>
+
+    <!-- There MUST NOT be more than one statement per line. -->
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
+    <!-- Code MUST use one tab indent, and MUST NOT use spaces for indenting. -->
+    <rule ref="Majestic.Tabs.DisallowWhitespaceIndent"/>
+
+    <!-- PHP keywords MUST be in lower case. -->
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+
+    <!-- The PHP constants true, false, and null MUST be in lower case. -->
+    <rule ref="Generic.PHP.LowerCaseConstant"/>
+
+    <!-- Visibility MUST be declared on all methods. -->
+    <rule ref="Squiz.Scope.MethodScope"/>
+    <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
+
+    <!-- Method names MUST NOT be declared with a space after the method name. The opening brace MUST go on its own line, and the closing brace MUST go on the next line following the body. There MUST NOT be a space after the opening parenthesis, and there MUST NOT be a space before the closing parenthesis. -->
+    <rule ref="Majestic.Functions.FunctionDeclaration"/>
+    <rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+
+
+
+    <!-- Method arguments with default values MUST go at the end of the argument list. -->
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+    <!-- Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list MUST be on the next line, and there MUST be only one argument per line. When the argument list is split across multiple lines, the closing parenthesis and opening brace MUST be placed together on their own line with one space between them. -->
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration"/>
+
+    <!-- When making a method or function call, there MUST NOT be a space between the method or function name and the opening parenthesis, there MUST NOT be a space after the opening parenthesis, and there MUST NOT be a space before the closing parenthesis. In the argument list, there MUST NOT be a space before each comma, and there MUST be one space after each comma.
+    Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list MUST be on the next line, and there MUST be only one argument per line. -->
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+    <rule ref="PSR2.Methods.FunctionCallSignature.SpaceAfterCloseBracket">
+        <severity>0</severity>
+    </rule>
+
+    <!-- The general style rules for control structures are as follows:
+    There MUST be one space after the control structure keyword
+    There MUST NOT be a space after the opening parenthesis
+    There MUST NOT be a space before the closing parenthesis
+    There MUST be one space between the closing parenthesis and the opening brace
+    The structure body MUST be indented once
+    The closing brace MUST be on the next line after the body -->
+    <rule ref="Majestic.ControlStructures.ControlSignature">
+        <properties>
+            <property name="ignoreComments" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+    <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+    <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+    <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
+    <!-- checked in ControlStructures/ControlStructureSpacingSniff -->
+
+    <!-- The body of each structure MUST be enclosed by braces. This standardizes how the structures look, and reduces the likelihood of introducing errors as new lines get added to the body. -->
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+</ruleset>
