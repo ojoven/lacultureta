@@ -63,15 +63,30 @@ function activateCards() {
 		var card = stack.createCard($(this).get(0));
 		cards.push(card);
 
-		// Bind event
-		$(".card").off('click').on('click', function() {
+		// Bind event card
+		$(".card.show-popup").off('click').on('click', function() {
 
 			var $cardSelector = $(this);
-			if ($($cardSelector).hasClass('welcome')) return false; // Don't do anything for the moment for the welcome card
 
 			// If event card
 			prepareSingleEventPopup($cardSelector);
 			showPopup($('#single-event-popup'));
+			gaCreateEvent(gaGetParamsCard($cardSelector, 'See Detail'));
+		});
+
+		// Bind not event card
+		$(".card").not('.show-popup').off('click').on('click', function(e) {
+
+			var $cardSelector = $(this);
+			var $elementWhoTriggered = $( e.target );
+			if (!$cardSelector.hasClass('clicked') && !$elementWhoTriggered.is('a') ) {
+				$cardSelector.addClass('clicked');
+				setTimeout(function() { $cardSelector.removeClass('clicked'); }, 1000);
+			}
+			var $link = $cardSelector.find('a');
+			$link.off().on('click', function() {
+				gaCreateEvent(gaGetParamsCard($cardSelector, 'Open Link'));
+			});
 		});
 	});
 
@@ -163,7 +178,15 @@ function cardsAfterThrowManagement() {
 		cards.shift();
 
 		// If number of in-deck < numEventsPage, we load new page
-		var numCardsInDeck = $('.cards li.in-deck').length;
+		var $cardsInDeck = $('.cards li.in-deck');
+		var numCardsInDeck = $cardsInDeck.length;
+
+		// We add the active class to the card that is in front
+		var $activeCard = $cardsInDeck.last();
+		$cardsInDeck.removeClass('active').last().addClass('active');
+
+		// We create a Google Analytics "see" event
+		gaCreateEvent(gaGetParamsCard($activeCard, 'See Card'));
 
 		// We load new page if in home, and not all events have been rendered
 		if (numCardsInDeck < 4 && !allEvents && currentView == 'home') {
@@ -172,6 +195,20 @@ function cardsAfterThrowManagement() {
 		}
 	});
 
+}
+
+function getCategoryCard($card) {
+
+	var classesCard = $card.attr('class');
+
+	// Get the card category from its body class (event-card, ego-card...)
+	var classCardAux = classesCard.split('-card');
+	classCardAux = classCardAux[0].split(' ');
+	classCardAux = classCardAux[classCardAux.length - 1];
+
+	classCardAux = capitalizeFirstLetter(classCardAux);
+
+	return classCardAux;
 }
 
 // LIKE / DISLIKE / BACK HOME

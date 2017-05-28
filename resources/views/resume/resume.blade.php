@@ -1,3 +1,7 @@
+<?php
+use App\Lib\Functions;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,7 @@
                                         <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
                                         <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
                                         <span class="event-title"><?php echo $event['title']; ?></span>
-                                        <?php if ($event['hour']) { ?>
+                                        <?php if (trim($event['hour']) != '' && $event['hour'] != ' ') { ?>
                                         <div class="hour">(<?php echo $event['hour']; ?>)</div>
                                         <?php } ?>
                                     </li>
@@ -53,7 +57,7 @@
                             <div class="category" style="background-image:url(../img/categories/<?php echo str_replace(' ', '', $event['categories_render'][0]); ?>.png);"></div>
                             <div class="image" data-image="<?php echo $event['image']; ?>" style="background-image: url(<?php echo $event['image']; ?>);"></div>
                             <span class="event-title"><?php echo $event['title']; ?></span>
-                            <?php if ($event['hour']) { ?>
+                            <?php if (trim($event['hour']) != '' && $event['hour'] != ' ') { ?>
                             <div class="hour">(<?php echo $event['hour']; ?>)</div>
                             <?php } ?>
                         </li>

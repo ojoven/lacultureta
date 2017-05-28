@@ -39,9 +39,6 @@ class Twitter extends Model {
 			array(13, 6, 6, '10.10', 'resume', 'tomorrow', 'all', 'all', true),
 			array(14, 7, 7, '09.30', 'resume', 'today', 'all', 'all', false),
 			array(14, 7, 7, '21.30', 'resume', 'week', 'all', 'all', false),
-
-			// Testing
-			array(15, 1, 1, '17.59', 'second', 'week', 'all', 'all', false),
 		);
 
 		// We convert the schedule to an associative array (for readability)

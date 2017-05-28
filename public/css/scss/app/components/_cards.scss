@@ -207,6 +207,13 @@
 			text-decoration: underline;
 		}
 	}
+
+	// Animation when no popup and click
+	&.no-popup {
+		&.clicked {
+			@include animation (0, 0.5s, 'wiggle', 1);
+		}
+	}
 }
 
 // Cards single event

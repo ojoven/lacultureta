@@ -85,10 +85,20 @@ class Rating extends Model {
 	}
 
 	// GET LIKES
-	public function getLikesEvent($eventId) {
+	public function getLikesEvent($event) {
 
-		return Cache::remember(CacheFunctions::getCacheLikeRatings($eventId), 60, function() use ($eventId) {
-			return self::where('rating', '=', '1')->where('event_id', '=', $eventId)->get()->toArray();
+		return Cache::remember(CacheFunctions::getCacheLikeRatings($event['id']), 60, function() use ($event) {
+
+			$eventIds = array($event['id']);
+
+			// We'll get the likes for the translated version of the event
+			$eventModel = new Event();
+			$translatedEvent = $eventModel->getTranslatedEvent($event);
+			if ($translatedEvent) {
+				$eventIds[] = $translatedEvent['id'];
+			}
+
+			return self::where('rating', '=', '1')->whereIn('event_id', $eventIds)->get()->toArray();
 		});
 
 	}
