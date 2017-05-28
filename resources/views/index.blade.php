@@ -57,7 +57,7 @@
         @include('partials/footer')
 
         <script>
-            var browserLang = '<?php echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); ?>';
+            var browserLang = '<?php echo isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'es'; ?>';
         </script>
 
         <script type="text/javascript" src="/js/app.min.js?v=4"></script>
