@@ -55,10 +55,10 @@ class Functions {
 		return $language;
 	}
 
-	public static function getUserLanguage($languageFromBrowserUrl = 'es') {
+	public static function getUserLanguage($language = false) {
 
+		if (!$language) $language = (LaravelGettext::getLocale() === 'eu_EU') ? 'eu' : 'es';
 		$arrayValidLanguages = array('es', 'eu');
-		$language = $languageFromBrowserUrl;
 
 		// If the user has set the language
 		if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $arrayValidLanguages)) {
@@ -77,6 +77,14 @@ class Functions {
 		}
 
 		return $language;
+	}
+
+	/** STRINGS **/
+	public static function fullTrim($string) {
+
+		$string = str_replace('&nbsp;', ' ', $string);
+		return trim($string);
+
 	}
 
 	/** LOG **/

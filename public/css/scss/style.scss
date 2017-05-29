@@ -32,9 +32,14 @@
 @import "app/components/links";
 @import "app/components/other_components";
 @import "app/components/resume";
+@import "app/components/ribbons";
 @import "app/components/settings";
 @import "app/components/texts";
 @import "app/components/welcome";
+
+/** CUSTOM CARDS **/
+@import "app/customcards/ego";
+@import "app/customcards/friend";
 
 /** PRINT **/
 @import "app/helpers/print";

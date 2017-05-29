@@ -1,0 +1,33 @@
+// ==============================================
+// FRIEND
+// ==============================================
+// #amigosdelacultureta
+
+.cards li.friend-card {
+
+  .image {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 0 20px;
+    margin: 20px 0;
+  }
+
+  a.link {
+    font-size: 20px;
+    font-weight: bold;
+    color: $black;
+  }
+
+  .friends-hashtag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: $lightBlue;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

@@ -90,6 +90,7 @@ return [
         '../resources/views',
         'Lib/',
         'Models/',
+        'Sources/',
         'Console',
     ],
 

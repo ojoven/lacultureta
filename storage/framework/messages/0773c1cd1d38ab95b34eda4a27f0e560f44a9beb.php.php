@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Lib;
 
 /** WRAPPER FOR THE SIMPLE HTML DOM FILE **/
 class SimpleHtmlDom {
