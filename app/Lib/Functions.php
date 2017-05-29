@@ -17,10 +17,10 @@ class Functions {
 		return $arrayIndexes;
 	}
 
-	public static function strpos_array($haystack, $needles, $offset = 0) {
+	public static function strposArray($haystack, $needles, $offset = 0) {
 		if (is_array($needles)) {
 			foreach ($needles as $needle) {
-				$pos = self::strpos_array($haystack, $needle);
+				$pos = self::strposArray($haystack, $needle);
 				if ($pos !== false) {
 					return $pos;
 				}

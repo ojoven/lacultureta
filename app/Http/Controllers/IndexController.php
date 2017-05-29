@@ -16,45 +16,45 @@ use App\Http\Requests;
 
 class IndexController extends Controller {
 
-    public function index($language = 'es') {
+	public function index($language = 'es') {
 
-        Functions::setLocale($language);
+		Functions::setLocale($language);
 
-        // GET CATEGORIES
-        $categoryModel = new Category();
-        $data['categories'] = $categoryModel->getCategories();
+		// GET CATEGORIES
+		$categoryModel = new Category();
+		$data['categories'] = $categoryModel->getCategories();
 
-        // GET PLACES
-        $placeModel = new Place();
-        $data['places'] = $placeModel->getPlaces();
+		// GET PLACES
+		$placeModel = new Place();
+		$data['places'] = $placeModel->getPlaces();
 
-        // LANGUAGE
-        $data['language'] = Functions::getUserLanguage($language);
-        return view('index', $data);
-    }
+		// LANGUAGE
+		$data['language'] = Functions::getUserLanguage($language);
+		return view('index', $data);
+	}
 
-    public function playground() {
+	public function playground() {
 
-        // Code to play with here
-        $twitterModel = new Twitter();
-        $schedule = array(array(1, 1, 4, '09.00', 'resume', 'weekend', false));
-        $schedule = $twitterModel->parseScheduleTemplates($schedule);
-        $tweet = $twitterModel->prepareTweet($schedule[0]);
-        if ($tweet) {
-            // If everything alright, we send it
-            $response = $twitterModel->sendTweet($tweet['message'], $tweet['image']);
-        }
+		// Code to play with here
+		$twitterModel = new Twitter();
+		$schedule = array(array(1, 1, 4, '09.00', 'resume', 'weekend', false));
+		$schedule = $twitterModel->parseScheduleTemplates($schedule);
+		$tweet = $twitterModel->prepareTweet($schedule[0]);
+		if ($tweet) {
+			// If everything alright, we send it
+			$response = $twitterModel->sendTweet($tweet['message'], $tweet['image']);
+		}
 
-        return view('playground');
+		return view('playground');
 
-    }
+	}
 
-    public function scraper() {
+	public function scraper() {
 
-        $scraperModel = new Scraper();
-        $scraperModel->extractDataEvents();
+		$scraperModel = new Scraper();
+		$scraperModel->extractDataEvents();
 
-        return view('playground');
-    }
+		return view('playground');
+	}
 
 }
