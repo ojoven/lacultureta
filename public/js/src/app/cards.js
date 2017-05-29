@@ -42,7 +42,7 @@ function loadCards(category, place, date, page) {
 	$.get(url, data, function(response) {
 
 		// If all events have been loaded, we won't load more
-		if (response.html == '') {
+		if (response.html === '') {
 			allEvents = true;
 		}
 
@@ -225,7 +225,7 @@ function toChangeView() {
 		if (view == currentView) return false; // We don't do anything if the view is already loaded
 		currentView = $(this).data('view'); // This variable will be used for loading paginated cards (if we're in home)
 		$viewport.removeClass().addClass(view); // We add the class to viewport, too
-		if (homeEventIds.length == 0) {
+		if (homeEventIds.length === 0) {
 			homeEventIds = getHomeCardEventIds(); // We save the current HOME status (if not already saved)
 		}
 		$cards.html(''); // We clean the card list

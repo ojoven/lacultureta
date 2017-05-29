@@ -13,6 +13,9 @@ module.exports = function(grunt) {
                 dest: 'js/app.min.js'
             }
         },
+        jshint: {
+            beforeconcat: ['js/src/app/**/*.js'],
+        },
         uglify: {
             my_target : {
                 options : {
@@ -76,7 +79,6 @@ module.exports = function(grunt) {
                     standard: '../phpcs/Majestic',
                 }
             }
-
         }
     });
 
@@ -88,14 +90,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-phpunit');
     grunt.loadNpmTasks('grunt-phpcs');
 
-    // PHP Code Sniffer
-    grunt.registerTask('phpcodesniffer', ['phpcs:scan']);
-    grunt.registerTask('phpcodefix', ['phpcs:fix']);
-
     // Default, to be used on development environments
-    grunt.registerTask('default', ['compass:dev', 'concat', 'phpcs:scan','watch']); // First we compile and concat JS and then we watch
+    grunt.registerTask('default', ['compass:dev', 'jshint', 'concat', 'phpcs:scan', 'watch']); // First we compile, lint, concat JS/PHP and then we watch
 
     // Post Commit, to be executed after commit
-    grunt.registerTask('deploy', ['concat', 'uglify', 'compass:prod']);
+    grunt.registerTask('deploy', ['jshint', 'phpcs:scan', 'concat', 'uglify', 'compass:prod']);
 
 };

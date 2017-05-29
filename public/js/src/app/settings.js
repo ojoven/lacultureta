@@ -93,13 +93,13 @@ function settingsManagement() {
 		});
 
 		// We validate
-		if (category.length == 0 || place.length == 0 || date.length == 0) {
+		if (category.length === 0 || place.length === 0 || date.length === 0) {
 			$saveSettings.fadeOut(300, function() {
 				$settingsError.fadeIn(300, function() {
 					setTimeout(function() {
 						$settingsError.fadeOut(300, function() {
 							$saveSettings.fadeIn(300);
-						})
+						});
 					}, 1300);
 				});
 			});
