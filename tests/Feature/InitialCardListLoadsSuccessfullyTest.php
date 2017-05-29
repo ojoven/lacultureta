@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class InitialLoadTest extends TestCase {
 
-    public function testInitialLoadIsValid() {
+    public function testInitialCardListLoadsSuccessfully() {
 
         $url = env('APP_URL');
         $client = new GuzzleHttp\Client();
