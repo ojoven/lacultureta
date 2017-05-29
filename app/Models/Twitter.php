@@ -90,7 +90,8 @@ class Twitter extends Model {
 
 		foreach ($schedule as $template) {
 
-			if ($currentHour == $template['hour'] && ($currentDay >= $template['day_start'] && $currentDay <= $template['day_end'])) {
+			if ($currentHour == $template['hour'] &&
+				($currentDay >= $template['day_start'] && $currentDay <= $template['day_end'])) {
 				return $template;
 			}
 

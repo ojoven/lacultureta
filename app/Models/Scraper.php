@@ -1,50 +1,53 @@
 <?php
 
 namespace App\Models;
+
 use App\Lib\Functions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Scraper extends Model {
 
-    public function extractDataEvents() {
+	public function extractDataEvents() {
 
-        // We define the sources from where the system will read
-        $sources = array('DonostiaEus');
-        //$sources = array('Tabakalera');
+		// We define the sources from where the system will read
+		$sources = array('DonostiaEus');
+		//$sources = array('Tabakalera');
 
-        foreach ($sources as $source) {
+		foreach ($sources as $source) {
 
-            $sourceModel = $this->loadSourceModel($source);
-            if (!$sourceModel) continue;
+			$sourceModel = $this->loadSourceModel($source);
+			if (!$sourceModel) {
+				continue;
+			}
 
-            // We get the events from the defined source
-            $events = $sourceModel->getDataEvents();
-            $this->storeEvents($events);
-        }
+			// We get the events from the defined source
+			$events = $sourceModel->getDataEvents();
+			$this->storeEvents($events);
+		}
 
-        return false;
+		return false;
 
-    }
+	}
 
-    public function loadSourceModel($source) {
+	public function loadSourceModel($source) {
 
-        $pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
-        if (file_exists($pathToSource)) {
-            require_once($pathToSource);
+		$pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
+		if (file_exists($pathToSource)) {
+			require_once($pathToSource);
 
-            $sourceModel = new $source();
-            return $sourceModel;
-        }
+			$sourceModel = new $source();
+			return $sourceModel;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public function storeEvents($events) {
+	public function storeEvents($events) {
 
-        Functions::log('Store events');
-        DB::table('events')->insert($events);
+		Functions::log('Store events');
+		DB::table('events')->insert($events);
 
-    }
+	}
 
 }

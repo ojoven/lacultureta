@@ -106,6 +106,7 @@
 
     <rule ref="Squiz.Functions">
         <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterFunction"/>
     </rule>
     <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
 

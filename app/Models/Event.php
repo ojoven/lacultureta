@@ -80,7 +80,9 @@ class Event extends Model {
 	public function filterEventsByDate($events, $date) {
 
 		// Special case, all dates
-		if (in_array('all', $date)) return $events;
+		if (in_array('all', $date)) {
+			return $events;
+		}
 
 		$currentDate = date('Y-m-d');
 		$currentDateObj = new \DateTime($currentDate);
@@ -126,7 +128,8 @@ class Event extends Model {
 					$diffWithEndDate = (int) $currentDateObj->diff($dateEndObj)->format("%r%a");
 					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
 
-					if ($diff <= 0 && $diffWithEndDate >= 1 && $diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
+					// We're adding only events that don't last more than 30 days
+					if ($diff <= 0 && $diffWithEndDate >= 1 && $diffDatesEvent <= 30) {
 						array_push($eventsByDate, $event);
 					}
 				}
@@ -148,7 +151,8 @@ class Event extends Model {
 					$diffWithEndDate = (int) $currentDateObj->diff($dateEndObj)->format("%r%a");
 					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
 
-					if ($diff < 0 && $diffWithEndDate <= 7 && $diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
+					// We're adding only events that don't last more than 30 days
+					if ($diff < 0 && $diffWithEndDate <= 7 && $diffDatesEvent <= 30) {
 						array_push($eventsByDate, $event);
 					}
 				}
@@ -177,7 +181,9 @@ class Event extends Model {
 	public function filterEventsByCategory($events, $categories) {
 
 		// Special case, all dates
-		if (in_array('all', $categories)) return $events;
+		if (in_array('all', $categories)) {
+			return $events;
+		}
 
 		$eventsInCategories = array();
 		foreach ($events as $event) {
@@ -199,7 +205,9 @@ class Event extends Model {
 	public function filterEventsByPlace($events, $places) {
 
 		// Special case, all dates
-		if (in_array('all', $places)) return $events;
+		if (in_array('all', $places)) {
+			return $events;
+		}
 
 		$eventsInPlaces = array();
 		foreach ($events as $event) {
@@ -219,7 +227,7 @@ class Event extends Model {
 		$eventsLanguage = array();
 		foreach ($events as $event) {
 
-			if (in_array($event['language'],$language)) {
+			if (in_array($event['language'], $language)) {
 				array_push($eventsLanguage, $event);
 			}
 
@@ -346,8 +354,10 @@ class Event extends Model {
 
 				foreach ($date['events'] as $event) {
 
-					if (!$event['date_end'] // Single Events
-						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) { // Just 2 days long range events
+					// Single Events
+					if (!$event['date_end']
+						// Or just 2 days long range events
+						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) {
 						$parsedEventsByDate['single'][$index]['events'][] = $event;
 					} else {
 						$parsedEventsByDate['range'][] = $event;
@@ -377,7 +387,9 @@ class Event extends Model {
 	public function getEventsFromRatings($ratings) {
 
 		$eventIds = Functions::getArrayWithIndexValues($ratings, 'eventId');
-		if (!$eventIds) return array();
+		if (!$eventIds) {
+			return array();
+		}
 		$ids_ordered = implode(',', $eventIds);
 		$events = self::whereIn('id', $eventIds)->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"))->get()->toArray();
 		return $events;

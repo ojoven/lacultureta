@@ -47,9 +47,14 @@ class Rating extends Model {
 		// Get events rated by user
 		// If rating, we will filter by rating, too
 		if ($rating) {
-			$ratings = self::where('user_id', '=', $params['user_id'])->where('rating', '=', $rating)->orderBy('created_at', 'desc')->get()->toArray();
+			$ratings = self::where('user_id', '=', $params['user_id'])
+				->where('rating', '=', $rating)
+				->orderBy('created_at', 'desc')
+				->get()->toArray();
 		} else {
-			$ratings = self::where('user_id', '=', $params['user_id'])->orderBy('created_at', 'desc')->get()->toArray();
+			$ratings = self::where('user_id', '=', $params['user_id'])
+				->orderBy('created_at', 'desc')
+				->get()->toArray();
 		}
 
 		// Now we filter the events with the currently available

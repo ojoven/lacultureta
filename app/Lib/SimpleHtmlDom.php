@@ -6,7 +6,7 @@ namespace App\Lib;
 class SimpleHtmlDom {
 
 	// GET HTML FROM URL
-	public static function file_get_html($url) {
+	public static function fileGetHtml($url) {
 
 		$pathToSimpleHtmlDom = app_path('/Lib/Vendor/simple_html_dom.php');
 		require_once $pathToSimpleHtmlDom;
@@ -15,7 +15,7 @@ class SimpleHtmlDom {
 	}
 
 	// GET HTML FROM STRING
-	public static function str_get_html($string) {
+	public static function strGetHtml($string) {
 
 		$pathToSimpleHtmlDom = app_path('/Lib/Vendor/simple_html_dom.php');
 		require_once $pathToSimpleHtmlDom;

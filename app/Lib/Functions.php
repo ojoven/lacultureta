@@ -57,7 +57,9 @@ class Functions {
 
 	public static function getUserLanguage($language = false) {
 
-		if (!$language) $language = (LaravelGettext::getLocale() === 'eu_EU') ? 'eu' : 'es';
+		if (!$language) {
+			$language = (LaravelGettext::getLocale() === 'eu_EU') ? 'eu' : 'es';
+		}
 		$arrayValidLanguages = array('es', 'eu');
 
 		// If the user has set the language

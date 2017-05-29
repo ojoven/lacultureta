@@ -16,7 +16,7 @@ class Friend extends Model {
 			case 'LasMejoresPeliculas':
 				$card['title'] = __('¿Eres cinéfilo?');
 				$card['image'] = false;
-				$card['description'] = __('Descubre las mejores películas de actores y directores de la historia del cine; otra aplicación con una interfaz muy sencilla del creador de La Cultureta');
+				$card['description'] = __('Descubre las mejores películas de actores y directores de la historia del cine; otra aplicación con una interfaz muy sencilla del creador de La Cultureta'); // @codingStandardsIgnoreLine
 				$card['url'] = 'http://lasmejorespeliculas.de';
 				break;
 		}

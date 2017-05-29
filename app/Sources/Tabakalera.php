@@ -52,7 +52,7 @@ class Tabakalera {
 
 			Functions::log('Get events from page ' . ($page + 1) . ' for language: ' . $language);
 
-			$html = SimpleHtmlDom::file_get_html($url);
+			$html = SimpleHtmlDom::fileGetHtml($url);
 			$resultsAgenda = $html->find('.listado-agenda', 0);
 
 			$lastPage = $this->_getLastPageAgenda($resultsAgenda);
@@ -191,7 +191,7 @@ class Tabakalera {
 			Functions::log('Get additional information for ' . $event['title']);
 
 			$htmlContent = file_get_contents($event['url']);
-			$html = SimpleHtmlDom::str_get_html($htmlContent);
+			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 			if (!$html) continue;
 
 			// IMAGE

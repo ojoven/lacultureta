@@ -34,13 +34,19 @@ class RenderFunctions {
 			if ($diffBetweenStartAndEnd == 1) {
 
 				// AYER Y HOY
-				if ($diffBetweenEndAndToday == 0) { return __('ayer y hoy'); }
+				if ($diffBetweenEndAndToday == 0) {
+					return __('ayer y hoy');
+				}
 
 				// HOY Y MAÑANA
-				if ($diffBetweenEndAndToday == 1) { return __('hoy y mañana'); }
+				if ($diffBetweenEndAndToday == 1) {
+					return __('hoy y mañana');
+				}
 
 				// MAÑANA Y PASADO
-				if ($diffBetweenEndAndToday == 2) { return __('mañana y pasado'); }
+				if ($diffBetweenEndAndToday == 2) {
+					return __('mañana y pasado');
+				}
 
 				// OTROS
 				if ($monthStart != $monthEnd) {
@@ -79,32 +85,50 @@ class RenderFunctions {
 
 			// NO DATE END
 			// HOY
-			if ($diff == 0) { return __('hoy'); }
+			if ($diff == 0) {
+				return __('hoy');
+			}
 
 			// MAÑANA
-			if ($diff == 1) { return __('mañana'); }
+			if ($diff == 1) {
+				return __('mañana');
+			}
 
 			// PASADO
-			if ($diff == 2) { return __('pasado mañana'); }
+			if ($diff == 2) {
+				return __('pasado mañana');
+			}
 
 			if ($diff < 5) {
 				return __('este %s', self::getWeekDayName($dayStartOfTheWeek));
 			}
 
 			// ESTE VIERNES / VIERNES QUE VIENE
-			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este viernes'); }
+			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff < 7) {
+				return __('este viernes');
+			}
 			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el viernes que viene'); }
+			|| $dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
+				return __('el viernes que viene');
+			}
 
 			// ESTE SÁBADO
-			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este sábado'); }
+			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff < 7) {
+				return __('este sábado');
+			}
 			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el sábado que viene'); }
+			|| $dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
+				return __('el sábado que viene');
+			}
 
 			// ESTE DOMINGO
-			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este domingo'); }
+			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff < 7) {
+				return __('este domingo');
+			}
 			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek == 7 && $diff < 7
-			|| $dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el domingo que viene'); }
+			|| $dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
+				return __('el domingo que viene');
+			}
 
 			// OTROS
 			return __('el %1$s de %2$s', [$dayStart, $monthStart]);

@@ -44,7 +44,9 @@ class Card extends Model {
 		$customCards = [];
 		foreach ($customCardsConfiguration as $cardConfig) {
 			$pathToCustomCards = app_path() . '/Models/CustomCards/';
-			if (!file_exists($pathToCustomCards . $cardConfig['template'] . '.php')) continue;
+			if (!file_exists($pathToCustomCards . $cardConfig['template'] . '.php')) {
+				continue;
+			}
 
 			$cardModelClass = 'App\\Models\\CustomCards\\' . $cardConfig['template'];
 			$cardModel = new $cardModelClass;
