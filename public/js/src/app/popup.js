@@ -15,7 +15,9 @@ $(document).ready(function() {
 function preparePopupOnLoad() {
 
 	var viewportOffset = $viewport.offset();
-	$popup.width($viewport.width()).css('left', viewportOffset.left).css('top', viewportOffset.top);
+	if (viewportOffset !== undefined) {
+		$popup.width($viewport.width()).css('left', viewportOffset.left).css('top', viewportOffset.top);
+	}
 }
 
 function showPopup($popup) {

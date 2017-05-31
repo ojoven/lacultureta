@@ -79,6 +79,17 @@ module.exports = function(grunt) {
                     standard: '../phpcs/Majestic',
                 }
             }
+        },
+        jasmine: {
+            pivotal: {
+                src: 'js/src/app/**/*.js',
+                options: {
+                    specs: 'js/specs/**/*.js',
+                    vendor: [
+                        'js/src/vendor/**/*.js'
+                    ]
+                }
+            }
         }
     });
 
@@ -89,9 +100,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-phpunit');
     grunt.loadNpmTasks('grunt-phpcs');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default, to be used on development environments
-    grunt.registerTask('default', ['compass:dev', 'jshint', 'concat', 'phpcs:scan', 'watch']); // First we compile, lint, concat JS/PHP and then we watch
+    grunt.registerTask('default', ['compass:dev', 'jshint', 'concat', 'watch']); // First we compile, lint, concat JS and then we watch
 
     // Post Commit, to be executed after commit
     grunt.registerTask('deploy', ['jshint', 'phpcs:scan', 'concat', 'uglify', 'compass:prod']);

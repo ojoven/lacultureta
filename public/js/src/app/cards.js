@@ -233,7 +233,7 @@ function toChangeView() {
 		// If we return back to home, we load the previous set of cards from home
 		if (view == 'home') {
 			$iconSettings.fadeIn();
-			loadCardsByEventIds(homeEventIds);
+			loadCardsByEventIds(homeEventIds, callbackLoadCardsByEventIds);
 			homeEventIds = [];
 		} else {
 			$iconSettings.fadeOut();
@@ -245,7 +245,7 @@ function toChangeView() {
 
 }
 
-function loadCardsByEventIds(eventIds) {
+function loadCardsByEventIds(eventIds, callback) {
 
 	activateLoading();
 
@@ -253,16 +253,18 @@ function loadCardsByEventIds(eventIds) {
 	var data = {};
 	data.eventIds = eventIds;
 
-	$.get(url, data, function(response) {
+	$.get(url, data, callback);
 
-		// Save the cards to JS
-		cardList = cardList.concat(response.cards);
+}
 
-		// Append the cards to the HTML
-		$(".cards").append(response.html);
-		activateCards();
+function callbackLoadCardsByEventIds(response) {
 
-	});
+	// Save the cards to JS
+	cardList = cardList.concat(response.cards);
+
+	// Append the cards to the HTML
+	$(".cards").append(response.html);
+	activateCards();
 
 }
 
