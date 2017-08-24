@@ -230,8 +230,10 @@ class DonostiaEus {
 
 			// ADDITIONAL INFO
 			$event['info'] = '';
-			foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->children() as $paragraph) {
-				$event['info'] .= $paragraph->outertext;
+			if ($html->find('.cabecera-ficha', 0)->next_sibling()) {
+				foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->children() as $paragraph) {
+					$event['info'] .= $paragraph->outertext;
+				}
 			}
 
 			$event['info'] = preg_replace('/\s+/', ' ', $event['info']); // Remove extra spaces
