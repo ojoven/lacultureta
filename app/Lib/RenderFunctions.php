@@ -18,6 +18,8 @@ class RenderFunctions {
 
 		$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
 
+		if ($dateEnd == $dateStart) $dateEnd = null; // No range if date end equals to date start
+
 		// Cases
 
 		// WITH DATE END
