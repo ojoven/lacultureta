@@ -107,5 +107,15 @@ class Functions {
 
 		echo PHP_EOL;
 	}
+
+	/** URLS **/
+	public static function getURLRequest($url) {
+
+		$options  = array('http' => array('user_agent' => 'LaCulturetaFriendlyBot - http://lacultureta.com'));
+		$context  = stream_context_create($options);
+		$response = file_get_contents($url, false, $context);
+		return $response;
+
+	}
 }
 

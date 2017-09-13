@@ -37,7 +37,7 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 5;
+		$numMaxPages = 2;
 
 		// We extract all the events from all pages
 		while (true) {
@@ -45,7 +45,8 @@ class DonostiaEus {
 			$suffixLang = ($language == 'es') ? 'cas' : 'eus';
 			$url = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/consultaNoCache?ReadForm=&kpag=' . $page . '&kque=0&kqueNombre=&kzon=0&kzonNombre=&kcua=8&kcuaNombre=De+hoy+en+adelante&kdesde=&kdon=6&idioma=' . $suffixLang;
 			Functions::log('Get events from page ' . $page . ' for language: ' . $language);
-			$html = SimpleHtmlDom::fileGetHtml($url);
+			$htmlContent = Functions::getURLRequest($url);
+			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 
 			$resultsAgenda = $html->find('.resultados-agenda', 0);
 			foreach ($resultsAgenda->find('.media') as $eventDom) {
@@ -227,7 +228,7 @@ class DonostiaEus {
 
 			Functions::log('Get additional information for ' . $event['title']);
 
-			$htmlContent = file_get_contents($event['url']);
+			$htmlContent = Functions::getURLRequest($event['url']);
 			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 			if (!$html) continue;
 
