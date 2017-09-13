@@ -37,6 +37,7 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
+		$numMaxPages = 5;
 
 		// We extract all the events from all pages
 		while (true) {
@@ -83,6 +84,11 @@ class DonostiaEus {
 			// If no more pages
 			$nextPage = $html->find('.pagination', 0)->find('li', -1);
 			if (isset($nextPage->class) && $nextPage->class = "disabled") {
+				break;
+			}
+
+			// We'll go to a maximum page
+			if ($page > $numMaxPages) {
 				break;
 			}
 
