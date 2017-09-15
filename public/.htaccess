@@ -17,4 +17,12 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    RewriteCond %{HTTPS} !on
+    RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
