@@ -106,6 +106,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['compass:dev', 'jshint', 'concat', 'watch']); // First we compile, lint, concat JS and then we watch
 
     // Post Commit, to be executed after commit
-    grunt.registerTask('deploy', ['jshint', 'phpcs:scan', 'concat', 'uglify', 'compass:prod']);
+    grunt.registerTask('deploy', ['jshint', 'concat', 'uglify', 'compass:prod']);
 
 };

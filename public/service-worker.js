@@ -1,0 +1,1 @@
+// This file is is required by chrome to show the banner.
