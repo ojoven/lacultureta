@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2017-05-24 13:44+0100\n"
-"PO-Revision-Date: 2017-05-24 16:50+0100\n"
+"POT-Creation-Date: 2017-11-17 19:42+0100\n"
+"PO-Revision-Date: 2017-11-17 19:44+0100\n"
 "Last-Translator: Mikel <michel@majesticmedia.ca>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: eu_EU\n"
@@ -50,251 +50,251 @@ msgstr "Twitterren kontaktatu"
 msgid "contacta"
 msgstr "kontaktatu"
 
-#: ../resources/views/cards/friend.blade.php:17
+#: ../resources/views/cards/friend.blade.php:18
 #: ../storage/framework/messages//73de97e9ceef5a83820c2b18bad1724df7253a0b.php.php:17
 msgid "#amigas"
 msgstr "#lagunak"
 
-#: ../resources/views/cards/friend.blade.php:18
+#: ../resources/views/cards/friend.blade.php:19
 #: ../storage/framework/messages//73de97e9ceef5a83820c2b18bad1724df7253a0b.php.php:18
 msgid "#amigasdelacultureta"
 msgstr "#laculturetarenlagunak"
 
-#: ../resources/views/resume/resume.blade.php:48
+#: ../resources/views/resume/resume.blade.php:52
 #: ../storage/framework/messages//ae0c060adee87d502ad16757f540485863f36e5f.php.php:48
 msgid "Y también:"
 msgstr "Eta gainera:"
 
-#: Lib//RenderFunctions.php:37
+#: Lib//RenderFunctions.php:40
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:37
 msgid "ayer y hoy"
 msgstr "atzo eta gaur"
 
-#: Lib//RenderFunctions.php:40
+#: Lib//RenderFunctions.php:45
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:40
 msgid "hoy y mañana"
 msgstr "gaur eta bihar"
 
-#: Lib//RenderFunctions.php:43
+#: Lib//RenderFunctions.php:50
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:43
 msgid "mañana y pasado"
 msgstr "bihar eta etzi"
 
-#: Lib//RenderFunctions.php:48
+#: Lib//RenderFunctions.php:56
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:48
 #, php-format
 msgid "el %1$s de %2$s y el %3$s de %4$s"
 msgstr "%2$sren %1$sean eta %4$sk %3$sean"
 
-#: Lib//RenderFunctions.php:51
+#: Lib//RenderFunctions.php:59
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:51
 #, php-format
 msgid "el %1$s y el %2$s de %3$s"
 msgstr "%3$sren %1$sean eta %2$sean"
 
-#: Lib//RenderFunctions.php:60
+#: Lib//RenderFunctions.php:68
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:60
 #, php-format
 msgid "desde el %1$s de %2$s hasta hoy"
 msgstr "%2$sren %1$stik gaur arte"
 
-#: Lib//RenderFunctions.php:64
+#: Lib//RenderFunctions.php:72
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:64
 #, php-format
 msgid "desde el %1$s de %2$s hasta mañana"
 msgstr "%2$sren %1$stik bihar arte"
 
-#: Lib//RenderFunctions.php:69
+#: Lib//RenderFunctions.php:77
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:69
 #, php-format
 msgid "desde el %1$s de %2$s hasta el %3$s de %4$s"
 msgstr "%2$sren %1$stik %4$sren %3$sra"
 
-#: Lib//RenderFunctions.php:72
+#: Lib//RenderFunctions.php:80
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:72
 #, php-format
 msgid "desde el %1$s hasta el %2$s de %3$s"
 msgstr "%3$sren %1$stik %2$sra"
 
-#: Lib//RenderFunctions.php:82 Models//Twitter.php:239
+#: Lib//RenderFunctions.php:91 Models//Twitter.php:249
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:82
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:239
 msgid "hoy"
 msgstr "gaur"
 
-#: Lib//RenderFunctions.php:85 Models//Twitter.php:242
+#: Lib//RenderFunctions.php:96 Models//Twitter.php:252
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:85
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:242
 msgid "mañana"
 msgstr "bihar"
 
-#: Lib//RenderFunctions.php:88
+#: Lib//RenderFunctions.php:101
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:88
 msgid "pasado mañana"
 msgstr "etzi"
 
-#: Lib//RenderFunctions.php:91
+#: Lib//RenderFunctions.php:105
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:91
 #, php-format
 msgid "este %s"
 msgstr "%s honetan"
 
-#: Lib//RenderFunctions.php:95
+#: Lib//RenderFunctions.php:110
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:95
 msgid "este viernes"
 msgstr "ostiral honetan"
 
-#: Lib//RenderFunctions.php:97
+#: Lib//RenderFunctions.php:114
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:97
 msgid "el viernes que viene"
 msgstr "hurrengo ostiralean"
 
-#: Lib//RenderFunctions.php:100
+#: Lib//RenderFunctions.php:119
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:100
 msgid "este sábado"
 msgstr "larunbat honetan"
 
-#: Lib//RenderFunctions.php:102
+#: Lib//RenderFunctions.php:123
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:102
 msgid "el sábado que viene"
 msgstr "hurrengo larunbatean"
 
-#: Lib//RenderFunctions.php:105
+#: Lib//RenderFunctions.php:128
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:105
 msgid "este domingo"
 msgstr "igande honetan"
 
-#: Lib//RenderFunctions.php:107
+#: Lib//RenderFunctions.php:132
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:107
 msgid "el domingo que viene"
 msgstr "hurrengo igandean"
 
-#: Lib//RenderFunctions.php:110
+#: Lib//RenderFunctions.php:136
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:110
 #, php-format
 msgid "el %1$s de %2$s"
 msgstr "%2$sren %1$sean"
 
-#: Lib//RenderFunctions.php:122
+#: Lib//RenderFunctions.php:148
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:122
 #, php-format
 msgid "%1$s %2$s de %3$s"
 msgstr "%3$sk %2$sean, %1$s"
 
-#: Lib//RenderFunctions.php:131
+#: Lib//RenderFunctions.php:157
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Enero"
 msgstr "Urtarrila"
 
-#: Lib//RenderFunctions.php:131
+#: Lib//RenderFunctions.php:157
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Febrero"
 msgstr "Otsaila"
 
-#: Lib//RenderFunctions.php:131
+#: Lib//RenderFunctions.php:157
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:131
 msgid "Marzo"
 msgstr "Martxoa"
 
-#: Lib//RenderFunctions.php:132
+#: Lib//RenderFunctions.php:158
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Abril"
 msgstr "Apirila"
 
-#: Lib//RenderFunctions.php:132
+#: Lib//RenderFunctions.php:158
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Mayo"
 msgstr "Maiatza"
 
-#: Lib//RenderFunctions.php:132
+#: Lib//RenderFunctions.php:158
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:132
 msgid "Junio"
 msgstr "Ekaina"
 
-#: Lib//RenderFunctions.php:133
+#: Lib//RenderFunctions.php:159
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Julio"
 msgstr "Uztaila"
 
-#: Lib//RenderFunctions.php:133
+#: Lib//RenderFunctions.php:159
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Agosto"
 msgstr "Abuztua"
 
-#: Lib//RenderFunctions.php:133
+#: Lib//RenderFunctions.php:159
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:133
 msgid "Septiembre"
 msgstr "Iraila"
 
-#: Lib//RenderFunctions.php:134
+#: Lib//RenderFunctions.php:160
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Octubre"
 msgstr "Urria"
 
-#: Lib//RenderFunctions.php:134
+#: Lib//RenderFunctions.php:160
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Noviembre"
 msgstr "Azaroa"
 
-#: Lib//RenderFunctions.php:134
+#: Lib//RenderFunctions.php:160
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:134
 msgid "Diciembre"
 msgstr "Abendua"
 
-#: Lib//RenderFunctions.php:144
+#: Lib//RenderFunctions.php:170
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "lunes"
 msgstr "astelehena"
 
-#: Lib//RenderFunctions.php:144
+#: Lib//RenderFunctions.php:170
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "martes"
 msgstr "asteartea"
 
-#: Lib//RenderFunctions.php:144
+#: Lib//RenderFunctions.php:170
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:144
 msgid "miércoles"
 msgstr "asteazkena"
 
-#: Lib//RenderFunctions.php:145
+#: Lib//RenderFunctions.php:171
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "jueves"
 msgstr "osteguna"
 
-#: Lib//RenderFunctions.php:145
+#: Lib//RenderFunctions.php:171
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "viernes"
 msgstr "ostirala"
 
-#: Lib//RenderFunctions.php:145
+#: Lib//RenderFunctions.php:171
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:145
 msgid "sábado"
 msgstr "larunbata"
 
-#: Lib//RenderFunctions.php:146
+#: Lib//RenderFunctions.php:172
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:146
 msgid "domingo"
 msgstr "igandea"
 
-#: Lib//RenderFunctions.php:166
+#: Lib//RenderFunctions.php:192
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:166
 #, php-format
 msgid "a las %s y a las %s"
 msgstr "%setan eta %setan"
 
-#: Lib//RenderFunctions.php:174
+#: Lib//RenderFunctions.php:200
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:174
 #, php-format
 msgid "desde las %s hasta las %s"
 msgstr "%setatik %sretara"
 
-#: Lib//RenderFunctions.php:178
+#: Lib//RenderFunctions.php:204
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:178
 #, php-format
 msgid "a las %s"
 msgstr "%setan"
 
-#: Lib//RenderFunctions.php:187 Sources//Tabakalera.php:106
+#: Lib//RenderFunctions.php:213 Sources//Tabakalera.php:106
 #: ../storage/framework/messages//7252bae9e0a3297519ca847ff46594fa9ebedd50.php.php:187
 #: ../storage/framework/messages//10d46e8582d4e5fe7eec06a4bbf743f38d50cd22.php.php:106
 msgid "gratis"
@@ -360,36 +360,36 @@ msgstr "Antzerkia eta dantza"
 msgid "Otros"
 msgstr "Beste ekitaldiak"
 
-#: Models//Twitter.php:245
+#: Models//Twitter.php:255
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:245
 msgid "este finde"
 msgstr "asteburu honetan"
 
-#: Models//Twitter.php:249
+#: Models//Twitter.php:259
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:249
 msgid "la próxima semana"
 msgstr "hurrengo astean"
 
-#: Models//Twitter.php:258
+#: Models//Twitter.php:268
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:258
 #, php-format
 msgid "Evento interesante %s, más info en http://lacultureta.com"
 msgstr "Ekitaldi interesgarria %s, info gehiago -> http://lacultureta.com/eu"
 
-#: Models//Twitter.php:259
+#: Models//Twitter.php:269
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:259
 #, php-format
 msgid ""
 "%s tienes un buen plan, recuerda que hay mucho más en http://lacultureta.com"
 msgstr "%s plan polita daukazu; gehiago http://lacultureta.com/eu'n"
 
-#: Models//Twitter.php:265
+#: Models//Twitter.php:275
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:265
 #, php-format
 msgid "Eventos en Donostia para %s http://lacultureta.com"
 msgstr "Donostiako zenbait ekitaldi %s http://lacultureta.com/eu"
 
-#: Models//Twitter.php:266
+#: Models//Twitter.php:276
 #: ../storage/framework/messages//88e88d4632613be790fefc534f1a10d4790b22d0.php.php:266
 #, php-format
 msgid "Mira qué planes chulos para %s, más en http://lacultureta.com"
@@ -406,6 +406,17 @@ msgid ""
 "Descubre las mejores películas de actores y directores de la historia del "
 "cine; otra aplicación con una interfaz muy sencilla del creador de La "
 "Cultureta"
+msgstr ""
+
+#: Models//CustomCards/Friend.php:24
+msgid "¿Eres diseñador/a?"
+msgstr "Disenatzailea zara?"
+
+#: Models//CustomCards/Friend.php:26
+msgid ""
+"El próximo viernes 24 en la sala Keler ven a conocer a la comunidad The "
+"Mêlée y disfruta con la charla Making Of que nos va a dar una diseñadora "
+"donostiarra muy pro: Noelia Lozano"
 msgstr ""
 
 #: Sources//Tabakalera.php:212
