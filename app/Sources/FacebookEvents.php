@@ -30,6 +30,11 @@ class FacebookEvents {
 		$pageIds = array(
 			'Keler18',
 			'conventgardenSS',
+			'donostiakultura',
+			'impacthubdonostia',
+			'sansebastianshops',
+			'1542110596066274', // Alboka
+			'ReReadDonositaGros',
 			'gusansebastian',
 			'JuguemosElk',
 			'euskalbillera',
@@ -41,7 +46,43 @@ class FacebookEvents {
 			'kresalaelkartea',
 			'103919206620911', // Erdialde Elkartea
 			'sistersandthecity',
-			'donostilindyhop'
+			'donostilindyhop',
+			'kontadores.gazte.zentroa',
+			'tienda.katamotz',
+			'yogashaladonostia',
+			'jesuitinasdonostia',
+			'AtuBolaDonosti',
+			'ancorasansebastian',
+			'KidsandUsDonostia',
+			'chopperbar.donostia',
+			'1422786554612078', // Bar Izarraitz
+			'donostialagunkoia',
+			'lasalledonostia.ikastetxea',
+			'cotebardonostia',
+			'geronimoshops',
+			'ElevaYogaDonostia',
+			'SanSebastianGastronomika',
+			'rctss',
+			'milksansebastian',
+			'Aquarium.Donostia.SanSebastian',
+			'amaraplaza.sansebastian',
+			'lamadamesansebastian',
+			'OIenDonostia',
+			'komplot',
+			'mollymalonesansebastian',
+			'ClubAtleticoSS',
+			'coartdonostia',
+			'tandemsansebastian',
+			'dabadabaSS',
+			'dss2016',
+			'pucdonostia',
+			'peopledisco',
+			'BehobiaSS',
+			'ESCUELADEMASAJESANSEBASTIAN',
+			'GalernaStudio',
+			'228536630535007', // Decathlon
+			'152714321436277', // Diocesis SS
+
 		);
 
 		//$pageIds = array_slice($pageIds, 0, 1);
@@ -85,7 +126,7 @@ class FacebookEvents {
 
 			// Event Info / Description
 			$event['info'] = '';
-			$event['description'] = Functions::remove3and4bytesCharFromUtf8Str($eventFb['description']);
+			$event['description'] = (isset($eventFb['description'])) ? Functions::remove3and4bytesCharFromUtf8Str($eventFb['description']) : '';
 
 			// Event URL
 			$event['url'] = 'https://www.facebook.com/events/' . $eventFb['id'] . '/';
@@ -102,7 +143,7 @@ class FacebookEvents {
 			$event['date_start'] = date('Y-m-d', $startTime);
 			$event['date_end'] = null;
 
-			if ($eventFb['end_time']) {
+			if (isset($eventFb['end_time'])) {
 				$endTime = strtotime($eventFb['end_time']);
 				$event['date_end'] = date('Y-m-d', $endTime);
 				if ($event['date_start'] == $event['date_end']) $event['date_end'] = null;

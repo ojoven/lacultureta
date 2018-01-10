@@ -10,8 +10,10 @@ class Scraper extends Model {
 
 	public function extractDataEvents() {
 
+		set_time_limit(0);
+
 		// We define the sources from where the system will read
-		//$sources = array('FacebookEvents');
+		$sources = array('FacebookEvents');
 		$sources = array('DonostiaEus', 'FacebookEvents');
 
 		foreach ($sources as $source) {
