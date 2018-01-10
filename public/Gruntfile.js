@@ -58,26 +58,6 @@ module.exports = function(grunt) {
             watch_css_files: {
                 files : ['css/scss/**/*.scss'],
                 tasks : ['compass:dev']
-            },
-            watch_php_files: {
-                files : ['../app/Models/**/*.php', '../app/Lib/*.php', '../app/Http/Controllers/*.php'],
-                tasks : ['phpcs:scan']
-            }
-        },
-        phpcs: {
-            scan: {
-                src: ['../app/Models/**/*.php', '../app/Lib/*.php', '../app/Http/Controllers/*.php'],
-                options: {
-                    bin: '/usr/bin/phpcs',
-                    standard: '../phpcs/Majestic',
-                }
-            },
-            fix: {
-                src: ['../app/Models/**/*.php', '../app/Lib/*.php', '../app/Http/Controllers/*.php'],
-                options: {
-                    bin: '/usr/bin/phpcbf',
-                    standard: '../phpcs/Majestic',
-                }
             }
         },
         jasmine: {
@@ -99,13 +79,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-phpunit');
-    grunt.loadNpmTasks('grunt-phpcs');
+    //grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default, to be used on development environments
-    grunt.registerTask('default', ['compass:dev', 'jshint', 'concat', 'watch']); // First we compile, lint, concat JS and then we watch
+    grunt.registerTask('default', ['compass:dev', 'concat', 'watch']); // First we compile, lint, concat JS and then we watch
 
     // Post Commit, to be executed after commit
-    grunt.registerTask('deploy', ['jshint', 'concat', 'uglify', 'compass:prod']);
+    grunt.registerTask('deploy', ['concat', 'uglify', 'compass:prod']);
 
 };

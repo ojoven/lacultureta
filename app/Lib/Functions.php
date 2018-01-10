@@ -89,6 +89,10 @@ class Functions {
 
 	}
 
+	public static function remove3and4bytesCharFromUtf8Str($str) {
+		return preg_replace('/([\xF0-\xF7]...)|([\xE0-\xEF]..)/s', '#', $str);
+	}
+
 	/** JSON **/
 	public static function isJson($json) {
 

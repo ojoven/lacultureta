@@ -80,9 +80,12 @@ class DateFunctions {
 
 		// Special cases
 		// 1. Start date is on next year (Ex: 05 Ene (2017) -> scraped on 30 Dec 2016)
-		$currentMonth = date('m');
+		$currentMonth = (int) date('m');
 		if ($currentMonth > $monthStart && (!$dateEnd || $monthEnd < $currentMonth)) {
 			$yearStart++;
+			if ($yearEnd) {
+				$yearEnd++;
+			}
 		}
 
 		// Start date is previous year (Ex: 30 Dec (2016) -> scraped on 05 Ene 2017)

@@ -47,7 +47,7 @@ class Event extends Model {
 		$events = self::where(function($query) use ($today) {
 			$query->whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today);
 		})->where(function($query) use ($language) {
-			$query->where('language', '=', $language);
+			$query->where('language', '=', $language)->orWhereNull('language');
 		})->orderBy('date_start', 'asc')->get()->toArray();
 		return $events;
 	}
@@ -227,7 +227,7 @@ class Event extends Model {
 		$eventsLanguage = array();
 		foreach ($events as $event) {
 
-			if (in_array($event['language'], $language)) {
+			if (in_array($event['language'], $language) || $event['language'] == '') {
 				array_push($eventsLanguage, $event);
 			}
 
