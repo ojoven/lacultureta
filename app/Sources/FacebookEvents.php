@@ -34,7 +34,10 @@ class FacebookEvents {
 			'impacthubdonostia',
 			'sansebastianshops',
 			'1542110596066274', // Alboka
+			'xaviertxo', // Bar El Muro
+			'313745512341980', // Bar Altxerri
 			'ReReadDonositaGros',
+			'ginmusica',
 			'gusansebastian',
 			'JuguemosElk',
 			'euskalbillera',
@@ -44,8 +47,11 @@ class FacebookEvents {
 			'ulialdeelkartea',
 			'GipuzkoaSurf',
 			'kresalaelkartea',
+			'BATAPLANDISCOOFFICIAL',
+			'LaCarpaOndarretaSanSebastian',
 			'103919206620911', // Erdialde Elkartea
 			'sistersandthecity',
+			'grossbeer',
 			'donostilindyhop',
 			'kontadores.gazte.zentroa',
 			'tienda.katamotz',
@@ -60,9 +66,11 @@ class FacebookEvents {
 			'lasalledonostia.ikastetxea',
 			'cotebardonostia',
 			'geronimoshops',
+			'BasquelandBrewingProject',
 			'ElevaYogaDonostia',
 			'SanSebastianGastronomika',
 			'rctss',
+			'enclaveestudio',
 			'milksansebastian',
 			'Aquarium.Donostia.SanSebastian',
 			'amaraplaza.sansebastian',
@@ -80,6 +88,10 @@ class FacebookEvents {
 			'BehobiaSS',
 			'ESCUELADEMASAJESANSEBASTIAN',
 			'GalernaStudio',
+			'SantaBarBaraTaberna',
+			'pubbasque',
+			'latabernadeaitor',
+			'vintageclosetss',
 			'228536630535007', // Decathlon
 			'152714321436277', // Diocesis SS
 
