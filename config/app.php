@@ -181,7 +181,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Selenium
-        Modelizer\Selenium\SeleniumServiceProvider::class
+        //Modelizer\Selenium\SeleniumServiceProvider::class
 
     ],
 
