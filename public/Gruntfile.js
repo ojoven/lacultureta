@@ -8,6 +8,8 @@ module.exports = function(grunt) {
                     'js/src/vendor/jquery.min.js',
                     'js/src/vendor/swing/swing.js',
                     'js/src/vendor/js.cookie.js',
+                    'js/src/vendor/jquery-ui.js',
+                    'js/src/vendor/jquery-ui.multidatespicker.js',
                     'js/src/app/**/*.js',
                 ],
                 dest: 'js/app.min.js'

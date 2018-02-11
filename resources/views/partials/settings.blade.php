@@ -9,28 +9,7 @@
             <!-- BY DATE -->
             <div class="section">
                 <div class="section-title">{{ __('Por fecha') }}</div>
-                <ul class="data-date">
-                    <li>
-                        <a href="#" class="active filter" data-filter="date" data-value="all" data-exclusive="true">
-                            {{ __('Todas las fechas') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="filter" data-filter="date" data-value="today">
-                            {{ __('Hoy') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="filter" data-filter="date" data-value="tomorrow">
-                            {{ __('Mañana') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="filter" data-filter="date" data-value="week" data-exclusive="true">
-                            {{ __('Próximos 7 días') }}
-                        </a>
-                    </li>
-                </ul>
+                    <div id="date-selector"></div>
                 <div class="clear"></div>
             </div>
 

@@ -11,6 +11,7 @@ $(document).ready(function() {
 	toShowSettings();
 	toCloseSettings();
 	settingsManagement();
+	dateManagement();
 });
 
 function toShowSettings() {
@@ -22,6 +23,26 @@ function toShowSettings() {
 		return false;
 	});
 
+}
+
+function dateManagement() {
+	$.datepicker.regional['es'] = {
+		prevText: '<',
+		nextText: '>',
+		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+			'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+			'Jul','Ago','Sep','Oct','Nov','Dec'],
+		weekHeader: 'Sm', weekStatus: '',
+		dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		dateFormat: 'Y-m-d', firstDay: 1};
+
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+
+	var $dateInput = $('#date-selector');
+	$dateInput.multiDatesPicker({inline: true});
 }
 
 function settingsManagement() {
