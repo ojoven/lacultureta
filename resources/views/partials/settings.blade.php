@@ -11,6 +11,7 @@
             <!-- BY DATE -->
             <div class="section">
                 <div id="date-selector"></div>
+                <input id="data-date" type="hidden" />
                 <div class="clear"></div>
             </div>
 

@@ -84,93 +84,37 @@ class Event extends Model {
 			return $events;
 		}
 
-		$currentDate = date('Y-m-d');
-		$currentDateObj = new \DateTime($currentDate);
 
 		$eventsByDate = array();
+
 		foreach ($events as $event) {
 
 			$dateStartObj = new \DateTime($event['date_start']);
 
 			// Today
-			if (in_array('today', $date)) {
+			foreach ($date as $day) {
+
+				$dayObj = new \DateTime($day);
 
 				// If single date, today
-				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
+				$diff = (int) $dayObj->diff($dateStartObj)->format("%r%a");
 				if ($diff == 0) {
 					array_push($eventsByDate, $event);
 				}
 
-				// If range of dates
-				if ($event['date_end'] && $diff <= -1) {
-
-					$dateEndObj = new \DateTime($event['date_end']);
-					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
-					if ($diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
-						array_push($eventsByDate, $event);
-					}
-				}
 			}
 
-			// Tomorrow
-			if (in_array('tomorrow', $date)) {
+			// If range of dates
+			/**
+			if ($event['date_end'] && $diff <= -1) {
 
-				// If single date, tomorrow
-				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
-				if ($diff == 1) {
-					array_push($eventsByDate, $event);
-				}
-
-				// If range of dates
-				if ($event['date_end']) {
-
-					$dateEndObj = new \DateTime($event['date_end']);
-					$diffWithEndDate = (int) $currentDateObj->diff($dateEndObj)->format("%r%a");
-					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
-
-					// We're adding only events that don't last more than 30 days
-					if ($diff <= 0 && $diffWithEndDate >= 1 && $diffDatesEvent <= 30) {
-						array_push($eventsByDate, $event);
-					}
-				}
-			}
-
-			// Next 7 days
-			if (in_array('week', $date)) {
-
-				// If single date, tomorrow
-				$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
-				if (!$event['date_end'] && $diff <= 7 && $diff >= 0) {
-					array_push($eventsByDate, $event);
-				}
-
-				// If range of dates
-				if ($event['date_end']) {
-
-					$dateEndObj = new \DateTime($event['date_end']);
-					$diffWithEndDate = (int) $currentDateObj->diff($dateEndObj)->format("%r%a");
-					$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
-
-					// We're adding only events that don't last more than 30 days
-					if ($diff < 0 && $diffWithEndDate <= 7 && $diffDatesEvent <= 30) {
-						array_push($eventsByDate, $event);
-					}
-				}
-			}
-
-			// This weekend
-			if (in_array('weekend', $date)) {
-
-				$thisFriday = DateFunctions::getThisWeekDayDate('friday');
-				$fridayDateObj = new \DateTime($thisFriday);
-
-				// If single date
-				$diff = (int) $fridayDateObj->diff($dateStartObj)->format("%r%a");
-				if (!$event['date_end'] && $diff <= 2 && $diff >= 0) {
+				$dateEndObj = new \DateTime($event['date_end']);
+				$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
+				if ($diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
 					array_push($eventsByDate, $event);
 				}
 			}
-
+			**/
 		}
 
 		return $eventsByDate;
