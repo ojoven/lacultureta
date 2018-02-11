@@ -55,10 +55,12 @@ class Functions {
 		return $language;
 	}
 
-	public static function getUserLanguage($languageFromBrowserUrl = 'es') {
+	public static function getUserLanguage($language = false) {
 
+		if (!$language) {
+			$language = (LaravelGettext::getLocale() === 'eu_EU') ? 'eu' : 'es';
+		}
 		$arrayValidLanguages = array('es', 'eu');
-		$language = $languageFromBrowserUrl;
 
 		// If the user has set the language
 		if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $arrayValidLanguages)) {
@@ -79,6 +81,25 @@ class Functions {
 		return $language;
 	}
 
+	/** STRINGS **/
+	public static function fullTrim($string) {
+
+		$string = str_replace('&nbsp;', ' ', $string);
+		return trim($string);
+
+	}
+
+	public static function remove3and4bytesCharFromUtf8Str($str) {
+		return preg_replace('/([\xF0-\xF7]...)|([\xE0-\xEF]..)/s', '#', $str);
+	}
+
+	/** JSON **/
+	public static function isJson($json) {
+
+		json_decode($json);
+		return (json_last_error() == JSON_ERROR_NONE);
+	}
+
 	/** LOG **/
 	public static function log($message) {
 
@@ -89,6 +110,16 @@ class Functions {
 		}
 
 		echo PHP_EOL;
+	}
+
+	/** URLS **/
+	public static function getURLRequest($url) {
+
+		$options  = array('http' => array('user_agent' => 'LaCulturetaFriendlyBot - http://lacultureta.com'));
+		$context  = stream_context_create($options);
+		$response = file_get_contents($url, false, $context);
+		return $response;
+
 	}
 }
 

@@ -56,6 +56,7 @@ function dateManagement() {
 	var $dateInput = $('#date-selector');
 	$dateInput.multiDatesPicker({
 		inline: true,
+		minDate: 0,
 		altField: '#data-date'
 	});
 }

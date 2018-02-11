@@ -31,9 +31,10 @@ class Card extends Model {
 
 		// Model/Template, Identifier, Page, Position
 		$arrayConfig = array(
-			array('template' => 'Ego', 'id' => 'Ego', 'page' => 1, 'position' => 4),
+			//array('template' => 'Ego', 'id' => 'Ego', 'page' => 1, 'position' => 4),
+			//array('template' => 'Friend', 'id' => 'NoeliaLozanoMakingOf', 'page' => 1, 'position' => 2),
+			//array('template' => 'Friend', 'id' => 'TheMeleeFusion', 'page' => 1, 'position' => 2),
 			//array('template' => 'Friend', 'id' => 'LasMejoresPeliculas', 'page' => 2, 'position' => 3),
-			array('template' => 'Friend', 'id' => 'LasMejoresPeliculas', 'page' => 1, 'position' => 0),
 		);
 
 		return $arrayConfig;
@@ -45,7 +46,9 @@ class Card extends Model {
 		$customCards = [];
 		foreach ($customCardsConfiguration as $cardConfig) {
 			$pathToCustomCards = app_path() . '/Models/CustomCards/';
-			if (!file_exists($pathToCustomCards . $cardConfig['template'] . '.php')) continue;
+			if (!file_exists($pathToCustomCards . $cardConfig['template'] . '.php')) {
+				continue;
+			}
 
 			$cardModelClass = 'App\\Models\\CustomCards\\' . $cardConfig['template'];
 			$cardModel = new $cardModelClass;

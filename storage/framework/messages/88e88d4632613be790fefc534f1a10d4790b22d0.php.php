@@ -22,24 +22,8 @@ class Twitter extends Model {
 	// We'll call this function every 5 minutes or so with a cron job
 	public function twitterScheduler() {
 
-		// id, days of week (first, last), hour, template, date target, category, place, response to previous tweet
-		$schedule = array(
-			array(1, 1, 4, '09.00', 'first', 'today', 'all', 'all', false),
-			array(2, 1, 4, '09.05', 'second', 'today', 'all', 'all', true),
-			array(3, 1, 4, '09.10', 'resume', 'today', 'all', 'all', true),
-			array(4, 1, 4, '14.10', 'resume', 'today', 'all', 'all', false),
-			array(5, 1, 3, '21.10', 'resume', 'tomorrow', 'all', 'all', false),
-			array(6, 4, 4, '21.00', 'first', 'weekend', 'all', 'all', false), // weekend: friday, saturday and sunday
-			array(7, 4, 4, '21.05', 'second', 'weekend', 'all', 'all', true),
-			array(8, 4, 4, '21.10', 'resume', 'weekend', 'all', 'all', true),
-			array(9, 5, 5, '09.00', 'resume', 'weekend', 'all', 'all', false),
-			array(10, 5, 5, '14.00', 'resume', 'weekend', 'all', 'all', false),
-			array(11, 6, 6, '10.00', 'first', 'today', 'all', 'all', false),
-			array(12, 6, 6, '10.05', 'resume', 'today', 'all', 'all', true),
-			array(13, 6, 6, '10.10', 'resume', 'tomorrow', 'all', 'all', true),
-			array(14, 7, 7, '09.30', 'resume', 'today', 'all', 'all', false),
-			array(14, 7, 7, '21.30', 'resume', 'week', 'all', 'all', false),
-		);
+		// We get the schedule of tweets
+		$schedule = $this->getSchedule();
 
 		// We convert the schedule to an associative array (for readability)
 		$schedule = $this->parseScheduleTemplates($schedule);
@@ -48,7 +32,7 @@ class Twitter extends Model {
 		$template = $this->getTemplateFromSchedule($schedule);
 
 		// Is time to send a tweet? We just check if there's a template
-		if (!$this->isTimeToSendATweet($template)) {
+		if (!$this->isTimeToSendTweet($template)) {
 			Functions::log("It's not time to send a tweet");
 			return false;
 		}
@@ -74,15 +58,40 @@ class Twitter extends Model {
 		}
 	}
 
+	public function getSchedule() {
+
+		// id, days of week (first, last), hour, template, date target, category, place, response to previous tweet
+		$schedule = array(
+			array(1, 1, 4, '09.00', 'first', 'today', 'all', 'all', false),
+			array(2, 1, 4, '09.05', 'second', 'today', 'all', 'all', true),
+			array(3, 1, 4, '09.10', 'resume', 'today', 'all', 'all', true),
+			array(4, 1, 4, '14.10', 'resume', 'today', 'all', 'all', false),
+			array(5, 1, 3, '21.10', 'resume', 'tomorrow', 'all', 'all', false),
+			array(6, 4, 4, '21.00', 'first', 'weekend', 'all', 'all', false), // weekend: friday, saturday and sunday
+			array(7, 4, 4, '21.05', 'second', 'weekend', 'all', 'all', true),
+			array(8, 4, 4, '21.10', 'resume', 'weekend', 'all', 'all', true),
+			array(9, 5, 5, '09.00', 'resume', 'weekend', 'all', 'all', false),
+			array(10, 5, 5, '14.00', 'resume', 'weekend', 'all', 'all', false),
+			array(11, 6, 6, '10.00', 'first', 'today', 'all', 'all', false),
+			array(12, 6, 6, '10.05', 'resume', 'today', 'all', 'all', true),
+			array(13, 6, 6, '10.10', 'resume', 'tomorrow', 'all', 'all', true),
+			array(14, 7, 7, '09.30', 'resume', 'today', 'all', 'all', false),
+			array(14, 7, 7, '21.30', 'resume', 'week', 'all', 'all', false),
+		);
+
+		return $schedule;
+	}
+
 	public function getTemplateFromSchedule($schedule) {
 
 		// First we check the hour, if it's equal to one of the schedules, we check the day
-		$currentHour = date('H.i');
+		$currentHour = date('H.i', strtotime('+ 2 hours')); // We add 2 hours because of the server's custom time
 		$currentDay = date('N');
 
 		foreach ($schedule as $template) {
 
-			if ($currentHour == $template['hour'] && ($currentDay >= $template['day_start'] && $currentDay >= $template['day_end'])) {
+			if ($currentHour == $template['hour'] &&
+				($currentDay >= $template['day_start'] && $currentDay <= $template['day_end'])) {
 				return $template;
 			}
 
@@ -126,7 +135,7 @@ class Twitter extends Model {
 	}
 
 	// Is time to send a tweet?
-	public function isTimeToSendATweet($template) {
+	public function isTimeToSendTweet($template) {
 
 		return $template ? true : false;
 
@@ -214,7 +223,8 @@ class Twitter extends Model {
 		$pathToScreenshot = public_path() . "/img/tmp/resume.png";
 
 		// We execute the phantom script via command line
-		$command = "/usr/local/bin/phantomjs '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
+		$pathToPhantomBin = isset($_ENV['PHANTOMJS_BIN']) ? $_ENV['PHANTOMJS_BIN'] : "/usr/local/bin/phantomjs";
+		$command = $pathToPhantomBin . " '" . $pathToPhantomJs .  "' '" . $url . "' '" . $pathToScreenshot . "' png";
 		$return = shell_exec($command);
 
 		// Some logs

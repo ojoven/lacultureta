@@ -12,11 +12,14 @@ class RenderFunctions {
 		$currentDateObj = new \DateTime($currentDate);
 		$dateStartObj = new \DateTime($dateStart);
 		$dayStart = date('j', strtotime($dateStart));
+		$dayNameStart = self::getWeekDayName((int)date('N', strtotime($dateStart)));
 		$dayStartOfTheWeek = (int)date('N', strtotime($dateStart));
 		$currentDayOfTheWeek = (int)date('N', strtotime($currentDate));
 		$monthStart = self::getMonthName((int)date('n', strtotime($dateStart)));
 
 		$diff = (int) $currentDateObj->diff($dateStartObj)->format("%r%a");
+
+		if ($dateEnd == $dateStart) $dateEnd = null; // No range if date end equals to date start
 
 		// Cases
 
@@ -34,13 +37,19 @@ class RenderFunctions {
 			if ($diffBetweenStartAndEnd == 1) {
 
 				// AYER Y HOY
-				if ($diffBetweenEndAndToday == 0) { return __('ayer y hoy'); }
+				if ($diffBetweenEndAndToday == 0) {
+					return __('ayer y hoy');
+				}
 
 				// HOY Y MAÑANA
-				if ($diffBetweenEndAndToday == 1) { return __('hoy y mañana'); }
+				if ($diffBetweenEndAndToday == 1) {
+					return __('hoy y mañana');
+				}
 
 				// MAÑANA Y PASADO
-				if ($diffBetweenEndAndToday == 2) { return __('mañana y pasado'); }
+				if ($diffBetweenEndAndToday == 2) {
+					return __('mañana y pasado');
+				}
 
 				// OTROS
 				if ($monthStart != $monthEnd) {
@@ -79,35 +88,22 @@ class RenderFunctions {
 
 			// NO DATE END
 			// HOY
-			if ($diff == 0) { return __('hoy'); }
-
-			// MAÑANA
-			if ($diff == 1) { return __('mañana'); }
-
-			// PASADO
-			if ($diff == 2) { return __('pasado mañana'); }
-
-			if ($diff < 5) {
-				return __('este %s', self::getWeekDayName($dayStartOfTheWeek));
+			if ($diff == 0) {
+				return __('hoy');
 			}
 
-			// ESTE VIERNES / VIERNES QUE VIENE
-			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este viernes'); }
-			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el viernes que viene'); }
+			// MAÑANA
+			if ($diff == 1) {
+				return __('mañana') .  ' ' . $dayNameStart;
+			}
 
-			// ESTE SÁBADO
-			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este sábado'); }
-			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el sábado que viene'); }
-
-			// ESTE DOMINGO
-			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff < 7) { return __('este domingo'); }
-			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek == 7 && $diff < 7
-			|| $dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) { return __('el domingo que viene'); }
+			// PASADO
+			if ($diff == 2) {
+				return __('pasado mañana') . ' ' . $dayNameStart;
+			}
 
 			// OTROS
-			return __('el %1$s de %2$s', [$dayStart, $monthStart]);
+			return __('el %1$s, %2$s de %3$s', [$dayNameStart, $dayStart, $monthStart]);
 		}
 
 	}
@@ -155,7 +151,7 @@ class RenderFunctions {
 		// Cases
 
 		// Empty hour (no defined hours)
-		if (trim($hour) == "" || $hour == ' ') {
+		if (trim($hour) == "" || $hour == ' ' || $hour == '&nbsp;') {
 			return "";
 		}
 

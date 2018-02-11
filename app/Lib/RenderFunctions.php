@@ -12,6 +12,7 @@ class RenderFunctions {
 		$currentDateObj = new \DateTime($currentDate);
 		$dateStartObj = new \DateTime($dateStart);
 		$dayStart = date('j', strtotime($dateStart));
+		$dayNameStart = self::getWeekDayName((int)date('N', strtotime($dateStart)));
 		$dayStartOfTheWeek = (int)date('N', strtotime($dateStart));
 		$currentDayOfTheWeek = (int)date('N', strtotime($currentDate));
 		$monthStart = self::getMonthName((int)date('n', strtotime($dateStart)));
@@ -93,47 +94,16 @@ class RenderFunctions {
 
 			// MAÑANA
 			if ($diff == 1) {
-				return __('mañana');
+				return __('mañana') .  ' ' . $dayNameStart;
 			}
 
 			// PASADO
 			if ($diff == 2) {
-				return __('pasado mañana');
-			}
-
-			if ($diff < 5) {
-				return __('este %s', self::getWeekDayName($dayStartOfTheWeek));
-			}
-
-			// ESTE VIERNES / VIERNES QUE VIENE
-			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff < 7) {
-				return __('este viernes');
-			}
-			if ($dayStartOfTheWeek == 5 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 5 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
-				return __('el viernes que viene');
-			}
-
-			// ESTE SÁBADO
-			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff < 7) {
-				return __('este sábado');
-			}
-			if ($dayStartOfTheWeek == 6 && $currentDayOfTheWeek >= 5 && $diff < 7
-			|| $dayStartOfTheWeek == 6 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
-				return __('el sábado que viene');
-			}
-
-			// ESTE DOMINGO
-			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff < 7) {
-				return __('este domingo');
-			}
-			if ($dayStartOfTheWeek == 7 && $currentDayOfTheWeek == 7 && $diff < 7
-			|| $dayStartOfTheWeek == 7 && $currentDayOfTheWeek < 5 && $diff > 7 && $diff < 14) {
-				return __('el domingo que viene');
+				return __('pasado mañana') . ' ' . $dayNameStart;
 			}
 
 			// OTROS
-			return __('el %1$s de %2$s', [$dayStart, $monthStart]);
+			return __('el %1$s, %2$s de %3$s', [$dayNameStart, $dayStart, $monthStart]);
 		}
 
 	}

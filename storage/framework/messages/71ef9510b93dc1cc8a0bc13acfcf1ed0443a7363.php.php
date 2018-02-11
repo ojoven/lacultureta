@@ -1,50 +1,57 @@
 <?php
 
 namespace App\Models;
+
 use App\Lib\Functions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Scraper extends Model {
 
-    public function extractDataEvents() {
+	public function extractDataEvents() {
 
-        // We define the sources from where the system will read
-        $sources = array('DonostiaEus');
-        //$sources = array('Tabakalera');
+		set_time_limit(0);
 
-        foreach ($sources as $source) {
+		// We define the sources from where the system will read
+		$sources = array('FacebookEvents');
+		$sources = array('DonostiaEus', 'FacebookEvents');
 
-            $sourceModel = $this->loadSourceModel($source);
-            if (!$sourceModel) continue;
+		foreach ($sources as $source) {
 
-            // We get the events from the defined source
-            $events = $sourceModel->getDataEvents();
-            $this->storeEvents($events);
-        }
+			$sourceModel = $this->loadSourceModel($source);
+			if (!$sourceModel) {
+				continue;
+			}
 
-        return false;
+			// We get the events from the defined source
+			$events = $sourceModel->getDataEvents();
+			$this->storeEvents($events);
+		}
 
-    }
+		return false;
 
-    public function loadSourceModel($source) {
+	}
 
-        $pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
-        if (file_exists($pathToSource)) {
-            require_once($pathToSource);
+	public function loadSourceModel($source) {
 
-            $sourceModel = new $source();
-            return $sourceModel;
-        }
+		$pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
+		if (file_exists($pathToSource)) {
+			require_once($pathToSource);
 
-        return false;
-    }
+			$sourceModel = new $source();
+			return $sourceModel;
+		}
 
-    public function storeEvents($events) {
+		return false;
+	}
 
-        Functions::log('Store events');
-        DB::table('events')->insert($events);
+	public function storeEvents($events) {
 
-    }
+		Functions::log('Store events');
+		if ($events) {
+			DB::table('events')->insert($events);
+		}
+
+	}
 
 }

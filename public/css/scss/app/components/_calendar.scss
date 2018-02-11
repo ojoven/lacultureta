@@ -79,6 +79,11 @@
 	text-decoration: none;
 	color: $black;
 }
+
+.ui-datepicker .ui-datepicker-unselectable span {
+	color: $mediumDarkGrey;
+}
+
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
 	margin: .7em 0 0 0;
