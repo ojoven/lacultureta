@@ -92,29 +92,31 @@ class Event extends Model {
 			$dateStartObj = new \DateTime($event['date_start']);
 
 			// Today
-			foreach ($date as $day) {
+			if (DateFunctions::isSingleDayEvent($event)) {
 
-				$dayObj = new \DateTime($day);
+				foreach ($date as $day) {
 
-				// If single date, today
-				$diff = (int) $dayObj->diff($dateStartObj)->format("%r%a");
-				if ($diff == 0) {
-					array_push($eventsByDate, $event);
+					$dayObj = new \DateTime($day);
+					$diff = (int) $dayObj->diff($dateStartObj)->format("%r%a");
+					if ($diff == 0) {
+						array_push($eventsByDate, $event);
+					}
 				}
 
-			}
+			} else {
 
-			// If range of dates
-			/**
-			if ($event['date_end'] && $diff <= -1) {
+				foreach ($date as $day) {
 
-				$dateEndObj = new \DateTime($event['date_end']);
-				$diffDatesEvent = (int) $dateStartObj->diff($dateEndObj)->format("%r%a");
-				if ($diffDatesEvent <= 30) { // We're adding only events that don't last more than 30 days
-					array_push($eventsByDate, $event);
+					$dateStartUnix = strtotime($event['date_start']);
+					$dateEndUnix = strtotime($event['date_end']);
+					$dayUnix = strtotime($day);
+
+					if ($dayUnix >= $dateStartUnix && $dayUnix <= $dateEndUnix) {
+						array_push($eventsByDate, $event);
+					}
 				}
 			}
-			**/
+
 		}
 
 		return $eventsByDate;

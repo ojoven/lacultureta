@@ -14,6 +14,11 @@ class DateFunctions {
 		return $diff;
 	}
 
+	public static function isSingleDayEvent($event) {
+
+		return (!$event['date_end'] || $event['date_start'] == $event['date_end']);
+	}
+
 	public static function doesEventHappenInDate($event, $date) {
 
 		$daysFromEventStartToDate = self::getNumOfDaysFromDate1ToDate2($event['date_start'], $date);

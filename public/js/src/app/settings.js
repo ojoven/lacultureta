@@ -101,7 +101,7 @@ function settingsManagement() {
 		$(".cards").html('');
 
 		// Category
-		var category = [];
+		category = [];
 		// If all categories are selected we'll just use 'all'
 		if ($dataCategory.find('.active').length == $dataCategory.find('.filter').length) {
 			category.push('all');
@@ -112,7 +112,7 @@ function settingsManagement() {
 		}
 
 		// Place
-		var place = [];
+		place = [];
 		// If all categories are selected we'll just use 'all'
 		if ($dataPlace.find('.active').length == $dataPlace.find('.filter').length) {
 			place.push('all');
@@ -123,7 +123,7 @@ function settingsManagement() {
 		}
 
 		// Date
-		var date = [];
+		date = [];
 		var dateVal = $dataDate.val();
 		if (!dateVal) {
 			date.push('all');
@@ -145,7 +145,7 @@ function settingsManagement() {
 			return false;
 		}
 
-		var page = 1;
+		page = 1;
 		loadCards(category, place, date, page);
 		closePopup();
 	});
