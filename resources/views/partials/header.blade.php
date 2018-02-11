@@ -9,7 +9,6 @@
         </nav>
 
         <nav class="menu-right">
-            <a href="#" class="icon-header icon-calendar to-calendar"></a>
             <a href="#" class="icon-header icon-settings to-settings"></a>
         </nav>
 

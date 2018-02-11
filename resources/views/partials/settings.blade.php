@@ -4,13 +4,18 @@
 
         <div class="settings">
 
-            <div class="title">{{ __('Filtra los eventos') }}</div>
+            <div class="title">
+                {{ __('Filtra los eventos') }}<br>{{ __('por fecha') }}
+            </div>
 
             <!-- BY DATE -->
             <div class="section">
-                <div class="section-title">{{ __('Por fecha') }}</div>
-                    <div id="date-selector"></div>
+                <div id="date-selector"></div>
                 <div class="clear"></div>
+            </div>
+
+            <div class="settings-message">
+                {{ __('También puedes filtrar...') }}
             </div>
 
             <!-- BY CATEGORY -->
@@ -72,7 +77,7 @@
 
     </div>
 
-    <a href="#" class="save-settings">{{ __('Guarda') }}</a>
+    <a href="#" class="save-settings">{{ __('Actualiza') }}</a>
     <a href="#" class="close-settings"></a>
     <div class="settings-error">{{ __('Debes seleccionar al menos una fecha, una categoría y un lugar.') }}</div>
 

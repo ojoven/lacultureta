@@ -43,6 +43,13 @@
 		text-overflow: ellipsis;
 	}
 
+	// Message
+	.settings-message {
+		font-weight: bold;
+		text-align: center;
+		margin: 20px 0 0;
+	}
+
 	// Filters
 	.filter {
 		color: $fontColor;

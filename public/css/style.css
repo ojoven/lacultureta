@@ -116,8 +116,7 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 **/ }
 
 .menu-right { position: absolute; right: 0; top: 8px; }
-.menu-right .icon-calendar { display: inline-block; background: url(../img/calendar.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; margin-right: 20px; }
-.menu-right .icon-settings { display: inline-block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
+.menu-right .icon-settings { display: inline-block; background: url(../img/calendar.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; }
 
 .menu-left { position: absolute; left: 0; top: 8px; }
 .menu-left .icon-user { display: inline-block; background: url(../img/user.png) no-repeat 0 0; background-size: cover; width: 24px; height: 24px; position: relative; }
@@ -222,7 +221,7 @@ table.ui-datepicker-calendar { border-collapse: separate; }
 .no-cards { background: #B4CDCD; color: #212021; position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 0; width: 100%; text-align: center; height: 390px; padding: 145px 20px; box-sizing: border-box; border-radius: 5px; }
 .no-cards .title { text-transform: uppercase; font-size: 36px; margin-bottom: 10px; display: block; }
 .no-cards .message { font-size: 22px; }
-.no-cards .icon-settings { display: block; background: url(../img/settings.png) no-repeat 0 0; background-size: cover; width: 30px; height: 30px; margin: 10px auto; }
+.no-cards .icon-settings { display: block; background: url(../img/calendar.png) no-repeat 0 0; background-size: cover; width: 30px; height: 30px; margin: 10px auto; }
 
 .cards li { opacity: 0; width: 400px; max-width: 100%; height: 400px; list-style: none; background: #fff; border-radius: 5px; position: absolute; top: 0; left: 0; text-align: center; border: 3px solid #B4CDCD; box-sizing: border-box; cursor: default; padding: 0 10px; -webkit-transition: opacity 0.3s linear; -moz-transition: opacity 0.3s linear; -o-transition: opacity 0.3s linear; transition: opacity 0.3s linear; z-index: 1; touch-action: none !important; overflow: hidden; }
 .cards li.in-deck { visibility: visible; opacity: 1; }
@@ -291,6 +290,7 @@ table.ui-datepicker-calendar { border-collapse: separate; }
 .settings .section { padding: 5px 20px; }
 .settings .section > .section-title { background: #212021; color: #B4CDCD; border-bottom: 2px solid #B4CDCD; font-size: 14px; margin: 10px 0; padding: 6px 12px; }
 .settings ul li { list-style: none; display: inline-block; width: 48%; margin-right: 2%; float: left; margin-bottom: 10px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.settings .settings-message { font-weight: bold; text-align: center; margin: 20px 0 0; }
 .settings .filter { color: #212021; text-decoration: none; opacity: 0.5; }
 .settings .filter.active { opacity: 1; }
 .settings .filter.active:before { content: ' '; display: inline-block; background: url(../img/check.png) no-repeat 0 0; background-size: cover; width: 10px; height: 10px; }
