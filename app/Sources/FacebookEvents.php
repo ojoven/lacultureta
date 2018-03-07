@@ -36,6 +36,7 @@ class FacebookEvents {
 			'1542110596066274', // Alboka
 			'xaviertxo', // Bar El Muro
 			'313745512341980', // Bar Altxerri
+			'dabadabaSS',
 			'ReReadDonositaGros',
 			'ginmusica',
 			'gusansebastian',
@@ -81,7 +82,6 @@ class FacebookEvents {
 			'ClubAtleticoSS',
 			'coartdonostia',
 			'tandemsansebastian',
-			'dabadabaSS',
 			'dss2016',
 			'pucdonostia',
 			'peopledisco',
@@ -97,7 +97,7 @@ class FacebookEvents {
 
 		);
 
-		//$pageIds = array_slice($pageIds, 0, 1);
+		//$pageIds = array('dabadabaSS');
 
 		$events = array();
 
@@ -147,7 +147,7 @@ class FacebookEvents {
 			$event['image'] = isset($eventFb['cover']['source']) ? $eventFb['cover']['source'] : false;
 
 			// Event place
-			$event['place'] = $eventFb['place']['name'];
+			$event['place'] = isset($eventFb['place']['name']) ? $eventFb['place']['name'] : '';
 
 			// Event date & Hour
 			date_default_timezone_set('Europe/Madrid');
@@ -158,7 +158,15 @@ class FacebookEvents {
 			if (isset($eventFb['end_time'])) {
 				$endTime = strtotime($eventFb['end_time']);
 				$event['date_end'] = date('Y-m-d', $endTime);
+
+				// If the event finishes the same day
 				if ($event['date_start'] == $event['date_end']) $event['date_end'] = null;
+
+				// If the event finishes the next day (after midnight, before 8 in the morning)
+				$hourEnd = date('G', $endTime);
+				$maxMidnightHour = 8;
+				$startNextDay = date('Y-m-d', strtotime($event['date_start'] . ' +1 day'));
+				if ($event['date_end'] === $startNextDay && (int)$hourEnd < $maxMidnightHour) $event['date_end'] = null;
 			}
 
 			// Event hour
