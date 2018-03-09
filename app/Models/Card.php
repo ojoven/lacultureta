@@ -35,7 +35,7 @@ class Card extends Model {
 			//array('template' => 'Friend', 'id' => 'NoeliaLozanoMakingOf', 'page' => 1, 'position' => 2),
 			//array('template' => 'Friend', 'id' => 'TheMeleeFusion', 'page' => 1, 'position' => 2),
 			//array('template' => 'Friend', 'id' => 'LasMejoresPeliculas', 'page' => 2, 'position' => 3),
-			array('template' => 'Friend', 'id' => 'ExpoUgarte', 'page' => 1, 'position' => 2),
+			//array('template' => 'Friend', 'id' => 'ExpoUgarte', 'page' => 1, 'position' => 2),
 		);
 
 		return $arrayConfig;
