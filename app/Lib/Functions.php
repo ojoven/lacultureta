@@ -89,6 +89,15 @@ class Functions {
 
 	}
 
+	public static function get_string_between($string, $start, $end) {
+		$string = ' ' . $string;
+		$ini = strpos($string, $start);
+		if ($ini == 0) return '';
+		$ini += strlen($start);
+		$len = strpos($string, $end, $ini) - $ini;
+		return substr($string, $ini, $len);
+	}
+
 	public static function remove3and4bytesCharFromUtf8Str($str) {
 		return preg_replace('/([\xF0-\xF7]...)|([\xE0-\xEF]..)/s', '#', $str);
 	}

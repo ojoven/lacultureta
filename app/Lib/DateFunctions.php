@@ -50,10 +50,14 @@ class DateFunctions {
 	/** SCRAPING **/
 	public static function parseDatesMonth3DigitToMySQLDate(&$dateStart, &$dateEnd, $language) { // @codingStandardsIgnoreLine: MySQL is CamelCase
 
+		$dateStart = trim($dateStart);
+		if ($dateEnd) $dateEnd = trim($dateEnd);
+		if ($dateEnd === $dateStart || !$dateEnd) $dateEnd = null;
+
 		if ($language == 'es') {
 			$arrayConversion = array(
-				'Ene' => 1, 'Feb' => 2, 'Mar' => 3, 'Abr' => 4, 'May' => 5, 'Jun' => 6,
-				'Jul' => 7, 'Ago' => 8, 'Sep' => 9, 'Oct' => 10, 'Nov' => 11, 'Dic' => 12,
+				'ene' => 1, 'feb' => 2, 'mar' => 3, 'abr' => 4, 'may' => 5, 'jun' => 6,
+				'jul' => 7, 'ago' => 8, 'sep' => 9, 'oct' => 10, 'nov' => 11, 'dic' => 12,
 			);
 		} else { // language = eu
 			$arrayConversion = array(
@@ -88,7 +92,7 @@ class DateFunctions {
 		$currentMonth = (int) date('m');
 		if ($currentMonth > $monthStart && (!$dateEnd || $monthEnd < $currentMonth)) {
 			$yearStart++;
-			if ($yearEnd) {
+			if (isset($yearEnd)) {
 				$yearEnd++;
 			}
 		}
@@ -105,9 +109,11 @@ class DateFunctions {
 		$dateStart = $yearStart . '-' . $monthStartFormatted . '-' . $dayStartFormatted;
 
 		// DATE END
-		$monthEndFormatted = str_pad($monthEnd, 2, "0", STR_PAD_LEFT);
-		$dayEndFormatted = str_pad($dayEnd, 2, "0", STR_PAD_LEFT);
-		$dateEnd = ($dateEnd) ? $yearEnd . '-' . $monthEndFormatted . '-' . $dayEndFormatted : null;
+		if ($dateEnd) {
+			$monthEndFormatted = str_pad($monthEnd, 2, "0", STR_PAD_LEFT);
+			$dayEndFormatted = str_pad($dayEnd, 2, "0", STR_PAD_LEFT);
+			$dateEnd = ($dateEnd) ? $yearEnd . '-' . $monthEndFormatted . '-' . $dayEndFormatted : null;
+		}
 
 	}
 
