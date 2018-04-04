@@ -37,7 +37,7 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 8;
+		$numMaxPages = 3;
 
 		// We extract all the events from all pages
 		while (true) {
@@ -59,7 +59,7 @@ class DonostiaEus {
 				$event['url'] = $eventDom->find('.media-heading', 0)->find('a', 0)->href;
 
 				// Event image
-				$event['image'] = $eventDom->find('.media-object', 0)->find('img', 0)->src;
+				$event['image'] = '';
 
 				// Event place
 				$event['place'] = $eventDom->find('.media-body', 0)->find('span', 0)->plaintext;
@@ -80,12 +80,6 @@ class DonostiaEus {
 
 			// We get the events from the next page
 			$page++;
-
-			// If no more pages
-			$nextPage = $html->find('.pagination', 0)->find('li', -1);
-			if (isset($nextPage->class) && $nextPage->class = "disabled") {
-				break;
-			}
 
 			// We'll go to a maximum page
 			if ($page > $numMaxPages) {
@@ -231,8 +225,18 @@ class DonostiaEus {
 			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 			if (!$html) continue;
 
+			// IMAGE
+			$imageDefault = 'https://lacultureta.com/android-icon-192x192.png';
+			$imageSuffixDomain = 'https://www.donostia.eus';
+			$event['image'] = $html->find('#detalle-evento', 0)->find('.media-object', 0)->src;
+			if (!$event['image']) {
+				$event['image'] = $imageDefault;
+			} else {
+				$event['image'] = $imageSuffixDomain . $event['image'];
+			}
+
 			// DESCRIPTION
-			$event['description'] = $html->find('.cabecera-ficha', 0)->find('p', 0)->plaintext;
+			$event['description'] = $html->find('#detalle-evento', 0)->find('.media-body', 0)->outertext;
 
 			// ADDITIONAL INFO
 			$event['info'] = '';

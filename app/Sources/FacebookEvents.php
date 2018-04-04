@@ -36,7 +36,7 @@ class FacebookEvents {
 			'1542110596066274', // Alboka
 			'xaviertxo', // Bar El Muro
 			'313745512341980', // Bar Altxerri
-			'dabadabaSS',
+			//'dabadabaSS',
 			'ReReadDonositaGros',
 			'ginmusica',
 			'gusansebastian',
@@ -67,7 +67,7 @@ class FacebookEvents {
 			'lasalledonostia.ikastetxea',
 			'cotebardonostia',
 			'geronimoshops',
-			'BasquelandBrewingProject',
+			//'BasquelandBrewingProject',
 			'ElevaYogaDonostia',
 			'SanSebastianGastronomika',
 			'rctss',
