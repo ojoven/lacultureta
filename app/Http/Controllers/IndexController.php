@@ -12,6 +12,7 @@ use App\Models\Twitter;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+
 // Models
 
 class IndexController extends Controller {

@@ -6,6 +6,9 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use \Rollbar\Rollbar;
+use \Rollbar\Payload\Level;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -32,6 +35,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        Rollbar::log(Level::error(), $exception);
         parent::report($exception);
     }
 

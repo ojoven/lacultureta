@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "5.3.*",
         "modelizer/selenium": "~1.0",
+        "rollbar/rollbar": "~1.1",
         "xinax/laravel-gettext": "4.x"
     },
     "require-dev": {
