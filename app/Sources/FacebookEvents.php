@@ -28,7 +28,7 @@ class FacebookEvents {
 	public function getDataEvents() {
 
 		$pageIds = array(
-			'Keler18',
+			'KelerDonostia',
 			'conventgardenSS',
 			'donostiakultura',
 			'impacthubdonostia',
@@ -36,7 +36,7 @@ class FacebookEvents {
 			'1542110596066274', // Alboka
 			'xaviertxo', // Bar El Muro
 			'313745512341980', // Bar Altxerri
-			//'dabadabaSS',
+			'Dabadabass',
 			'ReReadDonositaGros',
 			'ginmusica',
 			'gusansebastian',
@@ -120,76 +120,85 @@ class FacebookEvents {
 
 		$events = $eventsFb = array();
 		$endpoint = $pageId . '/events?time_filter=upcoming&fields=cover,start_time,end_time,name,description,id,category,place';
-		$response = $this->fb->get($endpoint);
-		if ($response->getHttpStatusCode() === 200) {
-			$body = $response->getDecodedBody();
-			$eventsFb = $body['data'];
-		}
 
-		foreach ($eventsFb as $eventFb) {
+		try {
 
-			$event = array();
-
-			// Event ID
-			$event['external_id'] = $eventFb['id'];
-
-			// Event title
-			$event['title'] = $eventFb['name'];
-
-			// Event Info / Description
-			$event['info'] = '';
-			$event['description'] = (isset($eventFb['description'])) ? Functions::remove3and4bytesCharFromUtf8Str($eventFb['description']) : '';
-
-			// Event URL
-			$event['url'] = 'https://www.facebook.com/events/' . $eventFb['id'] . '/';
-
-			// Event image
-			$event['image'] = isset($eventFb['cover']['source']) ? $eventFb['cover']['source'] : false;
-
-			// Event place
-			$event['place'] = isset($eventFb['place']['name']) ? $eventFb['place']['name'] : '';
-
-			// Event date & Hour
-			date_default_timezone_set('Europe/Madrid');
-			$startTime = strtotime($eventFb['start_time']);
-			$event['date_start'] = date('Y-m-d', $startTime);
-			$event['date_end'] = null;
-
-			if (isset($eventFb['end_time'])) {
-				$endTime = strtotime($eventFb['end_time']);
-				$event['date_end'] = date('Y-m-d', $endTime);
-
-				// If the event finishes the same day
-				if ($event['date_start'] == $event['date_end']) $event['date_end'] = null;
-
-				// If the event finishes the next day (after midnight, before 8 in the morning)
-				$hourEnd = date('G', $endTime);
-				$maxMidnightHour = 8;
-				$startNextDay = date('Y-m-d', strtotime($event['date_start'] . ' +1 day'));
-				if ($event['date_end'] === $startNextDay && (int)$hourEnd < $maxMidnightHour) $event['date_end'] = null;
+			$response = $this->fb->get($endpoint);
+			if ($response->getHttpStatusCode() === 200) {
+				$body = $response->getDecodedBody();
+				$eventsFb = $body['data'];
 			}
 
-			// Event hour
-			$event['hour'] = date('H:i', $startTime);
+			foreach ($eventsFb as $eventFb) {
 
-			// Event price
-			$event['price'] = null;
+				$event = array();
 
-			// CATEGORIES
-			$event['categories'] = $this->_addCategoriesFromTitle($event['title']);
-			if (empty($event['categories'])) {
-				$event['categories'][] = 'Otros';
+				// Event ID
+				$event['external_id'] = $eventFb['id'];
+
+				// Event title
+				$event['title'] = $eventFb['name'];
+
+				// Event Info / Description
+				$event['info'] = '';
+				$event['description'] = (isset($eventFb['description'])) ? Functions::remove3and4bytesCharFromUtf8Str($eventFb['description']) : '';
+
+				// Event URL
+				$event['url'] = 'https://www.facebook.com/events/' . $eventFb['id'] . '/';
+
+				// Event image
+				$event['image'] = isset($eventFb['cover']['source']) ? $eventFb['cover']['source'] : false;
+
+				// Event place
+				$event['place'] = isset($eventFb['place']['name']) ? $eventFb['place']['name'] : '';
+
+				// Event date & Hour
+				date_default_timezone_set('Europe/Madrid');
+				$startTime = strtotime($eventFb['start_time']);
+				$event['date_start'] = date('Y-m-d', $startTime);
+				$event['date_end'] = null;
+
+				if (isset($eventFb['end_time'])) {
+					$endTime = strtotime($eventFb['end_time']);
+					$event['date_end'] = date('Y-m-d', $endTime);
+
+					// If the event finishes the same day
+					if ($event['date_start'] == $event['date_end']) $event['date_end'] = null;
+
+					// If the event finishes the next day (after midnight, before 8 in the morning)
+					$hourEnd = date('G', $endTime);
+					$maxMidnightHour = 8;
+					$startNextDay = date('Y-m-d', strtotime($event['date_start'] . ' +1 day'));
+					if ($event['date_end'] === $startNextDay && (int)$hourEnd < $maxMidnightHour) $event['date_end'] = null;
+				}
+
+				// Event hour
+				$event['hour'] = date('H:i', $startTime);
+
+				// Event price
+				$event['price'] = null;
+
+				// CATEGORIES
+				$event['categories'] = $this->_addCategoriesFromTitle($event['title']);
+				if (empty($event['categories'])) {
+					$event['categories'][] = 'Otros';
+				}
+
+				$event['categories'] = implode(',', $event['categories']);
+
+				// SOURCE
+				$event['source'] = 'Facebook';
+
+				// CREATED / UPDATED DATES
+				$event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
+
+				$events[] = $event;
 			}
 
-			$event['categories'] = implode(',', $event['categories']);
+		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 
-			// SOURCE
-			$event['source'] = 'Facebook';
-
-			// CREATED / UPDATED DATES
-			$event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
-
-			$events[] = $event;
+			Functions::log('Message: ' . $e->getMessage());
+			Functions::logToRollbar('FacebookResponseException: ' . $e->getMessage());
 		}
 
 		return $events;

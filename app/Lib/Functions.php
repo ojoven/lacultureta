@@ -3,6 +3,8 @@
 namespace App\Lib;
 
 use Xinax\LaravelGettext\Facades\LaravelGettext;
+use \Rollbar\Rollbar;
+use \Rollbar\Payload\Level;
 
 class Functions {
 
@@ -121,10 +123,21 @@ class Functions {
 		echo PHP_EOL;
 	}
 
+	public static function logToRollbar($message, $type = 'info') {
+
+		$message = (is_string($message)) ? $message : json_encode($message);
+
+		if ($type === 'error') {
+			Rollbar::log(Level::error(), $message);
+		} else {
+			Rollbar::log(Level::info(), $message);
+		}
+	}
+
 	/** URLS **/
 	public static function getURLRequest($url) {
 
-		$options  = array('http' => array('user_agent' => 'LaCulturetaFriendlyBot - http://lacultureta.com'));
+		$options  = array('http' => array('user_agent' => 'LaCulturetaFriendlyBot - https://lacultureta.com'));
 		$context  = stream_context_create($options);
 		$response = file_get_contents($url, false, $context);
 		return $response;

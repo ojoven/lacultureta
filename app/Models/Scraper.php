@@ -26,7 +26,7 @@ class Scraper extends Model {
 
 			// We get the events from the defined source
 			$events = $sourceModel->getDataEvents();
-			$this->storeEvents($events);
+			$this->storeEvents($events, $source);
 		}
 
 		return false;
@@ -46,12 +46,14 @@ class Scraper extends Model {
 		return false;
 	}
 
-	public function storeEvents($events) {
+	public function storeEvents($events, $source) {
 
-		Functions::log('Store events');
+		Functions::log('Store events ' . $source);
 		if ($events) {
 			DB::table('events')->insert($events);
 		}
+
+		Functions::logToRollbar('Scraper run! New events (' . count($events) . ') stored for ' . $source);
 
 	}
 
