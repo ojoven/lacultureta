@@ -13,9 +13,9 @@ class Scraper extends Model {
 		set_time_limit(0);
 
 		// We define the sources from where the system will read
-		//$sources = array('DonostiaEus');
+		$sources = array('DonostiaEus');
 		//$sources = array('FacebookEvents');
-		$sources = array('DonostiaEus', 'FacebookEvents');
+		//$sources = array('DonostiaEus', 'FacebookEvents');
 
 		foreach ($sources as $source) {
 
@@ -53,7 +53,7 @@ class Scraper extends Model {
 			DB::table('events')->insert($events);
 		}
 
-		Functions::logToRollbar('Scraper run! New events (' . count($events) . ') stored for ' . $source);
+		//Functions::logToRollbar('Scraper run! New events (' . count($events) . ') stored for ' . $source);
 
 	}
 

@@ -37,7 +37,7 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 3;
+		$numMaxPages = 1;
 
 		// We extract all the events from all pages
 		while (true) {
@@ -47,32 +47,35 @@ class DonostiaEus {
 			$htmlContent = Functions::getURLRequest($url);
 			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 
-			$resultsAgenda = $html->find('.resultados-agenda', 0);
-			foreach ($resultsAgenda->find('.media') as $eventDom) {
+			$resultsAgenda = $html->find('.agendaEventos', 0);
+			foreach ($resultsAgenda->find('.defEvento') as $eventDom) {
 
 				$event = array();
 
 				// Event title
-				$event['title'] = $eventDom->find('.media-heading', 0)->find('a', 0)->plaintext;
+				$event['title'] = $eventDom->find('h4', 0)->find('a', 0)->plaintext;
 
 				// Event URL
-				$event['url'] = $eventDom->find('.media-heading', 0)->find('a', 0)->href;
+				$event['url'] = $eventDom->find('h4', 0)->find('a', 0)->href;
 
 				// Event image
 				$event['image'] = '';
 
 				// Event place
-				$event['place'] = $eventDom->find('.media-body', 0)->find('span', 0)->plaintext;
+				$eventPlaceAux = $eventDom->find('.icoDonde', 0);
+				$event['place'] = ($eventPlaceAux && $eventPlaceAux->next_sibling()) ? $eventPlaceAux->next_sibling()->plaintext : '';
 
 				// Event date
-				$event['date_start'] = $eventDom->find('.fechas', 0)->find('p', 0)->plaintext;
-				$event['date_end'] = ($eventDom->find('.fechas', 0)->find('p', 1)) ? $eventDom->find('.fechas', 0)->find('p', 1)->plaintext : false;
+				$event['date_start'] = $eventDom->find('.eventoFechaInicioDd', 0)->plaintext;
+				$event['date_end'] = $eventDom->find('.eventoFechaFinDd', 0) ? $eventDom->find('.eventoFechaFinDd', 0)->plaintext : false; // ERROR
 
 				// Event hour
-				$event['hour'] = $eventDom->find('.media-body', 0)->find('span', 1)->plaintext;
+				$eventHourAux = $eventDom->find('.icoHora', 0);
+				$event['hour'] = ($eventHourAux && $eventHourAux->next_sibling()) ? $eventHourAux->next_sibling()->plaintext : '';
 
 				// Event price
-				$event['price'] = $eventDom->find('.media-body', 0)->find('span', 2)->plaintext;
+				$eventPriceAux = $eventDom->find('.icoPrecio', 0);
+				$event['price'] = ($eventPriceAux && $eventPriceAux->next_sibling()) ? $eventPriceAux->next_sibling()->plaintext : '';
 
 				$event = $this->_parseEventDonostiaEUS($event, $language);
 				$events[] = $event;
@@ -94,15 +97,18 @@ class DonostiaEus {
 
 	private function _parseEventDonostiaEUS($event, $language) {
 
+		// TITLE
+		$event['title'] = trim($event['title']);
+
 		// PRICE
-		$event['price'] = trim(str_replace('Prezioa:', '', str_replace('Precio:', '', str_replace(',00', '', str_replace('&#8364;', '€', $event['price'])))));
+		$event['price'] = trim(str_replace(',00', '', str_replace('&#8364;', '€', $event['price'])));
 		if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0 €';
 
 		// PLACE
-		$event['place'] = trim(str_replace('Lekua:', '', str_replace('Lugar:', '', $event['place'])));
+		$event['place'] = trim($event['place']);
 
 		// HOUR
-		$event['hour'] = trim(str_replace('Ordua:', '', str_replace('Hora:', '', $event['hour'])));
+		$event['hour'] = trim($event['hour']);
 
 		// DATE
 		DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end'], $language);
@@ -126,7 +132,7 @@ class DonostiaEus {
 		$event['source'] = 'Donostia.eus';
 
 		// URL
-		$event['url'] = 'https://www.donostia.eus/info/ciudadano/Agenda.nsf/' . str_replace(' ', '%20', str_replace('&amp;', '&', $event['url']));
+		$event['url'] = str_replace(' ', '%20', str_replace('&amp;', '&', trim($event['url'])));
 
 		// CREATED / UPDATED DATES
 		$event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
@@ -228,20 +234,21 @@ class DonostiaEus {
 			// IMAGE
 			$imageDefault = 'https://lacultureta.com/android-icon-192x192.png';
 			$imageSuffixDomain = 'https://www.donostia.eus';
-			$event['image'] = $html->find('#detalle-evento', 0)->find('.media-object', 0)->src;
+			$event['image'] = $html->find('.defEvento', 0)->find('.eventoImagenPortada', 0)->src;
 			if (!$event['image']) {
 				$event['image'] = $imageDefault;
 			} else {
-				$event['image'] = $imageSuffixDomain . $event['image'];
+				$event['image'] = $imageSuffixDomain . trim($event['image']);
 			}
 
 			// DESCRIPTION
-			$event['description'] = $html->find('#detalle-evento', 0)->find('.media-body', 0)->outertext;
+			$event['description'] = '';
 
 			// ADDITIONAL INFO
 			$event['info'] = '';
-			if ($html->find('.cabecera-ficha', 0)->next_sibling()) {
-				foreach ($html->find('.cabecera-ficha', 0)->next_sibling()->children() as $paragraph) {
+			$eventInfoAux = $html->find('.defEvento', 0)->find('.eventoDescripcion', 0);
+			if ($eventInfoAux && $eventInfoAux->next_sibling()) {
+				foreach ($eventInfoAux->next_sibling()->children() as $paragraph) {
 					$event['info'] .= $paragraph->outertext;
 				}
 			}
