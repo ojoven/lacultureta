@@ -171,6 +171,11 @@ class RenderFunctions {
 			}
 		}
 
+		// + (different hours, called: varios)
+		if (strpos($hour, 'Varios')!==false || strpos($hour, 'Hainbat')!==false) {
+			return __('a diferentes horas');
+		}
+
 		$hourRender = __('a las %s', $hour);
 		return $hourRender;
 

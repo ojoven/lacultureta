@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use \Rollbar\Rollbar;
-use \Rollbar\Payload\Level;
 
 class RollbarMiddleware
 {

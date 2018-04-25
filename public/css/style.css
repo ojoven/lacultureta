@@ -255,6 +255,8 @@ table.ui-datepicker-calendar { border-collapse: separate; }
 .popup .single-event .info ul { padding-left: 15px; }
 .popup .single-event .info li { font-size: 12px; }
 .popup .single-event .info a { text-decoration: none; font-weight: bold; color: #0e7d8e; }
+.popup .single-event .info dt { font-weight: bold; }
+.popup .single-event .info dd { margin-bottom: 10px; }
 
 .instructions-desktop { display: none; }
 

@@ -276,6 +276,15 @@
 			font-weight: bold;
 			color: $blueBg;
 		}
+
+		// Information
+		dt {
+			font-weight: bold;
+		}
+
+		dd {
+			margin-bottom: 10px;
+		}
 	}
 
 }

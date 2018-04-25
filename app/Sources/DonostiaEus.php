@@ -37,7 +37,7 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 1;
+		$numMaxPages = 3;
 
 		// We extract all the events from all pages
 		while (true) {
@@ -67,7 +67,8 @@ class DonostiaEus {
 
 				// Event date
 				$event['date_start'] = $eventDom->find('.eventoFechaInicioDd', 0)->plaintext;
-				$event['date_end'] = $eventDom->find('.eventoFechaFinDd', 0) ? $eventDom->find('.eventoFechaFinDd', 0)->plaintext : false; // ERROR
+				$eventDateEndAux = $eventDom->find('.eventoFechaFinDd', 0);
+				$event['date_end'] = $eventDateEndAux->tag === 'dd' ? $eventDom->find('.eventoFechaFinDd', 0)->plaintext : false; // ERROR
 
 				// Event hour
 				$eventHourAux = $eventDom->find('.icoHora', 0);
@@ -234,7 +235,7 @@ class DonostiaEus {
 			// IMAGE
 			$imageDefault = 'https://lacultureta.com/android-icon-192x192.png';
 			$imageSuffixDomain = 'https://www.donostia.eus';
-			$event['image'] = $html->find('.defEvento', 0)->find('.eventoImagenPortada', 0)->src;
+			$event['image'] = $html->find('.defEvento', 0)->find('.eventoImagenPortada', 0)->find('img', 0)->src;
 			if (!$event['image']) {
 				$event['image'] = $imageDefault;
 			} else {
@@ -245,14 +246,7 @@ class DonostiaEus {
 			$event['description'] = '';
 
 			// ADDITIONAL INFO
-			$event['info'] = '';
-			$eventInfoAux = $html->find('.defEvento', 0)->find('.eventoDescripcion', 0);
-			if ($eventInfoAux && $eventInfoAux->next_sibling()) {
-				foreach ($eventInfoAux->next_sibling()->children() as $paragraph) {
-					$event['info'] .= $paragraph->outertext;
-				}
-			}
-
+			$event['info'] = $html->find('.defEvento', 0)->find('dl', 0) ->outertext;
 			$event['info'] = preg_replace('/\s+/', ' ', $event['info']); // Remove extra spaces
 
 			// We add the language too
