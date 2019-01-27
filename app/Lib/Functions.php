@@ -104,6 +104,22 @@ class Functions {
 		return preg_replace('/([\xF0-\xF7]...)|([\xE0-\xEF]..)/s', '#', $str);
 	}
 
+	public static function getExternalIdFromUrl($url) {
+
+		$id = false;
+
+		$separator = '&_DTIKEkintzenAgendaController';
+		$array = explode($separator, $url);
+		foreach ($array as $element) {
+			$elementArray = explode('_articleId=', $element);
+			if (isset($elementArray[1])) {
+				$id = $elementArray[1];
+			}
+		}
+
+		return $id;
+	}
+
 	/** JSON **/
 	public static function isJson($json) {
 

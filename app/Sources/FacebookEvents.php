@@ -9,6 +9,8 @@ require_once __DIR__ . '/../Lib/php-graph-sdk/src/Facebook/autoload.php'; // cha
 
 class FacebookEvents {
 
+	// https://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token
+
 	protected $fb;
 
 	public function __construct() {
@@ -39,10 +41,9 @@ class FacebookEvents {
 			'Dabadabass',
 			'ReReadDonositaGros',
 			'ginmusica',
-			'gusansebastian',
+			//'gusansebastian',
 			'JuguemosElk',
 			'euskalbillera',
-			'node.eus',
 			'koralakeae',
 			'haritzalde',
 			'ulialdeelkartea',
@@ -96,8 +97,6 @@ class FacebookEvents {
 			'152714321436277', // Diocesis SS
 
 		);
-
-		//$pageIds = array('dabadabaSS');
 
 		$events = array();
 

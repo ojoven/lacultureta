@@ -37,12 +37,12 @@ class DonostiaEus {
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 15;
+		$numMaxPages = 5;
 
 		// We extract all the events from all pages
 		while (true) {
 
-			$url = 'http://www.donostia.eus/ataria/' . $language . '/web/ekintzenagenda/gaur?p_p_id=EkintzenAgenda_WAR_EkintzenAgendaClientePortlet100SNAPSHOT_INSTANCE_cRkWq27qvNrd&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_EkintzenAgenda_WAR_EkintzenAgendaClientePortlet100SNAPSHOT_INSTANCE_cRkWq27qvNrd_selectedPlace=-1&_EkintzenAgenda_WAR_EkintzenAgendaClientePortlet100SNAPSHOT_INSTANCE_cRkWq27qvNrd_selectedType=-1&_EkintzenAgenda_WAR_EkintzenAgendaClientePortlet100SNAPSHOT_INSTANCE_cRkWq27qvNrd_selectedSearch=3&_EkintzenAgenda_WAR_EkintzenAgendaClientePortlet100SNAPSHOT_INSTANCE_cRkWq27qvNrd_goToPage=' . $page;
+			$url = 'http://www.donostia.eus/ataria/' . $language . '/web/ekintzenagenda/gaur?p_p_id=DTIKEkintzenAgendaController_INSTANCE_6h4DrYmShvOw&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_DTIKEkintzenAgendaController_INSTANCE_6h4DrYmShvOw_selectedPlace=-1&_DTIKEkintzenAgendaController_INSTANCE_6h4DrYmShvOw_goToPage=' . $page . '&_DTIKEkintzenAgendaController_INSTANCE_6h4DrYmShvOw_selectedType=-1&_DTIKEkintzenAgendaController_INSTANCE_6h4DrYmShvOw_selectedSearch=3';
 			Functions::log('Get events from page ' . $page . ' for language: ' . $language);
 			$htmlContent = Functions::getURLRequest($url);
 			$html = SimpleHtmlDom::strGetHtml($htmlContent);
@@ -119,7 +119,7 @@ class DonostiaEus {
 		parse_str(str_replace('contenido?ReadForm&', '', str_replace('&amp;', '&', $event['url'])));
 
 		// EXTERNAL ID
-		$event['external_id'] = Functions::get_string_between($event['url'], '_articleId=', '&_EkintzenAgenda');
+		$event['external_id'] = Functions::getExternalIdFromUrl($event['url']);
 
 		// CATEGORIES
 		$event['categories'] = $this->_addCategoriesFromUrlAndTitle($kwca, $event['title']);
