@@ -5,14 +5,17 @@ use App\Lib\SimpleHtmlDom;
 use App\Lib\DateFunctions;
 use App\Lib\Functions;
 
-class DonostiaEus {
+class DonostiaEus
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		Functions::log('DonostiaEus scraper initialized');
 		Functions::log('===============================');
 	}
 
-	public function getDataEvents() {
+	public function getDataEvents()
+	{
 
 		$languages = array('es', 'eu');
 		$events = array();
@@ -28,16 +31,16 @@ class DonostiaEus {
 		}
 
 		return $events;
-
 	}
 
-	public function extractDataEvents($language) {
+	public function extractDataEvents($language)
+	{
 
 		$events = array();
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 5;
+		$numMaxPages = 1; // We'll just retrieve the second page
 
 		// We extract all the events from all pages
 		while (true) {
@@ -89,21 +92,20 @@ class DonostiaEus {
 			if ($page > $numMaxPages) {
 				break;
 			}
-
 		}
 
 		return $events;
-
 	}
 
-	private function _parseEventDonostiaEUS($event, $language) {
+	private function _parseEventDonostiaEUS($event, $language)
+	{
 
 		// TITLE
 		$event['title'] = trim($event['title']);
 
 		// PRICE
 		$event['price'] = trim(str_replace(',00', '', str_replace('&#8364;', '€', $event['price'])));
-		if (strpos($event['price'], 'Gratis')!==false) $event['price'] = '0 €';
+		if (strpos($event['price'], 'Gratis') !== false) $event['price'] = '0 €';
 
 		// PLACE
 		$event['place'] = trim($event['place']);
@@ -115,8 +117,7 @@ class DonostiaEus {
 		DateFunctions::parseDatesMonth3DigitToMySQLDate($event['date_start'], $event['date_end'], $language);
 
 		// We extract the parameters from the URL
-		$kwid = $kwca = '';
-		parse_str(str_replace('contenido?ReadForm&', '', str_replace('&amp;', '&', $event['url'])));
+		$kwca = '';
 
 		// EXTERNAL ID
 		$event['external_id'] = Functions::getExternalIdFromUrl($event['url']);
@@ -139,66 +140,68 @@ class DonostiaEus {
 		$event['created_at'] = $event['updated_at'] = date('Y-m-d h:i:s');
 
 		return $event;
-
 	}
 
-	public function valid_date($date) {
+	public function valid_date($date)
+	{
 		return (preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/", $date));
 	}
 
-	private function _addCategoriesFromUrlAndTitle($urlCat, $title) {
+	private function _addCategoriesFromUrlAndTitle($urlCat, $title)
+	{
 
 		$categories = array();
 		$haystack = strtolower($title) . ' ' . strtolower($urlCat); // Where we'll be searching for
 
 		// Theatre
 		$theatreSlugs = array('teatro', 'danza', 'ballet', 'antzerki', 'dantza');
-		if (Functions::strpos_array($haystack, $theatreSlugs)!==false) $categories[] = 'Teatro y Danza';
+		if (Functions::strpos_array($haystack, $theatreSlugs) !== false) $categories[] = 'Teatro y Danza';
 
 		// Cinema
 		$cinemaSlugs = array('cine', 'película', 'film');
-		if (Functions::strpos_array($haystack, $cinemaSlugs)!==false) $categories[] = 'Cine';
+		if (Functions::strpos_array($haystack, $cinemaSlugs) !== false) $categories[] = 'Cine';
 
 		// Music / Concerts
-		$musicSlugs = array('concierto', 'kontzertu','música', 'musika');
-		if (Functions::strpos_array($haystack, $musicSlugs)!==false) $categories[] = 'Música';
+		$musicSlugs = array('concierto', 'kontzertu', 'música', 'musika');
+		if (Functions::strpos_array($haystack, $musicSlugs) !== false) $categories[] = 'Música';
 
 		// Sports
 		$sportSlugs = array('deporte', 'kirol', 'carrera', 'karrera', 'maratón', 'maratoia');
-		if (Functions::strpos_array($haystack, $sportSlugs)!==false) $categories[] = 'Deportes';
+		if (Functions::strpos_array($haystack, $sportSlugs) !== false) $categories[] = 'Deportes';
 
 		// Expositions
 		$expositionSlugs = array('exposicion', 'exposición', 'erakusketa');
-		if (Functions::strpos_array($haystack, $expositionSlugs)!==false) $categories[] = 'Exposiciones';
+		if (Functions::strpos_array($haystack, $expositionSlugs) !== false) $categories[] = 'Exposiciones';
 
 		// Parties
 		$partySlugs = array('fiesta', 'feria', 'festa', 'azoka', 'mercadillo');
-		if (Functions::strpos_array($haystack, $partySlugs)!==false) $categories[] = 'Fiestas y Ferias';
+		if (Functions::strpos_array($haystack, $partySlugs) !== false) $categories[] = 'Fiestas y Ferias';
 
 		// Gastronomy
 		$gastronomySlugs = array('gastro', 'pinchos', 'pintxoak');
-		if (Functions::strpos_array($haystack, $gastronomySlugs)!==false) $categories[] = 'Gastronomía';
+		if (Functions::strpos_array($haystack, $gastronomySlugs) !== false) $categories[] = 'Gastronomía';
 
 		// Children
 		$childrenSlugs = array('infantil', 'haur', 'famili');
-		if (Functions::strpos_array($haystack, $childrenSlugs)!==false) $categories[] = 'Actividades Infantiles';
+		if (Functions::strpos_array($haystack, $childrenSlugs) !== false) $categories[] = 'Actividades Infantiles';
 
 		// Museums
 		$museumSlugs = array('museo');
-		if (Functions::strpos_array($haystack, $museumSlugs)!==false) $categories[] = 'Museos';
+		if (Functions::strpos_array($haystack, $museumSlugs) !== false) $categories[] = 'Museos';
 
 		// Conferences
 		$conferenceSlugs = array('conferencia', 'hitzaldi', 'konferentzia');
-		if (Functions::strpos_array($haystack, $conferenceSlugs)!==false) $categories[] = 'Conferencias';
+		if (Functions::strpos_array($haystack, $conferenceSlugs) !== false) $categories[] = 'Conferencias';
 
 		// Literature
 		$literatureSlugs = array('literatura', 'lector', 'irakur');
-		if (Functions::strpos_array($haystack, $literatureSlugs)!==false) $categories[] = 'Literatura';
+		if (Functions::strpos_array($haystack, $literatureSlugs) !== false) $categories[] = 'Literatura';
 
 		return $categories;
 	}
 
-	public function filterNotAddedEvents($events, $language) {
+	public function filterNotAddedEvents($events, $language)
+	{
 
 		Functions::log('Filter events');
 
@@ -218,11 +221,11 @@ class DonostiaEus {
 		}
 
 		return $notDuplicatedEvents;
-
 	}
 
 	// RETRIEVE INFO FROM SINGLE PAGE
-	public function addAdditionalInformation($events, $language) {
+	public function addAdditionalInformation($events, $language)
+	{
 
 		foreach ($events as &$event) {
 
@@ -246,16 +249,13 @@ class DonostiaEus {
 			$event['description'] = '';
 
 			// ADDITIONAL INFO
-			$event['info'] = $html->find('.defEvento', 0)->find('dl', 0) ->outertext;
+			$event['info'] = $html->find('.defEvento', 0)->find('dl', 0)->outertext;
 			$event['info'] = preg_replace('/\s+/', ' ', $event['info']); // Remove extra spaces
 
 			// We add the language too
 			$event['language'] = $language;
-
 		}
 
 		return $events;
-
 	}
-
 }

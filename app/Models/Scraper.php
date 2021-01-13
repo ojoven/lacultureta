@@ -6,16 +6,18 @@ use App\Lib\Functions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Scraper extends Model {
+class Scraper extends Model
+{
 
-	public function extractDataEvents() {
+	public function extractDataEvents()
+	{
 
 		set_time_limit(0);
 
 		// We define the sources from where the system will read
-		//$sources = array('DonostiaEus');
 		//$sources = array('FacebookEvents');
-		$sources = array('DonostiaEus', 'FacebookEvents');
+		//$sources = array('DonostiaEus', 'FacebookEvents');
+		$sources = array('DonostiaEus');
 
 		foreach ($sources as $source) {
 
@@ -30,10 +32,10 @@ class Scraper extends Model {
 		}
 
 		return false;
-
 	}
 
-	public function loadSourceModel($source) {
+	public function loadSourceModel($source)
+	{
 
 		$pathToSource = dirname(dirname(__FILE__)) . '/Sources/' . $source . '.php';
 		if (file_exists($pathToSource)) {
@@ -46,15 +48,18 @@ class Scraper extends Model {
 		return false;
 	}
 
-	public function storeEvents($events, $source) {
+	public function storeEvents($events, $source)
+	{
 
 		Functions::log('Store events ' . $source);
 		if ($events) {
-			DB::table('events')->insert($events);
+			foreach ($events as $event) {
+				if (Event::whereExternalId($event['external_id'])->first()) continue;
+				DB::table('events')->insert($event);
+			}
 		}
 
 		//Functions::logToRollbar('Scraper run! New events (' . count($events) . ') stored for ' . $source);
 
 	}
-
 }
