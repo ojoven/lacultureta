@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Lib\DateFunctions;
 use App\Lib\Functions;
 use App\Lib\CacheFunctions;
@@ -9,51 +10,56 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 
-class Event extends Model {
+class Event extends Model
+{
 
 	protected $numEventsPage = 10;
 
 	// All Events
-	public function getAllEvents() {
+	public function getAllEvents()
+	{
 
 		$events = self::get()->toArray();
 		return $events;
 	}
 
 	// Get Events by Filter
-	public function getEvents($params) {
+	public function getEvents($params)
+	{
 
-		return Cache::remember(CacheFunctions::getCacheKeyParams($params), 60, function() use ($params) {
+		//return Cache::remember(CacheFunctions::getCacheKeyParams($params), 60, function() use ($params) {
 
-			$page = $params['page'];
-			$offset = ($page - 1) * $this->numEventsPage;
+		$page = $params['page'];
+		$offset = ($page - 1) * $this->numEventsPage;
 
-			$events = $this->getAllFutureEvents();
-			$events = $this->filterEvents($events, $params);
-			$events = $this->sortEvents($events);
-			$events = array_slice($events, $offset, $this->numEventsPage);
-			$events = $this->parseEventsForRender($events);
-			return $events;
-		});
+		$events = $this->getAllFutureEvents();
+		$events = $this->filterEvents($events, $params);
+		$events = $this->sortEvents($events);
+		$events = array_slice($events, $offset, $this->numEventsPage);
+		$events = $this->parseEventsForRender($events);
+		return $events;
+		//});
 
 	}
 
 	// Get all future events
-	public function getAllFutureEvents() {
+	public function getAllFutureEvents()
+	{
 
 		$language = Functions::getUserLanguage();
 
 		$today = date('Y-m-d');
-		$events = self::where(function($query) use ($today) {
+		$events = self::where(function ($query) use ($today) {
 			$query->whereDate('date_start', '>=', $today)->orWhereDate('date_end', '>=', $today);
-		})->where(function($query) use ($language) {
+		})->where(function ($query) use ($language) {
 			$query->where('language', '=', $language)->orWhereNull('language');
 		})->orderBy('date_start', 'asc')->get()->toArray();
 		return $events;
 	}
 
 	// GET RESUME EVENTS
-	public function getEventsForResume($params) {
+	public function getEventsForResume($params)
+	{
 
 		$events = $this->getAllFutureEvents();
 		$events = $this->sortEvents($events);
@@ -64,7 +70,8 @@ class Event extends Model {
 	}
 
 	// FILTERS
-	public function filterEvents($events, $params) {
+	public function filterEvents($events, $params)
+	{
 
 		$events = $this->filterEventsByDate($events, $params['date']);
 		$events = $this->filterEventsByCategory($events, $params['category']);
@@ -77,7 +84,8 @@ class Event extends Model {
 	}
 
 
-	public function filterEventsByDate($events, $date) {
+	public function filterEventsByDate($events, $date)
+	{
 
 		// Special case, all dates
 		if (in_array('all', $date)) {
@@ -102,7 +110,6 @@ class Event extends Model {
 						array_push($eventsByDate, $event);
 					}
 				}
-
 			} else {
 
 				foreach ($date as $day) {
@@ -116,15 +123,14 @@ class Event extends Model {
 					}
 				}
 			}
-
 		}
 
 		return $eventsByDate;
-
 	}
 
 	// Filter Category
-	public function filterEventsByCategory($events, $categories) {
+	public function filterEventsByCategory($events, $categories)
+	{
 
 		// Special case, all dates
 		if (in_array('all', $categories)) {
@@ -141,14 +147,14 @@ class Event extends Model {
 					continue 2;
 				}
 			}
-
 		}
 
 		return $eventsInCategories;
 	}
 
 	// Filter Place
-	public function filterEventsByPlace($events, $places) {
+	public function filterEventsByPlace($events, $places)
+	{
 
 		// Special case, all dates
 		if (in_array('all', $places)) {
@@ -161,14 +167,14 @@ class Event extends Model {
 			if (in_array($event['place'], $places)) {
 				array_push($eventsInPlaces, $event);
 			}
-
 		}
 
 		return $eventsInPlaces;
 	}
 
 	// Filter language
-	public function filterEventsByLanguage($events, $language) {
+	public function filterEventsByLanguage($events, $language)
+	{
 
 		$eventsLanguage = array();
 		foreach ($events as $event) {
@@ -176,15 +182,14 @@ class Event extends Model {
 			if (in_array($event['language'], $language) || $event['language'] == '') {
 				array_push($eventsLanguage, $event);
 			}
-
 		}
 
 		return $eventsLanguage;
-
 	}
 
 	// Filter Remove Duplicated
-	public function filterEventsRemoveDuplicated($events) {
+	public function filterEventsRemoveDuplicated($events)
+	{
 
 		$eventIds = array();
 		$nonDuplicatedEvents = array();
@@ -194,14 +199,13 @@ class Event extends Model {
 				array_push($nonDuplicatedEvents, $event);
 				array_push($eventIds, $event['id']);
 			}
-
 		}
 
 		return $nonDuplicatedEvents;
-
 	}
 
-	public function sortEvents($events) {
+	public function sortEvents($events)
+	{
 
 		$eventsUnique = array();
 		$eventsRange = array();
@@ -222,7 +226,6 @@ class Event extends Model {
 				} else {
 					array_push($eventsRange, $event);
 				}
-
 			}
 		}
 
@@ -230,10 +233,10 @@ class Event extends Model {
 		$sortedEvents = array_merge($eventsUnique, $eventsRange);
 
 		return $sortedEvents;
-
 	}
 
-	public function parseEventsForRender($events) {
+	public function parseEventsForRender($events)
+	{
 
 		$ratingModel = new Rating();
 
@@ -248,12 +251,12 @@ class Event extends Model {
 		}
 
 		return $events;
-
 	}
 
 
 	// SORT EVENTS BY DATE (FOR TWITTER BOT)
-	public function sortEventsByDate($events, $dateTarget) {
+	public function sortEventsByDate($events, $dateTarget)
+	{
 
 		$today = date('Y-m-d');
 		$tomorrow = date("Y-m-d", strtotime('tomorrow'));
@@ -286,7 +289,8 @@ class Event extends Model {
 		return $eventsByDate;
 	}
 
-	public function externalizeEventsRangeBiggerThan2Days($eventsByDate) {
+	public function externalizeEventsRangeBiggerThan2Days($eventsByDate)
+	{
 
 		$parsedEventsByDate['single'] = array();
 		$parsedEventsByDate['range'] = array();
@@ -301,24 +305,25 @@ class Event extends Model {
 				foreach ($date['events'] as $event) {
 
 					// Single Events
-					if (!$event['date_end']
+					if (
+						!$event['date_end']
 						// Or just 2 days long range events
-						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2) {
+						|| DateFunctions::getNumOfDaysFromDate1ToDate2($event['date_start'], $event['date_end']) <= 2
+					) {
 						$parsedEventsByDate['single'][$index]['events'][] = $event;
 					} else {
 						$parsedEventsByDate['range'][] = $event;
 					}
-
 				}
 			}
-
 		}
 
 		return $parsedEventsByDate;
 	}
 
 	/** GET EVENTS USER **/
-	public function getEventsUser($params) {
+	public function getEventsUser($params)
+	{
 
 		$ratingModel = new Rating();
 		$ratings = $ratingModel->getRatings($params, $params['like_dislike']);
@@ -326,11 +331,11 @@ class Event extends Model {
 		$events = $this->sortEvents($events);
 		$events = $this->parseEventsForRender($events);
 		return $events;
-
 	}
 
 	// EVENTS FROM RATINGS
-	public function getEventsFromRatings($ratings) {
+	public function getEventsFromRatings($ratings)
+	{
 
 		$eventIds = Functions::getArrayWithIndexValues($ratings, 'eventId');
 		if (!$eventIds) {
@@ -342,7 +347,8 @@ class Event extends Model {
 	}
 
 	/** EVENTS BY IDs **/
-	public function getEventsByIds($eventIds) {
+	public function getEventsByIds($eventIds)
+	{
 
 		$events = self::whereIn('id', $eventIds)->get()->toArray();
 		$events = $this->sortEvents($events);
@@ -352,11 +358,10 @@ class Event extends Model {
 
 	/** GET TRANSLATED EVENT **/
 	// Given an event, it returns the same event in the translated language (es -> eu, eu -> es)
-	public function getTranslatedEvent($event) {
+	public function getTranslatedEvent($event)
+	{
 
 		$toLanguage = ($event['language'] === 'es') ? 'eu' : 'es';
 		return self::where('external_id', '=', $event['external_id'])->where('language', '=', $toLanguage)->first();
-
 	}
-
 }
