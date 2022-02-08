@@ -7,4 +7,4 @@ Homestead.json
 Homestead.yaml
 .env
 .idea
-./deploy.sh
+deploy.sh
