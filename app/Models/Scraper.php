@@ -13,6 +13,9 @@ class Scraper extends Model
 	{
 
 		set_time_limit(0);
+		header('X-Accel-Buffering: no');
+		ob_implicit_flush(1);
+		ob_end_flush();
 
 		// We define the sources from where the system will read
 		//$sources = array('FacebookEvents');

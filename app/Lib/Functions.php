@@ -148,7 +148,11 @@ class Functions
 			print_r($message);
 		}
 
-		echo PHP_EOL;
+		if (php_sapi_name() === 'cli') {
+			echo PHP_EOL;
+		} else {
+			echo '<br>';
+		}
 	}
 
 	public static function logToRollbar($message, $type = 'info')
