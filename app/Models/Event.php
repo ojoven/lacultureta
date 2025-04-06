@@ -4,11 +4,9 @@ namespace App\Models;
 
 use App\Lib\DateFunctions;
 use App\Lib\Functions;
-use App\Lib\CacheFunctions;
 use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
 
 class Event extends Model
 {

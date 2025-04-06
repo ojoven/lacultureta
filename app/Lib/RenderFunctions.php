@@ -2,10 +2,12 @@
 
 namespace App\Lib;
 
-class RenderFunctions {
+class RenderFunctions
+{
 
 	/** RENDER DATE **/
-	public static function parseDateForRender($dateStart, $dateEnd) {
+	public static function parseDateForRender($dateStart, $dateEnd)
+	{
 
 		$currentDate = date('Y-m-d');
 
@@ -59,31 +61,27 @@ class RenderFunctions {
 					// El 15 y el 16 de Mayo
 					return __('el %1$s y el %2$s de %3$s', [$dayStart, $dayEnd, $monthStart]);
 				}
-
 			} else {
 
 				// Difference between dates > 1
 
 				// HASTA HOY / MAÑANA
 				if ($diffBetweenEndAndToday == 0) {
-					return __('desde el %1$s de %2$s hasta hoy', [$dayStart, $monthStart]);
+					return sprintf(__('desde el %1$s de %2$s hasta hoy'), $dayStart, $monthStart);
 				}
 
 				if ($diffBetweenEndAndToday == 1) {
-					return __('desde el %1$s de %2$s hasta mañana', [$dayStart, $monthStart]);
+					return sprintf(__('desde el %1$s de %2$s hasta mañana'), $dayStart, $monthStart);
 				}
 
 				if ($monthStart != $monthEnd) {
 					// El 31 de Marzo y el 1 de Abril
-					return __('desde el %1$s de %2$s hasta el %3$s de %4$s', [$dayStart, $monthStart, $dayEnd, $monthEnd]);
+					return sprintf(__('desde el %1$s de %2$s hasta el %3$s de %4$s'), $dayStart, $monthStart, $dayEnd, $monthEnd);
 				} else {
 					// El 15 y el 16 de Mayo
-					return __('desde el %1$s hasta el %2$s de %3$s', [$dayStart, $dayEnd, $monthStart]);
+					return sprintf(__('desde el %1$s hasta el %2$s de %3$s'), $dayStart, $dayEnd, $monthStart);
 				}
-
-
 			}
-
 		} else {
 
 			// NO DATE END
@@ -105,10 +103,10 @@ class RenderFunctions {
 			// OTROS
 			return __('el %1$s, %2$s de %3$s', [$dayNameStart, $dayStart, $monthStart]);
 		}
-
 	}
 
-	public static function renderDateWeekdayNameDayAndMonth($date) {
+	public static function renderDateWeekdayNameDayAndMonth($date)
+	{
 
 		$strtotime = strtotime($date);
 		$render = '';
@@ -121,24 +119,38 @@ class RenderFunctions {
 	}
 
 	// MONTH NAME
-	public static function getMonthName($month) {
+	public static function getMonthName($month)
+	{
 
 		$arrayMonths = array(
-			'1' => __('Enero'), '2' => __('Febrero'), '3' => __('Marzo'),
-			'4' => __('Abril'), '5' => __('Mayo'), '6' => __('Junio'),
-			'7' => __('Julio'), '8' => __('Agosto'), '9' => __('Septiembre'),
-			'10' => __('Octubre'), '11' => __('Noviembre'), '12' => __('Diciembre')
+			'1' => __('Enero'),
+			'2' => __('Febrero'),
+			'3' => __('Marzo'),
+			'4' => __('Abril'),
+			'5' => __('Mayo'),
+			'6' => __('Junio'),
+			'7' => __('Julio'),
+			'8' => __('Agosto'),
+			'9' => __('Septiembre'),
+			'10' => __('Octubre'),
+			'11' => __('Noviembre'),
+			'12' => __('Diciembre')
 		);
 
 		return $arrayMonths[$month];
 	}
 
 	// WEEK DAY NAME
-	public static function getWeekDayName($day) {
+	public static function getWeekDayName($day)
+	{
 
 		$arrayWeekDays = array(
-			'1' => __('lunes'), '2' => __('martes'), '3' => __('miércoles'),
-			'4' => __('jueves'), '5' => __('viernes'), '6' => __('sábado'),
+			'1' => __('lunes'),
+			'2' => __('martes'),
+			'3' => __('miércoles'),
+			'4' => __('jueves'),
+			'5' => __('viernes'),
+			'6' => __('sábado'),
 			'7' => __('domingo')
 		);
 
@@ -146,7 +158,8 @@ class RenderFunctions {
 	}
 
 	/** RENDER HOUR **/
-	public static function parseHourForRender($hour) {
+	public static function parseHourForRender($hour)
+	{
 
 		// Cases
 
@@ -156,33 +169,33 @@ class RenderFunctions {
 		}
 
 		// + (different hours)
-		if (strpos($hour, '+')!==false) {
+		if (strpos($hour, '+') !== false) {
 			$hours = explode('+', $hour);
-			if (count($hours)==2) {
-				return __('a las %s y a las %s', [$hours[0], $hours[1]]);
+			if (count($hours) == 2) {
+				return sprintf(__('a las %s y a las %s'), $hours[0], $hours[1]);
 			}
 		}
 
 		// - (range hours)
-		if (strpos($hour, '-')!==false) {
+		if (strpos($hour, '-') !== false) {
 			$hours = explode('-', $hour);
-			if (count($hours)==2) {
-				return __('desde las %s hasta las %s', [$hours[0], $hours[1]]);
+			if (count($hours) == 2) {
+				return sprintf(__('desde las %s hasta las %s'), $hours[0], $hours[1]);
 			}
 		}
 
 		// + (different hours, called: varios)
-		if (strpos($hour, 'Varios')!==false || strpos($hour, 'Hainbat')!==false) {
+		if (strpos($hour, 'Varios') !== false || strpos($hour, 'Hainbat') !== false) {
 			return __('a diferentes horas');
 		}
 
-		$hourRender = __('a las %s', $hour);
+		$hourRender = sprintf(__('a las %s'), $hour);
 		return $hourRender;
-
 	}
 
 	/** PRICE **/
-	public static function parsePriceForRender($price) {
+	public static function parsePriceForRender($price)
+	{
 
 		if ($price == '0 €') {
 			return __('gratis');
@@ -192,11 +205,10 @@ class RenderFunctions {
 	}
 
 	/** CATEGORIES **/
-	public static function parseCategoriesForRender($categories) {
+	public static function parseCategoriesForRender($categories)
+	{
 
 		$categories = explode(',', $categories);
 		return $categories;
 	}
-
 }
-

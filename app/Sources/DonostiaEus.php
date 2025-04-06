@@ -40,7 +40,7 @@ class DonostiaEus
 
 		// We start with page 1
 		$page = 1;
-		$numMaxPages = 10;
+		$numMaxPages = 1;
 
 		// We extract all the events from all pages
 		while (true) {

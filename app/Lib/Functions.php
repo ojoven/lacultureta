@@ -2,14 +2,16 @@
 
 namespace App\Lib;
 
-use Xinax\LaravelGettext\Facades\LaravelGettext;
+use Illuminate\Support\Facades\App;
 use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
 
-class Functions {
+class Functions
+{
 
 	/** ARRAYS **/
-	public static function getArrayWithIndexValues($array, $index) {
+	public static function getArrayWithIndexValues($array, $index)
+	{
 
 		$arrayIndexes = array();
 		foreach ($array as $element) {
@@ -19,7 +21,8 @@ class Functions {
 		return $arrayIndexes;
 	}
 
-	public static function strpos_array($haystack, $needles, $offset = 0) {
+	public static function strpos_array($haystack, $needles, $offset = 0)
+	{
 		if (is_array($needles)) {
 			foreach ($needles as $needle) {
 				$pos = self::strpos_array($haystack, $needle);
@@ -33,7 +36,8 @@ class Functions {
 		}
 	}
 
-	public static function parseStringParamsToArray($params) {
+	public static function parseStringParamsToArray($params)
+	{
 
 		$newParams = array();
 		foreach ($params as $index => $paramString) {
@@ -44,23 +48,25 @@ class Functions {
 	}
 
 	/** LANGUAGE **/
-	public static function setLocale($languageFromBrowserUrl) {
+	public static function setLocale($languageFromBrowserUrl)
+	{
 
 		$language = self::getUserLanguage($languageFromBrowserUrl);
 
 		if ($language == 'eu') {
-			LaravelGettext::setLocale('eu_EU');
+			App::setLocale('eu_EU');
 		} else {
-			LaravelGettext::setLocale('es_ES');
+			App::setLocale('es_ES');
 		}
 
 		return $language;
 	}
 
-	public static function getUserLanguage($language = false) {
+	public static function getUserLanguage($language = false)
+	{
 
 		if (!$language) {
-			$language = (LaravelGettext::getLocale() === 'eu_EU') ? 'eu' : 'es';
+			$language = (App::getLocale() === 'eu_EU') ? 'eu' : 'es';
 		}
 		$arrayValidLanguages = array('es', 'eu');
 
@@ -72,26 +78,28 @@ class Functions {
 		return $language;
 	}
 
-	public static function setLocaleFromLanguage($language) {
+	public static function setLocaleFromLanguage($language)
+	{
 
 		if ($language == 'eu') {
-			LaravelGettext::setLocale('eu_EU');
+			App::setLocale('eu_EU');
 		} else {
-			LaravelGettext::setLocale('es_ES');
+			App::setLocale('es_ES');
 		}
 
 		return $language;
 	}
 
 	/** STRINGS **/
-	public static function fullTrim($string) {
+	public static function fullTrim($string)
+	{
 
 		$string = str_replace('&nbsp;', ' ', $string);
 		return trim($string);
-
 	}
 
-	public static function get_string_between($string, $start, $end) {
+	public static function get_string_between($string, $start, $end)
+	{
 		$string = ' ' . $string;
 		$ini = strpos($string, $start);
 		if ($ini == 0) return '';
@@ -100,18 +108,20 @@ class Functions {
 		return substr($string, $ini, $len);
 	}
 
-	public static function remove3and4bytesCharFromUtf8Str($str) {
+	public static function remove3and4bytesCharFromUtf8Str($str)
+	{
 		return preg_replace('/([\xF0-\xF7]...)|([\xE0-\xEF]..)/s', '#', $str);
 	}
 
-	public static function getExternalIdFromUrl($url) {
+	public static function getExternalIdFromUrl($url)
+	{
 
 		$id = false;
 
 		$separator = '&_DTIKEkintzenAgendaController';
 		$array = explode($separator, $url);
 		foreach ($array as $element) {
-			$elementArray = explode('_articleId=', $element);
+			$elementArray = explode('_resourcePrimKey=', $element);
 			if (isset($elementArray[1])) {
 				$id = $elementArray[1];
 			}
@@ -121,14 +131,16 @@ class Functions {
 	}
 
 	/** JSON **/
-	public static function isJson($json) {
+	public static function isJson($json)
+	{
 
 		json_decode($json);
 		return (json_last_error() == JSON_ERROR_NONE);
 	}
 
 	/** LOG **/
-	public static function log($message) {
+	public static function log($message)
+	{
 
 		if (is_string($message)) {
 			echo $message;
@@ -139,7 +151,8 @@ class Functions {
 		echo PHP_EOL;
 	}
 
-	public static function logToRollbar($message, $type = 'info') {
+	public static function logToRollbar($message, $type = 'info')
+	{
 
 		$message = (is_string($message)) ? $message : json_encode($message);
 
@@ -151,13 +164,12 @@ class Functions {
 	}
 
 	/** URLS **/
-	public static function getURLRequest($url) {
+	public static function getURLRequest($url)
+	{
 
 		$options  = array('http' => array('user_agent' => 'LaCulturetaFriendlyBot - https://lacultureta.com'));
 		$context  = stream_context_create($options);
 		$response = file_get_contents($url, false, $context);
 		return $response;
-
 	}
 }
-
