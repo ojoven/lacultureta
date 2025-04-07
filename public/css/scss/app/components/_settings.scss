@@ -17,7 +17,7 @@
 	.section {
 		padding: 5px 20px;
 
-		> .section-title {
+		>.section-title {
 			background: $black;
 			color: $auxiliarColor;
 			border-bottom: 2px solid $auxiliarColor;
@@ -80,22 +80,24 @@
 		display: inline-block;
 	}
 
-	.category-title, .place-name {
+	.category-title,
+	.place-name {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		padding-right: 10px;
 		display: inline-block;
-		max-width: 100%;
+		max-width: 35vw;
 	}
 
 	// SELECT / DESELECT
-	.select-deselect > li {
+	.select-deselect>li {
 		margin-bottom: 15px;
 		padding-left: 12px;
 	}
 
-	.select-all, .deselect-all {
+	.select-all,
+	.deselect-all {
 		text-decoration: none;
 		color: $fontColor;
 		@extend .bold;
@@ -120,6 +122,7 @@
 
 		&.active {
 			color: #444;
+
 			&:after {
 				content: ' ';
 				background: url(../img/green_check.png) no-repeat center center;

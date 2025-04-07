@@ -299,7 +299,7 @@ table.ui-datepicker-calendar { border-collapse: separate; }
 .settings .filter.active { opacity: 1; }
 .settings .filter.active:before { content: ' '; display: inline-block; background: url(../img/check.png) no-repeat 0 0; background-size: cover; width: 10px; height: 10px; }
 .settings .category-image { width: 16px; height: 16px; background-repeat: no-repeat; background-position: center; background-size: 100%; display: inline-block; }
-.settings .category-title, .settings .place-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; display: inline-block; max-width: 100%; }
+.settings .category-title, .settings .place-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; display: inline-block; max-width: 35vw; }
 .settings .select-deselect > li { margin-bottom: 15px; padding-left: 12px; }
 .settings .select-all, .settings .deselect-all { text-decoration: none; color: #212021; }
 .settings .option-50 { float: left; width: 50%; text-align: center; margin-top: 20px; }
@@ -323,7 +323,7 @@ table.ui-datepicker-calendar { border-collapse: separate; }
 .welcome .warning-tmp { font-size: 12px; color: #666; }
 
 /** CUSTOM CARDS **/
-.cards li.ego-card .image { width: 100%; height: 125px; border-radius: 0; }
+.cards li.ego-card .image { width: 150px; height: 128px; border-radius: 0; }
 .cards li.ego-card .description { padding: 0 20px; }
 .cards li.ego-card .description .highlight { font-weight: bold; display: block; margin: 15px 0; }
 .cards li.ego-card .description p { display: block; font-size: 14px; margin-bottom: 15px; }

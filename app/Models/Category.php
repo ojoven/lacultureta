@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model {
+class Category extends Model
+{
 
-	public function getCategories() {
+	public function getCategories()
+	{
 
 		// TODO: Add this to DB
 		$arrayCategories = array(
@@ -34,7 +37,5 @@ class Category extends Model {
 		}
 
 		return $categories;
-
 	}
-
 }

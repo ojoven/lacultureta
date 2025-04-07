@@ -4,27 +4,27 @@
 
 .cards li.ego-card {
 
-  // Image Mikel
-  .image {
-    width: 100%;
-    height: 125px;
-    border-radius: 0;
-  }
+	// Image Mikel
+	.image {
+		width: 150px;
+		height: 128px;
+		border-radius: 0;
+	}
 
-  .description {
-    padding: 0 20px;
+	.description {
+		padding: 0 20px;
 
-    .highlight {
-      font-weight: bold;
-      display: block;
-      margin: 15px 0;
-    }
+		.highlight {
+			font-weight: bold;
+			display: block;
+			margin: 15px 0;
+		}
 
-    p {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
+		p {
+			display: block;
+			font-size: 14px;
+			margin-bottom: 15px;
+		}
 
-  }
+	}
 }
