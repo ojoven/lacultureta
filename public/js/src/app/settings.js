@@ -69,8 +69,9 @@ function settingsManagement() {
 		$dataPlace = $('.data-place'),
 		$dataDate = $('#data-date'); // Special, date picker
 
-	// Load saved settings from localStorage when the page loads
-	loadSavedSettings();
+	// Load saved settings from localStorage and apply them to the UI
+	var savedSettings = loadSavedSettings();
+	applySettingsToUI(savedSettings);
 
 	// Settings
 	var $setting = $('.settings .filter');
@@ -157,71 +158,83 @@ function settingsManagement() {
 		closePopup();
 	});
 
-	// Function to save settings to localStorage
-	function saveSettingsToLocalStorage(category, place, date) {
-		var settings = {
-			category: category,
-			place: place,
-			date: date
-		};
-		localStorage.setItem('eventSettings', JSON.stringify(settings));
+}
+
+// Function to save settings to localStorage
+function saveSettingsToLocalStorage(category, place, date) {
+	var settings = {
+		category: category,
+		place: place,
+		date: date
+	};
+	localStorage.setItem('eventSettings', JSON.stringify(settings));
+}
+
+// Function to load saved settings from localStorage
+function loadSavedSettings() {
+	var savedSettings = localStorage.getItem('eventSettings');
+
+	if (!savedSettings) {
+		// If no saved settings, return null
+		return null;
 	}
 
-	// Function to load saved settings from localStorage
-	function loadSavedSettings() {
-		var savedSettings = localStorage.getItem('eventSettings');
+	try {
+		var settings = JSON.parse(savedSettings);
+		return settings;
+	} catch (e) {
+		console.error('Error loading saved settings:', e);
+		// If there's an error parsing the saved settings, return null
+		return null;
+	}
+}
 
-		if (!savedSettings) {
-			// If no saved settings, all filters are active by default (as in the original code)
-			return;
+// Function to apply saved settings to the UI
+function applySettingsToUI(settings) {
+	if (!settings) {
+		// If no settings provided, keep default UI (all active)
+		return;
+	}
+
+	var $dataCategory = $('.data-category'),
+		$dataPlace = $('.data-place'),
+		$dataDate = $('#data-date');
+
+	// Apply category settings
+	if (settings.category && settings.category.length > 0) {
+		// First deselect all
+		$dataCategory.find('.filter').removeClass('active');
+
+		// If 'all' is selected, select all categories
+		if (settings.category.includes('all')) {
+			$dataCategory.find('.filter').addClass('active');
+		} else {
+			// Otherwise, select only the saved categories
+			settings.category.forEach(function (categoryId) {
+				$dataCategory.find('.filter[data-value="' + categoryId + '"]').addClass('active');
+			});
 		}
+	}
 
-		try {
-			var settings = JSON.parse(savedSettings);
+	// Apply place settings
+	if (settings.place && settings.place.length > 0) {
+		// First deselect all
+		$dataPlace.find('.filter').removeClass('active');
 
-			// Apply category settings
-			if (settings.category && settings.category.length > 0) {
-				// First deselect all
-				$dataCategory.find('.filter').removeClass('active');
-
-				// If 'all' is selected, select all categories
-				if (settings.category.includes('all')) {
-					$dataCategory.find('.filter').addClass('active');
-				} else {
-					// Otherwise, select only the saved categories
-					settings.category.forEach(function (categoryId) {
-						$dataCategory.find('.filter[data-value="' + categoryId + '"]').addClass('active');
-					});
-				}
-			}
-
-			// Apply place settings
-			if (settings.place && settings.place.length > 0) {
-				// First deselect all
-				$dataPlace.find('.filter').removeClass('active');
-
-				// If 'all' is selected, select all places
-				if (settings.place.includes('all')) {
-					$dataPlace.find('.filter').addClass('active');
-				} else {
-					// Otherwise, select only the saved places
-					settings.place.forEach(function (placeName) {
-						$dataPlace.find('.filter[data-value="' + placeName + '"]').addClass('active');
-					});
-				}
-			}
-
-			// Apply date settings
-			if (settings.date && settings.date.length > 0 && !settings.date.includes('all')) {
-				$dataDate.val(settings.date.join(','));
-				// Note: You might need additional code to update the date picker UI
-				// depending on how your date picker works
-			}
-
-		} catch (e) {
-			console.error('Error loading saved settings:', e);
-			// If there's an error parsing the saved settings, continue with default settings
+		// If 'all' is selected, select all places
+		if (settings.place.includes('all')) {
+			$dataPlace.find('.filter').addClass('active');
+		} else {
+			// Otherwise, select only the saved places
+			settings.place.forEach(function (placeName) {
+				$dataPlace.find('.filter[data-value="' + placeName + '"]').addClass('active');
+			});
 		}
+	}
+
+	// Apply date settings
+	if (settings.date && settings.date.length > 0 && !settings.date.includes('all')) {
+		$dataDate.val(settings.date.join(','));
 	}
 }
 

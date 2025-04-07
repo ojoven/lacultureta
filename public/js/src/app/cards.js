@@ -15,7 +15,7 @@ var stack,
 	currentView = 'home';
 
 // LOGIC
-$(document).ready(function() {
+$(function () {
 
 	generateCards();
 	throwCardsWithButtonsManagement();
@@ -26,7 +26,16 @@ $(document).ready(function() {
 
 function loadInitialCards() {
 
-	loadCards(category, place, date, page);
+	// Load saved settings from localStorage
+	var savedSettings = loadSavedSettings();
+
+	if (savedSettings) {
+		// Load cards with saved settings
+		loadCards(savedSettings.category, savedSettings.place, savedSettings.date, page);
+	} else {
+		// Load cards with default settings
+		loadCards(category, place, date, page);
+	}
 }
 
 function loadCards(category, place, date, page) {
@@ -39,7 +48,7 @@ function loadCards(category, place, date, page) {
 	data.date = date;
 	data.page = page;
 
-	$.get(url, data, function(response) {
+	$.get(url, data, function (response) {
 
 		// If all events have been loaded, we won't load more
 		if (response.html === '') {
@@ -58,13 +67,13 @@ function loadCards(category, place, date, page) {
 
 function activateCards() {
 
-	$(".card").not('.in-stack').each(function() {
+	$(".card").not('.in-stack').each(function () {
 		$(this).addClass('in-stack').addClass('in-deck');
 		var card = stack.createCard($(this).get(0));
 		cards.push(card);
 
 		// Bind event card
-		$(".card.show-popup").off('click').on('click', function() {
+		$(".card.show-popup").off('click').on('click', function () {
 
 			var $cardSelector = $(this);
 
@@ -75,16 +84,16 @@ function activateCards() {
 		});
 
 		// Bind not event card
-		$(".card").not('.show-popup').off('click').on('click', function(e) {
+		$(".card").not('.show-popup').off('click').on('click', function (e) {
 
 			var $cardSelector = $(this);
-			var $elementWhoTriggered = $( e.target );
-			if (!$cardSelector.hasClass('clicked') && !$elementWhoTriggered.is('a') ) {
+			var $elementWhoTriggered = $(e.target);
+			if (!$cardSelector.hasClass('clicked') && !$elementWhoTriggered.is('a')) {
 				$cardSelector.addClass('clicked');
-				setTimeout(function() { $cardSelector.removeClass('clicked'); }, 1000);
+				setTimeout(function () { $cardSelector.removeClass('clicked'); }, 1000);
 			}
 			var $link = $cardSelector.find('a');
-			$link.off().on('click', function() {
+			$link.off().on('click', function () {
 				gaCreateEvent(gaGetParamsCard($cardSelector, 'Open Link'));
 			});
 		});
@@ -125,8 +134,8 @@ function generateCards() {
 
 	// Custom configuration
 	var config = {
-		throwOutConfidence: function(xOffset) {
-			if (Math.abs(xOffset) > tresholdThrowCard ) {
+		throwOutConfidence: function (xOffset) {
+			if (Math.abs(xOffset) > tresholdThrowCard) {
 				return 1;
 			} else {
 				return 0;
@@ -153,14 +162,14 @@ function throwCardsWithButtonsManagement() {
 
 	// FAV / LIKE
 	var $fav = $(".favtrashbuttons .fav");
-	$fav.on('click', function() {
+	$fav.on('click', function () {
 		var randomPosition = randomIntFromInterval(-100, 100);
 		cards[0].throwOut(1, randomPosition);
 	});
 
 	// TRASH / DISLIKE
 	var $trash = $(".favtrashbuttons .trash");
-	$trash.on('click', function() {
+	$trash.on('click', function () {
 		var randomPosition = randomIntFromInterval(-100, 100);
 		cards[0].throwOut(-1, randomPosition);
 	});
@@ -215,7 +224,7 @@ function getCategoryCard($card) {
 function toChangeView() {
 
 	var $toChangeView = $('.to-change-view');
-	$toChangeView.on('click', function() {
+	$toChangeView.on('click', function () {
 
 		var $cards = $('.cards');
 		var $viewport = $('#viewport');
@@ -278,7 +287,7 @@ function loadCardsLikeDislike(likeDislike) {
 	data.user_id = Cookies.get('userId');
 	data.like_dislike = likeDislike;
 
-	$.get(url, data, function(response) {
+	$.get(url, data, function (response) {
 
 		// Append the cards to the HTML
 		$(".cards").append(response.html);
@@ -293,7 +302,7 @@ function getHomeCardEventIds() {
 
 	var eventIds = [];
 	var $cardItems = $('.card');
-	$cardItems.each(function() {
+	$cardItems.each(function () {
 		if ($(this).hasClass('in-deck') && typeof $(this).data('event') != "undefined") {
 			eventIds.push($(this).data('event'));
 		}
@@ -322,5 +331,5 @@ function deactivateLoading() {
 }
 
 function randomIntFromInterval(min, max) {
-	return Math.floor(Math.random()*(max-min+1)+min);
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
