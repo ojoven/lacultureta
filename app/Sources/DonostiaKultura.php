@@ -10,7 +10,7 @@ class DonostiaEus
 
 	public function __construct()
 	{
-		Functions::log('DonostiaEus scraper initialized');
+		Functions::log('Donostia Kultura scraper initialized');
 		Functions::log('===============================');
 	}
 
@@ -45,43 +45,39 @@ class DonostiaEus
 		// We extract all the events from all pages
 		while (true) {
 
-			$url = 'https://www.donostia.eus/ataria/' . $language . '/web/ekintzenagenda/gaur?p_p_id=DTIKEkintzenAgendaController&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_DTIKEkintzenAgendaController_goToPage=' . $page . '&_DTIKEkintzenAgendaController_selectedSearch=3';
+			$url = 'https://www.donostiakultura.eus/' . $language . '/agenda';
+			if ($page > 1) $url .= '?paglimitstart=' . ($page - 1) * 24;
 			Functions::log('Get events from page ' . $page . ' for language: ' . $language);
 			$htmlContent = Functions::getURLRequest($url);
 			$html = SimpleHtmlDom::strGetHtml($htmlContent);
 
-			$resultsAgenda = $html->find('.agendaEventos', 0);
-			foreach ($resultsAgenda->find('.defEvento') as $eventDom) {
+			$resultsAgenda = $html->find('.lista-tarjetas', 0);
+			foreach ($resultsAgenda->find('.tarjeta') as $eventDom) {
 
 				$event = array();
 
 				// Event title
-				$event['title'] = $eventDom->find('h4', 0)->find('a', 0)->plaintext;
+				$event['title'] = $eventDom->find('.tarjeta__titulo', 0)->find('a', 0)->plaintext;
 
 				// Event URL
-				$event['url'] = $eventDom->find('h4', 0)->find('a', 0)->href;
+				$event['url'] = $eventDom->find('.tarjeta__titulo', 0)->find('a', 0)->href;
 
 				// Event image
 				$event['image'] = '';
 
 				// Event place
-				$eventPlaceAux = $eventDom->find('.icoDonde', 0);
-				$event['place'] = ($eventPlaceAux && $eventPlaceAux->next_sibling()) ? $eventPlaceAux->next_sibling()->plaintext : '';
+				$event['place'] = '';
 
 				// Event date
-				$event['date_start'] = $eventDom->find('.eventoFechaInicioDd', 0)->plaintext;
-				$eventDateEndAux = $eventDom->find('.eventoFechaFinDd', 0);
-				$event['date_end'] = $eventDateEndAux->tag === 'dd' ? $eventDom->find('.eventoFechaFinDd', 0)->plaintext : false; // ERROR
+				$event['date_start'] = $eventDom->find('.tarjeta__fecha', 0)->plaintext;
+				$event['date_end'] = $event['date_start'];
 
 				// Event hour
-				$eventHourAux = $eventDom->find('.icoHora', 0);
-				$event['hour'] = ($eventHourAux && $eventHourAux->next_sibling()) ? $eventHourAux->next_sibling()->plaintext : '';
+				$event['hour'] = '';
 
 				// Event price
-				$eventPriceAux = $eventDom->find('.icoPrecio', 0);
-				$event['price'] = ($eventPriceAux && $eventPriceAux->next_sibling()) ? $eventPriceAux->next_sibling()->plaintext : '';
+				$event['price'] = '';
 
-				$event = $this->_parseEventDonostiaEUS($event, $language);
 				$events[] = $event;
 			}
 
@@ -97,7 +93,7 @@ class DonostiaEus
 		return $events;
 	}
 
-	private function _parseEventDonostiaEUS($event, $language)
+	private function _parseEventDonostiaKultura($event, $language)
 	{
 
 		// TITLE
