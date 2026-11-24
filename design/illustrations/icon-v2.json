@@ -1,0 +1,7 @@
+{
+  "generator": "built-in image_gen",
+  "source": "lacultureta-icon-v2.png",
+  "reference": "d-paper.png",
+  "prompt": "Use case: logo-brand. Asset type: square app icon and favicon for La Cultureta, a cultural events website in Donostia. Reference image: the approved Papel illustration sheet. Create ONE new, much simpler small-space icon derived from the adult woman in the FIRST illustration (top left), not a sheet or grid. Preserve her recognisable cheerful face, warm skin, dark brown curly hair gathered in a large bun, one yellow hoop earring and forest-green clothing. Use the same tactile cut-paper illustration style, simplified into a few broad shapes. Head and upper shoulders only, joyful smile, face turned slightly upwards and to the right as in the reference. Make the head and bun large and easy to recognise at 16–32 pixels, with an uncomplicated silhouette and strong contrast. Minimal fine detail and little paper grain. Opaque soft cream square background, with a simple coral circular paper shape behind the head. Centre the important head and face within a safe circular area of about 78% of the square, so it works as a rounded or maskable home-screen icon. Keep the entire head and bun inside the square. No tickets, no music notes, no books, no palette, no architecture, no words, no letters, no border, no watermark. A single clean portrait icon, not a mockup, not a photo.",
+  "exportCommand": "node ops/build-icons.mjs"
+}

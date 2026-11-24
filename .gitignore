@@ -8,4 +8,17 @@ Homestead.json
 Homestead.yaml
 .env
 .idea
-deploy.sh
+/deploy.sh
+
+# Next.js application and local runtime data
+/web/node_modules/
+/web/.next/
+/web/.deploy/
+/web/data/
+/web/*.tgz
+/web/*.tsbuildinfo
+/artifacts/
+/web/.env*
+!/web/.env.example
+__pycache__/
+*.pyc

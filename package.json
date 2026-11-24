@@ -1,18 +1,14 @@
 {
-  "private": true,
+  "name": "lacultureta-project", "version": "2.0.0", "private": true,
+  "description": "La Cultureta: the cultural agenda for Donostia / San Sebastián",
   "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch"
-  },
-  "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "gulp": "^3.9.1",
-    "jquery": "^3.1.0",
-    "laravel-elixir": "^6.0.0-14",
-    "laravel-elixir-vue-2": "^0.2.0",
-    "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.16.2",
-    "vue": "^2.0.1",
-    "vue-resource": "^1.0.3"
+    "setup": "npm --prefix web ci",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web start",
+    "test": "npm --prefix web test",
+    "typecheck": "npm --prefix web run typecheck",
+    "scrape": "npm --prefix web run scrape",
+    "deploy": "bash ops/deploy.sh"
   }
 }

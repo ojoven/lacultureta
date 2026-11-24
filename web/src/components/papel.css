@@ -1,0 +1,52 @@
+/* One approved illustration sheet, with a separate crop for each cultural profile. */
+.paper-illustration { display: block; position: relative; flex-shrink: 0; width: 48px; aspect-ratio: 1; overflow: hidden; isolation: isolate; border-radius: 50%; background: #f5ead7; }
+.paper-illustration > img { position: absolute; width: 400%; height: auto; max-width: none; left: var(--paper-portrait-x); top: var(--paper-y); pointer-events: none; user-select: none; }
+.paper-illustration--scene { aspect-ratio: 5 / 4; border-radius: 23px; }
+.paper-illustration--scene > img { width: 320%; left: var(--paper-scene-x); }
+.profile-option .paper-illustration { width: 56px; box-shadow: 0 0 0 3px #fff8, 0 2px 5px #46321b18; }
+.profile-option.selected .paper-illustration { box-shadow: 0 0 0 3px #d0dfad; }
+.profile-option > .profile-option-copy { flex: 1; min-width: 0; }
+.profile-option { min-height: 83px; }
+.profile-status > .paper-illustration { width: 22px; height: 22px; box-shadow: 0 0 0 1px #d4d5c8; overflow: hidden; }
+.profile-status > .profile-status-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.profile-status { padding-top: 2px; padding-bottom: 2px; gap: 5px; }
+.bottom-nav .paper-illustration { width: 26px; height: 26px; box-shadow: 0 0 0 1px #d4d5c8; }
+.paper-welcome.discovery-card { background: #f6eddd; color: #26382e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px 24px; }
+.paper-welcome .welcome-art { position: relative; width: 100%; height: auto; min-height: 0; max-height: 215px; flex: 1 1 0; display: flex; align-items: center; justify-content: center; margin: 0; opacity: 1; }
+.paper-welcome .welcome-illustration { height: 100%; width: auto; max-width: 100%; aspect-ratio: 5 / 4; border-radius: 20px; border: 0; box-shadow: none; }
+.paper-welcome .welcome-content { position: static; inset: auto; width: 100%; flex: 0 0 auto; }
+.paper-welcome .welcome-content h1 { font-size: 29px; line-height: 1.08; letter-spacing: -1.1px; margin: 0; max-width: 100%; }
+.paper-welcome .welcome-intro { font-size: 13px; line-height: 1.45; margin-top: 10px; }
+.paper-welcome .welcome-instructions { margin-top: 12px; gap: 5px; font-size: 12px; }
+.paper-welcome .welcome-instructions p > span { width: 23px; height: 23px; }
+@media(min-width: 760px) {
+  .discovery-app .paper-welcome.discovery-card { border: 0; box-shadow: none; }
+}
+@media(max-height: 740px) {
+  .paper-welcome.discovery-card { padding: 18px 22px; gap: 10px; }
+  .paper-welcome .welcome-art { max-height: 165px; }
+  .paper-welcome .welcome-content h1 { font-size: 25px; line-height: 1.08; }
+  .paper-welcome .welcome-intro { margin-top: 8px; font-size: 12px; }
+  .paper-welcome .welcome-instructions { margin-top: 10px; font-size: 11px; }
+}
+@media(max-height: 630px) {
+  .paper-welcome.discovery-card { padding: 14px 18px; gap: 8px; }
+  .paper-welcome .welcome-art { max-height: 140px; }
+  .paper-welcome .welcome-content h1 { font-size: 22px; line-height: 1.08; }
+  .paper-welcome .welcome-intro { font-size: 12px; line-height: 1.4; }
+  .paper-welcome .welcome-instructions { margin-top: 9px; font-size: 11px; gap: 4px; }
+  .paper-welcome .welcome-instructions p > span { width: 21px; height: 21px; }
+  .profile-status > .paper-illustration { width: 18px; height: 18px; }
+  .bottom-nav .paper-illustration { width: 22px; height: 22px; }
+}
+@media(max-height: 480px) and (min-width: 480px) and (orientation: landscape) {
+  .paper-welcome.discovery-card { padding: 8px 12px; gap: 5px; }
+  .paper-welcome .welcome-art { max-height: 65px; display: flex; }
+  .paper-welcome .welcome-content { display: block; position: static; text-align: center; }
+  .paper-welcome .welcome-content h1 { font-size: 20px; line-height: 1.05; }
+  .paper-welcome .welcome-intro { margin-top: 4px; font-size: 12px; line-height: 1.35; }
+  .paper-welcome .welcome-instructions { display: none; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .discovery-app .discovery-card { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

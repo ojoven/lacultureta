@@ -1,0 +1,28 @@
+[Unit]
+Description=La Cultureta Next.js
+After=network.target
+
+[Service]
+Type=simple
+User=lacultureta
+Group=lacultureta
+WorkingDirectory=/opt/lacultureta/current
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3100
+Environment=DATABASE_PATH=/var/lib/lacultureta/lacultureta.sqlite
+EnvironmentFile=-/etc/lacultureta/push.env
+ExecStart=/opt/lacultureta/runtime/bin/node /opt/lacultureta/current/server.js
+Restart=on-failure
+RestartSec=5
+SuccessExitStatus=143
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lacultureta
+UMask=0027
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

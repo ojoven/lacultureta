@@ -1,0 +1,20 @@
+{
+  "generator": "built-in image_gen",
+  "status": "For selection only. Not included in the website.",
+  "rows": [
+    "A · Editorial",
+    "B · Risograph",
+    "C · Line",
+    "D · Paper",
+    "E · Clay"
+  ],
+  "columns": [
+    "La Cultureta",
+    "En familia",
+    "Música",
+    "Cine",
+    "Arte e ideas",
+    "A escena"
+  ],
+  "prompt": "Use case: illustration-story. Asset type: illustration direction contact sheet for La Cultureta, a cultural events discovery website in Donostia. Create ONE large, beautifully art-directed comparison GRID, exactly FIVE ROWS by SIX COLUMNS, thirty separate illustrations with generous clean gutters. Each row explores a distinct, professional illustration direction. Column subjects stay consistent across all five rows: 1) LA CULTURETA: a joyful adult woman who enjoys cultural events, carrying tickets with lively music/cinema/art motifs; 2) EN FAMILIA: an adult parent and child enjoying a creative weekend activity; 3) MÚSICA: an adult music lover at a concert; 4) CINE: an adult cinema lover watching a film; 5) ARTE E IDEAS: a curious adult enjoying an exhibition and a book; 6) A ESCENA: an adult enjoying theatre and dance. Character illustrations, not interface mockups and not photographs. The same main woman should feel recognisable across directions; profile characters may vary and include different ages, skin tones and genders. Friendly, expressive, culturally curious, contemporary European editorial feel. Each cell has one readable silhouette, face and expressive gesture, simple event motifs, no complex background. Row A: bold flat editorial shapes, confident dark outlines. Row B: warm risograph print, two or three inks, delicate grain. Row C: expressive hand-drawn line work with playful solid colour accents. Row D: layered cut-paper collage with tactile paper and subtle shadows. Row E: charming sculptural clay-style 3D forms, matte surfaces, simple shapes. Use a coherent palette drawn from the website: dark forest green, vivid coral, bright citron, soft cream background, with thoughtful variations between rows. This is a polished brand exploration, avoid generic corporate clip art. Put clear column headings at the top exactly: 'LA CULTURETA', 'EN FAMILIA', 'MÚSICA', 'CINE', 'ARTE E IDEAS', 'A ESCENA'. Put a slim row label at left: 'A · EDITORIAL', 'B · RISOGRAFÍA', 'C · LÍNEA', 'D · PAPEL', 'E · ARCILLA'. Legible headings, aligned grid, all thirty cells present, no cropped characters. Wide high-resolution composition suitable for reviewing and choosing one art direction. No watermarks, no additional captions, no phone mockups."
+}

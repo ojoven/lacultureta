@@ -1,0 +1,14 @@
+[Unit]
+Description=Back up the La Cultureta SQLite database
+[Service]
+Type=oneshot
+User=lacultureta
+Group=lacultureta
+WorkingDirectory=/opt/lacultureta/current
+Environment=DATABASE_PATH=/var/lib/lacultureta/lacultureta.sqlite
+ExecStart=/opt/lacultureta/runtime/bin/node /opt/lacultureta/current/backup.cjs
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/backups/lacultureta /var/lib/lacultureta
+UMask=0027

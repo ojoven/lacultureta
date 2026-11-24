@@ -1,0 +1,61 @@
+import type { Language } from './types';
+const es = {
+  discover:'Descubrir', saved:'Mis planes', location:'DONOSTIA · SAN SEBASTIÁN',
+  hero:'Tu próximo', heroAccent:'gran plan.', intro:'La cultura se vive fuera. Encuentra conciertos, cine, arte y todo lo que pasa cerca de ti.',
+  sticker:'MENOS SOFÁ.\nMÁS CULTURA.', agenda:'LA AGENDA, CON OTRA ACTITUD',
+  search:'Busca un artista, un plan, un lugar…', filters:'Filtros', all:'Todo',
+  today:'Hoy', tomorrow:'Mañana', weekend:'Este finde', week:'Esta semana', anyDate:'Cualquier fecha',
+  categories:{all:'Para ti',music:'Música',cinema:'Cine',theatre:'Teatro y danza',art:'Arte',literature:'Literatura',talks:'Charlas',workshops:'Talleres',other:'Más cultura'},
+  plans:'planes por descubrir', chosen:'TU PRÓXIMO «SÍ»', swipe:'Desliza. Descubre. Sal.',
+  swipeHint:'A la derecha, te lo guardas. A la izquierda, otro plan.', skip:'Otro plan', save:'Me apunto', undo:'Volver al anterior',
+  details:'Ver el plan', free:'Gratis', priceUnknown:'Consultar precio', hoursUnknown:'Consultar horario',
+  next:'TAMBIÉN TE PUEDE GUSTAR', asideTitle:'La ciudad no para.', asideText:'Una pantalla menos. Un concierto más. Haz sitio a algo inesperado.',
+  calendar:'Añadir al calendario', official:'Ver en la web oficial', tickets:'Entradas', close:'Cerrar',
+  place:'Dónde', source:'Organizador', price:'Precio', eventLanguage:'Idioma del evento', onlyFree:'Solo planes gratis',
+  allPlaces:'Todos los lugares', allSources:'Todos los organizadores', apply:'Ver planes', reset:'Borrar filtros',
+  noEvents:'No hay planes con estos filtros.', noEventsText:'Prueba otra fecha o descubre todas las categorías.',
+  caughtUp:'¡Has visto todos los planes!', caughtUpText:'Tus favoritos te esperan en Mis planes. También puedes volver a empezar.', restart:'Volver a descubrir',
+  emptySaved:'Tu próxima historia empieza con un sí.', emptySavedText:'Guarda los planes que te gustan. Los tendrás aquí, en este navegador.',
+  savedTitle:'Buenos planes. Todos tuyos.', savedIntro:'Tu pequeña colección de cosas que merecen salir de casa.',
+  remove:'Quitar de mis planes', savedToast:'Plan guardado', skippedToast:'Vamos con otro', error:'No hemos podido cargar los planes. Inténtalo de nuevo.', retry:'Reintentar',
+  device:'Tus planes se guardan en este navegador.', updated:'Agenda actualizada', footer:'Hecho con curiosidad en Donostia.',
+  data:'Datos de', viewCards:'Vista de tarjetas', viewGrid:'Vista de lista', loadMore:'Ver más planes', back:'Volver a descubrir',
+  about:'Cultura cerca. Sin complicaciones.', date:'Cuándo', until:'Hasta', share:'Compartir', copied:'Enlace copiado', more:'Más información',
+  aboutNav:'El proyecto', welcomeTitle:'La agenda cultural de Donostia. Fácil.',
+  welcomeIntro:'Conciertos, cine, teatro y exposiciones de Donostia. Desliza para descubrir y guardar tus planes.',
+  welcomeSkip:'Izquierda: siguiente plan.', welcomeSave:'Derecha: guarda tus favoritos.',
+  welcomeStart:'Descubrir planes', previous:'Plan anterior', nextPlan:'Plan siguiente', savedCount:'planes guardados',
+};
+const eu: typeof es = {
+  discover:'Ezagutu', saved:'Nire planak', location:'DONOSTIA · SAN SEBASTIÁN',
+  hero:'Zure hurrengo', heroAccent:'plan bikaina.', intro:'Kultura kanpoan bizi da. Aurkitu kontzertuak, zinema, artea eta zure inguruan gertatzen den guztia.',
+  sticker:'SOFA GUTXIAGO.\nKULTURA GEHIAGO.', agenda:'AGENDA, BESTE JARRERA BATEKIN',
+  search:'Bilatu artista, plan edo leku bat…', filters:'Iragazkiak', all:'Guztiak',
+  today:'Gaur', tomorrow:'Bihar', weekend:'Asteburuan', week:'Aste honetan', anyDate:'Edozein data',
+  categories:{all:'Zuretzat',music:'Musika',cinema:'Zinema',theatre:'Antzerkia eta dantza',art:'Artea',literature:'Literatura',talks:'Hitzaldiak',workshops:'Tailerrak',other:'Kultura gehiago'},
+  plans:'plan ezagutzeko', chosen:'ZURE HURRENGO «BAI»', swipe:'Irristatu. Ezagutu. Atera.',
+  swipeHint:'Eskuinera, gorde. Ezkerrera, beste bat.', skip:'Beste bat', save:'Maite', undo:'Itzuli aurrekora',
+  details:'Ikusi plana', free:'Doan', priceUnknown:'Kontsultatu prezioa', hoursUnknown:'Kontsultatu ordutegia',
+  next:'HAUEK ERE GUSTATUKO ZAIZKIZU', asideTitle:'Hiria ez da gelditzen.', asideText:'Pantaila bat gutxiago. Kontzertu bat gehiago. Utzi lekua ustekabeko zerbaiti.',
+  calendar:'Gehitu egutegian', official:'Ikusi webgune ofizialean', tickets:'Sarrerak', close:'Itxi',
+  place:'Non', source:'Antolatzailea', price:'Prezioa', eventLanguage:'Ekitaldiaren hizkuntza', onlyFree:'Doako planak soilik',
+  allPlaces:'Leku guztiak', allSources:'Antolatzaile guztiak', apply:'Ikusi planak', reset:'Garbitu iragazkiak',
+  noEvents:'Ez dago planik iragazki hauekin.', noEventsText:'Probatu beste data bat edo ezagutu kategoria guztiak.',
+  caughtUp:'Plan guztiak ikusi dituzu!', caughtUpText:'Zure gogokoak Nire planak atalean daude. Berriro ere has zaitezke.', restart:'Hasi berriro',
+  emptySaved:'Zure hurrengo istorioa bai batekin hasten da.', emptySavedText:'Gorde gustuko dituzun planak. Hemen izango dituzu, arakatzaile honetan.',
+  savedTitle:'Plan onak. Guztiak zuretzat.', savedIntro:'Etxetik ateratzea merezi duten gauzen bilduma txikia.',
+  remove:'Kendu nire planetatik', savedToast:'Plana gordeta', skippedToast:'Beste bat', error:'Ezin izan ditugu planak kargatu. Saiatu berriro.', retry:'Saiatu berriro',
+  device:'Zure planak arakatzaile honetan gordetzen dira.', updated:'Agenda eguneratuta', footer:'Jakin-minez egina Donostian.',
+  data:'Datuak:', viewCards:'Txartel-ikuspegia', viewGrid:'Zerrenda-ikuspegia', loadMore:'Ikusi plan gehiago', back:'Itzuli planak ezagutzera',
+  about:'Kultura gertu. Erraz.', date:'Noiz', until:'Arte', share:'Partekatu', copied:'Esteka kopiatuta', more:'Informazio gehiago',
+  aboutNav:'Proiektua', welcomeTitle:'Donostiako kultur agenda. Erraz.',
+  welcomeIntro:'Donostiako kontzertuak, zinema, antzerkia eta erakusketak. Irristatu planak ezagutzeko eta gordetzeko.',
+  welcomeSkip:'Ezkerrera: hurrengo plana.', welcomeSave:'Eskuinera: gorde plana.',
+  welcomeStart:'Ezagutu planak', previous:'Aurreko plana', nextPlan:'Hurrengo plana', savedCount:'plan gordeta',
+};
+export function dictionary(language: Language) { return language === 'eu' ? eu : es; }
+export function eventDate(start: string, end: string, language: Language) {
+  const months=language==='eu'?['urt','ots','mar','api','mai','eka','uzt','abu','ira','urr','aza','abe']:['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const format = (date: string) => `${Number(date.slice(8,10))} ${months[Number(date.slice(5,7))-1]}`;
+  return start === end ? format(start) : `${format(start)} — ${format(end)}`;
+}

@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily La Cultureta backup
+[Timer]
+OnCalendar=*-*-* 03:35:00
+Persistent=true
+[Install]
+WantedBy=timers.target

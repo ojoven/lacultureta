@@ -1,0 +1,24 @@
+[Unit]
+Description=Import the Donostia Kultura and Tabakalera agendas, with Kulturklik fallback
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=lacultureta
+Group=lacultureta
+WorkingDirectory=/opt/lacultureta/current
+Environment=DATABASE_PATH=/var/lib/lacultureta/lacultureta.sqlite
+Environment=NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+Environment=SCRAPER_PYTHON_PATH=/opt/lacultureta/scraper-venv/bin/python
+Environment=SCRAPER_INTERVAL_MS=5000
+Environment=SCRAPER_MAX_REQUESTS=100
+ExecStart=/usr/bin/flock -n /var/lib/lacultureta/scrape.lock /opt/lacultureta/runtime/bin/node /opt/lacultureta/current/scrape.cjs
+TimeoutStartSec=15min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lacultureta
+UMask=0027
+MemoryMax=512M

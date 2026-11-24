@@ -1,0 +1,21 @@
+[Unit]
+Description=Deliver opted-in La Cultureta mobile notifications
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=lacultureta
+Group=lacultureta
+WorkingDirectory=/opt/lacultureta/current
+Environment=DATABASE_PATH=/var/lib/lacultureta/lacultureta.sqlite
+EnvironmentFile=/etc/lacultureta/push.env
+ExecStart=/usr/bin/flock -n /var/lib/lacultureta/notify.lock /opt/lacultureta/runtime/bin/node /opt/lacultureta/current/notify.cjs
+TimeoutStartSec=10min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lacultureta
+UMask=0027
+MemoryMax=256M

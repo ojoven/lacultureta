@@ -1,0 +1,8 @@
+[Unit]
+Description=Check opted-in event notifications every 15 minutes
+[Timer]
+OnCalendar=*-*-* *:00,15,30,45:00
+RandomizedDelaySec=30
+Persistent=true
+[Install]
+WantedBy=timers.target
