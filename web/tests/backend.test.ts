@@ -90,3 +90,12 @@ test('verified addresses can retain a neighbourhood without inventing GPS coordi
   const venue=db().prepare('SELECT v.* FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?').get(event.id) as {address_es:string;neighbourhood:string;latitude:null;longitude:null};
   assert.match(venue.address_es,/Mundaiz 8/);assert.equal(venue.neighbourhood,'EGIA');assert.equal(venue.latitude,null);assert.equal(venue.longitude,null);
 });
+test('direct agenda venue labels and organiser-scoped Tabakalera rooms resolve',()=>{
+  for(const [i,place] of ['Imanol Larzabal Aretoa (Lugaritz)','Gazteszena (Egia)','Victoria Eugenia Club','Biblioteca Central Infantil'].entries()) {
+    const event=parseItem(fixtures[0]);event.id=`kk-9994${i}`;event.externalId=`9994${i}`;event.translations.es.place=place;event.translations.eu.place=place;storeEvents([event]);
+    const row=db().prepare('SELECT v.latitude FROM venues v JOIN event_venues ev ON ev.venue_id=v.id WHERE ev.event_id=?').get(event.id) as {latitude:number|null};assert.ok(row.latitude);
+  }
+  const event=parseItem(fixtures[0]);event.id='kk-999500';event.externalId='999500';event.source='tabakalera';event.translations.es.place='Sala de exposiciones 2';event.translations.eu.place='Erakusketa aretoa 2';storeEvents([event]);
+  const row=db().prepare('SELECT v.latitude,v.neighbourhood FROM venues v JOIN event_venues ev ON ev.venue_id=v.id WHERE ev.event_id=?').get(event.id) as {latitude:number;neighbourhood:string};
+  assert.equal(row.latitude,43.316554833);assert.equal(row.neighbourhood,'EGIA');
+});

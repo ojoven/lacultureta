@@ -13,30 +13,32 @@ const aliases:Record<string,string[]>={
   'KURSAAL':['Kursaal - Sala Kubo','Kutxa Fundazioa Kubo'],
   'TABAKALERA':['Kutxa Fundazioa Kluba','Kutxa Fundazioa Artegunea','Kutxa Fundazioa en Tabakalera - Planta 1 - Kluba','Elías Querejeta Zine Eskola'],
   'SAN TELMO MUSEOA':['Museo San Telmo','San Telmo Museoa'],
-  'VICTORIA EUGENIA ANTZOKIA':['Teatro Victoria Eugenia','Victoria Eugenia Antzokia'],
+  'VICTORIA EUGENIA ANTZOKIA':['Teatro Victoria Eugenia','Victoria Eugenia Antzokia','Victoria Eugenia Club'],
   'ANTZOKI ZAHARRA':['Teatro Principal','Teatro Principal de Donostia (Antzoki Zaharra)','Antzoki Zaharra'],
   'AQUARIUM':['Aquarium-Palacio del Mar de Donostia-San Sebastián'],
   'AIETE KULTUR ETXEA':['Centro Cultural Aiete','Aiete Kultur Etxea','Aiete K.E.'],
   'OKENDO KULTUR ETXEA':['Centro Cultural Okendo','Okendo Kultur Etxea','Okendo K.E.'],
-  'GAZTESZENA-EGIA KULTUR ETXEA':['Gazteszena'],
+  'GAZTESZENA-EGIA KULTUR ETXEA':['Gazteszena','Gazteszena (Egia)'],
   'EGIA KULTUR ETXEA':['Centro Cultural Egia','Egia Kultur Etxea','Egia K.E.'],
   'INTXAURRONDO':['Centro Cultural Intxaurrondo','Intxaurrondo Kultur Etxea','Intxaurrondo K.E.'],
   'AMARA-ERNEST LLUCH KULTUR ETXEA':['Centro Cultural Ernest Lluch','Ernest Lluch Kultur Etxea','Ernest Lluch K.E.'],
-  'LUGARITZ KULTUR ETXEA':['Centro Cultural Lugaritz','Sala Imanol Larzabal (Lugaritz)','Lugaritz Kultur Etxea','Lugaritz K.E.'],
+  'LUGARITZ KULTUR ETXEA':['Centro Cultural Lugaritz','Sala Imanol Larzabal (Lugaritz)','Imanol Larzabal Aretoa (Lugaritz)','Lugaritz Kultur Etxea','Lugaritz K.E.'],
   'ALTZA-LARRATXO KULTUR ETXEA':['Centro Cultural Larratxo','Larratxo Kultur Etxea','Larratxo K.E.'],
   'LARROTXENE':['Centro Cultural Larrotxene','Larrotxene Kultur Etxea','Larrotxene K.E.'],
   'ALTZA- CASARES KULTUR ETXEA':['Centro Cultural Casares','Casares Kultur Etxea','Casares K.E.'],
   'ALTZA- TOMASENE KULTUR ETXEA':['Centro Cultural Tomasene','Tomasene Kultur Etxea','Tomasene K.E.'],
   'LOIOLA KULTUR ETXEA':['Centro Cultural Loiola','Loiola Kultur Etxea','Loiola K.E.'],
-  'ETXARRIENE KULTUR ETXEA':['Etxarri Ene Kultur Etxea','Etxarriene Kultur Etxea'],
+  'ETXARRIENE KULTUR ETXEA':['Etxarri Ene Kultur Etxea','Etxarriene Kultur Etxea','Etxarriene'],
   'ANTIGUO BERRI ZINEAK':['Cines Antiguo Berri'],
   'PRÍNCIPE ZINEAK':['Cines Príncipe'],
   'EUSKAL ITSAS MUSEOA':['Museo Marítimo Vasco'],
   'CEMENTO REZOLA MUSEOA':['Museum Cemento Rezola'],
   'INGURUMEN BALIABIDEEN ETXEA-CRISTINA ENEA':['Centro de Documentación de Cristina Enea','Centro de Recursos Medio Ambientales de Cristina Enea (Donostia)'],
+  'UDAL LIBURUTEGI NAGUSIKO HAUR SAILA':['Biblioteca Central Infantil','Haur Liburutegi Nagusia'],
   'UDAL LIBURUTEGI NAGUSIA':['Biblioteca Municipal Central de San Sebastián'],
 };
-export const venueCatalogueVersion='venue-registry-v1-'+createHash('sha256').update(JSON.stringify([snapshot,verifiedAddresses,aliases])).digest('hex').slice(0,16);
+const tabakaleraRooms=new Set(['Sala 1','Sala 2','Zinea','Zinema','Cine','Medialab','Sala de Exposiciones','Erakusketa Aretoa','Sala de exposiciones 2','Erakusketa aretoa 2','Patioa','Espacio de artistas','Artisten Gunea','Laboratorio de cine y audiovisual','Zine eta ikus-entzunezko laborategia','3ª Planta','3. solairua'].map(venueKey));
+export const venueCatalogueVersion='venue-registry-v1-'+createHash('sha256').update(JSON.stringify([snapshot,verifiedAddresses,aliases,[...tabakaleraRooms]])).digest('hex').slice(0,16);
 export function syncVenueCatalogue(database:Database.Database) {
   const put=database.prepare(`INSERT INTO venues(id,name_es,name_eu,address_es,address_eu,latitude,longitude,neighbourhood,source_url,source_license,status,updated_at)
     VALUES (@id,@nameEs,@nameEu,@addressEs,@addressEu,@latitude,@longitude,@neighbourhood,@sourceUrl,@licence,'located',@now)
@@ -78,7 +80,7 @@ export function linkEventVenues(database:Database.Database,events:VenueEvent[]) 
       if(located.length===1)ids=[located[0].id];
     }
     // Tabakalera's room names are only aliases within that organiser, never globally.
-    if((!ids.length||ids.every(id=>id.startsWith('unresolved-')))&&event.source==='tabakalera'&&names.some(name=>['sala 1','sala 2','zinea','zinema','cine'].includes(venueKey(name))))ids=[venueId('TABAKALERA')];
+    if((!ids.length||ids.every(id=>id.startsWith('unresolved-')))&&event.source==='tabakalera'&&names.some(name=>tabakaleraRooms.has(venueKey(name))))ids=[venueId('TABAKALERA')];
     if(!ids.length) {
       const name=names[0]||'Donostia',id='unresolved-'+createHash('sha256').update(venueKey(name)).digest('hex').slice(0,20);
       placeholder.run(id,name,names[1]||name,new Date().toISOString());
