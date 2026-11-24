@@ -58,3 +58,35 @@ test('calendar uses Madrid local time and exclusive all-day end dates',()=>{
   assert.match(allDay,/DTEND;VALUE=DATE:20990104/);
   for(const line of allDay.split('\r\n'))assert.ok(Buffer.byteLength(line)<=75);
 });
+
+test('venue aliases link bilingual events to official coordinates and neighbourhoods',()=>{
+  const event=parseItem(fixtures[0]);event.id='kk-999001';event.externalId='999001';
+  event.translations.es.place='Teatro Victoria Eugenia';event.translations.eu.place='Victoria Eugenia Antzokia';
+  storeEvents([event]);storeEvents([event]);
+  const rows=db().prepare(`SELECT v.* FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?`).all(event.id) as {latitude:number;longitude:number;neighbourhood:string;source_url:string}[];
+  assert.equal(rows.length,1);assert.equal(rows[0].latitude,43.3227142909);assert.equal(rows[0].longitude,-1.9806616635);
+  assert.equal(rows[0].neighbourhood,'ERDIALDEA');assert.match(rows[0].source_url,/donostia.eus/);
+  event.translations.es.place='Tabakalera';event.translations.eu.place='Tabakalera';storeEvents([event]);
+  const moved=db().prepare('SELECT v.neighbourhood FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?').get(event.id) as {neighbourhood:string};
+  assert.equal(moved.neighbourhood,'EGIA');assert.equal(getEvent(event.id,'es')?.id,event.id);
+});
+test('unknown and generic locations retain names without guessed coordinates',()=>{
+  for(const [i,name] of ['Donostia','Unlisted venue','Tabakalera, Kursaal y otros espacios'].entries()){
+    const event=parseItem(fixtures[0]);event.id=`kk-9991${i}`;event.externalId=`9991${i}`;
+    event.translations.es.place=name;event.translations.eu.place=name;storeEvents([event]);
+    const venue=db().prepare('SELECT v.* FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?').get(event.id) as {name_es:string;latitude:null;longitude:null;neighbourhood:null;status:string};
+    assert.equal(venue.name_es,name);assert.equal(venue.latitude,null);assert.equal(venue.longitude,null);assert.equal(venue.neighbourhood,null);assert.equal(venue.status,'unresolved');
+  }
+});
+test('generic room names resolve only within Tabakalera',()=>{
+  const event=parseItem(fixtures[0]);event.id='kk-999200';event.externalId='999200';event.source='kulturklik';
+  event.translations.es.place='Sala 1';event.translations.eu.place='Sala 1';storeEvents([event]);
+  const lookup=()=>db().prepare('SELECT v.status,v.neighbourhood FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?').get(event.id) as {status:string;neighbourhood:string|null};
+  assert.equal(lookup().status,'unresolved');event.source='tabakalera';storeEvents([event]);
+  assert.equal(lookup().neighbourhood,'EGIA');
+});
+test('verified addresses can retain a neighbourhood without inventing GPS coordinates',()=>{
+  const event=parseItem(fixtures[0]);event.id='kk-999300';event.externalId='999300';event.translations.es.place='Dabadaba';event.translations.eu.place='Dabadaba';storeEvents([event]);
+  const venue=db().prepare('SELECT v.* FROM event_venues ev JOIN venues v ON v.id=ev.venue_id WHERE ev.event_id=?').get(event.id) as {address_es:string;neighbourhood:string;latitude:null;longitude:null};
+  assert.match(venue.address_es,/Mundaiz 8/);assert.equal(venue.neighbourhood,'EGIA');assert.equal(venue.latitude,null);assert.equal(venue.longitude,null);
+});

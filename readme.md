@@ -149,3 +149,11 @@ The Node HTTP importer uses the server’s trusted CA bundle through `NODE_EXTRA
 Imports run every six hours at 00:15, 06:15, 12:15 and 18:15 **server time (UTC)**, with up to two minutes of delay. A daily online SQLite backup runs at 03:35 UTC. The health route returns HTTP 503 if the last successful import is over 36 hours old or no upcoming events remain. It is ready for an external uptime monitor; no external alert service is configured.
 
 To roll back, point `/opt/lacultureta/current` to a previous release and restart `lacultureta.service`. Database changes are additive. No legacy production database was present on this server, so no historical users or ratings were migrated.
+
+### Returning visitors and venues
+
+Swipes in either direction are kept in `lacultureta.swiped.v1` in the browser. They survive visits, languages, profiles, filters and event rescheduling. Undo removes the current decision. Saved plans remain available in Mis planes. Swipe history stays on the device; clearing site data removes it. Skips made before this release cannot be recovered.
+
+Cards open details from any point on the card, including the image, with Enter/Space support and drag suppression. The filter bar contains date and category dropdowns plus the extra filters button. Organiser is no longer a user filter.
+
+The SQLite venue registry stores bilingual aliases, addresses, optional longitude/latitude, neighbourhoods, sources and verification status. The municipal culture snapshot seeds verified points. Venue websites supply additional confirmed addresses. Existing events are backfilled and each import updates links. Unresolved places keep null location fields. No venue or neighbourhood filter is added by this change. See [venue data and attribution](web/src/data/venues/README.md).

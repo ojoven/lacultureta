@@ -1,0 +1,15 @@
+[
+  {
+    "id": "dabadaba", "name": "Dabadaba", "aliases": ["Dabadaba"],
+    "address": "Mundaiz 8, bajo, 20012 Donostia", "neighbourhood": "EGIA",
+    "sourceUrl": "https://dabadabass.com/eu_ES/contactus",
+    "neighbourhoodSourceUrl": "https://dabadabass.com/reservas-y-eventos",
+    "checkedAt": "2026-11-24", "note": "Official venue address and neighbourhood. Coordinates have not been verified."
+  },
+  {
+    "id": "altxerri", "name": "Altxerri Jazz Bar", "aliases": ["Altxerri Jazz Bar", "Altxerri Jazz Club", "Altxerri Jazz&Club"],
+    "address": "Erregina Erregeordea kalea 2, 20003 Donostia", "neighbourhood": null,
+    "sourceUrl": "https://altxerri.com/", "neighbourhoodSourceUrl": null,
+    "checkedAt": "2026-11-24", "note": "Official venue address. The embedded map viewport centre is not treated as a verified venue coordinate."
+  }
+]

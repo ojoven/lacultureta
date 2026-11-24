@@ -9,7 +9,7 @@ export async function generateMetadata({params}:{params:Promise<{lang:Language}>
 }
 export default async function Page({params,searchParams}:{params:Promise<{lang:Language}>;searchParams:Promise<Record<string,string|string[]|undefined>>}){
   const {lang}=await params;const search=await searchParams;
-  const parsed=querySchema.safeParse({...search,lang});
+  const parsed=querySchema.safeParse({...search,lang,source:''});
   const query={...(parsed.success?parsed.data:querySchema.parse({lang})),q:''};
   return <Discovery language={lang} initial={listEvents(search.saved==='1'?{...query,ids:''}:query)} initialQuery={query} initialSaved={search.saved==='1'}/>;
 }

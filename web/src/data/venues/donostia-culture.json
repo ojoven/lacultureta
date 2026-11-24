@@ -1,0 +1,1046 @@
+{
+  "type": "FeatureCollection",
+  "name": "KulturEkipamenduak",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9787943872,
+          43.3242860625
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "KURSAAL",
+        "NomEdifici": "KURSAAL",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "05230001",
+        "IzenKalea": " Zurriola Hiribidea",
+        "NomCalle": "Zurriola, Avenida de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "GROS",
+        "X_etrs89": 582797.97,
+        "Y_etrs89": 4797333.54
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9754412578,
+          43.316554833
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "TABAKALERA",
+        "NomEdifici": "TABAKALERA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "02685001",
+        "IzenKalea": "Andre Zigarrogileen Plaza",
+        "NomCalle": "Cigarreras, Plaza de las",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "EGIA",
+        "X_etrs89": 583080.38,
+        "Y_etrs89": 4796478.27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0109819403,
+          43.3087475454
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EHU/UPV- CARLOS SANTA MARIA ZENTROA",
+        "NomEdifici": "EHU/UPV- CARLOS SANTA MARIA ZENTROA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "08130002",
+        "IzenKalea": " Elhuyar Plaza",
+        "NomCalle": "Elhuyar, Plaza de",
+        "Portal": "002",
+        "Ataria": "002",
+        "Auzoa": "IBAETA",
+        "X_etrs89": 580208.67,
+        "Y_etrs89": 4795576.48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.984899077,
+          43.2906372322
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EUREKA! ZIENTZIA MUSEOA",
+        "NomEdifici": "EUREKA! ZIENTZIA MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "06830045",
+        "IzenKalea": " Mikeletegi Pasealekua",
+        "NomCalle": "Mikeletegi, Paseo de",
+        "Portal": "045",
+        "Ataria": "045",
+        "Auzoa": "MIRAMON - ZORROAGA",
+        "X_etrs89": 582348.43,
+        "Y_etrs89": 4793590.62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9848146067,
+          43.3249993743
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "SAN TELMO MUSEOA",
+        "NomEdifici": "SAN TELMO MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "07010001",
+        "IzenKalea": " Zuloaga Plaza",
+        "NomCalle": "Zuloaga, Plaza de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582308.9,
+        "Y_etrs89": 4797406.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0055733604,
+          43.312206293
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ANTIGUO BERRI ZINEAK",
+        "NomEdifici": "ANTIGUO BERRI ZINEAK",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "05100003",
+        "IzenKalea": " Zarautz Kalea",
+        "NomCalle": "Zarautz, Calle de",
+        "Portal": "003",
+        "Ataria": "003",
+        "Auzoa": "ANTIGUA",
+        "X_etrs89": 580642.73,
+        "Y_etrs89": 4795965.81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9854040305,
+          43.3245497904
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "SAN TELMO MUSEOA",
+        "NomEdifici": "SAN TELMO MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "04410004",
+        "IzenKalea": " Santa Korda Kalea",
+        "NomCalle": "Santa Corda, Calle de",
+        "Portal": "004",
+        "Ataria": "004",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582261.71,
+        "Y_etrs89": 4797356.29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9806616635,
+          43.3227142909
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "VICTORIA EUGENIA ANTZOKIA",
+        "NomEdifici": "VICTORIA EUGENIA ANTZOKIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "03970001",
+        "IzenKalea": " Argentinako Errepublikaren Pasealekua",
+        "NomCalle": "República Argentina, Paseo de la",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582648.71,
+        "Y_etrs89": 4797157.13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9891052568,
+          43.3249545553
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "HISTORIAREN ETXEA",
+        "NomEdifici": "HISTORIAREN ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "04890001",
+        "IzenKalea": " Urgull Mendia",
+        "NomCalle": "Urgull, Monte",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 581961.08,
+        "Y_etrs89": 4797397.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9919517023,
+          43.3059103926
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "AIETE KULTUR ETXEA",
+        "NomEdifici": "AIETE KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "00620063",
+        "IzenKalea": " Aiete Pasealekua",
+        "NomCalle": "Aiete, Paseo de",
+        "Portal": "063",
+        "Ataria": "063",
+        "Auzoa": "AIETE",
+        "X_etrs89": 581755.82,
+        "Y_etrs89": 4795279.85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9816259039,
+          43.3161001585
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "KOLDO MITXELENA KULTURUNEA",
+        "NomEdifici": "KOLDO MITXELENA KULTURUNEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "04880009",
+        "IzenKalea": " Urdaneta Kalea",
+        "NomCalle": "Urdaneta, Calle de",
+        "Portal": "009",
+        "Ataria": "009",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582579.48,
+        "Y_etrs89": 4796421.64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.968764931,
+          43.3191514266
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "GAZTESZENA-EGIA KULTUR ETXEA",
+        "NomEdifici": "GAZTESZENA-EGIA KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "02330022",
+        "IzenKalea": " Jaialai Kalea",
+        "NomCalle": "Jaialai, Calle de",
+        "Portal": "022",
+        "Ataria": "022",
+        "Auzoa": "EGIA",
+        "X_etrs89": 583618.2,
+        "Y_etrs89": 4796773.3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.970362821,
+          43.3258956723
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "OKENDO KULTUR ETXEA",
+        "NomEdifici": "OKENDO KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "01080002",
+        "IzenKalea": " Zemoria Kalea",
+        "NomCalle": "Zemoriya, Calle de",
+        "Portal": "002",
+        "Ataria": "002",
+        "Auzoa": "ATEGORRIETA - ULIA",
+        "X_etrs89": 583479.39,
+        "Y_etrs89": 4797520.69
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.970298564,
+          43.3256235737
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "OKENDO KULTUR ETXEA",
+        "NomEdifici": "OKENDO KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "03320007",
+        "IzenKalea": " Nafarroa Hiribidea",
+        "NomCalle": "Navarra, Avenida de",
+        "Portal": "007",
+        "Ataria": "007",
+        "Auzoa": "ATEGORRIETA - ULIA",
+        "X_etrs89": 583484.98,
+        "Y_etrs89": 4797490.53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.938732151,
+          43.3152443792
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ALTZA-LARRATXO KULTUR ETXEA",
+        "NomEdifici": "ALTZA-LARRATXO KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "02570055",
+        "IzenKalea": " Larratxo Pasealekua",
+        "NomCalle": "Larratxo, Paseo de",
+        "Portal": "055",
+        "Ataria": "055",
+        "Auzoa": "ALTZA",
+        "X_etrs89": 586058.95,
+        "Y_etrs89": 4796369.91
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9920830483,
+          43.32286017
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "AQUARIUM",
+        "NomEdifici": "AQUARIUM",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "01255001",
+        "IzenKalea": " Carlos Blasco De Imaz Plaza",
+        "NomCalle": "Carlos Blasco de Imaz, Plaza de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 581722.45,
+        "Y_etrs89": 4797162.09
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9856719333,
+          43.3224215068
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ANTZOKI ZAHARRA",
+        "NomEdifici": "ANTZOKI ZAHARRA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "03000001Y",
+        "IzenKalea": " Kale Nagusia",
+        "NomCalle": "Mayor, Calle",
+        "Portal": "01Y",
+        "Ataria": "01Y",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582242.86,
+        "Y_etrs89": 4797119.67
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9920241614,
+          43.3054570255
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "AIETEKO JAUREGIA",
+        "NomEdifici": "AIETEKO JAUREGIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "00620065",
+        "IzenKalea": " Aiete Pasealekua",
+        "NomCalle": "Aiete, Paseo de",
+        "Portal": "065",
+        "Ataria": "065",
+        "Auzoa": "AIETE",
+        "X_etrs89": 581750.55,
+        "Y_etrs89": 4795229.43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0022941557,
+          43.3123362714
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "LUGARITZ LIBURUTEGIA",
+        "NomEdifici": "LUGARITZ LIBURUTEGIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "02020020",
+        "IzenKalea": " Heriz Pasealekua",
+        "NomCalle": "Heriz, Paseo de",
+        "Portal": "020",
+        "Ataria": "020",
+        "Auzoa": "ANTIGUA",
+        "X_etrs89": 580908.49,
+        "Y_etrs89": 4795983.41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9389909303,
+          43.3152216628
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "LARRATXO LIBURUTEGIA",
+        "NomEdifici": "LARRATXO LIBURUTEGIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "00750022",
+        "IzenKalea": " Txirrita Bertsolariaren Pasealekua",
+        "NomCalle": "Bertsolari Txirrita, Paseo del",
+        "Portal": "022",
+        "Ataria": "022",
+        "Auzoa": "ALTZA",
+        "X_etrs89": 586038,
+        "Y_etrs89": 4796367.12
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9533461988,
+          43.3205853854
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "LARROTXENE",
+        "NomEdifici": "LARROTXENE",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "02160057",
+        "IzenKalea": " Intxaurrondo Kalea",
+        "NomCalle": "Intxaurrondo, Calle de",
+        "Portal": "057",
+        "Ataria": "057",
+        "Auzoa": "INTXAURRONDO",
+        "X_etrs89": 584866.44,
+        "Y_etrs89": 4796948.11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0002720563,
+          43.2854632833
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "CEMENTO REZOLA MUSEOA",
+        "NomEdifici": "CEMENTO REZOLA MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "06080046",
+        "IzenKalea": " Añorga Hiribidea",
+        "NomCalle": "Añorga, Avenida de",
+        "Portal": "046",
+        "Ataria": "046",
+        "Auzoa": "AÑORGA",
+        "X_etrs89": 581108.19,
+        "Y_etrs89": 4793000.99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9284023356,
+          43.3179086351
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ALTZA- CASARES KULTUR ETXEA",
+        "NomEdifici": "ALTZA- CASARES KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "01290001",
+        "IzenKalea": " Darieta Bidea",
+        "NomCalle": "Darieta, Camino de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ALTZA",
+        "X_etrs89": 586892.81,
+        "Y_etrs89": 4796676.49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9753650177,
+          43.3129222913
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "INGURUMEN BALIABIDEEN ETXEA-CRISTINA ENEA",
+        "NomEdifici": "INGURUMEN BALIABIDEEN ETXEA-CRISTINA ENEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "01380066",
+        "IzenKalea": " Mandasko Dukearen Pasealekua",
+        "NomCalle": "Duque de Mandas, Paseo del",
+        "Portal": "066",
+        "Ataria": "066",
+        "Auzoa": "EGIA",
+        "X_etrs89": 583091.51,
+        "Y_etrs89": 4796074.93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9591900702,
+          43.3298909254
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "NATURA EZAGUTZEKO ZENTROA",
+        "NomEdifici": "NATURA EZAGUTZEKO ZENTROA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "04830309",
+        "IzenKalea": " Ulia Pasealekua",
+        "NomCalle": "Ulia, Paseo de",
+        "Portal": "309",
+        "Ataria": "309",
+        "Auzoa": "ATEGORRIETA - ULIA",
+        "X_etrs89": 584379.72,
+        "Y_etrs89": 4797975.62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9850472402,
+          43.3231278052
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "UDAL LIBURUTEGI NAGUSIKO HAUR SAILA",
+        "NomEdifici": "UDAL LIBURUTEGI NAGUSIKO HAUR SAILA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "01730025",
+        "IzenKalea": " Fermín Calbetón Kalea",
+        "NomCalle": "Fermin Calbeton, Calle de",
+        "Portal": "025",
+        "Ataria": "025",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582292.56,
+        "Y_etrs89": 4797198.72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9847265965,
+          43.2913697823
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EUREKA! ZIENTZIA MUSEOA",
+        "NomEdifici": "EUREKA! ZIENTZIA MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "06830047",
+        "IzenKalea": " Mikeletegi Pasealekua",
+        "NomCalle": "Mikeletegi, Paseo de",
+        "Portal": "047",
+        "Ataria": "047",
+        "Auzoa": "MIRAMON - ZORROAGA",
+        "X_etrs89": 582361.43,
+        "Y_etrs89": 4793672.14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9847806399,
+          43.3258358699
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ARGAZKILARI ELKARTEA MUSEOA",
+        "NomEdifici": "ARGAZKILARI ELKARTEA MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "04230027",
+        "IzenKalea": " San Joan Kalea",
+        "NomCalle": "San Juan, Calle de",
+        "Portal": "027",
+        "Ataria": "027",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582310.52,
+        "Y_etrs89": 4797499.73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.990954219,
+          43.3229506859
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EUSKAL ITSAS MUSEOA",
+        "NomEdifici": "EUSKAL ITSAS MUSEOA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "MUSEOA",
+        "Subtipo": "MUSEO",
+        "Indizea": "03250024",
+        "IzenKalea": " Kaiko Pasealekua",
+        "NomCalle": "Muelle, Paseo del",
+        "Portal": "024",
+        "Ataria": "024",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 581813.86,
+        "Y_etrs89": 4797173.25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.927842118,
+          43.3177238716
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ALTZA- TOMASENE KULTUR ETXEA",
+        "NomEdifici": "ALTZA- TOMASENE KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "01290006",
+        "IzenKalea": " Darieta Bidea",
+        "NomCalle": "Darieta, Camino de",
+        "Portal": "006",
+        "Ataria": "006",
+        "Auzoa": "ALTZA",
+        "X_etrs89": 586938.5,
+        "Y_etrs89": 4796656.55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.984155194,
+          43.3252053517
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "PRÍNCIPE ZINEAK",
+        "NomEdifici": "PRÍNCIPE ZINEAK",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "ZINE/ANTZOKIA",
+        "Subtipo": "CINE/TEATRO",
+        "Indizea": "04230010",
+        "IzenKalea": " San Joan Kalea",
+        "NomCalle": "San Juan, Calle de",
+        "Portal": "010",
+        "Ataria": "010",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582362.08,
+        "Y_etrs89": 4797430.33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9724781188,
+          43.3019582199
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "AMARA-ERNEST LLUCH KULTUR ETXEA",
+        "NomEdifici": "AMARA-ERNEST LLUCH KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "06060007",
+        "IzenKalea": " Anoeta Pasealekua",
+        "NomCalle": "Anoeta, Paseo de",
+        "Portal": "007",
+        "Ataria": "007",
+        "Auzoa": "AMARABERRI",
+        "X_etrs89": 583340.6,
+        "Y_etrs89": 4794860.19
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.0022859955,
+          43.3122943378
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "LUGARITZ KULTUR ETXEA",
+        "NomEdifici": "LUGARITZ KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "02020018",
+        "IzenKalea": " Heriz Pasealekua",
+        "NomCalle": "Heriz, Paseo de",
+        "Portal": "018",
+        "Ataria": "018",
+        "Auzoa": "ANTIGUA",
+        "X_etrs89": 580926.86,
+        "Y_etrs89": 4795980.99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9851258889,
+          43.3214396034
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "UDAL LIBURUTEGI NAGUSIA",
+        "NomEdifici": "UDAL LIBURUTEGI NAGUSIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "06020001",
+        "IzenKalea": " Alderdieder Parkea",
+        "NomCalle": "Alderdieder, Parque de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 582288.46,
+        "Y_etrs89": 4797011.16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.965405971,
+          43.3120046591
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "LOIOLA KULTUR ETXEA",
+        "NomEdifici": "LOIOLA KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "04510017",
+        "IzenKalea": " Aralar Mendilerroaren Kalea",
+        "NomCalle": "Sierra de Aralar, Calle de la",
+        "Portal": "017",
+        "Ataria": "017",
+        "Auzoa": "LOIOLA",
+        "X_etrs89": 583900.39,
+        "Y_etrs89": 4795982.98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9688737339,
+          43.3188753055
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EGIA KULTUR ETXEA",
+        "NomEdifici": "EGIA KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "00690021",
+        "IzenKalea": " Baztan Kalea",
+        "NomCalle": "Baztan, Calle del",
+        "Portal": "021",
+        "Ataria": "021",
+        "Auzoa": "EGIA",
+        "X_etrs89": 583608.82069824,
+        "Y_etrs89": 4796743.1268088
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9542876547,
+          43.2933367573
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "ETXARRIENE KULTUR ETXEA",
+        "NomEdifici": "ETXARRIENE KULTUR ETXEA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "01925001",
+        "IzenKalea": " Ander Arzelus Luzear Plaza",
+        "NomCalle": "Ander Arzelus Luzear, Plaza de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "MARTUTENE",
+        "X_etrs89": 584827.99,
+        "Y_etrs89": 4793921.04
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9531680161,
+          43.3134784902
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "INTXAURRONDO",
+        "NomEdifici": "INTXAURRONDO",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "KULTUR ETXE",
+        "Subtipo": "CASA CULTURA",
+        "Indizea": "02555001",
+        "IzenKalea": " Félix Gabilondo Plaza",
+        "NomCalle": "Félix Gabilondo, Plaza de",
+        "Portal": "001",
+        "Ataria": "001",
+        "Auzoa": "INTXAURRONDO",
+        "X_etrs89": 584896.17,
+        "Y_etrs89": 4796159.72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9688543037,
+          43.318833628
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "EGIA LIBURUTEGIA",
+        "NomEdifici": "EGIA LIBURUTEGIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "00690021",
+        "IzenKalea": " Baztan Kalea",
+        "NomCalle": "Baztan, Calle del",
+        "Portal": "021",
+        "Ataria": "021",
+        "Auzoa": "EGIA",
+        "X_etrs89": 583608.82,
+        "Y_etrs89": 4796743.13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.9920322593,
+          43.3234223889
+        ]
+      },
+      "properties": {
+        "IzenEraiki": "HAUR LIBURUTEGIA",
+        "NomEdifici": "HAUR LIBURUTEGIA",
+        "Mota": "KULTURA",
+        "Tipo": "CULTURAL",
+        "AzpiMota": "LIBURUTEGI",
+        "Subtipo": "BIBLIOTECA",
+        "Indizea": "04890987",
+        "IzenKalea": " Urgull Mendia",
+        "NomCalle": "Urgull, Monte",
+        "Portal": "987",
+        "Ataria": "987",
+        "Auzoa": "ERDIALDEA",
+        "X_etrs89": 58172582,
+        "Y_etrs89": 479722458
+      }
+    }
+  ]
+}

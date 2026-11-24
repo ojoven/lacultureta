@@ -44,3 +44,13 @@ test('local development is excluded and an unavailable or throwing analytics SDK
   environment('lacultureta.com',()=>{throw new Error('Tracker blocked');});
   assert.doesNotThrow(()=>track('event_saved',{event_id:'kk-1'}));
 });
+
+test('swipe decisions survive serialization and time changes, with invalid records removed',async()=>{
+  const {readSwipeHistory,rememberSwipe}=await import('../src/lib/swipe-history');
+  const first={id:'kk-123',endDate:'2099-04-02'};
+  const history=rememberSwipe(rememberSwipe([],first),{id:'kk-456',endDate:'2099-04-03'});
+  assert.deepEqual(readSwipeHistory(JSON.stringify(history)),history);
+  assert.deepEqual(readSwipeHistory(JSON.stringify([...history,first,{id:'kk-789',endDate:'2099-02-30'},{id:'not-an-event',endDate:'2099-04-03'}])),history);
+  assert.deepEqual(readSwipeHistory('{broken'),[]);
+  assert.deepEqual(readSwipeHistory(JSON.stringify([{id:'kk-1',endDate:'2020-01-01'}])),[{id:'kk-1',endDate:'2020-01-01'}]);
+});

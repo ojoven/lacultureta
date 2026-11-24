@@ -7,6 +7,10 @@
 .preference-dialog { width: min(480px, calc(100% - 24px)); max-height: min(90dvh, 820px); border: 1px solid var(--line); border-radius: 24px; padding: 25px; color: var(--ink); background: var(--paper); overflow-y: auto; overscroll-behavior: contain; margin: auto; box-shadow: 0 20px 90px #12201245; }
 .preference-dialog::backdrop { background: #0b1b1977; backdrop-filter: blur(5px); }
 .preference-dialog .dialog-heading { padding: 0; margin-bottom: 9px; position: sticky; top: 0; background: var(--paper); z-index: 3; }
+.profile-dialog { padding: 0; overflow: hidden; }
+.profile-dialog[open] { display: flex; flex-direction: column; }
+.profile-dialog .dialog-heading { position: relative; top: auto; flex: 0 0 auto; padding: 20px 25px 16px; margin: 0; border-bottom: 1px solid var(--line); }
+.profile-dialog .preference-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 18px 25px 22px; }
 .preference-dialog .dialog-heading h2 { display: flex; align-items: center; gap: 9px; font-size: 25px; letter-spacing: -.8px; }
 .preference-intro { font-size: 15px; color: var(--muted); line-height: 1.5; margin: 0 0 20px; }
 .profile-options { display: grid; gap: 9px; }
@@ -51,6 +55,7 @@
 .notification-never { margin-top: 8px; font-size: 11px; align-self: flex-start; min-height: 30px; }
 @media(max-width: 480px) {
   .preference-dialog { padding: 20px; max-height: 89dvh; border-radius: 21px; }.preference-dialog .dialog-heading h2 { font-size: 23px; }
+  .profile-dialog { padding: 0; }.profile-dialog .dialog-heading { padding: 17px 20px 14px; }.profile-dialog .preference-body { padding: 16px 20px 20px; }
   .profile-status { font-size: 11px; }.notification-invitation { padding: 22px; }
 }
 @media(max-height: 740px) {

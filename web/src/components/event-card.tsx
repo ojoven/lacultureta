@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, type CSSProperties, type PointerEventHandler } from 'react';
-import { Asterisk, Music2, Clapperboard, Drama, Palette, BookOpen, MessagesSquare, Hammer, Sparkles, CalendarDays, MapPin, ExternalLink, Heart, X } from 'lucide-react';
+import { useRef, useState, type CSSProperties, type PointerEventHandler } from 'react';
+import { Asterisk, Music2, Clapperboard, Drama, Palette, BookOpen, MessagesSquare, Hammer, Sparkles, CalendarDays, MapPin, Info, Heart, X } from 'lucide-react';
 import { dictionary, eventDate } from '@/lib/i18n';
 import type { CultureEvent, Language } from '@/lib/types';
 import { PaperIllustration } from './paper-illustration';
@@ -31,13 +31,20 @@ export function EventCard({ event, language, depth, drag, leaving, interaction, 
 }) {
   const t = dictionary(language);
   const active = depth === 0;
+  const pointer = useRef<{x:number;y:number;moved:boolean}|null>(null);
   const pose=cardPose(depth,drag,!!leaving);
   const transform = active ? `translateX(${drag}px) rotate(${drag / 24}deg)` : `translateY(${pose.offset}px) scale(${pose.scale})`;
   const transition=!active&&(leaving||drag===0)?`transform ${CARD_EXIT_MS}ms cubic-bezier(.2,.7,.3,1)`:'none';
   return <article
     className={`discovery-card deck-event ${active && leaving ? 'leaving-' + leaving : ''}`}
     data-depth={depth} data-event-id={event.id} aria-hidden={!active} inert={!active}
-    {...(active ? interaction : {})}
+    role="button" tabIndex={active ? 0 : -1} aria-label={`${t.details}: ${event.title}`}
+    onPointerDown={active?e=>{pointer.current={x:e.clientX,y:e.clientY,moved:false};interaction?.onPointerDown?.(e);}:undefined}
+    onPointerMove={active?e=>{if(pointer.current&&Math.hypot(e.clientX-pointer.current.x,e.clientY-pointer.current.y)>8)pointer.current.moved=true;interaction?.onPointerMove?.(e);}:undefined}
+    onPointerUp={active?e=>interaction?.onPointerUp?.(e):undefined}
+    onPointerCancel={active?e=>{if(pointer.current)pointer.current.moved=true;interaction?.onPointerCancel?.(e);}:undefined}
+    onClick={active?()=>{if(!pointer.current?.moved&&!leaving)onDetails();}:undefined}
+    onKeyDown={active?e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();if(!leaving)onDetails();}}:undefined}
     style={{ zIndex: 5 - depth, transform, transition, '--drag-x': `${drag}px`, '--drag-angle': `${drag / 24}deg` } as CSSProperties}
   >
     <EventImage event={event} eager className="discovery-image" />
@@ -48,7 +55,7 @@ export function EventCard({ event, language, depth, drag, leaving, interaction, 
       <span className="card-source">{sourceNames[event.source]}</span>
       <h2>{event.title}</h2>
       <div className="card-meta"><span><CalendarDays size={16} />{eventDate(event.startDate, event.endDate, language)}{event.hours && ` · ${event.hours}`}</span><span><MapPin size={16} />{event.place}</span></div>
-      <button className="card-details" onClick={onDetails} tabIndex={active ? 0 : -1}>{t.details}<ExternalLink size={16} /></button>
+      <span className="card-details card-tap-hint"><Info size={15} />{t.cardHint}</span>
     </div>
   </article>;
 }

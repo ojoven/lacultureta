@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import { Asterisk, SlidersHorizontal, MapPin, CalendarDays, Heart, X, RotateCcw, Check, ExternalLink, ChevronDown, ChevronLeft, ChevronRight, Share2, LoaderCircle, Sparkles, Bell } from 'lucide-react';
 import { Header } from './header';
-import { EventCard, EventImage, WelcomeCard, categoryIcons, sourceNames, type CardInteraction } from './event-card';
+import { EventCard, EventImage, WelcomeCard, sourceNames, type CardInteraction } from './event-card';
 import { dictionary, eventDate } from '@/lib/i18n';
 import { categories, EVENT_ID_PATTERN, type CultureEvent, type EventPage, type Language } from '@/lib/types';
 import type { EventQuery } from '@/lib/events';
@@ -13,6 +13,7 @@ import { ProfileDialog, NotificationDialog, NotificationInvitation, personalisat
 import { PaperIllustration } from './paper-illustration';
 import { track, eventProperties } from '@/lib/analytics';
 import { CARD_EXIT_MS } from '@/lib/card-motion';
+import { swipeHistoryKey, readSwipeHistory, rememberSwipe, type SwipedPlan } from '@/lib/swipe-history';
 import './discovery.css';
 import './personalisation.css';
 import './papel.css';
@@ -24,14 +25,14 @@ const defaults: Record<string, string | number> = { profile:'all', category: 'al
 
 export function Discovery({ language, initial, initialQuery, initialSaved }: { language: Language; initial: EventPage; initialQuery: EventQuery; initialSaved: boolean }) {
   const t = dictionary(language);
-  const [query, setQuery] = useState({ ...initialQuery, q: '' });
+  const [query, setQuery] = useState({ ...initialQuery, q: '', source: '' as EventQuery['source'] });
   const [data, setData] = useState(initial);
   const [saved, setSaved] = useState<string[]>([]);
   const [savedView, setSavedView] = useState(initialSaved);
   const [savedIndex, setSavedIndex] = useState(0);
   const [welcome, setWelcome] = useState(!initialSaved);
   const [ready, setReady] = useState(false);
-  const [dismissed, setDismissed] = useState<string[]>([]);
+  const [dismissed, setDismissed] = useState<SwipedPlan[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false),[notificationOpen,setNotificationOpen]=useState(false);
   const [detail, setDetail] = useState<CultureEvent | null>(null);
@@ -46,7 +47,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
   const modal = useRef<HTMLDialogElement>(null);
   const filters = useRef<HTMLDialogElement>(null);
   const firstRequest = useRef(true);
-  const loadedQuery=useRef(JSON.stringify({...initialQuery,q:''})),lastImpression=useRef('');
+  const loadedQuery=useRef(JSON.stringify({...initialQuery,q:'',source:''})),lastImpression=useRef('');
   const actionLock = useRef(false);
   const animationTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const savedIds = savedView ? saved.join(',') : '';
@@ -56,6 +57,9 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
     try {
       const ids = JSON.parse(localStorage.getItem(storageKey) || '[]');
       if (Array.isArray(ids)) setSaved(ids.filter((id: unknown) => typeof id === 'string' && EVENT_ID_PATTERN.test(id)).slice(0, 100));
+    } catch {}
+    try {
+      setDismissed(readSwipeHistory(localStorage.getItem(swipeHistoryKey)));
       if (localStorage.getItem(welcomeKey)) setWelcome(false);
       if(!new URLSearchParams(window.location.search).has('profile')) {
         const stored=localStorage.getItem(profileKey) as ProfileId|null;
@@ -67,8 +71,10 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
   }, []);
   useEffect(() => { if (ready) { try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch {} } }, [saved, ready]);
   useEffect(()=>{if(ready)try{localStorage.setItem(profileKey,query.profile);}catch{}},[ready,query.profile]);
+  useEffect(()=>{if(ready)try{localStorage.setItem(swipeHistoryKey,JSON.stringify(dismissed));}catch{}},[ready,dismissed]);
   useEffect(() => {
     const listener = (event: StorageEvent) => {
+      if(event.key===swipeHistoryKey){setDismissed(readSwipeHistory(event.newValue));return;}
       if (event.key !== storageKey) return;
       try { const ids = JSON.parse(event.newValue || '[]'); if (Array.isArray(ids)) setSaved(ids.filter((id: unknown) => typeof id === 'string' && EVENT_ID_PATTERN.test(id)).slice(0, 100)); } catch {}
     };
@@ -99,12 +105,13 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
     return () => controller.abort();
   }, [query, savedView, ready, language, reload, savedIds]);
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 2200); return () => clearTimeout(timer); }, [toast]);
-  useEffect(() => { setDismissed([]); setSavedIndex(0); undo.current = null; }, [query.profile, query.category, query.period, query.place, query.source, query.free, savedView]);
+  useEffect(() => { setSavedIndex(0); undo.current = null; }, [query.profile, query.category, query.period, query.place, query.source, query.free, savedView]);
   useEffect(() => { setSavedIndex(index => Math.min(index, Math.max(0, data.events.length - 1))); }, [data.events.length]);
   useEffect(() => { if (detail) modal.current?.showModal(); else modal.current?.close(); }, [detail]);
   useEffect(() => { if (filterOpen) filters.current?.showModal(); else filters.current?.close(); }, [filterOpen]);
 
-  const visible = savedView ? data.events.slice(savedIndex) : data.events.filter(e => !dismissed.includes(e.id));
+  const dismissedIds=new Set(dismissed.map(item=>item.id));
+  const visible = savedView ? data.events.slice(savedIndex) : ready?data.events.filter(e => !dismissedIds.has(e.id)&&!saved.includes(e.id)):[];
   const current = visible[0];
   const showingWelcome = welcome && !savedView;
   const showingInvitation=notifications.invite&&!showingWelcome&&!savedView;
@@ -151,7 +158,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
       else {
         track(like?'event_saved':'event_skipped',{...eventProperties(current),method,profile:query.profile,status:like&&saved.includes(current.id)?'already_saved':'new'});
         if (like) { setSaved(ids => ids.includes(current.id) ? ids : [current.id, ...ids].slice(0, 100)); setToast(t.savedToast); }
-        setDismissed(ids => [...ids, current.id]);
+        setDismissed(history => rememberSwipe(history,current));
         notifications.recordCard();
       }
       setDrag(0); setLeaving(null); actionLock.current = false;
@@ -182,7 +189,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
     },
     onPointerCancel: () => { gesture.current = null; setDrag(0); },
   };
-  const restore = () => { if (!undo.current || blocked) return; const { id, wasSaved } = undo.current;track('event_undo',{event_id:id}); setDismissed(ids => ids.filter(i => i !== id)); if (!wasSaved) setSaved(ids => ids.filter(i => i !== id)); undo.current = null; };
+  const restore = () => { if (!undo.current || blocked) return; const { id, wasSaved } = undo.current;track('event_undo',{event_id:id}); setDismissed(history => history.filter(item => item.id !== id)); if (!wasSaved) setSaved(ids => ids.filter(i => i !== id)); undo.current = null; };
   const navigate = (savedPage: boolean,view=savedPage?'saved':'discover') => {
     track('navigation_changed',{view,profile:query.profile});
     update({ category: 'all', period: savedPage?'all':query.profile==='family'?'weekend':'all', place: '', source: '', free: '0' },false);
@@ -194,9 +201,9 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
     const url = `${window.location.origin}/${language}/eventos/${event.id}`;
     try { if (navigator.share) {await navigator.share({ title: event.title, url });track('event_shared',{...eventProperties(event),method:'native'});} else { await navigator.clipboard.writeText(url); setToast(t.copied);track('event_shared',{...eventProperties(event),method:'clipboard'}); } } catch {}
   };
-  const filterCount = [query.place, query.source, query.free === '1'].filter(Boolean).length;
+  const filterCount = [query.place, query.free === '1'].filter(Boolean).length;
   const languageParams = new URLSearchParams();
-  for (const key of ['profile','category', 'period', 'source', 'free'] as const) if (query[key] && query[key] !== defaults[key]) languageParams.set(key, query[key]);
+  for (const key of ['profile','category', 'period', 'free'] as const) if (query[key] && query[key] !== defaults[key]) languageParams.set(key, query[key]);
   if (savedView) languageParams.set('saved', '1');
   const price = (event: CultureEvent) => event.isFree ? t.free : event.price || t.priceUnknown;
   const deckEvents = visible.slice(0, specialCard ? 2 : 3);
@@ -206,7 +213,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
     <Header language={language} saved={savedView} savedCount={saved.length} onNavigate={navigate} languageSuffix={languageParams.size ? '?' + languageParams : ''} />
     <section className="app-filterbar" aria-label={t.filters}>
       <div className="date-select"><CalendarDays size={16} /><select aria-label={t.date} value={query.period} onChange={event => update({ period: event.target.value as EventQuery['period'] })}><option value="all">{t.date}</option><option value="today">{t.today}</option><option value="tomorrow">{t.tomorrow}</option><option value="weekend">{t.weekend}</option><option value="week">{t.week}</option></select><ChevronDown size={14} /></div>
-      <div className="category-row" role="group" aria-label={language === 'eu' ? 'Kategoriak' : 'Categorías'}>{availableCategories.map(category => { const Icon = categoryIcons[category]; return <button key={category} aria-pressed={query.category === category} className={`category-pill ${query.category === category ? 'selected' : ''}`} onClick={() => update({ category })}><Icon size={16} />{t.categories[category]}</button>; })}</div>
+      <div className="date-select category-select"><Sparkles size={16}/><select aria-label={t.category} value={query.category} onChange={event=>update({category:event.target.value as EventQuery['category']})}>{availableCategories.map(category=><option key={category} value={category}>{t.categories[category]}</option>)}</select><ChevronDown size={14}/></div>
       <button className={`filter-button ${filterCount ? 'has-filters' : ''}`} aria-label={t.filters} onClick={() => {track('filters_opened');setFilterOpen(true);}}><SlidersHorizontal size={19} />{filterCount > 0 && <span>{filterCount}</span>}</button>
     </section>
 
@@ -215,7 +222,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
       <section className="app-deck" aria-label={savedView ? t.saved : t.discover}>
         {error ? <div className="empty-state"><h2>{t.error}</h2><button className="primary-button" onClick={() => setReload(n => n + 1)}>{t.retry}</button></div> : loading && !current && !specialCard ? <div className="empty-state" role="status" aria-label={language === 'eu' ? 'Planak kargatzen' : 'Cargando planes'}><LoaderCircle className="spinning" size={30} /></div> : current || specialCard ? <>
           <div className="card-stack">
-            {deckEvents.map((event, index) => <EventCard key={event.id} event={event} language={language} depth={index + (specialCard ? 1 : 0)} drag={drag} leaving={leaving} interaction={interaction} onDetails={() => openDetails(event)} />).reverse()}
+            {deckEvents.map((event, index) => <EventCard key={event.id} event={event} language={language} depth={index + (specialCard ? 1 : 0)} drag={drag} leaving={leaving} interaction={interaction} onDetails={() => {if(!blocked&&!actionLock.current)openDetails(event);}} />).reverse()}
             {showingWelcome && <WelcomeCard language={language} drag={drag} leaving={leaving} interaction={interaction} />}
             {showingInvitation&&<NotificationInvitation controls={notifications} language={language} onSettings={()=>openNotifications('invitation')}/>}
           </div>
@@ -230,7 +237,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
               <button className="save-button" disabled={blocked} onClick={() => rate(true)}><Heart size={22} /><span>{t.save}</span></button>
             </>}
           </div>
-        </> : <div className="empty-state"><Sparkles size={36} /><h2>{savedView ? t.emptySaved : data.total ? t.caughtUp : t.noEvents}</h2><p>{savedView ? t.emptySavedText : data.total ? t.caughtUpText : t.noEventsText}</p><button className="primary-button" disabled={loading} onClick={() => { if (savedView) navigate(false); else if (query.page < data.pages) setQuery(q => ({ ...q, page: q.page + 1 })); else { setDismissed([]); reset(); } }}>{query.page < data.pages && !savedView ? t.loadMore : t.restart}</button></div>}
+        </> : <div className="empty-state"><Sparkles size={36} /><h2>{savedView ? t.emptySaved : data.total ? t.caughtUp : t.noEvents}</h2><p>{savedView ? t.emptySavedText : data.total ? t.caughtUpText : t.noEventsText}</p><button className="primary-button" disabled={loading} onClick={() => { if (savedView) navigate(false); else if (query.page < data.pages) setQuery(q => ({ ...q, page: q.page + 1 })); else reset(); }}>{query.page < data.pages && !savedView ? t.loadMore : t.restart}</button></div>}
       </section>
     </main>
 
@@ -248,7 +255,6 @@ export function Discovery({ language, initial, initialQuery, initialSaved }: { l
       <div className="dialog-heading"><h2 id="filters-title">{t.filters}</h2><button autoFocus className="icon-button" aria-label={t.close} onClick={() => setFilterOpen(false)}><X /></button></div>
       <div className="filter-fields">
         <label>{t.place}<span className="select-wrapper"><select value={query.place} onChange={e => update({ place: e.target.value })}><option value="">{t.allPlaces}</option>{initial.places.map(place => <option key={place}>{place}</option>)}</select><ChevronDown size={17} /></span></label>
-        <label>{t.source}<span className="select-wrapper"><select value={query.source} onChange={e => update({ source: e.target.value as EventQuery['source'] })}><option value="">{t.allSources}</option><option value="donostia-kultura">Donostia Kultura</option><option value="tabakalera">Tabakalera</option><option value="kulturklik">Kulturklik</option></select><ChevronDown size={17} /></span></label>
         <label className="checkbox-label"><input type="checkbox" checked={query.free === '1'} onChange={e => update({ free: e.target.checked ? '1' : '0' })} />{t.onlyFree}</label>
         <button className="primary-button" onClick={() => setFilterOpen(false)}>{t.apply}</button><button className="text-button" onClick={reset}>{t.reset}</button>
       </div>

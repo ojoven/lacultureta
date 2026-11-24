@@ -2,6 +2,7 @@ import Database from 'better-sqlite3';
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { ImportedEvent } from './types';
+import { syncVenueCatalogue, linkEventVenues, venueCatalogueVersion } from './venues';
 
 let connection: Database.Database | undefined;
 export function db() {
@@ -30,6 +31,20 @@ export function db() {
       PRIMARY KEY(event_id, language)
     );
     CREATE INDEX IF NOT EXISTS translations_language ON event_translations(language, place);
+    CREATE TABLE IF NOT EXISTS venues (
+      id TEXT PRIMARY KEY, name_es TEXT NOT NULL, name_eu TEXT NOT NULL,
+      address_es TEXT, address_eu TEXT, latitude REAL, longitude REAL, neighbourhood TEXT,
+      source_url TEXT, source_license TEXT, status TEXT NOT NULL, updated_at TEXT NOT NULL,
+      CHECK ((latitude IS NULL AND longitude IS NULL) OR (latitude BETWEEN -90 AND 90 AND longitude BETWEEN -180 AND 180))
+    );
+    CREATE INDEX IF NOT EXISTS venues_neighbourhood ON venues(neighbourhood);
+    CREATE TABLE IF NOT EXISTS venue_aliases (alias TEXT PRIMARY KEY,venue_id TEXT NOT NULL REFERENCES venues(id));
+    CREATE TABLE IF NOT EXISTS event_venues (
+      event_id TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
+      venue_id TEXT NOT NULL REFERENCES venues(id), PRIMARY KEY(event_id,venue_id)
+    );
+    CREATE INDEX IF NOT EXISTS event_venues_venue ON event_venues(venue_id,event_id);
+    CREATE TABLE IF NOT EXISTS schema_migrations (name TEXT PRIMARY KEY);
     CREATE TABLE IF NOT EXISTS scraper_runs (
       id INTEGER PRIMARY KEY, source TEXT NOT NULL, started_at TEXT NOT NULL,
       finished_at TEXT, status TEXT NOT NULL, event_count INTEGER NOT NULL DEFAULT 0, error TEXT
@@ -63,6 +78,17 @@ export function db() {
     );
     CREATE TABLE IF NOT EXISTS push_provider_cooldowns (host TEXT PRIMARY KEY, until_at TEXT NOT NULL);
   `);
+  const database=connection;
+  database.transaction(()=>{
+    syncVenueCatalogue(database);
+    if(!database.prepare('SELECT 1 FROM schema_migrations WHERE name=?').get(venueCatalogueVersion)) {
+      const rows=database.prepare(`SELECT e.id,e.source,es.place AS esPlace,eu.place AS euPlace FROM events e
+        JOIN event_translations es ON es.event_id=e.id AND es.language='es'
+        JOIN event_translations eu ON eu.event_id=e.id AND eu.language='eu'`).all() as {id:string;source:ImportedEvent['source'];esPlace:string;euPlace:string}[];
+      linkEventVenues(database,rows.map(row=>({id:row.id,source:row.source,translations:{es:{place:row.esPlace},eu:{place:row.euPlace}}})));
+      database.prepare('INSERT INTO schema_migrations(name) VALUES (?)').run(venueCatalogueVersion);
+    }
+  })();
   // Existing events form the baseline; subscribing never announces the entire old catalogue.
   connection.prepare('INSERT OR IGNORE INTO event_first_seen SELECT id,? FROM events').run(new Date().toISOString());
   return connection;
@@ -86,6 +112,7 @@ export function storeEvents(events: ImportedEvent[]) {
       firstSeen.run(event.id, now);
       for (const language of ['es', 'eu'] as const) translationStatement.run({ id: event.id, language, ...event.translations[language] });
     }
+    linkEventVenues(database,events);
   })();
 }
 

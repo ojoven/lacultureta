@@ -5,6 +5,7 @@ import { mergeImports, type ExistingOrigin } from '../src/lib/scrapers/merge';
 import { SourceFetcher } from '../src/lib/scrapers/http';
 import { madridToday } from '../src/lib/dates';
 import { persistSnapshot, type ImportRun } from '../src/lib/scrapers/import-store';
+import { venueCoverage } from '../src/lib/venues';
 import type { ImportedEvent } from '../src/lib/types';
 
 async function main() {
@@ -42,7 +43,7 @@ async function main() {
     const origins=database.prepare('SELECT source,origin_key,event_id FROM event_origins').all() as ExistingOrigin[];
     const merged=mergeImports(fallback,direct,stored,origins);
     if(!dryRun)persistSnapshot(merged,results,started,today);
-    console.log(JSON.stringify({status:results.every(r=>r.status==='success')?'success':'partial',dryRun,events:merged.events.length,directEvents:direct.length,matchedExisting:merged.matched,newDirect:merged.newDirect,fetching:client.metrics,sources:results.map(({runId,...result})=>result)}));
+    console.log(JSON.stringify({status:results.every(r=>r.status==='success')?'success':'partial',dryRun,venues:dryRun?undefined:venueCoverage(database),events:merged.events.length,directEvents:direct.length,matchedExisting:merged.matched,newDirect:merged.newDirect,fetching:client.metrics,sources:results.map(({runId,...result})=>result)}));
     if(!results.some(result=>result.status==='success'))process.exitCode=1;
   } finally {await client.close();database.close();}
 }

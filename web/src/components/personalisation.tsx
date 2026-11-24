@@ -18,9 +18,9 @@ export function ProfileDialog({open,onClose,onChoose,onAbout,current,language}:{
   useEffect(()=>{if(open)dialog.current?.showModal();else dialog.current?.close();},[open]);
   return <dialog ref={dialog} className="preference-dialog profile-dialog" aria-labelledby="profiles-title" onClose={onClose} onClick={event=>{if(event.target===event.currentTarget)onClose();}}>
     <div className="dialog-heading"><h2 id="profiles-title">{t.profiles}</h2><button className="icon-button" autoFocus aria-label={t.close} onClick={onClose}><X/></button></div>
-    <p className="preference-intro">{t.profileIntro}</p>
+    <div className="preference-body"><p className="preference-intro">{t.profileIntro}</p>
     <div className="profile-options">{profileIds.map(id=><button key={id} className={current===id?'profile-option selected':'profile-option'} aria-pressed={current===id} onClick={()=>onChoose(id)}><PaperIllustration profile={id} eager={open}/><span className="profile-option-copy"><strong>{profiles[id][language][0]}</strong><small>{profiles[id][language][1]}</small></span>{current===id?<Check size={19}/>:<ChevronRight size={18}/>}</button>)}</div>
-    <button className="text-button preference-about" onClick={()=>{onClose();onAbout();}}>{t.about}</button>
+    <button className="text-button preference-about" onClick={()=>{onClose();onAbout();}}>{t.about}</button></div>
   </dialog>;
 }
 function NotificationChoices({controls,language,compact=false}:{controls:NotificationControls;language:Language;compact?:boolean}) {

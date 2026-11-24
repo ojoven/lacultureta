@@ -1,4 +1,4 @@
-/* A single viewport: only the category rail and open panels can scroll. */
+/* A single viewport: only open panels can scroll. */
 html:has(.discovery-app), body:has(.discovery-app) {
   height: 100%;
   overflow: hidden;
@@ -23,7 +23,7 @@ html:has(.discovery-app), body:has(.discovery-app) {
 .discovery-app .main-nav { display: none; }
 .app-filterbar {
   display: grid;
-  grid-template-columns: 162px minmax(0, 1fr) 44px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px;
   align-items: center;
   gap: 12px;
   width: 100%;
@@ -36,19 +36,9 @@ html:has(.discovery-app), body:has(.discovery-app) {
 .app-filterbar .date-select select { min-width: 0; width: 100%; font-size: 13px; padding-right: 15px; }
 .app-filterbar .date-select > svg:first-child { flex-shrink: 0; }
 .app-filterbar .date-select > svg:last-child { right: 10px; }
-.app-filterbar .category-row {
-  margin: 0;
-  padding: 2px 0;
-  min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 7px;
-  scroll-snap-type: x proximity;
-  overscroll-behavior-x: contain;
-  touch-action: pan-x;
-  mask-image: linear-gradient(to right, #000 94%, transparent);
-}
-.app-filterbar .category-pill { min-height: 40px; padding: 9px 13px; font-size: 13px; scroll-snap-align: start; flex-shrink: 0; }
+.app-filterbar .category-select { background: var(--ink); color: white; border-color: var(--ink); }
+.app-filterbar .category-select select { color: inherit; }
+.app-filterbar .category-select option { color: var(--ink); background: var(--paper); }
 .app-filterbar .filter-button { height: 42px; min-height: 42px; width: 42px; padding: 0; border-radius: 50%; position: relative; }
 .app-filterbar .filter-button > span { position: absolute; right: -3px; top: -5px; font-size: 10px; min-width: 17px; height: 17px; border: 2px solid var(--paper); }
 .app-main { min-height: 0; width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 26px 0; overflow: hidden; }
@@ -132,7 +122,7 @@ html:has(.discovery-app), body:has(.discovery-app) {
   .discovery-app .header-inner { padding: 0 18px; }
   .discovery-app .brand { font-size: 25px; }
   .discovery-app .brand > svg { height: 29px; width: 29px; }
-  .app-filterbar { padding: 9px 16px; grid-template-columns: 126px minmax(0, 1fr) 40px; gap: 8px; }
+  .app-filterbar { padding: 9px 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 40px; gap: 8px; }
   .app-filterbar .date-select { height: 40px; padding-left: 10px; gap: 6px; }
   .app-filterbar .date-select select { font-size: 12px; font-weight: 500; }
   .app-filterbar .date-select > svg:first-child { width: 14px; }
@@ -222,3 +212,7 @@ html:has(.discovery-app), body:has(.discovery-app) {
 @media(max-height: 350px) and (min-width: 480px) and (orientation: landscape) {
   .app-status, .welcome-actions { display: none; }
 }
+
+.discovery-app .deck-event[data-depth="0"] { cursor: pointer; }
+.discovery-app .deck-event:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+.discovery-app .card-tap-hint { display: inline-flex; align-items: center; color: #ffffffda; font-size: 12px; font-weight: 500; }
