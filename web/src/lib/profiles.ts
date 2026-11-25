@@ -1,3 +1,4 @@
+import { isFamilyAudience } from './audience';
 import type { Category, CultureEvent, Language } from './types';
 
 export const profileIds = ['all', 'family', 'music', 'cinema', 'curious', 'stage'] as const;
@@ -11,10 +12,8 @@ export const profiles: Record<ProfileId, { categories: readonly Category[]; es: 
   stage: { categories: ['theatre'], es: ['A escena', 'Teatro, danza y artes escénicas.'], eu: ['Oholtzara', 'Antzerkia, dantza eta arte eszenikoak.'] },
 };
 export function profileLabel(profile: ProfileId, language: Language) { return profiles[profile][language][0]; }
-// Audience phrases, rather than broad words such as "haur" that also occur in adult biographies.
-export const familyTerms = ['infantil', 'público familiar', 'publico familiar', 'en familia', 'toda la familia', 'haurrentz', 'haurrei', 'haur antzer', 'haur zinema', 'haur tailer', 'haur eta gazte', 'txikientz', 'txikiene', 'umeentz', 'familientz', 'for children', 'family-friendly'];
 export function matchesProfile(event: Pick<CultureEvent, 'title' | 'description' | 'category'>, profile: ProfileId) {
   if (profile === 'all') return true;
-  if (profile === 'family') return familyTerms.some(term => (event.title + ' ' + event.description).toLowerCase().includes(term));
+  if (profile === 'family') return isFamilyAudience(event.title,event.description);
   return profiles[profile].categories.includes(event.category);
 }

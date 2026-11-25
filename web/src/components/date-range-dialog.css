@@ -1,0 +1,12 @@
+.date-range-dialog { width: min(420px,calc(100% - 28px)); margin: auto; max-height: 90dvh; overflow-y: auto; }
+.date-range-dialog .dialog-heading h2 { font-size: 25px; }
+.date-range-fields { padding: 22px 25px 25px; display: grid; gap: 20px; }
+.date-range-fields > p { font-size: 13px; line-height: 1.5; color: var(--muted); }
+.date-range-fields label { display: grid; gap: 9px; min-width: 0; font-size: 13px; font-weight: 700; }
+.date-range-fields label > span { display: flex; gap: 7px; align-items: center; }
+.date-range-fields input { appearance: none; width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--line); padding: 11px 12px; border-radius: 11px; background: white; color: var(--ink); font: inherit; font-size: 16px; }
+.date-range-fields input:focus-visible { outline: 2px solid #7c9954; outline-offset: 2px; }
+.date-range-actions { display: flex; gap: 10px; }
+.date-range-actions > button { flex: 1; padding: 12px; font-size: 13px; }
+.date-range-fields .date-range-error { color: #a63f2e; font-size: 12px; }
+@media(max-height: 560px) { .date-range-dialog .dialog-heading { padding: 16px 20px; }.date-range-fields { gap: 13px; padding: 16px 20px; }.date-range-fields > p { font-size: 12px; }.date-range-fields input { min-height: 42px; } }

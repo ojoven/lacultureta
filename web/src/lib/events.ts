@@ -1,20 +1,27 @@
 import { z } from 'zod';
 import { db } from './db';
 import { categories, type CultureEvent, type EventPage, type Language, type EventMapPage, type MapVenue, type MapEvent } from './types';
-import { dateWindow, madridToday } from './dates';
+import { dateWindow, madridToday, validCalendarDate } from './dates';
+import { familyAudienceSql } from './audience-sql';
 import { mapTiles } from './map-config';
-import { familyTerms, profileIds, profiles } from './profiles';
+import { profileIds, profiles } from './profiles';
 
 export const querySchema = z.object({
   lang: z.enum(['es', 'eu']).default('es'), q: z.string().trim().max(160).default(''),
   category: z.enum(categories).default('all'),
   profile: z.enum(profileIds).default('all'),
-  period: z.enum(['all', 'today', 'tomorrow', 'weekend', 'week']).default('all'),
+  period: z.enum(['all', 'today', 'tomorrow', 'weekend', 'week','custom']).default('all'),
+  from:z.string().max(10).default(''),to:z.string().max(10).default(''),
   neighbourhood:z.string().max(80).default(''),
   place: z.string().max(240).default(''), source: z.enum(['', 'donostia-kultura', 'tabakalera', 'kulturklik']).default(''),
   free: z.enum(['0', '1']).default('0'), page: z.coerce.number().int().min(1).max(10000).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(24),
   ids: z.string().max(4000).optional(),
+}).superRefine((query,context)=>{
+  if(query.period!=='custom')return;
+  if(!validCalendarDate(query.from))context.addIssue({code:'custom',path:['from'],message:'Choose a valid start date'});
+  if(!validCalendarDate(query.to))context.addIssue({code:'custom',path:['to'],message:'Choose a valid end date'});
+  if(validCalendarDate(query.from)&&validCalendarDate(query.to)&&query.from>query.to)context.addIssue({code:'custom',path:['to'],message:'End date must be on or after start date'});
 });
 export type EventQuery = z.infer<typeof querySchema>;
 const select = `SELECT e.id,e.source,e.category,e.start_date AS startDate,e.end_date AS endDate,
@@ -25,14 +32,15 @@ const activeEvent=`NOT EXISTS(SELECT 1 FROM event_origins active_origin WHERE ac
   AND (NOT EXISTS(SELECT 1 FROM event_origins direct_origin WHERE direct_origin.event_id=e.id AND direct_origin.source<>'kulturklik')
     OR EXISTS(SELECT 1 FROM event_origins live_origin WHERE live_origin.event_id=e.id AND live_origin.source<>'kulturklik' AND live_origin.active=1))`;
 function eventConditions(query:EventQuery) {
-  const [from, to] = dateWindow(query.period);
+  const today=madridToday();
+  const [from, to] = dateWindow(query.period,today,{from:query.from,to:query.to});
   const where = ['t.language = ?', 'e.end_date >= ?',activeEvent];
-  const values: (string | number)[] = [query.lang, from];
+  const values: (string | number)[] = [query.lang, from<today?today:from];
+  if(to&&to<today)where.push('0');
   if (to) { where.push('e.start_date <= ?'); values.push(to); }
   if (query.category !== 'all') { where.push('e.category = ?'); values.push(query.category); }
   if (query.profile === 'family') {
-    where.push(`EXISTS(SELECT 1 FROM event_translations family WHERE family.event_id=e.id AND (${familyTerms.map(() => "instr(lower(family.title || ' ' || family.description), ?) > 0").join(' OR ')}))`);
-    values.push(...familyTerms);
+    where.push(familyAudienceSql);
   } else if (query.profile !== 'all') {
     const selected = profiles[query.profile].categories;
     where.push(`e.category IN (${selected.map(() => '?').join(',')})`); values.push(...selected);

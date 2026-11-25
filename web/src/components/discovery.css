@@ -48,7 +48,7 @@ html:has(.discovery-app), body:has(.discovery-app) {
 .app-status strong { color: var(--ink); }
 .app-status > span:last-child { flex-shrink: 0; font-size: 11px; }
 .app-deck { width: 100%; max-width: 430px; min-height: 0; display: flex; flex-direction: column; flex: 1; }
-.discovery-app .card-stack { margin: 0 0 20px; min-height: 0; flex: 1; width: 100%; isolation: isolate; }
+.discovery-app .card-stack { margin: 0 0 32px; min-height: 0; flex: 1; width: 100%; isolation: isolate; }
 .discovery-app .discovery-card {
   position: absolute;
   inset: 0;
@@ -216,3 +216,7 @@ html:has(.discovery-app), body:has(.discovery-app) {
 .discovery-app .deck-event[data-depth="0"] { cursor: pointer; }
 .discovery-app .deck-event:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 .discovery-app .card-tap-hint { display: inline-flex; align-items: center; color: #ffffffda; font-size: 12px; font-weight: 500; }
+
+.app-filterbar .range-edit { display: grid; place-items: center; flex-shrink: 0; width: 24px; height: 30px; padding: 0; color: #4e6e34; }
+.app-filterbar .range-edit svg { width: 16px; height: 16px; }
+@media(max-height:630px) { .discovery-app .card-stack { margin-bottom: 28px; } }

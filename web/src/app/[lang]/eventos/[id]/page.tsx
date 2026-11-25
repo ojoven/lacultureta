@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CalendarDays, ExternalLink, MapPin, ChevronLeft } from 'lucide-react';
 import { getEvent } from '@/lib/events';
-import { dictionary, eventDate } from '@/lib/i18n';
+import { dictionary } from '@/lib/i18n';
 import type { Language } from '@/lib/types';
 import { Header } from '@/components/header';
+import { EventWhen } from '@/components/event-when';
+import { displayHours } from '@/lib/event-timing';
 import { Footer } from '@/components/footer';
 import { EventImage, sourceNames } from '@/components/event-card';
 export const dynamic='force-dynamic';
@@ -27,7 +29,7 @@ export default async function EventPage({params}:Props){
       <div className="detail-content">
         <span className="category-tag">{t.categories[event.category]}</span><h1>{event.title}</h1>
         {notice&&<p className="event-status-notice" role="status">{notice}</p>}
-        <div className="detail-meta"><p><CalendarDays size={20}/><span>{eventDate(event.startDate,endDate,lang)}<small>{event.hours||t.hoursUnknown}</small></span></p><p><MapPin size={20}/><span>{event.place}<small>Donostia / San Sebastián</small></span></p></div>
+        <div className="detail-meta"><p><CalendarDays size={20}/><span><EventWhen start={event.startDate} end={endDate} language={lang}/><small>{displayHours(event.hours)||t.hoursUnknown}</small></span></p><p><MapPin size={20}/><span>{event.place}<small>Donostia / San Sebastián</small></span></p></div>
         <p className="detail-price">{event.isFree?t.free:event.price||t.priceUnknown}{event.eventLanguage&&<span>{t.eventLanguage}: {event.eventLanguage}</span>}</p>
         <p className="event-description">{event.description}</p>
         <div className="detail-actions">

@@ -6,8 +6,9 @@ import 'leaflet.markercluster';
 import { ArrowLeft, ArrowUpRight, CalendarDays, ChevronRight, Heart, LoaderCircle, MapPin, Maximize2, RefreshCw } from 'lucide-react';
 import type { CultureEvent, EventMapPage, Language, MapEvent, MapVenue } from '@/lib/types';
 import type { EventQuery } from '@/lib/events';
-import { dictionary, eventDate } from '@/lib/i18n';
+import { dictionary } from '@/lib/i18n';
 import { neighbourhoodLabel } from '@/lib/neighbourhoods';
+import { EventWhen } from './event-when';
 import { eventProperties, track } from '@/lib/analytics';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
@@ -116,7 +117,7 @@ export default function EventMap({query,language,saved,onDetails,onCards,onFacet
         {detailError&&<p className="map-detail-error" role="alert">{d.error}</p>}
         {venue?<div className="map-event-list">{venue.events.map(event=><button key={event.id} className="map-event-item" disabled={!!opening&&opening!==event.id} aria-busy={opening===event.id} onClick={()=>void open(event)} aria-label={`${t.details}: ${event.title}`}>
           <span className={`map-event-category ${event.category}`}>{d.categories[event.category]}</span><strong>{event.title}</strong>
-          <span className="map-event-date"><CalendarDays size={13}/>{eventDate(event.startDate,event.endDate,language)}{event.hours&&` · ${event.hours}`}</span>
+          <span className="map-event-date"><CalendarDays size={13}/><EventWhen start={event.startDate} end={event.endDate} hours={event.hours} language={language}/></span>
           <span className="map-event-price">{event.isFree?d.free:event.price||d.priceUnknown}{saved.includes(event.id)&&<span><Heart size={12} fill="currentColor"/>{t.saved}</span>}{opening===event.id?<LoaderCircle size={16} className="spinning"/>:<ArrowUpRight size={17}/>}</span>
         </button>)}</div>:<div className="map-venue-list">{current?.venues.map(item=><button key={item.id} className="map-venue-item" onClick={()=>choose(item.id)}><span className="map-venue-pin"><MapPin size={18}/></span><span><strong>{item.name}</strong><small>{item.neighbourhood?neighbourhoodLabel(item.neighbourhood,language):item.address}</small></span><span className="map-venue-count">{item.events.length}</span><ChevronRight size={16}/></button>)}</div>}
         {current&&current.missingLocations>0&&<p className="map-missing"><MapPin size={15}/><span><strong>{current.missingLocations}</strong> {t.missing} <button onClick={onCards}>{t.cards}<ArrowUpRight size={13}/></button></span></p>}

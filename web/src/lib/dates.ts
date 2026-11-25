@@ -6,7 +6,8 @@ export function addDays(day: string, days: number): string {
   date.setUTCDate(date.getUTCDate() + days);
   return date.toISOString().slice(0, 10);
 }
-export function dateWindow(period: string, today = madridToday()): [string, string | null] {
+export function dateWindow(period: string, today = madridToday(), range?:{from:string;to:string}): [string, string | null] {
+  if(period==='custom'&&range)return [range.from,range.to];
   if (period === 'today') return [today, today];
   if (period === 'tomorrow') { const next = addDays(today, 1); return [next, next]; }
   if (period === 'weekend') {
@@ -15,4 +16,8 @@ export function dateWindow(period: string, today = madridToday()): [string, stri
   }
   if (period === 'week') return [today, addDays(today, 6)];
   return [today, null];
+}
+
+export function validCalendarDate(value:string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value))&&new Date(value).toISOString().slice(0,10)===value;
 }

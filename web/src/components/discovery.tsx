@@ -4,6 +4,9 @@ import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'rea
 import dynamic from 'next/dynamic';
 import { Asterisk, SlidersHorizontal, MapPin, CalendarDays, Heart, X, RotateCcw, Check, ExternalLink, ChevronDown, ChevronLeft, ChevronRight, Share2, LoaderCircle, Sparkles, Bell, Map as MapIcon } from 'lucide-react';
 import { Header } from './header';
+import { DateRangeDialog } from './date-range-dialog';
+import { EventWhen } from './event-when';
+import { displayHours } from '@/lib/event-timing';
 import { EventCard, EventImage, WelcomeCard, sourceNames, type CardInteraction } from './event-card';
 import { dictionary, eventDate } from '@/lib/i18n';
 import { categories, EVENT_ID_PATTERN, type CultureEvent, type EventPage, type Language } from '@/lib/types';
@@ -25,7 +28,7 @@ const EventMap=dynamic(()=>import('./event-map'),{ssr:false});
 const storageKey = 'lacultureta.saved.v2';
 const welcomeKey = 'lacultureta.welcome.v1';
 const profileKey = 'lacultureta.profile.v1';
-const defaults: Record<string, string | number> = { profile:'all', category: 'all', period: 'all', free: '0', page: 1, q: '', source: '', place: '', neighbourhood:'' };
+const defaults: Record<string, string | number> = { profile:'all', category: 'all', period: 'all', free: '0', page: 1, q: '', source: '', place: '', neighbourhood:'', from:'', to:'' };
 
 export function Discovery({ language, initial, initialQuery, initialSaved, initialMap=false }: { language: Language; initial: EventPage; initialQuery: EventQuery; initialSaved: boolean; initialMap?:boolean }) {
   const t = dictionary(language);
@@ -39,6 +42,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
   const [ready, setReady] = useState(false);
   const [dismissed, setDismissed] = useState<SwipedPlan[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [dateRangeOpen,setDateRangeOpen]=useState(false);
   const [profileOpen, setProfileOpen] = useState(false),[notificationOpen,setNotificationOpen]=useState(false);
   const [detail, setDetail] = useState<CultureEvent | null>(null);
   const [loading, setLoading] = useState(false);
@@ -68,7 +72,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
       if (localStorage.getItem(welcomeKey)) setWelcome(false);
       if(!new URLSearchParams(window.location.search).has('profile')) {
         const stored=localStorage.getItem(profileKey) as ProfileId|null;
-        if(stored&&profileIds.includes(stored)&&stored!==initialQuery.profile){firstRequest.current=false;setQuery(previous=>({...previous,profile:stored,category:'all',period:stored==='family'?'weekend':previous.period}));}
+        if(stored&&profileIds.includes(stored)&&stored!==initialQuery.profile){firstRequest.current=false;setQuery(previous=>({...previous,profile:stored,category:'all',period:stored==='family'&&!new URLSearchParams(window.location.search).has('period')?'weekend':previous.period}));}
       }
     } catch {}
     setReady(true);
@@ -112,7 +116,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
     return () => controller.abort();
   }, [query, savedView, mapView, ready, language, reload, savedIds]);
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 2200); return () => clearTimeout(timer); }, [toast]);
-  useEffect(() => { setSavedIndex(0); undo.current = null; }, [query.profile, query.category, query.period, query.place, query.neighbourhood, query.source, query.free, savedView]);
+  useEffect(() => { setSavedIndex(0); undo.current = null; }, [query.profile, query.category, query.period, query.from, query.to, query.place, query.neighbourhood, query.source, query.free, savedView]);
   useEffect(() => { setSavedIndex(index => Math.min(index, Math.max(0, data.events.length - 1))); }, [data.events.length]);
   useEffect(() => { if (detail) modal.current?.showModal(); else modal.current?.close(); }, [detail]);
   useEffect(() => { if (filterOpen) filters.current?.showModal(); else filters.current?.close(); }, [filterOpen]);
@@ -123,7 +127,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
   const showingWelcome = welcome && !savedView&&!mapView;
   const showingInvitation=notifications.invite&&!showingWelcome&&!savedView&&!mapView;
   const specialCard=showingWelcome||showingInvitation;
-  const blocked = mapView||!!leaving || !!detail || filterOpen || profileOpen || notificationOpen || (loading && query.page === 1);
+  const blocked = mapView||!!leaving || !!detail || filterOpen || dateRangeOpen || profileOpen || notificationOpen || (loading && query.page === 1);
   useEffect(()=>{
     if(mapView||!ready||loading||leaving||loadedQuery.current!==JSON.stringify(query))return;
     const key=showingWelcome?'welcome':showingInvitation?'notification':current?`${savedView?'saved':'discover'}:${current.id}`:'empty';
@@ -140,7 +144,8 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
   const update = (patch: Partial<EventQuery>,report=true) => {
     if(report)for(const [key,value] of Object.entries(patch))if(['category','period','source','place','free','neighbourhood'].includes(key)&&value!==query[key as keyof EventQuery])track('filter_changed',{filter:key,value:key==='place'?(value?'selected':'all'):String(value),profile:query.profile});
     clearTimeout(animationTimer.current); actionLock.current = false; gesture.current = null;
-    setDrag(0); setLeaving(null); setQuery(q => ({ ...q, ...patch, page: 1, q: '' }));
+    const nextPatch=patch.period&&patch.period!=='custom'?{...patch,from:'',to:''}:patch;
+    setDrag(0); setLeaving(null); setQuery(q => ({ ...q, ...nextPatch, page: 1, q: '' }));
   };
   const reset = () => {track('filter_changed',{filter:'reset',value:'all'});update({ profile:'all',category: 'all', period: 'all', source: '', place: '', free: '0', neighbourhood:'', ids: undefined },false);};
   const chooseProfile=(profile:ProfileId)=>{track('profile_selected',{profile,previous_profile:query.profile});update({profile,category:'all',period:profile==='family'?'weekend':'all',place:'',source:'',free:'0'},false);setSavedView(false);setProfileOpen(false);};
@@ -213,7 +218,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
   };
   const filterCount = [query.place,query.neighbourhood, query.free === '1'].filter(Boolean).length;
   const languageParams = new URLSearchParams();
-  for (const key of ['profile','category', 'period', 'free','neighbourhood'] as const) if (query[key] && query[key] !== defaults[key]) languageParams.set(key, query[key]);
+  for (const key of ['profile','category', 'period', 'from', 'to', 'free','neighbourhood'] as const) if (query[key] && query[key] !== defaults[key]) languageParams.set(key, query[key]);
   if (savedView) languageParams.set('saved', '1');
   if(mapView)languageParams.set('view','map');
   const price = (event: CultureEvent) => event.isFree ? t.free : event.price || t.priceUnknown;
@@ -223,13 +228,13 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
   return <div className={`discovery-app ${mapView?'view-map':''}`}>
     <Header language={language} saved={savedView} savedCount={saved.length} onNavigate={saved=>{if(!saved&&mapView)showCards();else navigate(saved);}} languageSuffix={languageParams.size ? '?' + languageParams : ''} />
     <section className="app-filterbar" aria-label={t.filters}>
-      <div className="date-select"><CalendarDays size={16} /><select aria-label={t.date} value={query.period} onChange={event => update({ period: event.target.value as EventQuery['period'] })}><option value="all">{t.date}</option><option value="today">{t.today}</option><option value="tomorrow">{t.tomorrow}</option><option value="weekend">{t.weekend}</option><option value="week">{t.week}</option></select><ChevronDown size={14} /></div>
+      <div className="date-select">{query.period==='custom'?<button className="range-edit" aria-label={t.editDates} title={t.editDates} onClick={()=>setDateRangeOpen(true)}><CalendarDays size={16}/></button>:<CalendarDays size={16}/>}<select aria-label={t.date} value={query.period} onChange={event => {if(event.target.value==='custom')setDateRangeOpen(true);else update({ period: event.target.value as EventQuery['period'] });}}><option value="all">{t.date}</option><option value="today">{t.today}</option><option value="tomorrow">{t.tomorrow}</option><option value="weekend">{t.weekend}</option><option value="week">{t.week}</option><option value="custom">{query.period==='custom'?eventDate(query.from,query.to,language):t.customDates}</option></select><ChevronDown size={14} /></div>
       <div className="date-select category-select"><Sparkles size={16}/><select aria-label={t.category} value={query.category} onChange={event=>update({category:event.target.value as EventQuery['category']})}>{availableCategories.map(category=><option key={category} value={category}>{t.categories[category]}</option>)}</select><ChevronDown size={14}/></div>
       <button className={`filter-button ${filterCount ? 'has-filters' : ''}`} aria-label={t.filters} onClick={() => {track('filters_opened');setFilterOpen(true);}}><SlidersHorizontal size={19} />{filterCount > 0 && <span>{filterCount}</span>}</button>
     </section>
 
     <main id="main" className="app-main" aria-busy={loading}>
-      <div className="app-status"><span><Asterisk size={15} />{mapView?t.map:<><strong>{data.total}</strong> {savedView ? t.savedCount : t.plans}</>}{loading && <LoaderCircle size={14} className="spinning" />}</span>{savedView&&current?<span>{savedIndex+1} / {data.events.length}</span>:<button className="profile-status" onClick={()=>openProfiles('status')} aria-label={p.profiles}><PaperIllustration profile={query.profile} eager/><span className="profile-status-label">{profileLabel(query.profile,language)}</span><ChevronDown size={12}/></button>}</div>
+      <div className="app-status"><span><Asterisk size={15} />{mapView?t.map:<><strong>{savedView&&current?`${savedIndex+1} / ${data.events.length}`:data.total}</strong> {savedView ? t.savedCount : t.plans}</>}{loading && <LoaderCircle size={14} className="spinning" />}</span><button className="profile-status" onClick={()=>openProfiles('status')} aria-label={p.profiles}><PaperIllustration profile={query.profile} eager/><span className="profile-status-label">{profileLabel(query.profile,language)}</span><ChevronDown size={12}/></button></div>
       {mapView?<EventMap query={query} language={language} saved={saved} onDetails={setDetail} onCards={showCards} onFacets={page=>setData(previous=>({...previous,places:page.places,neighbourhoods:page.neighbourhoods}))}/>:<section className="app-deck" aria-label={savedView ? t.saved : t.discover}>
         {error ? <div className="empty-state"><h2>{t.error}</h2><button className="primary-button" onClick={() => setReload(n => n + 1)}>{t.retry}</button></div> : loading && !current && !specialCard ? <div className="empty-state" role="status" aria-label={language === 'eu' ? 'Planak kargatzen' : 'Cargando planes'}><LoaderCircle className="spinning" size={30} /></div> : current || specialCard ? <>
           <div className="card-stack">
@@ -256,10 +261,10 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
       <button className={!mapView&&!savedView && !showingWelcome ? 'active' : ''} aria-current={!mapView&&!savedView && !showingWelcome ? 'page' : undefined} onClick={() => mapView?showCards():navigate(false)}><Sparkles size={22} /><span>{t.discover}</span></button>
       <button className={mapView?'active':''} aria-current={mapView?'page':undefined} onClick={showMap}><MapIcon size={22}/><span>{t.map}</span></button>
       <button className={savedView ? 'active' : ''} aria-current={savedView ? 'page' : undefined} onClick={() => navigate(true)}><span className="nav-icon"><Heart size={22} />{saved.length > 0 && <span className="nav-badge">{saved.length}</span>}</span><span>{t.saved}</span></button>
-      <button className={profileOpen?'active':''} aria-expanded={profileOpen} onClick={()=>openProfiles('menu')}><PaperIllustration profile={query.profile} eager/><span>{p.profile}</span></button>
       <button className={notificationOpen?'active':''} aria-expanded={notificationOpen} onClick={()=>openNotifications('menu')}><span className="nav-icon"><Bell size={22}/>{notifications.active&&<span className="notification-active-dot"/>}</span><span>{p.notifications}</span></button>
     </nav>
     {toast && <div className="toast" role="status"><Check size={17} />{toast}</div>}
+    <DateRangeDialog open={dateRangeOpen} from={query.from} to={query.to} language={language} onClose={()=>setDateRangeOpen(false)} onApply={(from,to)=>{update({period:'custom',from,to});track('filter_changed',{filter:'date_range',value:`${from}/${to}`,profile:query.profile});setDateRangeOpen(false);}}/>
     <ProfileDialog open={profileOpen} onClose={()=>setProfileOpen(false)} onChoose={chooseProfile} onAbout={showAbout} current={query.profile} language={language}/>
     <NotificationDialog open={notificationOpen} onClose={()=>setNotificationOpen(false)} controls={notifications} language={language}/>
 
@@ -275,7 +280,7 @@ export function Discovery({ language, initial, initialQuery, initialSaved, initi
     <dialog ref={modal} className="event-dialog" aria-labelledby="event-title" onClose={() => setDetail(null)} onClick={e => { if (e.target === e.currentTarget) setDetail(null); }}>
       {detail && <><div className="dialog-image"><EventImage event={detail} eager /><button autoFocus className="dialog-close" aria-label={t.close} onClick={() => setDetail(null)}><X /></button><span className="category-tag">{t.categories[detail.category]}</span></div>
         <div className="detail-content"><p className="eyebrow">{sourceNames[detail.source]}</p><h2 id="event-title">{detail.title}</h2>
-          <div className="detail-meta"><p><CalendarDays size={19} /><span>{eventDate(detail.startDate, detail.endDate, language)}<small>{detail.hours || t.hoursUnknown}</small></span></p><p><MapPin size={19} /><span>{detail.place}<small>Donostia / San Sebastián</small></span></p></div>
+          <div className="detail-meta"><p><CalendarDays size={19} /><span><EventWhen start={detail.startDate} end={detail.endDate} language={language}/><small>{displayHours(detail.hours) || t.hoursUnknown}</small></span></p><p><MapPin size={19} /><span>{detail.place}<small>Donostia / San Sebastián</small></span></p></div>
           <p className="detail-price">{price(detail)}{detail.eventLanguage && <span>{t.eventLanguage}: {detail.eventLanguage}</span>}</p><p className="event-description">{detail.description}</p>
           <div className="detail-actions"><button className={`primary-button ${saved.includes(detail.id) ? 'saved-button' : ''}`} onClick={() => toggleSave(detail.id)}><Heart size={18} fill={saved.includes(detail.id) ? 'currentColor' : 'none'} />{saved.includes(detail.id) ? t.remove : t.save}</button>{(detail.ticketUrl || detail.url) && <a className="outline-button" href={detail.ticketUrl || detail.url} target="_blank" rel="noreferrer" data-analytics-event={detail.ticketUrl?'ticket_link_clicked':'official_link_clicked'} data-event-id={detail.id} data-category={detail.category} data-organizer={detail.source}>{detail.ticketUrl ? t.tickets : t.official}<ExternalLink size={16} /></a>}</div>
           <div className="detail-secondary"><a href={`/api/events/${detail.id}/calendar?lang=${language}`} data-analytics-event="calendar_download_clicked" data-event-id={detail.id} data-category={detail.category} data-organizer={detail.source}><CalendarDays size={16} />{t.calendar}</a><button onClick={() => share(detail)}><Share2 size={16} />{t.share}</button><a href={`/${language}/eventos/${detail.id}`}>{t.more}</a></div>

@@ -188,3 +188,12 @@ test('service worker shows pushes and restricts notification navigation to this 
   handlers.push({data:{json:()=>({title:'Tu plan',body:'Mañana',url:'https://outside.test/steal'})},waitUntil:(promise:Promise<unknown>)=>{complete=promise;}});
   await complete;assert.equal(notification.data.url,'/es');assert.equal(notification.title,'Tu plan');
 });
+test('family discovery and notification digests use the same evidence across both translations',()=>{
+  const child=event('kk-501','Un viaje','theatre','2026-11-28');child.translations.eu.description='Adina: + 5 urte';
+  const adult=event('kk-502','Drama','theatre','2026-11-28');adult.translations.eu.description='Euskadin bizi den familia baten istorioa.';
+  storeEvents([child,adult]);
+  for(const lang of ['es','eu'])assert.deepEqual(listEvents(querySchema.parse({lang,profile:'family'})).events.map(event=>event.id),['kk-501']);
+  const sub=subscriber({profile:'family',weekend:true});
+  const plan=planForSubscriber(sub,new Date('2026-11-27T16:00:00Z'));
+  assert.equal(plan?.kind,'weekend');assert.match(plan!.payload.body,/Un viaje/);assert.doesNotMatch(plan!.payload.body,/Drama/);
+});

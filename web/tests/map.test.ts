@@ -62,3 +62,14 @@ test('a neighbourhood with only address-level locations returns useful coverage 
   const map=listMapEvents(querySchema.parse({place:'Dabadaba',neighbourhood:'EGIA'}));
   assert.equal(map.total,1);assert.equal(map.mapped,0);assert.equal(map.missingLocations,1);assert.deepEqual(map.venues,[]);
 });
+test('custom ranges validate calendar dates and include overlaps on both boundaries',()=>{
+  for(const input of [{},{from:today},{from:'2026-02-30',to:'2026-03-01'},{from:addDays(today,2),to:today}])assert.equal(querySchema.safeParse({period:'custom',...input}).success,false);
+  const selected=querySchema.parse({period:'custom',from:addDays(today,1),to:addDays(today,1),limit:100});
+  const cards=listEvents(selected),map=listMapEvents(selected);
+  assert.equal(cards.total,121);assert.equal(map.total,cards.total);assert.equal(map.mapped,121);
+  // The ongoing exhibition overlaps the selection although it starts before the range.
+  assert.ok(cards.events.some(event=>event.id==='kk-880121'));
+  assert.equal(listEvents(querySchema.parse({period:'custom',from:addDays(today,3),to:addDays(today,4)})).total,1);
+  assert.equal(listMapEvents(querySchema.parse({period:'custom',from:addDays(today,-10),to:addDays(today,-1)})).total,0);
+  assert.equal(listEvents(querySchema.parse({period:'custom',from:addDays(today,-5),to:today})).total,4);
+});

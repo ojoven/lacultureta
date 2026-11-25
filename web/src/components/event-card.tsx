@@ -2,9 +2,10 @@
 
 import { useRef, useState, type CSSProperties, type PointerEventHandler } from 'react';
 import { Asterisk, Music2, Clapperboard, Drama, Palette, BookOpen, MessagesSquare, Hammer, Sparkles, CalendarDays, MapPin, Info, Heart, X } from 'lucide-react';
-import { dictionary, eventDate } from '@/lib/i18n';
+import { dictionary } from '@/lib/i18n';
 import type { CultureEvent, Language } from '@/lib/types';
 import { PaperIllustration } from './paper-illustration';
+import { EventWhen } from './event-when';
 import { cardPose, CARD_EXIT_MS } from '@/lib/card-motion';
 
 export const categoryIcons = { all: Sparkles, music: Music2, cinema: Clapperboard, theatre: Drama, art: Palette, literature: BookOpen, talks: MessagesSquare, workshops: Hammer, other: Asterisk };
@@ -54,7 +55,7 @@ export function EventCard({ event, language, depth, drag, leaving, interaction, 
     <div className="card-copy">
       <span className="card-source">{sourceNames[event.source]}</span>
       <h2>{event.title}</h2>
-      <div className="card-meta"><span><CalendarDays size={16} />{eventDate(event.startDate, event.endDate, language)}{event.hours && ` · ${event.hours}`}</span><span><MapPin size={16} />{event.place}</span></div>
+      <div className="card-meta"><span><CalendarDays size={16} /><EventWhen start={event.startDate} end={event.endDate} hours={event.hours} language={language}/></span><span><MapPin size={16} />{event.place}</span></div>
       <span className="card-details card-tap-hint"><Info size={15} />{t.cardHint}</span>
     </div>
   </article>;

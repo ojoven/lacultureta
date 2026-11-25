@@ -1,4 +1,5 @@
 import Database from 'better-sqlite3';
+import { isFamilyAudience } from './audience';
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { ImportedEvent } from './types';
@@ -10,6 +11,7 @@ export function db() {
   const path = process.env.DATABASE_PATH || resolve(process.cwd(), 'data/lacultureta.sqlite');
   mkdirSync(dirname(path), { recursive: true });
   connection = new Database(path);
+  connection.function('family_audience',{deterministic:true},(title:unknown,description:unknown)=>+isFamilyAudience(typeof title==='string'?title:'',typeof description==='string'?description:''));
   connection.pragma('journal_mode = WAL');
   connection.pragma('foreign_keys = ON');
   connection.pragma('busy_timeout = 10000');

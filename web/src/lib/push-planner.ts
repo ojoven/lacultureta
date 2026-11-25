@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { db } from './db';
 import { addDays, dateWindow, madridToday } from './dates';
+import { familyAudienceSql } from './audience-sql';
 import { matchesProfile } from './profiles';
 import { notificationPreferencesSchema, type NotificationPreferences } from './notification-preferences';
 import type { PushSubscriber } from './push-store';
@@ -13,13 +14,13 @@ export interface PushPlan {
 }
 type SavedEvent = Omit<CultureEvent, 'status'> & { status: 'active' | 'cancelled' | 'withdrawn'; fingerprint: string; esTitle: string; esHours: string; esPlace: string };
 const hash = (value: string) => createHash('sha256').update(value).digest('hex');
-const eventSelect = `SELECT e.id,e.category,e.start_date AS startDate,e.end_date AS endDate,t.title,t.description,t.hours,t.place,
+const eventSelect = `SELECT ${familyAudienceSql} AS familyAudience,e.id,e.category,e.start_date AS startDate,e.end_date AS endDate,t.title,t.description,t.hours,t.place,
   es.title AS esTitle,es.description AS esDescription,es.hours AS esHours,es.place AS esPlace FROM events e
   JOIN event_translations t ON t.event_id=e.id AND t.language=?
   JOIN event_translations es ON es.event_id=e.id AND es.language='es'`;
-function relevant(event: CultureEvent & { esTitle?: string; esDescription?: string }, preferences: NotificationPreferences) {
+function relevant(event: CultureEvent & { esTitle?: string; esDescription?: string;familyAudience?:number }, preferences: NotificationPreferences) {
   return (!preferences.categories.length || preferences.categories.some(category=>category===event.category)) &&
-    matchesProfile({...event,title:event.esTitle||event.title,description:event.esDescription||event.description},preferences.profile);
+    (preferences.profile==='family'?!!event.familyAudience:matchesProfile({...event,title:event.esTitle||event.title,description:event.esDescription||event.description},preferences.profile));
 }
 export function madridClock(now: Date) {
   const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',hour:'2-digit',hourCycle:'h23'}).formatToParts(now);
