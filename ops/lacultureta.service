@@ -12,6 +12,7 @@ Environment=HOSTNAME=127.0.0.1
 Environment=PORT=3100
 Environment=DATABASE_PATH=/var/lib/lacultureta/lacultureta.sqlite
 EnvironmentFile=-/etc/lacultureta/push.env
+EnvironmentFile=-/etc/lacultureta/map.env
 ExecStart=/opt/lacultureta/runtime/bin/node /opt/lacultureta/current/server.js
 Restart=on-failure
 RestartSec=5

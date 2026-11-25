@@ -15,4 +15,15 @@ export interface CultureEvent extends EventTranslation {
   endDate: string; image: string; eventLanguage: string; isFree: boolean;
   status?: 'cancelled' | 'withdrawn';
 }
-export interface EventPage { events: CultureEvent[]; total: number; page: number; pages: number; places: string[]; updatedAt: string | null }
+export interface EventPage { events: CultureEvent[]; total: number; page: number; pages: number; places: string[]; neighbourhoods: string[]; updatedAt: string | null }
+
+export type MapEvent=Pick<CultureEvent,'id'|'source'|'category'|'title'|'startDate'|'endDate'|'hours'|'image'|'price'|'isFree'>;
+export interface MapVenue {
+  id:string; name:string; address:string; neighbourhood:string|null;
+  latitude:number; longitude:number; events:MapEvent[];
+}
+export interface EventMapPage {
+  venues:MapVenue[]; total:number; mapped:number; missingLocations:number;
+  places:string[]; neighbourhoods:string[]; updatedAt:string|null;
+  tiles:{url:string;attribution:string;maxZoom:number};
+}

@@ -1,7 +1,7 @@
 import type { CultureEvent } from './types';
 
 export const analyticsEvents = [
-  'welcome_viewed','welcome_started','event_viewed','event_saved','event_skipped','event_removed','event_undo',
+  'map_view_opened','map_venue_selected','welcome_viewed','welcome_started','event_viewed','event_saved','event_skipped','event_removed','event_undo',
   'event_details_opened','event_shared','ticket_link_clicked','official_link_clicked','calendar_download_clicked',
   'filter_changed','filters_opened','profile_selected','profile_menu_opened','navigation_changed','language_changed',
   'notifications_opened','notification_invitation_shown','notification_invitation_dismissed',
@@ -9,7 +9,7 @@ export const analyticsEvents = [
   'notification_preferences_saved','notification_error',
 ] as const;
 export type AnalyticsEvent=typeof analyticsEvents[number];
-const allowedProperties = new Set(['language','event_id','category','organizer','profile','previous_profile','view','method','filter','value','status','choice','enabled_types','category_count']);
+const allowedProperties = new Set(['venue_id','language','event_id','category','organizer','profile','previous_profile','view','method','filter','value','status','choice','enabled_types','category_count']);
 export type AnalyticsProperties=Record<string,string|number|boolean|undefined>;
 declare global { interface Window { rybbit?: { event:(name:string,properties?:Record<string,string|number|boolean>)=>void } } }
 const queue:{name:AnalyticsEvent;properties:Record<string,string|number|boolean>;expires:number}[]=[];

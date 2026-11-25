@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {width:'device-width',initialScale:1,themeColor:'#f8f9f6'};
 export default async function RootLayout({children}:{children:React.ReactNode}) {
   const language=(await headers()).get('x-cultureta-language')==='eu'?'eu':'es';
-  return <html lang={language}><body><a className="skip-link" href="#main">{language==='eu'?'Joan edukira':'Ir al contenido'}</a>{children}<Analytics/></body></html>;
+  return <html lang={language} data-scroll-behavior="smooth"><body><a className="skip-link" href="#main">{language==='eu'?'Joan edukira':'Ir al contenido'}</a>{children}<Analytics/></body></html>;
 }

@@ -1,5 +1,5 @@
 .discovery-app .bottom-nav { gap: 4px; }
-.discovery-app .bottom-nav > button { min-width: 0; width: min(112px, 25%); flex: 1; max-width: 125px; }
+.discovery-app .bottom-nav > button { min-width: 0; width: min(112px, 20%); flex: 1; max-width: 125px; }
 .profile-status { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; min-width: 0; max-width: 43%; color: #425536; font-size: 12px; padding: 5px 0 5px 5px; }
 .profile-status > .profile-status-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .profile-status svg { flex-shrink: 0; }

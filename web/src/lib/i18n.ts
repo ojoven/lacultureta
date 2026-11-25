@@ -1,6 +1,6 @@
 import type { Language } from './types';
 const es = {
-  discover:'Descubrir', saved:'Mis planes', location:'DONOSTIA · SAN SEBASTIÁN',
+  map:'Mapa', neighbourhood:'Barrio', allNeighbourhoods:'Todos los barrios', discover:'Descubrir', saved:'Mis planes', location:'DONOSTIA · SAN SEBASTIÁN',
   hero:'Tu próximo', heroAccent:'gran plan.', intro:'La cultura se vive fuera. Encuentra conciertos, cine, arte y todo lo que pasa cerca de ti.',
   sticker:'MENOS SOFÁ.\nMÁS CULTURA.', agenda:'LA AGENDA, CON OTRA ACTITUD',
   search:'Busca un artista, un plan, un lugar…', filters:'Filtros', all:'Todo',
@@ -27,7 +27,7 @@ const es = {
   welcomeStart:'Descubrir planes', previous:'Plan anterior', nextPlan:'Plan siguiente', savedCount:'planes guardados',
 };
 const eu: typeof es = {
-  discover:'Ezagutu', saved:'Nire planak', location:'DONOSTIA · SAN SEBASTIÁN',
+  map:'Mapa', neighbourhood:'Auzoa', allNeighbourhoods:'Auzo guztiak', discover:'Ezagutu', saved:'Nire planak', location:'DONOSTIA · SAN SEBASTIÁN',
   hero:'Zure hurrengo', heroAccent:'plan bikaina.', intro:'Kultura kanpoan bizi da. Aurkitu kontzertuak, zinema, artea eta zure inguruan gertatzen den guztia.',
   sticker:'SOFA GUTXIAGO.\nKULTURA GEHIAGO.', agenda:'AGENDA, BESTE JARRERA BATEKIN',
   search:'Bilatu artista, plan edo leku bat…', filters:'Iragazkiak', all:'Guztiak',

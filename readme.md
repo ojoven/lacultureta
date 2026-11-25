@@ -157,3 +157,25 @@ Swipes in either direction are kept in `lacultureta.swiped.v1` in the browser. T
 Cards open details from any point on the card, including the image, with Enter/Space support and drag suppression. The filter bar contains date and category dropdowns plus the extra filters button. Organiser is no longer a user filter.
 
 The SQLite venue registry stores bilingual aliases, addresses, optional longitude/latitude, neighbourhoods, sources and verification status. The municipal culture snapshot seeds verified points. Venue websites supply additional confirmed addresses. Existing events are backfilled and each import updates links. Unresolved places keep null location fields. No venue or neighbourhood filter is added by this change. See [venue data and attribution](web/src/data/venues/README.md).
+
+### Neighbourhood filter and event map
+
+The extra filters panel includes a neighbourhood selector. Neighbourhood codes stay the same in both languages; labels use Spanish or Basque. The place selector narrows to that neighbourhood. The filter applies to discovery and the map, and is preserved when changing language or switching between those two views.
+
+The Map button opens the full active agenda for the selected filters, including ongoing and upcoming events. Viewed and saved plans can be found explicitly on the map; swipe history still prevents those cards from appearing again in discovery. Markers group events at each verified venue and cluster nearby venues. The scrollable venue/event panel provides keyboard access and opens the existing event dialog. Plans without exact coordinates remain in the cards and are counted in the map's coverage notice. Selecting a neighbourhood never invents coordinates for its unlocated venues.
+
+`GET /api/events/map` returns the complete compact snapshot, independently of card pagination. It shares parameterised filters with `/api/events`, including `neighbourhood`. `GET /api/events/:id?lang=es|eu` retrieves full details only when requested. Expired, cancelled and withdrawn events are excluded. Map data refreshes every five minutes while visible, and on return after one minute. A shareable map URL uses `view=map`, alongside the existing filters.
+
+The map uses Leaflet 1.9.4 and the compatible MarkerCluster 1.5.3, with OpenStreetMap standard raster tiles initially. The map library and tiles load only when the map is opened. Browsers cache tiles normally. There is no offline download, tile prefetch, proxy, geocoding call, or user location request. OpenStreetMap attribution remains visible on the map, and municipal venue attribution links to its CC BY-SA source.
+
+OpenStreetMap's public tile service is best effort. For higher traffic, select a hosted tile provider with suitable capacity. Set the public browser tile URL and its required attribution in `/etc/lacultureta/map.env`, then restart `lacultureta.service`:
+
+```
+MAP_TILE_URL=https://tile.openstreetmap.org/{z}/{x}/{y}.png
+MAP_TILE_ATTRIBUTION='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+MAP_TILE_MAX_ZOOM=19
+```
+
+A provider can be changed without rebuilding the app. These settings are public in the map response; any provider key must be intended for browser use with suitable domain restrictions. Do not put private credentials in the tile URL. Follow the [tile provider's policy](https://operations.osmfoundation.org/policies/tiles/).
+
+Rybbit records `map_view_opened`, `map_venue_selected`, neighbourhood filter changes, and detail openings with `view: map`. Venue selection sends a public venue ID, not user coordinates.
